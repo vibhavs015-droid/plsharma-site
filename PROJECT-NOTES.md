@@ -172,6 +172,11 @@ consultations online.
       a 44px head would overwhelm the card. Final: sloplint 0 FAIL /
       0 WARN / 8 WAIVED / 18 ANSWERED / 30 NOTE; Lighthouse a11y 1.0 ×8;
       build clean.
+- [x] GitHub repo created (13 Nov 2026): https://github.com/vibhavs015-droid/plsharma-site
+      (private, account vibhavs015-droid via gh CLI keyring). Repo root = this
+      folder (site/ + notes + docs + logos). Tag `v1.0` marks this baseline;
+      main tracks origin. Excluded by .gitignore: node_modules, .next,
+      .hallmark (regenerable), repos/ (third-party clones), .env*.
 - [ ] Team photos: drop team-1.jpg (Vikram), team-2.jpg (Bhawani), team-3.jpg (Hemraj) into public/images/
 - [ ] Replace interim content with real details: story details, testimonials, team roles/bios
 - [ ] Buy domain (recommended: plsharmaco.in at Porkbun, ~₹700/yr) → deploy to Vercel + connect DNS per DEPLOYMENT.md
