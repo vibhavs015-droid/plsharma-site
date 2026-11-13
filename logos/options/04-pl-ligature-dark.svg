@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#262F3D"/>
+  
+  <g transform="translate(-16,-20)">
+  <!-- stem -->
+  <rect x="176" y="118" width="38" height="280" rx="19" fill="#FAF6EE"/>
+  <!-- P bowl (ring with counter) -->
+  <path fill-rule="evenodd" fill="#FAF6EE" d="M 214,118 H 272 A 71,71 0 0 1 272,260 H 214 V 222 H 268 A 33,33 0 0 0 268,156 H 214 Z"/>
+  <!-- L foot -->
+  <rect x="176" y="360" width="192" height="38" rx="19" fill="#FAF6EE"/>
+  <!-- rupee coin in the counter -->
+  <circle cx="251" cy="189" r="21" fill="#D9A866"/>
+  <circle cx="251" cy="189" r="13" fill="none" stroke="#262F3D" stroke-width="3.5"/>
+  <!-- gold ledger tick under the foot -->
+  <rect x="176" y="424" width="132" height="9" rx="4.5" fill="#D9A866"/>
+  </g>
+</svg>

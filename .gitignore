@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Regenerable audit artifacts (recreated by sloplint)
+.hallmark/
+
+# Third-party reference clones (not part of this project)
+repos/
+
+# Env and secrets
+.env
+.env.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log

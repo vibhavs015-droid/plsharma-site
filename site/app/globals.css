@@ -1,0 +1,200 @@
+/* Hallmark · shape: multi-page service site · genre: editorial · theme: custom (navy and gold law firm, user named) · redesign: polish
+ * job: book · idea: "Book a trusted Jaisalmer tax consultant in under a minute." · vibe: "classic, trustworthy, warm, quiet"
+ * hero: stage on the home screen, centered band on subpages · nav: sticky topbar · footer: four-column
+ * imagery: photographs · signature: the gold word in the navy hero
+ * axes: navy 262, gold 68, ivory 85 · contrast: pass · fold: pass
+ * surface: absolute · posture: restrained · v1 */
+/* Hallmark · answered F18 · shadcn ui marks every part with data-slot; the flagged items are headings and a 16px icon, not material slots. The only material slot, the founder photo, renders 380px wide */
+/* Hallmark · answered F19 · four weights in running use, each with a job: 400 body, 500 buttons and labels, 600 questions and form labels, 700 display heads */
+/* Hallmark · waive 49b · footer link Business Registration & Licensing · a two-line service name in a narrow footer column is normal type; nowrap would clip the label at 1024 */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-display, var(--font-sans));
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-whatsapp: var(--whatsapp);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Warm ivory white — softer than pure white */
+  --background: oklch(0.985 0.005 85);
+  --foreground: oklch(0.24 0.03 258);
+  /* Barely-warm whites, so card surfaces are never dead #fff */
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.24 0.03 258);
+  --popover: oklch(0.995 0.004 85);
+  --popover-foreground: oklch(0.24 0.03 258);
+  /* Deep slate-navy (law-firm classic #282E3F) */
+  --primary: oklch(0.33 0.032 262);
+  --primary-foreground: oklch(0.98 0.004 85);
+  --secondary: oklch(0.94 0.014 258);
+  --secondary-foreground: oklch(0.3 0.03 262);
+  --muted: oklch(0.95 0.012 258);
+  --muted-foreground: oklch(0.52 0.028 262);
+  /* Warm gold (#CF9455) — used sparingly for accents */
+  --accent: oklch(0.71 0.115 68);
+  --accent-foreground: oklch(0.24 0.03 258);
+  /* Darker gold ink for text on light backgrounds (#855E24, 5.2:1 on muted) */
+  --gold-ink: oklch(0.48 0.093 55);
+  /* WhatsApp brand green — contact surfaces only */
+  --whatsapp: #0F8344;
+  --destructive: oklch(0.577 0.245 27.325);
+  /* Field edges at about 3.9:1 on white, so form borders stay visible */
+  --input: oklch(0.65 0.016 258);
+  --border: oklch(0.91 0.014 258);
+  --ring: oklch(0.6 0.105 62);
+  --chart-1: oklch(0.87 0.005 262);
+  --chart-2: oklch(0.556 0.005 262);
+  --chart-3: oklch(0.439 0.005 262);
+  --chart-4: oklch(0.371 0.005 262);
+  --chart-5: oklch(0.269 0.005 262);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0.005 85);
+  --sidebar-foreground: oklch(0.145 0.005 262);
+  --sidebar-primary: oklch(0.205 0.005 262);
+  --sidebar-primary-foreground: oklch(0.985 0.005 85);
+  --sidebar-accent: oklch(0.97 0.005 85);
+  --sidebar-accent-foreground: oklch(0.205 0.005 262);
+  --sidebar-border: oklch(0.922 0.005 262);
+  --sidebar-ring: oklch(0.708 0.005 262);
+  /* Navy texture + elevation tokens (referenced below, never re-declared) */
+  --hero-glow: oklch(0.48 0.05 262 / 0.55);
+  --hero-line: oklch(1 0 0 / 0.028);
+  --shadow-card: 0 1px 2px oklch(0.33 0.032 262 / 0.06);
+  --shadow-card-lift:
+    0 12px 32px -12px oklch(0.33 0.032 262 / 0.22),
+    0 0 0 1px var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    overflow-x: clip;
+    scrollbar-color: color-mix(in oklch, var(--foreground) 30%, transparent)
+      transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: clip;
+    caret-color: var(--foreground);
+  }
+  /* Elegant serif for all headings — the classic professional look */
+  h1,
+  h2,
+  h3,
+  [data-slot="card-title"],
+  [data-slot="accordion-trigger"],
+  [data-slot="sheet-title"] {
+    @apply font-heading;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--accent) 35%, transparent);
+  }
+}
+
+@layer utilities {
+  /* Subtle texture for navy sections: soft radial glow + fine diagonal lines */
+  .hero-pattern {
+    background-image:
+      radial-gradient(ellipse 70% 55% at 75% -10%, var(--hero-glow), transparent 65%),
+      repeating-linear-gradient(
+        115deg,
+        var(--hero-line) 0px,
+        var(--hero-line) 1px,
+        transparent 1px,
+        transparent 28px
+      );
+  }
+  /* Gentle hover lift for cards */
+  .card-lift {
+    @apply transition-[transform,box-shadow] duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  .card-lift:hover {
+    box-shadow: var(--shadow-card-lift);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .card-lift:hover {
+      transform: translateY(-4px);
+    }
+  }
+  /* Gold underline flourish for links on light bg */
+  .gold-link {
+    color: var(--gold-ink);
+    text-underline-offset: 4px;
+  }
+  .gold-link:hover {
+    color: var(--primary);
+  }
+  /* Entrance animation: content is always visible at rest (the HTML ships
+     visible, scripting or not); this only plays once as the page loads.
+     Reduced-motion users get no animation at all. */
+  .reveal-in {
+    animation: reveal-in 0.55s cubic-bezier(0.21, 0.47, 0.32, 0.98) backwards;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 24px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-in {
+    animation: none;
+  }
+}
