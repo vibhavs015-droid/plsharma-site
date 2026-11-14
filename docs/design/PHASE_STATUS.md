@@ -6,9 +6,9 @@
 
 ## Current phase
 
-**Phase 1 — Discovery and Vibe — IN PROGRESS** (owner's charter prompt; the ≤8
-probing questions were issued to the owner on 14 Nov 2026 via the question tool;
-answers pending)
+**Phase 1 — Discovery and Vibe — [GATE] REACHED: awaiting owner approval**
+(14 Nov 2026 — deliverables complete, critic APPROVE round 2; no Phase 2 work
+may start until the owner approves)
 
 ### Phase 1 brief
 - **Goal:** confirm the charter's project details with the owner (max 8 probing questions) and produce the strategic design foundation.
@@ -17,7 +17,10 @@ answers pending)
 - **Files agents may touch:** ux-strategist & art-director → `docs/design/discovery/**` only; critic → `docs/design/critic/**` only.
 - **Exit criteria:** three deliverables written; critic verdict recorded; **[GATE]** stop and wait for owner approval before any design/build phase.
 - **Delegations:** questions by Orchestrator (batch of 8, question tool) → deliverables by art-director + ux-strategist (no overlap: different files) → critic review.
-- **Critic verdicts:** pending.
+- **Owner answers received (14 Nov 2026):** fundamentals confirmed (brand, framing, WhatsApp booking goal); primary action = **book consultation via WhatsApp**; audience = **individuals and small businesses equally**; vibe and uniqueness **delegated to the studio** ("discuss with the critics and agents and decide"); admired references: **none** — "complete new work from scratch and build its own identity"; styles to avoid: **startup flash, stock-photo corporate, cluttered templates**; content available: founder photo (in repo), real testimonials (promised, **not yet supplied**), team photos (pending), nothing else — placeholders must stay clearly marked; no credentials supplied → no qualification claims.
+- **Orchestrator note:** because the owner delegated the aesthetic call, the art-director's deliverables are studio **proposals**; the existing navy+gold tokens are a candidate input to evaluate, not a constraint. The [GATE] remains the owner's approval point.
+- **Critic verdicts:** round 1 REJECT (F1 major: unconfirmed stat tiles `1:1`/`100%` in site-config; F2 minor: untraceable contrast ratios; F3 minor: divergent CTA wording) → all three fixes applied (single honest stat tile; committed contrast verifier `site/tools/contrast-check.mjs` + `docs/design/discovery/contrast-evidence.json`, all figures reproduce; canonical wording table per surface) → round 2 **APPROVE** (originality 4, hierarchy 4.5, consistency 4, usability 4, accessibility 4.5, performance 4, brand fit 4.5). Review: `docs/design/critic/phase-1-discovery-2026-11-14.md`. Optional critic notes for Phase 2: retire remaining "Book an Appointment" source wording; founder-photo interim grade is the highest-impact asset decision.
+- **Gate items for the owner:** (1) approve the Kept Ledger direction + conversion design; (2) verify-or-cut the "first consultation is free" promise; (3) founder photo: interim graded crop on the home hero vs type-only hero until the reshoot; (4) optional nav change deferred from the duplicate run (drop /testimonials + /why-choose-us from the header until real testimonials arrive); (5) asset requests from vibe-board §10 (founder reshoot, 3 team photos, signature scan, real testimonials).
 
 ## Completed phases
 

@@ -79,6 +79,41 @@ citations, assertion outcome stated) → round 2 **APPROVE** (originality 4,
 hierarchy 4.5, consistency 4.5, usability 4, accessibility 4.5, performance 3,
 brand fit 4.5). Review: `docs/design/critic/phase-0-baseline-2026-11-14.md`.
 
+## Phase 1 — Discovery and Vibe (14 Nov 2026) — [GATE] reached
+
+**Work done.** Owner's 8 charter questions asked and answered in one batch
+(fundamentals confirmed; WhatsApp booking primary; dual audience; vibe and
+uniqueness delegated to the studio; no admired references; three style
+exclusions; content reality recorded). Deliverables produced by delegated roles:
+`docs/design/discovery/vibe-board.md` + `brand-personality.md` (art-director —
+"The Kept Ledger": warm paper `#FAF6EC`, ink `#282E3F`, brass `#CF9455` as mark
+only, margin-rail structure replacing cards, Fraunces + Inter, honest designed
+placeholders) and `docs/design/discovery/user-problem.md` (ux-strategist —
+problem statements for both audiences, WhatsApp-first conversion design, one CTA
+per surface, journey sketches, honest measurement plan). Critic review round 1
+REJECT → fixes applied → round 2 **APPROVE**.
+
+**Files changed.** `docs/design/discovery/*` (3 deliverables + contrast evidence),
+`site/lib/site-config.ts` (critic-mandated honesty edit: stat tiles → one
+owner-confirmed tile), `site/tools/contrast-check.mjs` (new dev-only verifier),
+`docs/design/KNOWN_ISSUES.md` (#16 contrast defect), `docs/design/DECISION_LOG.md`,
+`docs/design/PHASE_STATUS.md`, this file.
+
+**Tests run.** `node tools/contrast-check.mjs` exit 0 (19 pairs verified);
+dev server on 3000 re-rendered with the single stat tile without errors.
+
+**Problems found and resolved.** (1) Critic F1: unconfirmed stat tiles removed.
+(2) Critic F2: ratios now reproducible from a committed script (art-director's
+figures verified exactly). (3) Critic F3: canonical CTA wording converged across
+all three documents. (4) A duplicate ux-strategist run (server-restart race)
+overwrote `user-problem.md` → critic-reviewed v1 restored verbatim; the
+duplicate's nav proposal deferred to the owner at the [GATE] (DECISION_LOG).
+(5) Free-model quota failed two subagent launches → retry succeeded (KNOWN_ISSUES #11 pattern).
+
+**Exit criteria.** Three deliverables written; critic verdict recorded
+(APPROVE). **[GATE] stop:** Phase 2 awaits owner approval of the direction plus
+verification of the "first consultation free" promise.
+
 ## Charter adoption (14 Nov 2026)
 
 Owner-provided charter saved as `docs/design/STUDIO_CHARTER.md` (replaces the

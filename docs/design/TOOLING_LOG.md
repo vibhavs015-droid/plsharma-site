@@ -50,3 +50,9 @@ All tools are free and installed from the official npm registry. Nothing paid, n
 - **Execution history (honest):** first run cancelled by an OpenCode server restart; the rerun raced the zombie leftovers and produced contention-depressed scores (superseded, not recorded); the harness then re-executed the cancelled command, which cleared the artifact folder and produced the final clean set (8 artifacts, one per URL) — results in `BASELINE_REPORT.md` §6.
 - **Operational cautions learned:** (a) lhci's collect step clears `.lighthouseci/` at start, so an interrupted run's artifacts are not salvageable evidence; (b) a cancelled background lhci command can be re-executed by the harness after a server restart — run lhci in the foreground when determinism matters; (c) `/.lighthouseci/` added to `site/.gitignore` (artifact dumps ~700 KB per page).
 - **Results snapshot:** a11y/BP/SEO 100 on all 8 routes; perf `/` 89 (below target), others 94–100; LCP misses on the four image-led routes (KNOWN_ISSUES #15).
+
+## Added 14 Nov 2026 (Phase 1)
+
+| Tool | Version | Source | Licence | Purpose |
+|---|---|---|---|---|
+| `site/tools/contrast-check.mjs` | repo-local script (no deps) | written in-studio | project code | WCAG 2.2 contrast verifier — makes every ratio in `vibe-board.md` §3 reproducible (critic F2 fix); output committed as `docs/design/discovery/contrast-evidence.json` |

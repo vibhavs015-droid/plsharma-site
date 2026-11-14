@@ -40,13 +40,12 @@ export const site = {
     { days: "Sunday", time: "Closed" },
   ],
 
-  // Only "25+ years" is a confirmed figure (per user, Nov 2026). The other
-  // tiles are service promises, not invented numbers — do not add fake stats.
+  // Owner-confirmed facts only (per user, Nov 2026): "25+ years" and "since
+  // 2001" are the same fact, kept as ONE honest tile (Phase 1 critic fix).
+  // The former "1:1" and "100%" tiles were service promises, not statistics —
+  // removed; do not add unconfirmed stats (see docs/design/critic/).
   stats: [
-    { value: "25+", label: "Years of Experience" },
-    { value: "2001", label: "Serving Jaisalmer Since" },
-    { value: "1:1", label: "Personal Attention on Every Case" },
-    { value: "100%", label: "Confidential & Secure" },
+    { value: "Since 2001", label: "25+ Years in Practice in Jaisalmer" },
   ],
 };
 
