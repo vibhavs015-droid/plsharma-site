@@ -181,3 +181,17 @@ consultations online.
 - [ ] Replace interim content with real details: story details, testimonials, team roles/bios
 - [ ] Buy domain (recommended: plsharmaco.in at Porkbun, ~₹700/yr) → deploy to Vercel + connect DNS per DEPLOYMENT.md
 - [ ] Post-launch: Google Search Console + Google Business Profile (both free)
+- [x] Multi-agent design studio set up (13–14 Nov 2026, OpenCode v2.1.4):
+      7 subagents in `.opencode/agents/` (critic, ux-strategist, art-director,
+      frontend-engineer, a11y-checker, qa-engineer, perf-seo) with scoped
+      permissions (read-only reviewers enforced); Orchestrator rules in
+      `AGENTS.md`; studio artifacts under `docs/design/` (SESSION_HANDOFF,
+      STUDIO_CHARTER, PHASE_STATUS, DECISION_LOG, TOOLING_LOG, critic reviews);
+      Playwright MCP server configured and connected; Playwright + axe-core +
+      Lighthouse CI installed as devDependencies with chromium; axe scan of Home
+      passes with zero violations. Critic smoke test returned a scored REJECT
+      review (`docs/design/critic/smoke-test-2026-11-13.md`) — its required
+      fixes (founder photo tone, invented testimonials, double card grid, stats
+      band, spec drift, founder-card link) are the first backlog of the next
+      phase. New sessions: read `docs/design/SESSION_HANDOFF.md` first and start
+      OpenCode inside this folder.
