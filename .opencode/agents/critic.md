@@ -2,6 +2,7 @@
 description: Strict independent design critic for the P.L. Sharma & Co. website. Reviews files, specs and screenshots handed to it; returns findings, 1-5 scores (originality, hierarchy, consistency, usability, accessibility, performance, brand fit) and APPROVE or REJECT with required fixes. Read-only except its own review folder.
 mode: subagent
 color: "#e11d48"
+model: opencode/nemotron-3.5-super-vl-free
 permissions:
   - action: edit
     resource: "*"

@@ -30,3 +30,7 @@ Append-only. One entry per decision, newest at the bottom. Never delete entries.
 ## 2026-11-14 — Agent paths made project-relative
 - **Decision:** rewrote all 7 agent prompt paths (`site/…`, `docs/…`) and permission patterns (`docs/design/critic/*`, `site/tests/*`, `site/app/globals.css`) relative to the project root, keeping the old `**/tax-consultant-website/…` patterns as absolute-path fallbacks.
 - **Why:** after the relocation the session's workspace root is `tax-consultant-website` itself; workspace-root-relative paths would have resolved to a doubled `tax-consultant-website/tax-consultant-website/…` path and the folder-scoped write allows would have missed. Verified afterwards with `opencode debug agents`.
+
+## 2026-11-14 — Models set for critic and art-director
+- **Decision:** `critic` → `model: opencode/nemotron-3.5-super-vl-free`; `art-director` → `model: opencode/deepseek-v4.1-flash-free`. Every other agent keeps the default (inherits the session model).
+- **Why:** owner instruction to use Nemotron 3.5 Super VL and DeepSeek V4.1 Flash. Exact IDs confirmed from two sources (`tools.opencode.models` and `opencode models` CLI) — both free-tier, status active. No `#variant` appended (owner did not ask for one); if wanted, variants exist — nemotron: none/minimal/low/medium/high/xhigh, deepseek: low/high/max — as `model: <id>#<variant>`.

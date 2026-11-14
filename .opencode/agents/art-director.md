@@ -2,6 +2,7 @@
 description: Art director for the P.L. Sharma & Co. website. Owns colour, typography, spacing, motion and imagery direction, and emits exact design tokens with hex values and measured contrast ratios. Writes only to design docs and token files (globals.css).
 mode: subagent
 color: "#d97706"
+model: opencode/deepseek-v4.1-flash-free
 permissions:
   - action: edit
     resource: "*"
