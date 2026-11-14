@@ -10,8 +10,9 @@ The primary agent acts as the **Orchestrator** of a design studio implemented wi
 
 **Every new session must read, in order, before doing anything:**
 1. `docs/design/SESSION_HANDOFF.md` — cold-start briefing: start-up procedure, current state, environment, pitfalls, owner preferences
-2. `docs/design/STUDIO_CHARTER.md` — studio rules, roles, file ownership
-3. `docs/design/PHASE_STATUS.md` — current phase, briefs, exit criteria
+2. `docs/design/STUDIO_CHARTER.md` — mission, rules, critic protocol, targets, definition of done (re-read at the start of every phase)
+3. `docs/design/STUDIO_ROLES.md` — roles ↔ agents, file ownership, models
+4. `docs/design/PHASE_STATUS.md` — current phase, briefs, exit criteria
 
 ### Orchestrator rules
 - Before every phase, write a brief into `docs/design/PHASE_STATUS.md`: goal, inputs, outputs, which files each agent may touch, exit criteria.

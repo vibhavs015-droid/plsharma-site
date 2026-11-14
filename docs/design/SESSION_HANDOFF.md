@@ -21,7 +21,7 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
    see them. (If a session is already running elsewhere, move it here with
    `session_move`.)
 2. Read, in order: this file → `docs/design/STUDIO_CHARTER.md` →
-   `docs/design/PHASE_STATUS.md`.
+   `docs/design/STUDIO_ROLES.md` → `docs/design/PHASE_STATUS.md`.
 3. Verify the studio is alive:
    - Agents: `& "C:\Users\ASUS\AppData\Local\Programs\@opencodedesktop\resources\opencode-cli.exe" debug agents`
      → expect ids: critic, ux-strategist, art-director, frontend-engineer,
@@ -42,10 +42,12 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
 - Phase lifecycle: write a brief into `docs/design/PHASE_STATUS.md` (goal, inputs,
   outputs, per-agent file scope, exit criteria) → delegate → verify → critic gate
   → iterate (max **3 REJECT rounds per item**, then decide yourself and log why)
-  → mark done only with critic APPROVE + verified exit criteria.
+  → mark done only with critic APPROVE + verified exit criteria. The file-ownership
+  matrix lives in `docs/design/STUDIO_ROLES.md` — binding.
 - After every step update `docs/design/PHASE_STATUS.md`; log decisions with
-  reasons in `docs/design/DECISION_LOG.md` (append-only); critic reviews land in
-  `docs/design/critic/<topic>-<YYYY-MM-DD>.md` (append-only).
+  reasons in `docs/design/DECISION_LOG.md` (append-only); record phase work in
+  `docs/design/IMPLEMENTATION_LOG.md`; keep `docs/design/KNOWN_ISSUES.md` current;
+  critic reviews land in `docs/design/critic/<phase-or-page>.md` (append-only).
 - At the end of a session, update the status list in `PROJECT-NOTES.md` so its
   history stays truthful.
 

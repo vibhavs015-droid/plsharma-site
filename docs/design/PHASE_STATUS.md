@@ -1,7 +1,8 @@
 # Phase status — P.L. Sharma & Co. design studio
 
 > Resuming session? Read `SESSION_HANDOFF.md` first (start-up procedure, state,
-> pitfalls), then `STUDIO_CHARTER.md`, then this file top to bottom.
+> pitfalls), then `STUDIO_CHARTER.md` and `STUDIO_ROLES.md`, then this file top to
+> bottom.
 
 ## Current phase
 
