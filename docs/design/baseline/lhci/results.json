@@ -1,0 +1,168 @@
+﻿{
+    "generatedAt":  "2026-11-14T11:37:04.9400639+05:30",
+    "producedBy":  "npx lhci autorun (lhci 0.16.1, Lighthouse 13.6.0) on the final clean run of 14 Nov 2026; per-URL extract generated from site/.lighthouseci/lhr-*.json (8 files)",
+    "runConfig":  "site/lighthouserc.json: numberOfRuns=1, 8 URLs on http://localhost:3200, startServerCommand \u0027npm run start -- -p 3200\u0027; Chrome via CHROME_PATH = Playwright chromium (ms-playwright/chromium-1254/chrome-win64/chrome.exe)",
+    "artifactsCount":  8,
+    "runs":  [
+                 {
+                     "url":  "http://localhost:3200/",
+                     "fetchTime":  "2026-11-14T05:58:49.749Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  89,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  3776.15,
+                                     "cls":  0,
+                                     "tbtMs":  76,
+                                     "fcpSeconds":  917.44,
+                                     "speedIndexSeconds":  938.95
+                                 },
+                     "sourceFile":  "lhr-1794635939013-438200.json"
+                 },
+                 {
+                     "url":  "http://localhost:3200/about",
+                     "fetchTime":  "2026-11-14T05:59:02.883Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  100,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  760.07,
+                                     "cls":  0,
+                                     "tbtMs":  72,
+                                     "fcpSeconds":  760.07,
+                                     "speedIndexSeconds":  760.07
+                                 },
+                     "sourceFile":  "lhr-1794635952115-863500.json"
+                 },
+                 {
+                     "url":  "http://localhost:3200/services",
+                     "fetchTime":  "2026-11-14T05:59:15.195Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  94,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  2996.76,
+                                     "cls":  0,
+                                     "tbtMs":  114,
+                                     "fcpSeconds":  761.84,
+                                     "speedIndexSeconds":  832.93
+                                 },
+                     "sourceFile":  "lhr-1794635964284-980500.json"
+                 },
+                 {
+                     "url":  "http://localhost:3200/why-choose-us",
+                     "fetchTime":  "2026-11-14T05:59:27.171Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  95,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  2966.19,
+                                     "cls":  0,
+                                     "tbtMs":  53,
+                                     "fcpSeconds":  758.80,
+                                     "speedIndexSeconds":  764.80
+                                 },
+                     "sourceFile":  "lhr-1794635976141-991000.json"
+                 },
+                 {
+                     "url":  "http://localhost:3200/testimonials",
+                     "fetchTime":  "2026-11-14T05:59:39.068Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  95,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  2965.04,
+                                     "cls":  0,
+                                     "tbtMs":  51,
+                                     "fcpSeconds":  759.36,
+                                     "speedIndexSeconds":  767.78
+                                 },
+                     "sourceFile":  "lhr-1794635988033-406300.json"
+                 },
+                 {
+                     "url":  "http://localhost:3200/faq",
+                     "fetchTime":  "2026-11-14T05:59:50.979Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  100,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  759.26,
+                                     "cls":  0,
+                                     "tbtMs":  53,
+                                     "fcpSeconds":  759.26,
+                                     "speedIndexSeconds":  759.26
+                                 },
+                     "sourceFile":  "lhr-1794635999925-294800.json"
+                 },
+                 {
+                     "url":  "http://localhost:3200/contact",
+                     "fetchTime":  "2026-11-14T06:00:02.926Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  100,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  762.34,
+                                     "cls":  0,
+                                     "tbtMs":  79,
+                                     "fcpSeconds":  762.34,
+                                     "speedIndexSeconds":  762.34
+                                 },
+                     "sourceFile":  "lhr-1794636013960-711900.json"
+                 },
+                 {
+                     "url":  "http://localhost:3200/book",
+                     "fetchTime":  "2026-11-14T06:00:17.385Z",
+                     "formFactor":  "mobile",
+                     "throttlingMethod":  "simulate",
+                     "categories":  {
+                                        "performance":  100,
+                                        "accessibility":  100,
+                                        "bestPractices":  100,
+                                        "seo":  100
+                                    },
+                     "metrics":  {
+                                     "lcpSeconds":  762.70,
+                                     "cls":  0,
+                                     "tbtMs":  46,
+                                     "fcpSeconds":  762.70,
+                                     "speedIndexSeconds":  762.70
+                                 },
+                     "sourceFile":  "lhr-1794636026762-908400.json"
+                 }
+             ]
+}

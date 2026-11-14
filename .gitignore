@@ -9,6 +9,7 @@ next-env.d.ts
 
 # Regenerable audit artifacts (recreated by sloplint)
 .hallmark/
+.lighthouseci/
 
 # Third-party reference clones (not part of this project)
 repos/

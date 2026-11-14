@@ -42,3 +42,11 @@ All tools are free and installed from the official npm registry. Nothing paid, n
 - `npm install` reported **21 audit findings (2 low / 10 moderate / 9 high)** — all transitive, all inside dev tooling (mostly the Lighthouse CI dependency chain). None ship in the site runtime bundle. `npm audit fix --force` was deliberately **not** run because it can force breaking major upgrades; review with `npm audit` before touching.
 - npm also printed deprecation warnings for transitive `inflight`, `rimraf`, `glob` — informational only.
 - The Playwright MCP server may need its own chromium revision after a `@playwright/mcp` upgrade — re-run `npx playwright install chromium` if it reports a missing browser.
+
+## First LHCI production run — 14 Nov 2026 (Phase 0)
+
+- **Config changes:** `site/lighthouserc.json` moved from port 3000 → **3200** (port hygiene; 3100 was lost to a zombie server, KNOWN_ISSUES #14). `startServerCommand` is now `npm run start -- -p 3200`; all 8 URLs updated; `numberOfRuns: 1` unchanged.
+- **Chrome discovery:** lhci inherits no system Chrome here, so the run sets `CHROME_PATH` to the already-installed Playwright chromium (`%LOCALAPPDATA%\ms-playwright\chromium-1254\chrome-win64\chrome.exe`) — no new install, dev-only env var, nothing committed.
+- **Execution history (honest):** first run cancelled by an OpenCode server restart; the rerun raced the zombie leftovers and produced contention-depressed scores (superseded, not recorded); the harness then re-executed the cancelled command, which cleared the artifact folder and produced the final clean set (8 artifacts, one per URL) — results in `BASELINE_REPORT.md` §6.
+- **Operational cautions learned:** (a) lhci's collect step clears `.lighthouseci/` at start, so an interrupted run's artifacts are not salvageable evidence; (b) a cancelled background lhci command can be re-executed by the harness after a server restart — run lhci in the foreground when determinism matters; (c) `/.lighthouseci/` added to `site/.gitignore` (artifact dumps ~700 KB per page).
+- **Results snapshot:** a11y/BP/SEO 100 on all 8 routes; perf `/` 89 (below target), others 94–100; LCP misses on the four image-led routes (KNOWN_ISSUES #15).

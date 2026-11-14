@@ -1,18 +1,18 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "npm run start",
+      "startServerCommand": "npm run start -- -p 3200",
       "startServerReadyPattern": "Ready|started|listening",
       "numberOfRuns": 1,
       "url": [
-        "http://localhost:3000/",
-        "http://localhost:3000/about",
-        "http://localhost:3000/services",
-        "http://localhost:3000/why-choose-us",
-        "http://localhost:3000/testimonials",
-        "http://localhost:3000/faq",
-        "http://localhost:3000/contact",
-        "http://localhost:3000/book"
+        "http://localhost:3200/",
+        "http://localhost:3200/about",
+        "http://localhost:3200/services",
+        "http://localhost:3200/why-choose-us",
+        "http://localhost:3200/testimonials",
+        "http://localhost:3200/faq",
+        "http://localhost:3200/contact",
+        "http://localhost:3200/book"
       ]
     },
     "assert": {

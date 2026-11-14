@@ -39,10 +39,50 @@ succeeded on retry.
 **Exit criteria.** Met: agents verified loaded; MCP connected; toolchain verified
 end-to-end; critic returned a scored verdict and its out-of-scope edit was denied.
 
+## Phase 0 — Baseline (14 Nov 2026)
+
+**Work done.** Verified pre-work baseline of the existing site, per the charter
+prompt: environment (Node v24.16.0, npm 11.13.0, branch `main`); repo structure and
+16-route build table; dependency and script inventory; install → build → lint →
+tests → axe (8 routes, production server) → Lighthouse CI (8 routes, port 3200,
+Playwright chromium via `CHROME_PATH`). Port hygiene: both stale in-house servers
+(PID 19780 `next start`, PID 21340 dev) stopped before runs; dev server restored
+afterwards. Deliverable: `docs/design/BASELINE_REPORT.md`.
+
+**Files changed.** `site/lighthouserc.json` (port 3000 → 3200), `site/.gitignore`
+(ignore `/.lighthouseci/`), `docs/design/BASELINE_REPORT.md`, ledgers
+(`KNOWN_ISSUES.md`, `DECISION_LOG.md`, `TOOLING_LOG.md`, this file). No product
+code touched (charter baseline rule).
+
+**Tests run.** Build exit 0 (16/16 static routes); lint exit 1 — 1 error + 2
+warnings recorded as KNOWN_ISSUES #13, deliberately not fixed in Phase 0; unit
+tests 5/5; axe 0 violations × 8 routes; Lighthouse final clean run: a11y/BP/SEO
+100 × 8, perf 89–100, LCP misses on `/` `/services` `/why-choose-us`
+`/testimonials` (KNOWN_ISSUES #15).
+
+**Problems found and resolved.** (1) First LHCI run cancelled by an OpenCode
+server restart → orphaned processes killed; an elevated zombie pair survived
+(PID 18672/14012, KNOWN_ISSUES #14). (2) The rerun raced the zombie and produced
+depressed scores → superseded. (3) The harness re-executed the cancelled command
+→ that run cleared the folder and delivered the final clean artifact set. (4) An
+edit here clipped one line of the Charter-adoption entry → restored in the same
+session.
+
+**Exit criteria.** Structure/deps/scripts/git inspected; install/build/lint/tests
+run with failures recorded honestly; Lighthouse numbers recorded; studio roles in
+place; `BASELINE_REPORT.md` written. **Critic verdict:** round 1 REJECT (F1–F7:
+2 majors — LHCI numbers not traceable to artifacts; route count inconsistent —
+5 minors) → all fixes applied (committed evidence bundle
+`docs/design/baseline/lhci/`, route-count reconciliation against the prerender
+manifest, zombie-PID unification, command citations for §1/§4, licence-record
+citations, assertion outcome stated) → round 2 **APPROVE** (originality 4,
+hierarchy 4.5, consistency 4.5, usability 4, accessibility 4.5, performance 3,
+brand fit 4.5). Review: `docs/design/critic/phase-0-baseline-2026-11-14.md`.
+
 ## Charter adoption (14 Nov 2026)
 
 Owner-provided charter saved as `docs/design/STUDIO_CHARTER.md` (replaces the
-Orchestrator-written draft; ownership matrix, path convention and model notes
+orchestrator-written draft; ownership matrix, path convention and model notes
 migrated to `STUDIO_ROLES.md`). Created the charter's required documentation set:
 `STUDIO_ROLES.md`, `REPOSITORY_REFERENCE.md`, `THIRD_PARTY_NOTICES.md`,
 `KNOWN_ISSUES.md`, `IMPLEMENTATION_LOG.md` (this file), `FINAL_QA_REPORT.md` (stub
