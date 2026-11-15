@@ -56,3 +56,13 @@ All tools are free and installed from the official npm registry. Nothing paid, n
 | Tool | Version | Source | Licence | Purpose |
 |---|---|---|---|---|
 | `site/tools/contrast-check.mjs` | repo-local script (no deps) | written in-studio | project code | WCAG 2.2 contrast verifier — makes every ratio in `vibe-board.md` §3 reproducible (critic F2 fix); output committed as `docs/design/discovery/contrast-evidence.json` |
+
+## Added 14–15 Nov 2026 (Phase 2)
+
+| Tool | Version | Source | Licence | Purpose |
+|---|---|---|---|---|
+| `site/tools/process-founder-photo.mjs` | repo-local script | written in-studio | project code | One-off founder-plate crop/grade (sharp: extract → recomb grade → resize) + the acceptance test (G/R and B/R patch ratios); dev-only, nothing imports it. **Removal:** delete the file (the generated `founder-plate.{webp,avif}` are committed outputs). |
+| `sharp` | 0.35.5 | already present as a Next.js image-optimisation dependency — **not newly installed** | Apache-2.0 | Used by the script above for the graded crop; no runtime code imports it directly. |
+| `next/font/google` (Inter + Fraunces) | built into Next.js 16.4.6 | framework feature — no package added | fonts SIL OFL (Google Fonts); self-hosted by next/font at build time | Replaced Playfair Display + Geist Mono; Fraunces ships wght+opsz normal-only after the measured payload fix (see tokens.md §2). |
+
+No new npm packages were added in Phase 2; the rows above are an in-repo script, an already-present dependency, and a framework feature — logged for traceability per the free-tooling clause.

@@ -195,3 +195,23 @@ consultations online.
       band, spec drift, founder-card link) are the first backlog of the next
       phase. New sessions: read `docs/design/SESSION_HANDOFF.md` first and start
       OpenCode inside this folder.
+- [x] Design-studio Phases 0–2 complete (13–15 Nov 2026, see
+      `docs/design/IMPLEMENTATION_LOG.md`): Phase 0 baseline (critic APPROVE
+      r2; `BASELINE_REPORT.md`); Phase 1 discovery + owner [GATE] passed (critic
+      APPROVE r2; "Kept Ledger" direction approved, first-consultation-free
+      confirmed, interim founder crop approved, header keeps 8 links); Phase 2
+      Design System + Home (critic APPROVE r1, 15 Nov): tokens rebuilt in
+      `site/app/globals.css` (sheet: `docs/design/phase-2/tokens.md`), Home
+      rebuilt as the margin-rail ledger (§01–§05 + act band, one h1, one honest
+      stat tile, placeholder-marked testimonials, canonical CTA wording), fonts
+      Inter + Fraunces via next/font (woff2 781→357 KB), WhatsApp green
+      AA-fixed to `#0B6E39`, focus indicator ≥3:1 everywhere, skip link added,
+      honesty regression tests in the e2e suite. Verified: 35/35 tests, axe 0
+      violations on `/` + `/book`, build exit 0, a11y 100 × 8 (LHCI), quiet-run
+      perf 93 / TBT 34 ms (measurement caveat: KNOWN_ISSUES #17 — busy-machine
+      Lighthouse TBT/LCP are upper bounds). Next: Phase 3 — remaining pages
+      (`/about`, `/services`, `/why-choose-us`, `/testimonials`, `/faq`,
+      `/contact`, `/book`) each per the PAGE COMPLETION RULE; carried backlog:
+      #15 LCP image optimisation, `/book` slip rebuild, reduced-motion test, 2
+      lint warnings, founder reshoot (#1a), real testimonials/team photos (owner
+      data). No push/deploy without the owner.

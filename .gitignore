@@ -22,3 +22,6 @@ repos/
 .DS_Store
 Thumbs.db
 *.log
+
+# Tooling artifacts (regenerated every run)
+.playwright-mcp/

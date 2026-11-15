@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { CalendarCheck, CheckCircle2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,16 +23,21 @@ const timeSlots = [
   "Evening (4:00 PM to 7:00 PM)",
 ];
 
+/* Today's date for the date input's `min`. `new Date()` is not allowed during
+ * prerender, and writing it from an effect would trip
+ * react-hooks/set-state-in-effect — so it is read during render with
+ * useSyncExternalStore instead: the server snapshot is "" while prerendering
+ * and hydrating; the browser value replaces it right after hydration. Same
+ * observable behaviour as the old mount-effect, with no state write. */
+const subscribeToClock = () => () => {};
+const getToday = () => new Date().toISOString().slice(0, 10);
+const getTodayServer = () => "";
+
 export function BookingForm() {
   const [form, setForm] = useState(emptyBooking);
   const [sent, setSent] = useState(false);
   const [pending, setPending] = useState(false);
-  // "min" date is set after mount — new Date() is not allowed during prerender
-  const [today, setToday] = useState("");
-
-  useEffect(() => {
-    setToday(new Date().toISOString().slice(0, 10));
-  }, []);
+  const today = useSyncExternalStore(subscribeToClock, getToday, getTodayServer);
 
   const set = (field: keyof typeof form) => (value: string) =>
     setForm((f) => ({ ...f, [field]: value }));
@@ -203,11 +208,11 @@ export function BookingForm() {
           </div>
 
           <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row">
-            <Button type="submit" disabled={pending} className="h-11 flex-1 px-6 text-base">
+            <Button type="submit" disabled={pending} className="h-11 w-full px-6 sm:w-auto sm:flex-1 text-base">
               <Send data-icon="inline-start" />
               {pending ? "Opening WhatsApp…" : "Send Booking Request"}
             </Button>
-            <Button asChild variant="outline" className="h-11 flex-1 px-6 text-base">
+            <Button asChild variant="outline" className="h-11 w-full px-6 sm:w-auto sm:flex-1 text-base">
               <a
                 href={`mailto:${site.email}?subject=${encodeURIComponent(
                   "Appointment Request (Website)"

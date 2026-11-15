@@ -1,25 +1,106 @@
-/* Hallmark · shape: multi-page service site · genre: editorial · theme: custom (navy and gold law firm, user named) · redesign: polish
- * job: book · idea: "Book a trusted Jaisalmer tax consultant in under a minute." · vibe: "classic, trustworthy, warm, quiet"
- * hero: stage on the home screen, centered band on subpages · nav: sticky topbar · footer: four-column
- * imagery: photographs · signature: the gold word in the navy hero
- * axes: navy 262, gold 68, ivory 85 · contrast: pass · fold: pass
- * surface: absolute · posture: restrained · v1 */
-/* Hallmark · answered F18 · shadcn ui marks every part with data-slot; the flagged items are headings and a 16px icon, not material slots. The only material slot, the founder photo, renders 380px wide */
-/* Hallmark · answered F19 · four weights in running use, each with a job: 400 body, 500 buttons and labels, 600 questions and form labels, 700 display heads */
+/* Hallmark · shape: multi-page service site · genre: editorial ledger · theme: "The Kept Ledger" (paper ground, ink type, one brass rule) · redesign: re-theme
+ * job: book · idea: "Book a trusted Jaisalmer tax consultant in under a minute." · vibe: "kept, composed, plain-spoken, warm not chummy"
+ * hero: ruled opening with a margin rail and one brass mark · nav: sticky ink topbar · footer: the signed page
+ * imagery: real people in daylight, 4:5 square-cornered plates, never stock · signature: the margin rail + the hairline that warms
+ * axes: ink #282E3F, brass #CF9455, paper #FAF6EC, sand #F1E8D9 · contrast: tokens measured (docs/design/discovery/contrast-evidence.json) · fold: n/a in the token layer
+ * surface: absolute · posture: restrained · v2 — Phase 2 token layer; components are still pre-rebuild, so the legacy utility aliases below stay until they are replaced */
+/* Hallmark · answered F18 · shadcn marks every part with data-slot; the only material slot is the founder photo — a 4:5 plate, interim grade, pending reshoot */
+/* Hallmark · answered F19 · three weights carry the system: 400 display and body, 500 entry titles and labels, 600 form labels. 700 survives only in components awaiting rebuild */
 /* Hallmark · waive 49b · footer link Business Registration & Licensing · a two-line service name in a narrow footer column is normal type; nowrap would clip the label at 1024 */
 
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Scan boundary: only site source is a Tailwind source. Everything else at
+   the repo root is input we never compile — vendored study clones (repos/,
+   already git-ignored), design docs and evidence snapshots (docs/), agent
+   prompts full of class examples (.opencode/) and logo assets (logos/).
+   Plain markdown and committed CSS are valid Tailwind sources, so docs and
+   snapshots re-seed dead utilities on every build. Base = this file:
+   ../../ is the repo root. */
+@source not "../../repos";
+@source not "../../docs";
+@source not "../../.opencode";
+@source not "../../logos";
+
+/* The design is a paper book: light only. The variant stays so shadcn's
+   `dark:` classes keep resolving; no `.dark` token block is defined and
+   `color-scheme: light` is pinned in :root. */
 @custom-variant dark (&:is(.dark *));
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Type scale, rhythm and motion — static values, emitted as CSS vars.
+   Token sheet: docs/design/phase-2/tokens.md
+   ───────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* Display: Fraunces, 400. Bookish, not didone. */
+  --text-display: clamp(2.5rem, 1.25rem + 3.4vw, 4rem); /* 40 → 64 */
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.025em;
+  --text-display--font-weight: 400;
+
+  --text-section: clamp(1.875rem, 1.4rem + 0.85vw, 2.25rem); /* 30 → 36 */
+  --text-section--line-height: 1.12;
+  --text-section--letter-spacing: -0.02em;
+  --text-section--font-weight: 400;
+
+  --text-entry: clamp(1.25rem, 1.15rem + 0.3vw, 1.375rem); /* 20 → 22 */
+  --text-entry--line-height: 1.25;
+  --text-entry--letter-spacing: -0.01em;
+  --text-entry--font-weight: 500;
+
+  /* Text: Inter, 400. 17px body — never 16 on mobile (iOS zoom; this audience reads). */
+  --text-lead: clamp(1.125rem, 1.05rem + 0.25vw, 1.25rem); /* 18 → 20 */
+  --text-lead--line-height: 1.6;
+
+  --text-body: 1.0625rem; /* 17 */
+  --text-body--line-height: 1.65;
+
+  --text-meta: 0.875rem; /* 14 */
+  --text-meta--line-height: 1.45;
+
+  --text-label: 0.78125rem; /* 12.5 — rail labels, plate captions */
+  --text-label--line-height: 1.2;
+  --text-label--letter-spacing: 0.09em;
+  --text-label--font-weight: 500;
+
+  /* Layout */
+  --container-page: 72.5rem; /* 1160 */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-entrance: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --motion-fast: 120ms; /* colour on focus/hover */
+  --motion-base: 220ms; /* the hairline warms */
+  --motion-enter: 420ms; /* one-time entrance, never replayed */
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Palette → utilities, and the shadcn/Nova contract.
+   Every *name* the components already use is preserved; only the *values*
+   are re-pointed at the Kept Ledger palette. One hex, one job.
+   ───────────────────────────────────────────────────────────────────────── */
 @theme inline {
+  /* Kept Ledger palette */
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-brass: var(--brass);
+  --color-brass-ink: var(--brass-ink);
+  --color-line: var(--line);
+  --color-line-input: var(--line-input);
+  --color-error: var(--error);
+
+  /* Fonts. --font-display is set by next/font on <html> (Fraunces);
+     --font-sans by next/font (Inter). The fallback chain means an
+     unloaded display face degrades to the body face, never to a default serif. */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  --font-heading: var(--font-display, var(--font-sans));
+
+  /* shadcn / Nova */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-display, var(--font-sans));
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,151 +131,431 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-whatsapp: var(--whatsapp);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+
+  /* Radii: 2px on controls, 0 on panels. The chain stays (components use
+     rounded-sm…rounded-4xl) but is pinned so nothing can climb back to 10px. */
+  --radius-sm: 2px;
+  --radius-md: 2px;
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-xl: 3px;
+  --radius-2xl: 4px;
+  --radius-3xl: 5px;
+  --radius-4xl: 6px;
 }
 
 :root {
-  /* Warm ivory white — softer than pure white */
-  --background: oklch(0.985 0.005 85);
-  --foreground: oklch(0.24 0.03 258);
-  /* Barely-warm whites, so card surfaces are never dead #fff */
-  --card: oklch(0.995 0.004 85);
-  --card-foreground: oklch(0.24 0.03 258);
-  --popover: oklch(0.995 0.004 85);
-  --popover-foreground: oklch(0.24 0.03 258);
-  /* Deep slate-navy (law-firm classic #282E3F) */
-  --primary: oklch(0.33 0.032 262);
-  --primary-foreground: oklch(0.98 0.004 85);
-  --secondary: oklch(0.94 0.014 258);
-  --secondary-foreground: oklch(0.3 0.03 262);
-  --muted: oklch(0.95 0.012 258);
-  --muted-foreground: oklch(0.52 0.028 262);
-  /* Warm gold (#CF9455) — used sparingly for accents */
-  --accent: oklch(0.71 0.115 68);
-  --accent-foreground: oklch(0.24 0.03 258);
-  /* Darker gold ink for text on light backgrounds (#855E24, 5.2:1 on muted) */
-  --gold-ink: oklch(0.48 0.093 55);
-  /* WhatsApp brand green — contact surfaces only */
-  --whatsapp: #0F8344;
-  --destructive: oklch(0.577 0.245 27.325);
-  /* Field edges at about 3.9:1 on white, so form borders stay visible */
-  --input: oklch(0.65 0.016 258);
-  --border: oklch(0.91 0.014 258);
-  --ring: oklch(0.6 0.105 62);
-  --chart-1: oklch(0.87 0.005 262);
-  --chart-2: oklch(0.556 0.005 262);
-  --chart-3: oklch(0.439 0.005 262);
-  --chart-4: oklch(0.371 0.005 262);
-  --chart-5: oklch(0.269 0.005 262);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0.005 85);
-  --sidebar-foreground: oklch(0.145 0.005 262);
-  --sidebar-primary: oklch(0.205 0.005 262);
-  --sidebar-primary-foreground: oklch(0.985 0.005 85);
-  --sidebar-accent: oklch(0.97 0.005 85);
-  --sidebar-accent-foreground: oklch(0.205 0.005 262);
-  --sidebar-border: oklch(0.922 0.005 262);
-  --sidebar-ring: oklch(0.708 0.005 262);
-  /* Navy texture + elevation tokens (referenced below, never re-declared) */
-  --hero-glow: oklch(0.48 0.05 262 / 0.55);
-  --hero-line: oklch(1 0 0 / 0.028);
-  --shadow-card: 0 1px 2px oklch(0.33 0.032 262 / 0.06);
-  --shadow-card-lift:
-    0 12px 32px -12px oklch(0.33 0.032 262 / 0.22),
-    0 0 0 1px var(--border);
+  color-scheme: light; /* light-only design: paper book. No dark theme is authored. */
+
+  /* ── Palette. Measured with site/tools/contrast-check.mjs (WCAG 2.2). ── */
+  --paper: #faf6ec; /* page ground */
+  --sand: #f1e8d9; /* the one alternate surface: slip, muted bands, popovers */
+  --ink: #282e3f; /* all primary text; the act surface */
+  --ink-muted: #57534a; /* secondary text, captions, placeholders */
+  --line: #d9cfbe; /* decorative hairlines only — 1.43:1, never a boundary */
+  --line-input: #8a7f69; /* control boundaries — 3.66 paper / 3.25 sand */
+  --brass: #cf9455; /* MARK ONLY. Fills, rules, markers. Never text on light (2.43:1) */
+  --brass-ink: #854e24; /* brass-coloured TEXT — 6.25 paper / 5.55 sand */
+  --error: #b3261e; /* validation text and borders — 6.06 paper */
+  --whatsapp: #0b6e39; /* replaces #0F8344, which measured 4.47:1 (KNOWN_ISSUES #16) */
+
+  /* ── shadcn / Nova names, re-pointed. Do not rename. ── */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper); /* cards are retired; no tonal layer above paper */
+  --card-foreground: var(--ink);
+  --popover: var(--sand); /* menus read as a slip laid on the page */
+  --popover-foreground: var(--ink);
+  --primary: var(--ink); /* ink = act */
+  --primary-foreground: var(--paper); /* 12.53:1 */
+  --secondary: var(--sand);
+  --secondary-foreground: var(--ink); /* 11.13:1 */
+  --muted: var(--sand);
+  --muted-foreground: var(--ink-muted); /* 6.31:1 on sand */
+  --accent: var(--brass); /* brass is a mark: accent surfaces carry INK text */
+  --accent-foreground: var(--ink); /* 5.17:1 on brass */
+  --gold-ink: var(--brass-ink); /* legacy name kept for existing components */
+  --destructive: var(--error);
+  --input: var(--line-input);
+  --border: var(--line);
+  --ring: var(--ink); /* 12.53:1 on paper; brass ring is for ink surfaces only */
+  --chart-1: var(--ink);
+  --chart-2: var(--brass-ink);
+  --chart-3: var(--whatsapp);
+  --chart-4: var(--ink-muted);
+  --chart-5: var(--line);
+  --radius: 2px;
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--ink);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: var(--sand);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--ink);
+
+  /* ── Layout rhythm (12 columns live in the components; these are the constants) ── */
+  --rail: 180px; /* margin rail at ≥1024 */
+  --rail-wide: 220px; /* margin rail at ≥1280 */
+  --measure: 66ch; /* body measure 62–68ch */
+  --gutter: clamp(1.25rem, 3vw, 4rem); /* 20 / 40 / 64 page padding */
+  --space-entry: clamp(1.5rem, 2.4vw, 2rem); /* 24 → 32 between entries */
+  --space-section: clamp(3.5rem, 2rem + 5vw, 6rem); /* 56 / ~70 / 96 section rhythm */
+
+  /* Focus on ink surfaces only. On paper the ring is --ink. */
+  --focus-on-ink: var(--brass); /* 5.17:1 */
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    /* Solid, never 50%: a half-alpha outline composites to 2.88:1 on paper,
+       under the 3:1 a focus indicator needs. `outline-ring` = --ring = --ink. */
+    @apply border-border outline-ring;
   }
   html {
     @apply font-sans;
     overflow-x: clip;
-    scrollbar-color: color-mix(in oklch, var(--foreground) 30%, transparent)
-      transparent;
+    text-size-adjust: 100%;
+    scrollbar-color: color-mix(in srgb, var(--ink) 30%, transparent) transparent;
   }
   body {
     @apply bg-background text-foreground;
+    font-size: var(--text-body);
+    line-height: 1.65;
     overflow-x: clip;
     caret-color: var(--foreground);
   }
-  /* Elegant serif for all headings — the classic professional look */
+  /* One display voice. Fraunces at its book setting: no wonk, no softness
+     beyond the default, optical size automatic. */
   h1,
   h2,
   h3,
+  h4,
   [data-slot="card-title"],
   [data-slot="accordion-trigger"],
   [data-slot="sheet-title"] {
     @apply font-heading;
-    letter-spacing: -0.01em;
+    font-optical-sizing: auto;
     text-wrap: balance;
+  }
+  /* Sizes below mirror --text-display / --text-section / --text-entry. */
+  h1 {
+    font-size: var(--text-display);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: var(--text-section);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: var(--text-entry);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-weight: 500;
   }
   p {
     text-wrap: pretty;
   }
+  /* Selection uses a measured pair: ink on brass (5.17:1). */
   ::selection {
-    background: color-mix(in oklch, var(--accent) 35%, transparent);
+    background: var(--brass);
+    color: var(--ink);
+  }
+  /* Figures sit in a column: years, dates, § numbers, amounts. */
+  time,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Focus fallback — the one indicator every focusable element gets unless it
+     authors its own (a control carrying `outline-none` keeps its component
+     ring; the CTA set further down re-asserts this outline at higher
+     specificity and closes the ring channel there).
+     Measured: --ring = #282E3F = 12.53:1 on paper, 11.13:1 on sand. Inside an
+     ink surface the colour switches to --focus-on-ink (brass, 5.17:1) — see the
+     override at the end of @layer utilities. Outline only: no border, no
+     padding, no layout shift; offset 2px keeps it off the glyphs and edges. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
-  /* Subtle texture for navy sections: soft radial glow + fine diagonal lines */
-  .hero-pattern {
-    background-image:
-      radial-gradient(ellipse 70% 55% at 75% -10%, var(--hero-glow), transparent 65%),
-      repeating-linear-gradient(
-        115deg,
-        var(--hero-line) 0px,
-        var(--hero-line) 1px,
-        transparent 1px,
-        transparent 28px
-      );
+  /* ═══════════════════════════════════════════════════════════════════════
+     PRIMITIVES the rebuild consumes
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* The margin rail (M2). Container + rail in one class: the left edge is
+     lighter, the right column carries the content. Below 64rem the rail
+     collapses to a single marker above the entry (grid rows, no media hacks). */
+  .ledger-rail {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.75rem;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
   }
-  /* Gentle hover lift for cards */
-  .card-lift {
-    @apply transition-[transform,box-shadow] duration-300;
-    box-shadow: var(--shadow-card);
-  }
-  .card-lift:hover {
-    box-shadow: var(--shadow-card-lift);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .card-lift:hover {
-      transform: translateY(-4px);
+  @media (min-width: 64rem) {
+    .ledger-rail {
+      grid-template-columns: var(--rail) minmax(0, 1fr);
+      column-gap: 2.5rem;
+      row-gap: 0;
     }
   }
-  /* Gold underline flourish for links on light bg */
+  @media (min-width: 80rem) {
+    .ledger-rail {
+      grid-template-columns: var(--rail-wide) minmax(0, 1fr);
+      column-gap: 3rem;
+    }
+  }
+
+  /* § numbers, dates, plate captions: 12.5px, 500, tracked, tabular.
+     `:where()` keeps the declaration at zero specificity, so any `text-*`
+     utility on the marker wins the colour: the rail no longer pins itself to
+     ink-muted and each marker picks its surface token. The default stays
+     muted for markers that say nothing (8 of the 10 on Home). */
+  :where(.rail-label) {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The ruled entry: a rule, a title, a body, optional margin note. No box.
+     The signature interaction — the hairline warms from line to brass. */
+  .ruled-entry {
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    padding-block: var(--space-entry);
+    background-color: transparent;
+    box-shadow: none;
+    transition: border-color var(--motion-base) var(--ease-standard);
+  }
+  .ruled-entry:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .ruled-entry:hover,
+  .ruled-entry:focus-within {
+    border-top-color: var(--brass);
+  }
+
+  /* The act band: one per page, at the end. Ink surface, paper text,
+     one brass hairline. The primary CTA inside it switches to brass fill. */
+  .act-band {
+    background-color: var(--ink);
+    color: var(--paper);
+    border-top: 1px solid var(--brass);
+    border-radius: 0;
+  }
+
+  /* Pending content, marked not hidden: dashed rule + brass-ink marker.
+     Text is 12.5px at 6.25:1 on paper, 5.55:1 on sand. */
+  .placeholder-mark {
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--line);
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--brass-ink);
+  }
+
+  /* The consultation slip (M1): paper laid on sand, square, one ruled head. */
+  .slip {
+    background-color: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--ink);
+    border-radius: 0;
+    padding: clamp(1.25rem, 3.5vw, 2.5rem);
+    box-shadow: none;
+  }
+  .slip-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: var(--space-entry);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* CTA set. On paper: ink fill, paper text (12.53). Inside .act-band:
+     brass fill, ink text (5.17). Hover adds a brass/ink underline and never
+     changes the fill, so the control boundary keeps its contrast. Focus is an
+     outline and nothing else — one indicator per element, never stacked. */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem; /* 44px touch target */
+    padding-inline: 1.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    background-color: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-decoration: none;
+    box-shadow: none;
+    transition:
+      color var(--motion-fast) var(--ease-standard),
+      background-color var(--motion-fast) var(--ease-standard);
+  }
+  .btn-primary:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--brass); /* 5.17:1 on ink */
+    text-underline-offset: 0.3em;
+  }
+  .act-band .btn-primary {
+    background-color: var(--brass);
+    color: var(--ink);
+  }
+  .act-band .btn-primary:hover {
+    text-decoration-color: var(--ink); /* 5.17:1 on brass */
+  }
+  .btn-primary:disabled,
+  .btn-primary[aria-disabled="true"] {
+    background-color: var(--sand);
+    border-color: var(--line);
+    color: var(--ink-muted); /* 6.31:1 — never opacity-faded */
+    text-decoration: none;
+  }
+
+  /* Secondary path: the phone number, mailto, "prefer to talk first".
+     Stated, never sold. Inherits its colour from its surface. */
+  .btn-quiet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding-block: 0.25rem;
+    color: inherit;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: currentColor;
+    text-underline-offset: 0.3em;
+    transition: color var(--motion-fast) var(--ease-standard);
+  }
+  .btn-quiet:hover {
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--brass-ink); /* 6.25:1 on paper */
+  }
+  .act-band .btn-quiet:hover {
+    text-decoration-color: var(--brass); /* 5.17:1 on ink */
+  }
+
+  /* These two classes can sit on a shadcn <Button>, which ships `outline-none`
+     in the utilities layer — so the base fallback would be defeated. Higher
+     specificity here guarantees the solid indicator survives either way.
+     `box-shadow: none` re-asserts the primitive's own no-shadow rule *after*
+     the generated ring utilities (same 0,2,0 specificity, later in the layer),
+     so a `focus-visible:ring-2` left on a CTA cannot stack a second ring around
+     this outline. One control, one indicator; the outline is the indicator. */
+  .btn-primary:focus-visible,
+  .btn-quiet:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  /* Body measure, 62–68ch. */
+  .measure {
+    max-width: var(--measure);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     LEGACY ALIASES — kept so the seven un-rebuilt routes keep rendering.
+     Restyled to the Kept Ledger, not renamed. Remove only after the rebuild.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Was: radial glow + diagonal-line texture. Gradients and decorative
+     patterns are out of the direction, so this is now a flat ink ground. */
+  .hero-pattern {
+    background-color: var(--ink);
+    background-image: none;
+  }
+
+  /* Was: shadow + translateY hover lift. Cards are retired and the
+     direction bans hover lift, so this is now inert (transition only). */
+  .card-lift {
+    box-shadow: none;
+    transition: background-color var(--motion-fast) var(--ease-standard);
+  }
+
+  /* Accent text on light: the text gold, not the mark gold. */
   .gold-link {
-    color: var(--gold-ink);
-    text-underline-offset: 4px;
+    color: var(--brass-ink); /* 6.25:1 paper */
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    transition: color var(--motion-fast) var(--ease-standard);
   }
   .gold-link:hover {
-    color: var(--primary);
+    color: var(--ink);
   }
-  /* Entrance animation: content is always visible at rest (the HTML ships
-     visible, scripting or not); this only plays once as the page loads.
-     Reduced-motion users get no animation at all. */
+
+  /* One-time entrance. Content ships visible; this only plays on first paint.
+     --reveal-y is set by <Reveal> and capped at 8px here, so no component
+     can reintroduce a 24px slide. */
   .reveal-in {
-    animation: reveal-in 0.55s cubic-bezier(0.21, 0.47, 0.32, 0.98) backwards;
+    animation: reveal-in var(--motion-enter) var(--ease-entrance) backwards;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     FOCUS ON INK SURFACES — must stay last in this layer.
+     Same specificity as the CTA focus rules above, so source order decides.
+     --focus-on-ink = #CF9455 = 5.17:1 on ink (brand-personality §4.12: ink ring
+     on paper, brass ring on navy). `.bg-primary` is the interim hook for the
+     header, footer and sheet, which are still ink today; an ink-surface
+     container that nests a paper card must reset outline-color on that card's
+     links to var(--ring). The rebuild replaces .bg-primary surfaces with
+     .act-band and this caveat disappears with them. */
+  .act-band :focus-visible,
+  .hero-pattern :focus-visible,
+  .bg-primary :focus-visible {
+    outline-color: var(--focus-on-ink);
   }
 }
 
 @keyframes reveal-in {
   from {
     opacity: 0;
-    transform: translateY(var(--reveal-y, 24px));
+    transform: translateY(min(var(--reveal-y, 8px), 8px));
   }
 }
 
+/* Reduced motion: every duration collapses, no transforms, and state changes
+   still complete instantly (colour feedback is never removed). */
 @media (prefers-reduced-motion: reduce) {
   .reveal-in {
     animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

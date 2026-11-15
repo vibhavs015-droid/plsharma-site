@@ -33,7 +33,7 @@ export default function AboutPage() {
             <p>
               {site.name} was founded in {site.establishedYear} in Jaisalmer,
               Rajasthan with a simple belief: tax and compliance work should
-              feel <em>simple and safe</em> for the people who depend on it.
+              feel <strong className="font-medium text-ink">simple and safe</strong> for the people who depend on it.
               Over the years, the practice has grown from a one-man
               consultancy into a full-service firm, serving salaried
               individuals, shopkeepers, professionals, startups and
@@ -42,7 +42,7 @@ export default function AboutPage() {
             <p>
               We handle income tax returns, GST registration and compliance,
               tax audits, TDS, bookkeeping and business registration, but
-              what clients remember us for is the <em>personal attention</em>:
+              what clients remember us for is the <strong className="font-medium text-ink">personal attention</strong>:
               you always speak directly with the consultant handling your
               case, in plain language, with the fee agreed before any work
               begins.

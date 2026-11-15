@@ -126,3 +126,90 @@ API (all active, all permissively licensed) — details in
 `REPOSITORY_REFERENCE.md`. Charter PROJECT DETAILS pre-filled from project records;
 owner to confirm in Phase 1. Findings logged: `motion` dep unused; direct `axe-core`
 dep redundant; Storybook deliberately not adopted (tooling-light constraint).
+
+## Phase 2 — Design System + Home (14–15 Nov 2026)
+
+**Work done.** Token layer rebuilt to the owner-approved "Kept Ledger" system in
+`site/app/globals.css`: every shadcn var name preserved, values re-pointed (warm
+paper `#FAF6EC`, ink `#282E3F`, brass `#CF9455` as mark only, `--radius` 2px);
+WhatsApp green fixed `#0F8344` → `#0B6E39` (KNOWN_ISSUES #16); dark mode not
+authored (`color-scheme: light` pinned); primitives `.ledger-rail .rail-label
+.ruled-entry .act-band .placeholder-mark .slip .btn-primary .btn-quiet .measure`.
+Global focus system: base `:focus-visible` 2px solid ink (12.53:1 on paper),
+brass (5.17:1) on ink surfaces; six ui primitives stripped of `outline-none` +
+alpha rings — exactly one focus indicator anywhere. Tailwind scan boundary
+`@source not` for `repos/ docs/ .opencode/ logos/` (147 → 63 scanned files,
+−6.5 KB dead CSS; leak source corrected of record to the studio's own `docs/`).
+Fonts via `next/font/google`: Playfair + Geist retired → Inter + Fraunces; then
+the measured payload fix — Fraunces ships `wght + opsz`, normal only (italic was
+loaded-but-unused; SOFT/WONK rendered at defaults): `/` preloads 311.3 → 115.8 KB,
+total woff2 781 → 357 KB, zero italic @font-face; `/about` faux-italic `<em>`
+replaced with the house emphasis. Home rebuilt as a margin-rail ledger (§01–§05 +
+navy act band, one `h1`, canonical CTA wording per §2.3, one honest stat tile,
+testimonials only as designed `.placeholder-mark`, founder plate = owner-approved
+interim graded 4:5 crop, acceptance-tested via sharp, whole plate links `/about`,
+"first consultation is free" retained per gate). Skip link added; booking-form
+mobile CTA height collapse and select-trigger height fixed per the a11y findings.
+`.rail-label` re-issued as `:where()` (zero specificity) so marker utilities win;
+both inline colour styles converted to token utilities with a computed-colour
+proof (pixel-identical). Screenshots at all five charter widths + float-graze
+checks (verified: no graze).
+
+**Files changed.** Tokens: `site/app/globals.css`. Home + shared: `site/app/page.tsx`,
+`site/app/layout.tsx`, `site/components/site/{header,footer,whatsapp-float,booking-form}.tsx`,
+`site/components/ui/{button,input,textarea,select,accordion,badge}.tsx`,
+`site/app/about/page.tsx`. Assets: `site/public/images/founder-plate.{webp,avif}`
+(original `father.jpg` untouched) + `site/tools/process-founder-photo.mjs`
+(dev-only). Tests: `site/tests/e2e/**` (helpers + 3 spec files). Evidence/docs:
+`docs/design/phase-2/tokens.md`, `docs/design/screenshots/phase-2/**`,
+`docs/design/a11y/phase-2-2026-11-15/**`,
+`docs/design/critic/phase-2-home-2026-11-15.md`, ledgers. This commit.
+
+**Dependencies added.** None new (TOOLING_LOG Phase 2 rows: in-repo
+`process-founder-photo.mjs`; `sharp` already present; `next/font` framework
+feature; fonts SIL OFL, self-hosted by next/font at build time).
+
+**Tests run.** Unit 5/5; e2e **30/30** (22 home.spec incl. honesty regression
+guards — no stars/ratings/invented names/"Book Appointment", checked against
+`page.content()` incl. RSC payload; 3 booking offline e2e; 6 responsive — measured
+overflow = 0 at 360/768/1024/1440/1920). axe **0 violations** on `/` and `/book`
+(baseline 0). Build exit 0 (16 static targets); typecheck 0; lint exit 0 (#13
+error fixed via `useSyncExternalStore`; the 2 pre-existing warnings remain,
+KNOWN_ISSUES #13). Contrast verifier: 19 pairs deep-equal. LHCI (15 Nov, noise
+caveat #17): 8-route autorun exit 0, a11y assertion passed, a11y 100 × 8,
+CLS 0 × 8; quiet run on `/`: perf 93, TBT 34 ms, FCP 766 ms — beats the Phase 0
+baseline (89 / 76 ms); busy-run TBT 3.5–5.7 s are upper bounds only. LCP ~3.3 s
+on `/` remains open (KNOWN_ISSUES #15, image optimisation).
+
+**Problems found and resolved.** (1) Focus-token defect: base `outline-ring/50`
+≈2.88:1 → solid token outline + primitive sweep, verified across 78 tab stops.
+(2) Dead-CSS leak first attributed to `repos/` — corrected with a measured control
+experiment: the source was the studio's own `docs/` (prose quoting class names +
+the committed evidence CSS re-seeding utilities); boundary shipped, correction of
+record in tokens.md §9.1. (3) Lighthouse measurement contamination (KNOWN_ISSUES
+#17): identical builds measured TBT 1071 → 5955 ms; fonts A/B-exonerated (task
+grew without Fraunces); experiment edits reverted from a backup; distributions
+recorded; foreground LHCI runs from now on. (4) Font payload: unused italic +
+default-pinned axes preloaded 311 KB → measured fix. (5) `/about` faux-italic
+regression caught by the art-director before it shipped. (6) Overnight machine
+reboot cleared zombie pair #14; dev server relaunched in the Orchestrator session.
+(7) One QA selector bug (`star` substring-matching `-start`) fixed in-test; two
+stale alt assertions updated after the F5 `alt=""` change. (8) `.rail-label`
+colour: the art-director's `:where()` deviation accepted (8 of 10 markers must
+keep receding); computed-colour proof pixel-identical. (9) Free-model quota killed
+one subagent launch → retry succeeded (#11 pattern).
+
+**Exit criteria.** Charter PAGE COMPLETION RULE met for Home: content final or
+honestly marked (placeholders designed and visible); responsive at all five
+widths (overflow 0); all states (focus/hover/active verified); keyboard +
+screen-reader usable (axe 0, manual WCAG 2.2 AA pass); images optimised with
+dimensions + honest alt (founder plate 47.7 KB webp + avif); SEO metadata served
+from layout + site-config (SEO category was 100 × 8 at baseline); Lighthouse
+targets judged with the #17 caveat (a11y/SEO/BP 100 × 8, CLS 0 × 8, quiet-run
+perf 93); screenshots reviewed at five widths; tests exist (35). **Critic
+verdict: APPROVE round 1** (originality 4, hierarchy 4.5, consistency 4.5,
+usability 4.5, accessibility 5, performance 4, brand fit 4; zero majors, zero
+blockers; every smoke-test backlog major verified resolved). All three optional
+minors closed: (1) founder sunglasses = owner-tracked interim (#1a), (2)
+float-graze verified a non-issue, (3) inline styles → utilities. Review:
+`docs/design/critic/phase-2-home-2026-11-15.md`.

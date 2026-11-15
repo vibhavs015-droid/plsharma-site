@@ -56,14 +56,14 @@ export function SiteHeader() {
           <div className="flex items-center gap-5">
             <a
               href={`tel:${site.phoneHref}`}
-              className="flex items-center gap-1.5 transition-colors hover:text-[color:var(--accent)]"
+              className="flex items-center gap-1.5 transition-[color,background-color,border-color] hover:text-[color:var(--accent)]"
             >
               <Phone className="size-3.5" aria-hidden />
-              {site.phone}
+              Call the office · {site.phone}
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="flex items-center gap-1.5 transition-colors hover:text-[color:var(--accent)]"
+              className="flex items-center gap-1.5 transition-[color,background-color,border-color] hover:text-[color:var(--accent)]"
             >
               <Mail className="size-3.5" aria-hidden />
               {site.email}
@@ -82,7 +82,7 @@ export function SiteHeader() {
               key={link.href}
               href={link.href}
               className={cn(
-                "relative py-1 text-sm font-medium tracking-wide transition-colors whitespace-nowrap",
+                "relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap",
                 pathname === link.href
                   ? "text-[color:var(--accent)] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:bg-[color:var(--accent)]"
                   : "text-white/75 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[color:var(--accent)] after:transition-transform hover:text-white hover:after:scale-x-100"
@@ -98,7 +98,7 @@ export function SiteHeader() {
             asChild
             className="hidden h-10 rounded-full bg-[color:var(--accent)] px-6 text-sm font-semibold text-accent-foreground shadow-sm transition-[background-color,box-shadow] hover:bg-[color:var(--accent)]/90 hover:shadow-md sm:inline-flex"
           >
-            <Link href="/book">Book Appointment</Link>
+            <Link href="/book">Book a consultation</Link>
           </Button>
 
           {/* Mobile menu */}
@@ -128,7 +128,7 @@ export function SiteHeader() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
+                        "rounded-md px-3 py-2.5 text-sm font-medium transition-[color,background-color,border-color]",
                         pathname === link.href
                           ? "bg-white/10 text-[color:var(--accent)]"
                           : "text-white/75 hover:bg-white/5 hover:text-white"
@@ -141,7 +141,7 @@ export function SiteHeader() {
                 <SheetClose asChild>
                   <Link href="/book" className="mt-3">
                     <Button className="h-11 w-full rounded-full bg-[color:var(--accent)] text-base font-semibold text-accent-foreground">
-                      Book Appointment
+                      Book a consultation
                     </Button>
                   </Link>
                 </SheetClose>

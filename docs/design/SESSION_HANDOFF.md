@@ -1,7 +1,7 @@
 # Session handoff — read this first in every new session
 
 Purpose: any new OpenCode session (fresh context window) resumes this project at
-full quality with zero information loss. Last updated: 14 Nov 2026.
+full quality with zero information loss. Last updated: 15 Nov 2026.
 
 ## 0. What this project is
 
@@ -51,21 +51,35 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
 - At the end of a session, update the status list in `PROJECT-NOTES.md` so its
   history stays truthful.
 
-## 3. Current state (as of 14 Nov 2026)
+## 3. Current state (as of 15 Nov 2026)
 
-- **Phase 0 — studio setup: DONE.** All 7 agents created, verified with
-  `debug agents`, permissions resolved as designed; Playwright MCP connected;
-  toolchain installed and smoke-tested (axe scan of Home returns zero
-  violations).
-- **Phase 1 — not started.** Awaiting the owner's Charter prompt. Open a phase by
-  writing its brief into `PHASE_STATUS.md`.
-- One real critic review already exists (from the setup smoke test):
-  `docs/design/critic/smoke-test-2026-11-13.md` — verdict **REJECT**, 3 majors on
-  the Home page: (1) founder photo is a festive snapshot wearing a consultant
-  title, (2) invented testimonials with hard-coded 5-star rows, (3) two back-to-
-  back identical card grids. Six required fixes listed there — these are the
-  natural first work items of the next phase. Do not re-derive them; the review
-  file is the source of truth.
+- **Phase 0 — setup + baseline: DONE** (critic APPROVE round 2). All 7 agents
+  verified; toolchain installed and smoke-tested; baseline numbers in
+  `BASELINE_REPORT.md`.
+- **Phase 1 — discovery: DONE** (critic APPROVE round 2); owner passed the
+  [GATE] on 14 Nov: "Kept Ledger" direction APPROVED; "first consultation is
+  free" = owner-confirmed fact (stays); founder photo = interim graded crop
+  (reshoot pending); header keeps all 8 links.
+- **Phase 2 — Design System + Home: DONE** (critic APPROVE round 1, 15 Nov
+  2026). The "Kept Ledger" token system ships in `site/app/globals.css` (sheet:
+  `docs/design/phase-2/tokens.md`); Home (`/`) rebuilt as the margin-rail ledger
+  (§01–§05 + act band, one `h1`, honest stat tile, placeholder-marked
+  testimonials, canonical CTA wording). Verified: 35/35 tests, axe 0 violations
+  on `/` + `/book`, build exit 0, a11y 100 × 8 (LHCI), quiet-run perf 93 /
+  TBT 34 ms (beats the baseline; measurement caveat in KNOWN_ISSUES #17).
+  Review: `docs/design/critic/phase-2-home-2026-11-15.md`.
+- **Next: Phase 3 — remaining pages** (`/about`, `/services`, `/why-choose-us`,
+  `/testimonials`, `/faq`, `/contact`, `/book`), each per the charter PAGE
+  COMPLETION RULE with its own critic review. Open it by re-reading
+  `STUDIO_CHARTER.md` and writing the brief into `PHASE_STATUS.md`.
+- Carried backlog (KNOWN_ISSUES): #15 LCP image optimisation; `/book` slip
+  rebuild (retire "Book an Appointment"/"Send Booking Request" — keep e2e
+  expected strings in sync); reduced-motion follow-up test; 2 lint warnings
+  (#13); founder reshoot (#1a); PLACEHOLDER content awaits owner data
+  (testimonials, team photos).
+- The setup smoke-test review (`docs/design/critic/smoke-test-2026-11-13.md`,
+  REJECT with 3 Home majors) is fully resolved by the Phase 2 rebuild — history
+  only; do not reopen it.
 
 ## 4. Environment facts
 
@@ -74,11 +88,14 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
 - Node v24.16.0, npm 11.13.0. This project folder is a git repo (identity
   configured).
 - Site stack: Next.js 16.4.6 (Turbopack, **Cache Components enabled**, 16 static
-  routes), React 19.3, Tailwind v4, shadcn/ui Nova preset, fonts Playfair Display
-  (headings) + Inter (body) via next/font.
-- Brand tokens in `site/app/globals.css` (Tailwind v4 `@theme`): slate-navy
-  `#282E3F`, warm gold `#CF9455`, ivory background; tuned contrast pairs
-  `--gold-ink`, `--input`, WhatsApp green `#0F8344`.
+  routes), React 19.3, Tailwind v4, shadcn/ui Nova preset, fonts Fraunces
+  (display, `wght + opsz`, normal only) + Inter (body) via next/font.
+- Brand tokens in `site/app/globals.css` (Tailwind v4 `@theme`): "Kept Ledger"
+  palette — paper `#FAF6EC`, ink `#282E3F`, brass `#CF9455` (mark only), WhatsApp
+  green `#0B6E39` (AA-fixed, 5.89:1); full sheet + measured ratios in
+  `docs/design/phase-2/tokens.md`. Scan boundary: `@source not` for
+  `repos/ docs/ .opencode/ logos/` — a class name written anywhere inside the
+  scan is a class name (docs prose re-seeds dead utilities).
 - Studio tooling (all free, licences in `TOOLING_LOG.md`): @playwright/test
   1.65.0, @playwright/mcp 0.0.85, @axe-core/playwright + axe-core 4.14.0,
   @lhci/cli 0.16.1, chromium 158.0.8127.18. Dev-dependencies of `site/`.
@@ -91,9 +108,9 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
 | production check | `npm run build` |
 | lint | `npm run lint` |
 | unit tests | `node --test tests/booking.test.ts` |
-| e2e / visual (when written) | `npx playwright test` |
+| e2e tests (30) | `npx playwright test` (baseURL `:3000`; needs the dev server) |
 | axe scan of one route | `node tools/axe-check.mjs http://localhost:<port>/<route>` |
-| Lighthouse CI | `npm run build` first, then `npx lhci autorun` (`lighthouserc.json`) |
+| Lighthouse CI | stop the dev server, `npm run build`, then `npx lhci autorun` — LHCI starts its own server on **3200**; set `CHROME_PATH` to the Playwright chromium; **run lhci in the foreground** (see pitfalls) |
 
 ## 5. Pitfalls (already paid for — do not re-learn)
 
@@ -111,8 +128,15 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
   the playwright MCP tools or screenshots handed to them, not the built-in
   desktop browser.
 - **Port 3000 busy:** an older node process often holds it; the dev server
-  prints its real port. `lighthouserc.json` assumes 3000 — free the port or
-  adjust.
+  prints its real port. LHCI runs on **3200** and starts its own server — stop
+  the dev server before `npm run build`, and run lhci **in the foreground** (a
+  cancelled background lhci can be re-executed by the harness and orphan
+  processes; KNOWN_ISSUES #14).
+- **Lighthouse on this machine can be noise-contaminated** (KNOWN_ISSUES #17):
+  identical builds measured TBT 1.0–6.0 s run-to-run (one giant
+  "Unattributable" task). Treat TBT/LCP/perf from a busy session as upper
+  bounds; judge on verifiable numbers (byte weights, FCP, CLS, a11y/SEO) and
+  re-measure on a quiet machine/CI before Definition of Done.
 - **Dev owns `.next`:** never run `npm run build` while a dev server is running
   in the same folder.
 - **Stale CSS in dev:** after editing `globals.css`, if a token change "doesn't

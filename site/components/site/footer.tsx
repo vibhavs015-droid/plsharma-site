@@ -39,7 +39,7 @@ export function SiteFooter() {
             ))}
             <li>
               <Link href="/book" className="hover:text-white hover:underline">
-                Book Appointment
+                Book a consultation
               </Link>
             </li>
           </ul>
@@ -76,9 +76,9 @@ export function SiteFooter() {
               </span>
             </li>
             <li className="flex gap-2.5">
-              <Phone className="mt-0.5 size-4 shrink-0 text-[color:var(--accent)]" />
+              <Phone className="mt-0.5 size-4 shrink-0 text-[color:var(--accent)]" aria-hidden />
               <a href={`tel:${site.phoneHref}`} className="hover:text-white hover:underline">
-                {site.phone}
+                Call the office · {site.phone}
               </a>
             </li>
             <li className="flex gap-2.5">
