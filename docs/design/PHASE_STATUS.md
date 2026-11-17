@@ -249,3 +249,24 @@ behind the T0 preview flag with visible SAMPLE tags.
   export pulls the whole module into the client bundle, so sample strings would
   otherwise ship in prod JS chunks; the split keeps the client bundle
   sample-string-free. Commit follows the refinement + qa verification.
+- **T0 COMMITTED (`c48a861`) + ux wording spec committed (`5999011`):** final
+  engineer verification tsc 0 / lint 0/0; sample data lives ONLY in
+  `site/lib/sample-content.ts` (server-side consumption only) and
+  `site-config.ts` is client-safe — both `"use client"` importers (header,
+  booking-form) pull from it, so the client bundle cannot carry sample strings
+  by construction; invented names 0 hits in source. **Decisions logged
+  (DECISION_LOG):** ux spec adopted as binding for B2 — Since-2001 census → the
+  T2 band is Home's single 2001 carrier; `/testimonials` question-prefill
+  extends the CTA-canon exception list; critic book-F2 title-suffix REJECTED
+  (one meta-title pattern site-wide); footer all-6 services + config-format
+  hours + no "Trusted" self-claim (→ T11); spec §6 SENT-tel: row corrected to
+  the wording batch. Owner sign-off items (bio word, site.description,
+  whyChooseUs[2]/[3]) added to OWNER_CHECKLIST. **`CHANGELOG_POLISH.md`
+  started** (T0 done, T8 part 1 done, rest pending).
+- **qa test sync IN FLIGHT** (session reused): tier-aware `about.spec.ts` /
+  `testimonials.spec.ts`, NEW production sample-string guard (6 strings × 8
+  routes vs HTML+RSC), one `SHOW_SAMPLE_CONTENT=true` preview-build positive
+  check (banner first body element on all routes + tagged associates/
+  testimonials + principal quote), then the default-state rebuild + full suite.
+  **B2 (T1/2/3/7/11 per spec) launches the moment qa lands** — the engineer
+  must not touch `site/**` while qa's builds run.

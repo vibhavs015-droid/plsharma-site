@@ -46,6 +46,18 @@ item. Created 17 Nov 2026 (polish pass).
       open the right apps.
 - [x] **Preview hosting** — RESOLVED 17 Nov: `https://plsharma-site-preview.netlify.app` is now publicly reachable (the qa crawl confirms 200s; the earlier CLI-created-site login wall is gone). Say the word if you'd rather drop the preview site instead of keeping it.
 
+## Wording sign-offs flagged by the ux spec (17 Nov — owner copy touched)
+
+- [ ] **Bio one-word change** — the owner's paragraph rendered with "the everyday
+      **questions** of Indian tax" → "**work**" (a return to file is not a question;
+      "work" is the site's house word). If you prefer your verbatim wording, say so
+      and the bio ships with "questions".
+- [ ] **`site.description`** — "a trusted tax consultancy" → "a tax consultancy in
+      Jaisalmer" (drops the self-claim, adds the honest place modifier).
+- [ ] **whyChooseUs descriptions tightened** — "agreed-upon" → "agreed";
+      "Strict deadlines discipline — returns and filings are completed well before
+      due dates." → "Returns and filings are completed well before their due dates."
+
 ## Launch gates (charter)
 
 - [ ] **Quiet-machine Lighthouse re-measure** (KNOWN_ISSUES #17) — perf ≥ 90
