@@ -23,7 +23,7 @@ pending), netlify CLI (preview only) — all local, no paid services.
 | 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | DONE (code) — runtime pending | `62f471a` |
 | 10 | Privacy page `/privacy` | DONE (code) — runtime pending | `62f471a` |
 | 11 | Small inconsistencies (footer services/hours/claims) | DONE (code) — runtime pending | `dcc4977` |
-| 12 | Android/iOS optimisation | PARTIAL — CSS layer done, B4 markup pending | `f269e61` |
+| 12 | Android/iOS optimisation | DONE (code) — runtime + real-device pending | `f269e61` · `d3c6717` |
 | 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | pending | — |
 
 ---
@@ -91,6 +91,16 @@ Engineer batch, 14 files. Verification: `npx tsc --noEmit` → 0 · `npx eslint 
 **TASK 10 — /privacy.** h1 `One form collects your details — this site stores nothing.` + four numbered sections in the rail-num system: what the form collects (the form's real field list — name, phone, optional email, optional message, plus service/date/time "only if you choose them"), where details go (WhatsApp opens addressed to the office; email second path; the site stores/processes nothing), cookies/analytics (none; `If that changes, this page will say so.`), correcting/deleting (office phone + email) + `Last updated 17 November 2026` (hard-coded string). Footer Quick-links entry; sitemap `/privacy` (0.3); consent note under the booking slip: `Your details go straight to the office on WhatsApp — this site stores nothing.`
 
 **Evidence:** tsc 0 · eslint 0/0 · grep proofs (plain rail markers = exclusions only; `plsharmaco.in` ×1 comment; `NEXT_PUBLIC_SITE_URL`/`site.siteUrl` 0 hits). **Pending:** qa runtime window (per-page `<head>` diff, robots.txt both modes, X-Robots-Tag on a real Netlify response, JSON-LD serialization, /privacy axe at T13); the noindex/sitemap self-consistency refinement (B4, DECISION_LOG); owner env vars (OWNER_CHECKLIST).
+
+## BATCH B4 — TASK 12 markup (commit `d3c6717`)
+
+- **Viewport export:** `themeColor: "#282E3F"` kept, `viewportFit: "cover"` (the switch that activates A1's safe-area layer), `interactiveWidget: "resizes-content"` — validated as a typed field in the bundled Next docs (keeps the submit button visible above the keyboard).
+- **dvh:** `min-h-dvh` on body (html keeps `h-full`); zero `100vh` re-verified site-wide. Skip-link focus top uses the safe-area token. `whatsapp-float` class added (CSS selector swap → A2).
+- **Icons + manifest:** `app/manifest.ts` (formal/short names, start_url `/`, display standalone, background `#faf6ec`, theme `#282e3f`) + `icon-192.png`/`icon-512.png` generated 1:1 from the existing 512 source (no upscaling); `apple-icon.png` verified already exactly 180×180; the favicon set untouched.
+- **Sticky action bar:** `action-bar.tsx` — Call (`tel:`, aria `Call the office · +91 98297 71396`) + WhatsApp (`wa.me`, unattributed prefill identical to the float's, aria `Book a consultation on WhatsApp`) — rendered as the last element on 8 pages, `/book` excluded per the owner rule; numbers only from config; zero styling (A2 owns it).
+- **Menu scroll lock:** Radix Dialog's `RemoveScroll` verified present (import + slot wrapping) — the lock already exists; `overflow-y-auto` added to SheetContent for tall menus.
+- **Item 0 (DECISION_LOG refinement):** `/testimonials` `robots.index` + its sitemap entry now conditional on `confirmedTestimonials.length > 0` — agrees with the page's `hasConfirmed` and the visible-tier derivation in all three places.
+- **Evidence:** tsc 0 · eslint 0/0 · grep-proof 0 ActionBar hits in `/book`. **Pending:** qa window (viewport meta content, manifest route + auto `<link>`, bar DOM/a11y tree, Item 0 in both modes), T13 device-emulation runs, real phones (OWNER_CHECKLIST list).
 
 ---
 

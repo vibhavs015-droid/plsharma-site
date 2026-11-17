@@ -323,10 +323,15 @@ behind the T0 preview flag with visible SAMPLE tags.
   while `confirmedTestimonials.length === 0` (both modes); sitemap entry gated
   on the same condition; self-maintaining when real quotes land (supersedes
   §8's "always noindex" wording). B4 implements the two-line change.
-- **REMAINING:** B4 engineer (RUNNING: T12 markup per a1-notes — viewport meta
-  incl. viewport-fit=cover, min-h-dvh, manifest/icons 192/512, sticky action
-  bar omitted on /book, menu scroll-lock check, whatsapp-float class, skip-link
-  safe-area + the noindex/sitemap refinement) → A2 (bar styling, og font
-  option, final) → B5 (T8 branded 404) → qa runtime windows (staged T0 guard +
-  B2/B3 sync lists) → T13 (format/lint/build/tests/axe/LHCI/screenshots ×9
-  pages ×6 widths → critic ≤3 rounds) → CHANGELOG final table.
+- **B4 COMMITTED (`d3c6717`, 16 files):** viewport export (cover +
+  interactiveWidget, doc-validated), min-h-dvh, skip-link safe-area,
+  whatsapp-float hook, manifest + icon-192/512 (apple already 180), action bar
+  on 8 pages (/book excluded, zero styling — A2's), Radix RemoveScroll
+  verified (overflow-y-auto added for tall sheets), Item-0 noindex/sitemap
+  conditional. tsc 0, eslint 0/0.
+- **REMAINING:** A2 art-director (RUNNING: sticky-bar styling + `--bar-h` +
+  phones-only breakpoint + float selector swap + footer-clearance
+  coordination + og-font decision + final CSS review) → B5 engineer (T8
+  branded 404 page) → qa runtime windows (staged T0 guard + B2/B3/B4 sync
+  lists) → T13 (format/lint/build/tests/axe/LHCI/screenshots ×9 pages ×6
+  widths → critic ≤3 rounds) → CHANGELOG final table.
