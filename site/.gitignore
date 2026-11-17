@@ -41,6 +41,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify (CLI state/cache for preview deploys)
+.netlify
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

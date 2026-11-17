@@ -1,0 +1,17 @@
+# Netlify CLI deployment config — preview deploys only.
+#
+# Why this exists: the owner asked for a shareable preview link (17 Nov 2026).
+# The Netlify CLI was already installed and authenticated on this machine, so a
+# CLI preview deploy needs zero new accounts. The PRODUCTION deployment path is
+# still Vercel per DEPLOYMENT.md (GitHub import + optional domain). Vercel
+# ignores this file; Netlify ignores Vercel config. Both coexist harmlessly.
+#
+# Deployed as a PREVIEW (netlify deploy --prod=false), never the prod alias,
+# until the owner passes the publish gate.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

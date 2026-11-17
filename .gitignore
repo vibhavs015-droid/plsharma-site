@@ -25,3 +25,6 @@ Thumbs.db
 
 # Tooling artifacts (regenerated every run)
 .playwright-mcp/
+
+# Local Netlify folder
+.netlify
