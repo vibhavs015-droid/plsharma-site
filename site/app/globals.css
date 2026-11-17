@@ -34,8 +34,13 @@
    Token sheet: docs/design/phase-2/tokens.md
    ───────────────────────────────────────────────────────────────────────── */
 @theme {
-  /* Display: Fraunces, 400. Bookish, not didone. */
-  --text-display: clamp(2.5rem, 1.25rem + 3.4vw, 4rem); /* 40 → 64 */
+  /* Display: Fraunces, 400. Bookish, not didone.
+     Capped at 56px (was 64): the long sentence h1s on /faq and
+     /why-choose-us ran to four and five lines at 64, and the phone floor
+     at 40 was a three-line headline in a 320px column. At 32 → 56 those h1s
+     set in two or three lines at ≥1024 and the Home h1 in four or five on a
+     phone, which is what a ruled opening can carry. */
+  --text-display: clamp(2rem, 1.05rem + 3vw, 3.5rem); /* 32 → 56 */
   --text-display--line-height: 1.05;
   --text-display--letter-spacing: -0.025em;
   --text-display--font-weight: 400;
@@ -67,6 +72,19 @@
 
   /* Layout */
   --container-page: 72.5rem; /* 1160 */
+
+  /* ── Chrome geometry (T4/T12) ─────────────────────────────────────────
+     --header-h is the measured height of components/site/header.tsx: 68px
+     for the logo row alone (40px logo + 2×14px padding), 97px once the
+     29px contact strip appears at ≥48rem. The safe-area vars resolve to
+     0px wherever the browser exposes no inset, so every calc below degrades
+     to the flat value until `viewport-fit=cover` ships (B4). */
+  --header-h: 4.25rem; /* 68  */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --motion-fast: 120ms; /* colour on focus/hover */
   --motion-base: 220ms; /* the hairline warms */
@@ -209,10 +227,20 @@
        under the 3:1 a focus indicator needs. `outline-ring` = --ring = --ink. */
     @apply border-border outline-ring;
   }
+  /* 97px at ≥48rem: the contact strip appears above the logo row. */
+  @media (min-width: 48rem) {
+    :root {
+      --header-h: 6.0625rem;
+    }
+  }
   html {
     @apply font-sans;
     overflow-x: clip;
     text-size-adjust: 100%;
+    /* Anchored headings, the skip link and linked form fields land below the
+       sticky header instead of under it: header height + safe area + 20px of
+       air so the heading's cap is never flush with the bar. */
+    scroll-padding-top: calc(var(--header-h) + var(--safe-top) + 1.25rem);
     scrollbar-color: color-mix(in srgb, var(--ink) 30%, transparent) transparent;
   }
   body {
@@ -267,6 +295,28 @@
   [data-numeric] {
     font-variant-numeric: tabular-nums;
   }
+  /* A focused field is scrolled clear of the float's 72px footprint.
+     scroll-margin has no visual effect — it only widens the box the browser
+     scrolls into view, so an input never lands under the WhatsApp button. */
+  input,
+  select,
+  textarea {
+    scroll-margin-block-end: calc(5rem + var(--safe-bottom));
+  }
+
+  /* ── Device chrome (T12). `body > header` / `body > footer` are the two
+     land-forms layout.tsx renders beside the skip link, main and the float;
+     the element selector is the only hook that needs no markup change from
+     the engineer. Safe-area padding keeps the ink bar out of the notch and
+     the signed page off the home indicator, and it stays 0px today. */
+  body > header {
+    padding-top: var(--safe-top);
+    padding-inline: var(--safe-left) var(--safe-right);
+  }
+  body > footer {
+    padding-bottom: var(--safe-bottom);
+    padding-inline: var(--safe-left) var(--safe-right);
+  }
 
   /* Focus fallback — the one indicator every focusable element gets unless it
      authors its own (a control carrying `outline-none` keeps its component
@@ -296,7 +346,10 @@
     row-gap: 0.75rem;
     max-width: var(--container-page);
     margin-inline: auto;
-    padding-inline: var(--gutter);
+    /* --gutter, but never under a landscape notch. Both max() terms equal
+       --gutter until `viewport-fit=cover` ships. */
+    padding-inline: max(var(--gutter), var(--safe-left))
+      max(var(--gutter), var(--safe-right));
   }
   @media (min-width: 64rem) {
     .ledger-rail {
@@ -326,6 +379,7 @@
     text-transform: uppercase;
     color: var(--ink-muted);
     font-variant-numeric: tabular-nums;
+    text-wrap: balance;
   }
 
   /* The ruled entry: a rule, a title, a body, optional margin note. No box.
@@ -496,6 +550,141 @@
   }
   .gold-link:hover {
     color: var(--ink);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     POLISH PASS A1 — numerals, sample chrome, density, device chrome
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* ── T5: the section numeral ────────────────────────────────────────────
+     Owner's pattern `01 / Services` with the slash replaced by a 20px brass
+     hairline. Real markup, no generated content: the number is text a screen
+     reader reads and a search engine indexes. The figure goes to --ink (a
+     step darker than the muted label, so the index outranks the words) and
+     the rule carries the only brass in the rail.
+     Contract: docs/design/polish/a1-notes.md §1. */
+  .rail-num {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    column-gap: 0.625rem;
+  }
+  .rail-num-figure {
+    flex: none;
+    color: var(--ink); /* 12.53:1 paper */
+    font-variant-numeric: tabular-nums;
+  }
+  .rail-num-rule {
+    flex: none;
+    width: 1.25rem;
+    height: 1px;
+    background-color: var(--brass); /* the mark; a 1px rule is decoration */
+  }
+  .rail-num-text {
+    min-width: 0; /* the words wrap inside their column; number and rule never do */
+  }
+  /* A numbered marker on an ink surface: --ink would vanish (1.00:1). */
+  .act-band .rail-num-figure {
+    color: var(--paper); /* 12.53:1 ink */
+  }
+
+  /* ── T4d: ledger density for one-fact entries ──────────────────────────
+     The record band (Home §03) and the principal's three lines (/about §02)
+     carry a single sentence each; a full --space-entry turned five short
+     facts into a 360px stack of air. Same rules, ledger spacing. */
+  .ruled-entry:has(> p:only-child) {
+    padding-block: 1rem;
+  }
+
+  /* ── T4e: the float never sits over the page's last words ──────────────
+     The WhatsApp link is the only body-level link to wa.me (layout.tsx
+     renders it after the footer). z-40, not 50: the sticky header, the sheet
+     and every dialog must win, and none of them may be occluded by a button.
+     Insets keep it off the notch corner and the home indicator. B4 adds a
+     `.whatsapp-float` class — swap the attribute hook then. */
+  body > a[href^="https://wa.me"] {
+    right: calc(1rem + var(--safe-right));
+    bottom: calc(1rem + var(--safe-bottom));
+    z-index: 40;
+  }
+  /* Below 1296px the page container's outer margin is narrower than the
+     float's 72px footprint, so the float would cover the footer's last line.
+     Reserve its column instead of moving the button: 80px = 56px button +
+     16px inset + 8px air. Above that the margin absorbs it. */
+  @media (max-width: 80.999rem) {
+    body > footer {
+      padding-bottom: calc(5rem + var(--safe-bottom));
+    }
+  }
+
+  /* ── T12: touch floors ─────────────────────────────────────────────────
+     Coarse pointers only — a mouse keeps the tight editorial rhythm. 44px is
+     the studio floor; WCAG 2.5.8 AA would accept 24. */
+  @media (pointer: coarse) {
+    .btn-quiet {
+      min-height: 2.75rem;
+      padding-block: 0.75rem;
+    }
+    body > header [data-slot="button"] {
+      min-height: 2.75rem;
+      min-width: 2.75rem;
+    }
+    body > footer a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+    }
+    [data-slot="sheet-content"] a {
+      display: flex;
+      align-items: center;
+      min-height: 2.75rem;
+    }
+  }
+  /* The sheet's close button ships as icon-sm (28px) — a miss under a thumb. */
+  [data-slot="sheet-close"],
+  [data-slot="sheet-content"] [data-slot="button"] {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
+
+  /* ── Phone numbers never split ──────────────────────────────────────── */
+  .phone-number {
+    white-space: nowrap;
+  }
+
+  /* ── Sample chrome (owner preview only) ────────────────────────────────
+     Unmistakably not production: brass ground, ink text (5.17:1), ink
+     hairline edge. The tag reaches 3:1 as a boundary because the edge is
+     ink, not brass-on-paper (2.43). The banner is a studio stamp, not site
+     chrome — it sits above the header and scrolls away with it. */
+  .sample-tag {
+    display: inline-block;
+    max-width: 100%;
+    padding: 0.125rem 0.4375rem;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    background-color: var(--brass);
+    color: var(--ink); /* 5.17:1 on brass */
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .sample-banner {
+    padding: calc(0.625rem + var(--safe-top)) var(--gutter) 0.625rem;
+    border-bottom: 1px solid var(--ink);
+    background-color: var(--brass);
+    color: var(--ink); /* 5.17:1 on brass */
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   /* ═══════════════════════════════════════════════════════════════════════

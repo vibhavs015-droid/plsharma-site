@@ -147,7 +147,7 @@ tracking + weight):
 
 | Utility | Family / weight | Size | Leading | Tracking | Use |
 |---|---|---|---|---|---|
-| `text-display` | Fraunces 400 | clamp 40 → 64px | 1.05 | −0.025em | `h1` only (set in base too) |
+| `text-display` | Fraunces 400 | clamp 32 → 56px | 1.05 | −0.025em | `h1` only (set in base too). Capped at 56 from 64 on 17 Nov (A1): the sentence h1s on /faq and /why-choose-us ran 4–5 lines; two or three at ≥1024 now, and the phone floor drops 40 → 32 |
 | `text-section` | Fraunces 400 | clamp 30 → 36px | 1.12 | −0.02em | `h2` |
 | `text-entry` | Fraunces 500 | clamp 20 → 22px | 1.25 | −0.01em | `h3`, entry titles |
 | `text-lead` | Inter 400 | clamp 18 → 20px | 1.6 | 0 | the one sentence under a headline |
@@ -181,6 +181,21 @@ italic headings — emphasis is weight and colour, not italic (see above).
   nothing can climb back to 10px). Panels and plates are `rounded-none`. `rounded-full` is
   legal only on the 56px WhatsApp float.
 
+**Chrome geometry (added 17 Nov, polish A1).** Four device-chrome tokens and one measured
+height, all in `@theme`/`:root`:
+
+| Token | Value | Why |
+|---|---|---|
+| `--header-h` | `4.25rem` (68px); `6.0625rem` (97px) at ≥48rem | Measured from `header.tsx`: 40px logo + 2×14px padding = 68; the `md` contact strip (28px + 1px rule) adds 29. Feeds `scroll-padding-top` so anchored headings, the skip link and linked form fields clear the sticky bar |
+| `--safe-top` / `--safe-bottom` / `--safe-left` / `--safe-right` | `env(safe-area-inset-*, 0px)` | One name per inset so no rule repeats a raw `env()`. All resolve to 0 today — they start doing work the moment B4 ships `viewport-fit=cover` |
+
+`html` carries `scroll-padding-top: calc(var(--header-h) + var(--safe-top) + 1.25rem)`; fields
+carry `scroll-margin-block-end: calc(5rem + var(--safe-bottom))` so a focused input never lands
+under the float. `body > header` pads `--safe-top` and both header and footer pad
+`--safe-left`/`--safe-right`, while `.ledger-rail` uses `max(var(--gutter), var(--safe-*))` —
+so the ink bleeds edge to edge but no word sits under a landscape notch. The element selectors
+need no markup change: layout.tsx renders `<header>` and `<footer>` as body's direct children.
+
 ---
 
 ## 4. Motion
@@ -213,7 +228,7 @@ colour and state changes still complete instantly, so users never lose feedback.
 | Class | What it is | Rules the engineer must not break |
 |---|---|---|
 | `.ledger-rail` | Container + margin rail in one grid. 180px rail at ≥64rem, 220px at ≥80rem, single column (marker above content) below. Carries `max-w-page`, `--gutter` padding. | Content goes in the second grid cell. One rail per page section. |
-| `.rail-label` | The 12.5px tracked uppercase marker (Inter 500, tabular), declared as `:where(.rail-label)` — zero specificity, so any `text-*` utility on the marker wins the colour and the rail picks its surface token; the default stays `--ink-muted` (7.10) for markers that name no colour. Shipped markers: `text-brass-ink` on paper (6.25) and `text-brass` on ink (5.17). Used for `§ 01`, dates, plate captions. | Never below 12px; never `--brass` on paper; a marker on an ink surface must carry `text-brass` or `text-paper` (the muted default is a paper value — 1.77:1 on ink). |
+| `.rail-label` | The 12.5px tracked uppercase marker (Inter 500, tabular, `text-wrap: balance`), declared as `:where(.rail-label)` — zero specificity, so any `text-*` utility on the marker wins the colour and the rail picks its surface token; the default stays `--ink-muted` (7.10) for markers that name no colour. Shipped markers: `text-brass-ink` on paper (6.25) and `text-brass` on ink (5.17). Used for section numerals, dates, plate captions. **The `§ NN · Title` form retires in B3** — numbered markers become `01 — Services` via `.rail-num` (below). | Never below 12px; never `--brass` on paper; a marker on an ink surface must carry `text-brass` or `text-paper` (the muted default is a paper value — 1.77:1 on ink). |
 | `.ruled-entry` | The card replacement: 1px `--line` top rule, 0 radius, transparent, `--space-entry` padding, brass hairline on hover/focus-within, closing rule on `:last-child`. | No shadow, no background fill, no radius. Each entry owns exactly one heading. |
 | `.act-band` | Ink surface, paper text, 1px brass top rule, 0 radius. One per page, at the end. | Contains the one primary CTA + one quiet phone link. Do not stack two bands. |
 | `.placeholder-mark` | Dashed `--line` underline + `--brass-ink` 12.5px uppercase marker for pending content. Convention: `[PLACEHOLDER — awaiting real testimonial from owner]`. | Brass-ink 6.25 paper / 5.55 sand. The dashed rule is decoration; the text carries the meaning. Never invent a name or a star. |
@@ -222,6 +237,11 @@ colour and state changes still complete instantly, so users never lose feedback.
 | `.btn-primary` | 44px min height, 2px radius, Inter 500 15px, no shadow. **On paper: ink fill + paper text (12.53). Inside `.act-band`: brass fill + ink text (5.17).** Hover adds a 2px brass/ink underline and never changes the fill. Focus = the shared 2px `--ring` outline (see §5.3), never an underline. Disabled: sand fill + ink-muted text (6.31). | Never brass fill on paper (2.43 boundary). Never paper text on brass (2.42). Never opacity-disabled. Never a second focus cue. |
 | `.btn-quiet` | The secondary path (phone, mailto, "prefer to talk first"): inherits colour, 1px underline → 2px on hover, brass-ink (paper) / brass (ink) underline; focus = the shared outline. | Never given a fill; never given equal visual weight to `.btn-primary`. |
 | `.measure` | `max-width: 66ch`. | For body copy inside wide columns. |
+| `.rail-num` + `.rail-num-figure` / `.rail-num-rule` / `.rail-num-text` | **The section numeral (A1, T5):** the owner's `01 / Services` with the slash replaced by a 20px brass hairline. Flex row, no wrap; figure in `--ink` (12.53 paper, `--paper` 12.53 on ink via `.act-band`), rule = 1px `--brass` (the mark), words wrap inside their own column. Markup is real text — no `::before`/`attr()`, so the number is announced and indexed. | Use `.rail-num` **together with** `.rail-label` (the type comes from the label); never on an unnumbered marker; never add a literal `/`; keep the figure two digits and `data-numeric`. Contract: `docs/design/polish/a1-notes.md` §1. |
+| `.ruled-entry:has(> p:only-child)` | One-fact entries (Home §03's five record lines, /about §02's three promises) drop to 16px block padding — the same rule at ledger density instead of a 360px stack of air. | Only fires on an entry whose **only** child is a `<p>`; entries with a heading or a wrapper keep `--space-entry`. |
+| `.phone-number` | `white-space: nowrap`. | Wrap the digits in it; the surrounding label still wraps. |
+| `.sample-tag` | Owner-preview stamp: brass ground, `--ink` text (5.17), 1px ink edge (so the boundary is 12.53, not brass-on-paper 2.43), 12.5px/500 uppercase, 2px radius, wraps rather than clips. | Preview-only (`showSampleContent`); never in production HTML. Never recolour to paper on brass (2.42). |
+| `.sample-banner` | Preview strip above the header: brass ground, ink text (5.17), ink bottom rule, centred 12.5px/600 uppercase, `--safe-top` padding built in. Scrolls away with the page; the sticky header then carries its own safe-area padding. | Preview-only. It is a studio stamp, never site chrome — do not reuse the brass ground for a real announcement. |
 
 **First shipped `.slip` instance (precedent for reuse):** the `/book` consultation slip, rebuilt
 15 Nov — a paper slip on the sand band, 2px ink top rule, a `.slip-head` ruled title row reading
