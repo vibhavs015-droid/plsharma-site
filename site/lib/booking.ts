@@ -27,7 +27,7 @@ export const emptyBooking: Required<BookingFields> = {
 /** Build the WhatsApp message body for a booking request. */
 export function buildBookingMessage(f: BookingFields, firmName: string): string {
   const lines = [
-    `*New Appointment Request*`,
+    `*Consultation Request*`,
     `— via ${firmName} website`,
     ``,
     `Name: ${f.name}`,

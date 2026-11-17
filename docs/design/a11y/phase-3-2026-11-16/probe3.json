@@ -1,0 +1,497 @@
+{
+  "bookRewalk": [
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Skip to main content",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Call the office · +91 98297 71396",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "plperiwal@yahoo.com",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "P.L. Sharma And CompanyTax Consultants &",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Home",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "About",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Services",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Why Choose Us",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Testimonials",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "FAQ",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Contact",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Book a consultation",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "button",
+      "type": "button",
+      "id": "",
+      "name": "Open menu",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "id": "name",
+      "name": "",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "<input data-slot=\"input\" class=\"w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 transition-colors file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus",
+      "form": "in-form"
+    },
+    {
+      "tag": "input",
+      "type": "tel",
+      "id": "phone",
+      "name": "",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "<input type=\"tel\" data-slot=\"input\" class=\"w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 transition-colors file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreg",
+      "form": "in-form"
+    },
+    {
+      "tag": "input",
+      "type": "email",
+      "id": "email",
+      "name": "",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "<input type=\"email\" data-slot=\"input\" class=\"w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 transition-colors file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-for",
+      "form": "in-form"
+    },
+    {
+      "tag": "button",
+      "type": "button",
+      "id": "service",
+      "name": "Select a service",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "",
+      "form": "in-form"
+    },
+    {
+      "tag": "input",
+      "type": "date",
+      "id": "date",
+      "name": "",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "<input type=\"date\" data-slot=\"input\" class=\"w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 transition-colors file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-fore",
+      "form": "in-form"
+    },
+    {
+      "tag": "input",
+      "type": "date",
+      "id": "date",
+      "name": "",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "<input type=\"date\" data-slot=\"input\" class=\"w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 transition-colors file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-fore",
+      "form": "in-form"
+    },
+    {
+      "tag": "input",
+      "type": "date",
+      "id": "date",
+      "name": "",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "<input type=\"date\" data-slot=\"input\" class=\"w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 transition-colors file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-fore",
+      "form": "in-form"
+    },
+    {
+      "tag": "input",
+      "type": "date",
+      "id": "date",
+      "name": "",
+      "outline": "3px none rgb(40, 46, 63)",
+      "fv": false,
+      "outer": "<input type=\"date\" data-slot=\"input\" class=\"w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 transition-colors file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-fore",
+      "form": "in-form"
+    },
+    {
+      "tag": "button",
+      "type": "button",
+      "id": "slot",
+      "name": "Any time",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "",
+      "form": "in-form"
+    },
+    {
+      "tag": "textarea",
+      "type": "textarea",
+      "id": "message",
+      "name": "",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "<textarea data-slot=\"textarea\" class=\"flex field-sizing-content min-h-16 w-full rounded-lg border bg-transparent px-2.5 py-2 transition-colors placeholder:text-muted-foreground focus-visible:border-ring disabled:cursor-not-allowed disabled:bg-input/50 disabled",
+      "form": "in-form"
+    },
+    {
+      "tag": "button",
+      "type": "submit",
+      "id": "",
+      "name": "Open WhatsApp with my request",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "",
+      "form": "in-form"
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Or send by email instead",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "",
+      "form": "in-form"
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Call the office · +91 98297 71396",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Home",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "About",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Services",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Why Choose Us",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Testimonials",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "FAQ",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Contact",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Book a consultation",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Income Tax & ITR Filing",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "GST Registration & Compliance",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Audit & Assurance",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Business Registration & Licensing",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Tax Planning & Advisory",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    },
+    {
+      "tag": "a",
+      "type": "",
+      "id": "",
+      "name": "Call the office · +91 98297 71396",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "fv": true,
+      "outer": "",
+      "form": ""
+    }
+  ],
+  "menuTrace": {
+    "focused": true,
+    "state": {
+      "outline": "2px solid rgb(46, 49, 64)",
+      "cls": "group/button inline-flex shrink-0 items-center justify-center rounded-lg border bg-clip-padding text-sm font-medium whitespace-nowrap transition select-none focus-visible:border-ring active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 size-10 border-white/25 bg-transparent text-white hover:bg-white/10 hover:text-white"
+    },
+    "rules": []
+  },
+  "ctaTrace": {
+    "focused": true,
+    "state": {
+      "outline": "2px solid rgb(207, 148, 85)",
+      "cls": "hover:text-white hover:underline"
+    },
+    "rules": []
+  },
+  "skipLogs": {
+    "book": {
+      "tab1": {
+        "tag": "a",
+        "name": "Skip to main content",
+        "href": "#main"
+      },
+      "afterEnterImmediate": {
+        "hash": "#main",
+        "scrollY": 97,
+        "ae": "body",
+        "scrollLocked": false
+      },
+      "afterEnter600": {
+        "hash": "#main",
+        "scrollY": 97,
+        "ae": "body",
+        "url": "/book"
+      },
+      "afterTab": {
+        "tag": "input",
+        "name": "",
+        "inMain": true,
+        "id": "name"
+      }
+    },
+    "about": {
+      "tab1": {
+        "tag": "a",
+        "name": "Skip to main content",
+        "href": "#main"
+      },
+      "afterEnterImmediate": {
+        "hash": "#main",
+        "scrollY": 97,
+        "ae": "body",
+        "scrollLocked": false
+      },
+      "afterEnter600": {
+        "hash": "#main",
+        "scrollY": 97,
+        "ae": "body",
+        "url": "/about"
+      },
+      "afterTab": {
+        "tag": "a",
+        "name": "The work we handle",
+        "inMain": true,
+        "id": ""
+      }
+    },
+    "services": {
+      "tab1": {
+        "tag": "a",
+        "name": "Skip to main content",
+        "href": "#main"
+      },
+      "afterEnterImmediate": {
+        "hash": "#main",
+        "scrollY": 97,
+        "ae": "body",
+        "scrollLocked": false
+      },
+      "afterEnter600": {
+        "hash": "#main",
+        "scrollY": 97,
+        "ae": "body",
+        "url": "/services"
+      },
+      "afterTab": {
+        "tag": "a",
+        "name": "Book a consultation — the form opens wit",
+        "inMain": true,
+        "id": ""
+      }
+    }
+  }
+}

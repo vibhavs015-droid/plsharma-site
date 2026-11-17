@@ -51,7 +51,7 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
 - At the end of a session, update the status list in `PROJECT-NOTES.md` so its
   history stays truthful.
 
-## 3. Current state (as of 15 Nov 2026)
+## 3. Current state (as of 17 Nov 2026)
 
 - **Phase 0 — setup + baseline: DONE** (critic APPROVE round 2). All 7 agents
   verified; toolchain installed and smoke-tested; baseline numbers in
@@ -62,25 +62,29 @@ folder. Full project history: `PROJECT-NOTES.md`. Deployment plan:
   (reshoot pending); header keeps all 8 links.
 - **Phase 2 — Design System + Home: DONE** (critic APPROVE round 1, 15 Nov
   2026). The "Kept Ledger" token system ships in `site/app/globals.css` (sheet:
-  `docs/design/phase-2/tokens.md`); Home (`/`) rebuilt as the margin-rail ledger
-  (§01–§05 + act band, one `h1`, honest stat tile, placeholder-marked
-  testimonials, canonical CTA wording). Verified: 35/35 tests, axe 0 violations
-  on `/` + `/book`, build exit 0, a11y 100 × 8 (LHCI), quiet-run perf 93 /
-  TBT 34 ms (beats the baseline; measurement caveat in KNOWN_ISSUES #17).
-  Review: `docs/design/critic/phase-2-home-2026-11-15.md`.
-- **Next: Phase 3 — remaining pages** (`/about`, `/services`, `/why-choose-us`,
-  `/testimonials`, `/faq`, `/contact`, `/book`), each per the charter PAGE
-  COMPLETION RULE with its own critic review. Open it by re-reading
-  `STUDIO_CHARTER.md` and writing the brief into `PHASE_STATUS.md`.
-- Carried backlog (KNOWN_ISSUES): #15 LCP image optimisation; `/book` slip
-  rebuild (retire "Book an Appointment"/"Send Booking Request" — keep e2e
-  expected strings in sync); reduced-motion follow-up test; 2 lint warnings
-  (#13); founder reshoot (#1a); PLACEHOLDER content awaits owner data
-  (testimonials, team photos).
-- The setup smoke-test review (`docs/design/critic/smoke-test-2026-11-13.md`,
-  REJECT with 3 Home majors) is fully resolved by the Phase 2 rebuild — history
-  only; do not reopen it.
-
+  `docs/design/phase-2/tokens.md`); Home (`/`) rebuilt as the margin-rail
+  ledger. Review: `docs/design/critic/phase-2-home-2026-11-15.md`.
+- **Phase 3 — Content pages: DONE (17 Nov 2026).** All 7 remaining routes
+  built through the full pipeline and critic-approved round 1, zero majors
+  (`docs/design/critic/{book,about,services,faq,contact,why-choose-us,testimonials}-2026-11-16.md`).
+  Final gate 17 Nov: **123/123 e2e + 5/5 unit against the production build**
+  (`next start`), tsc 0, lint 0 errors / 0 warnings, all 8 routes 200, axe 0 on
+  every route. Stage E closed KNOWN_ISSUES #15: the head-Reveal LCP deferral
+  was diagnosed (perf-seo) and fixed — observed FCP→LCP gap **+0 ms on all 8
+  routes** (simulated confirmation = the #17 quiet-machine re-measure). Dead
+  code swept: page-hero, feature-icon, section-header and reveal components
+  deleted; `.reveal-in` + entrance-token CSS retired. Entry:
+  `IMPLEMENTATION_LOG.md` Phase 3.
+- **Next: Definition-of-Done checks** — (a) quiet-machine / CI LHCI
+  re-measure (#17) to confirm perf ≥ 90 and LCP < 2.5 s simulated; (b)
+  `FINAL_QA_REPORT.md`; (c) push/deploy = [GATE] — never without the owner.
+  Owner-owned content still pending: founder reshoot (#1a), real testimonials
+  (#2), team photos (#3).
+- Carried backlog (KNOWN_ISSUES): #4 `motion` package unused (removal
+  candidate, owner approval); #5 axe-core dedupe candidate; #7 cosmetic Radix
+  attribute; #9 npm audit (accepted); #17 quiet-machine re-measure.
+- The setup smoke-test review (13 Nov, REJECT) is fully resolved by Phase 2 —
+  history only; do not reopen it.
 ## 4. Environment facts
 
 - OpenCode **v2.1.4** (desktop app). CLI path:

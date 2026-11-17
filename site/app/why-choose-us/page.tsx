@@ -1,78 +1,161 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { PageHero } from "@/components/site/page-hero";
-import { FeatureIcon } from "@/components/site/feature-icon";
-import { Reveal } from "@/components/site/reveal";
-import { Button } from "@/components/ui/button";
-import { site, whyChooseUs, site as config } from "@/lib/site-config";
+import { site, whyChooseUs } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Why Choose Us",
+  title: "How we work",
   description:
-    "25+ years of experience, personal attention, transparent fees, on-time filing and complete confidentiality — why clients trust P.L. Sharma And Company.",
+    "Fees agreed before work begins. Deadlines kept. Your papers stay confidential. Four things you can hold P.L. Sharma And Company to — and where to check each.",
   alternates: { canonical: "/why-choose-us" },
 };
+
+/* Page-aware wa.me deep link for the end-of-page band — same mechanics as
+   Home's band (user-problem.md §2.3): the pre-filled message says which page
+   sent the visitor (ground truth for the §6 measurement plan). */
+const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I would like to book a consultation — via the website's why-choose-us page.`
+)}`;
+
+/* The entry-link underline (tokens.md §4 signature interaction): a persistent
+   hairline that warms to the text gold on hover. */
+const entryLink =
+  "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
+
+/* The four way-of-working entries (§3 inventory): config titles verbatim —
+   the same four Home §02 carries, deliberately the same claims — with each
+   config description tightened to one sentence. The check-link is honest
+   pointing, not decoration: it goes to /faq only where a real answer exists.
+   The on-time entry gets NO link (§2.4: a statement stands; a fake link is
+   worse). No icons, no stats — 25+ Years and Personal Attention live on
+   Home and /about; re-saying them here would triple-say them, and stats[]
+   never renders on this page (§3 content source). */
+const wayOfWorking = [
+  {
+    title: whyChooseUs[2].title,
+    body: "Clear, agreed-upon fees before work begins — no hidden charges, no surprises.",
+    check: { label: "Read the fee answer", href: "/faq" },
+  },
+  {
+    title: whyChooseUs[3].title,
+    body: "Returns and filings are completed well before their due dates.",
+    check: null,
+  },
+  {
+    title: whyChooseUs[4].title,
+    body: "Your financial data stays strictly between us — professional secrecy is the foundation of our practice.",
+    check: { label: "Read the confidentiality answer", href: "/faq" },
+  },
+  {
+    title: whyChooseUs[5].title,
+    body: "From first consultation to notice handling — we stay with you through the whole process.",
+    check: { label: "Read the notice answer", href: "/faq" },
+  },
+];
 
 export default function WhyChooseUsPage() {
   return (
     <>
-      <PageHero
-        title="Why Choose Us"
-        subtitle="Six reasons clients have stayed with us for decades."
-      />
-
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="sr-only">Six reasons clients stay with us</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {whyChooseUs.map((item, i) => (
-            <Reveal key={item.title} delay={(i % 3) * 0.06}>
-              <div className="card-lift relative h-full rounded-lg border bg-card p-6 pl-7">
-                <span
-                  className="absolute top-5 bottom-5 left-0 w-[3px] rounded-full bg-[color:var(--accent)]"
-                  aria-hidden
-                />
-                <span className="mb-4 flex size-11 items-center justify-center rounded-lg bg-secondary text-primary">
-                  <FeatureIcon name={item.icon} className="size-5" />
-                </span>
-                <h3 className="text-xl font-semibold text-primary">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+      {/* ============ PAGE HEAD — §0.1 ruled head; the h1 IS the manifesto
+           statement (the page's one loud moment — no second giant statement
+           repeats it, §3 fold item 2) ============ */}
+      <section className="ledger-rail py-[var(--space-section)]">
+        <p className="rail-label">
+          {site.shortName} · Why choose us · Jaisalmer
+        </p>
+        <div>
+          <div>
+            <h1>
+              Fees agreed before work begins. Deadlines kept. Your papers
+              stay confidential.
+            </h1>
+            <p className="text-lead text-ink-muted mt-3 measure">
+              Four things you can hold us to — and where to check each.
+            </p>
+          </div>
         </div>
+      </section>
 
-        {/* Numbers strip */}
-        <div className="hero-pattern mt-14 grid grid-cols-2 gap-6 rounded-xl bg-primary p-9 text-center text-primary-foreground sm:grid-cols-4">
-          {config.stats.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 0.06}>
-              <p className="font-heading text-3xl font-bold text-[color:var(--accent)] sm:text-4xl">
-                {stat.value}
-              </p>
-              <p className="mt-1.5 text-sm font-medium text-white/70 sm:text-[15px]">
-                {stat.label}
-              </p>
-            </Reveal>
-          ))}
+      {/* ============ § 01 · THE WAY OF WORKING — four numbered ruled
+            entries in config order, which is also the fear order:
+            fee → deadline → shame → notice (§3 inventory) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 01 · The way of working</p>
+        <div>
+          <h2>The way of working</h2>
+          <ul className="measure mt-8">
+            {wayOfWorking.map((item, i) => (
+              <li key={item.title} className="ruled-entry">
+                <div className="flex gap-4">
+                  <span className="rail-label pt-1" data-numeric>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p className="text-body text-ink-muted mt-2">{item.body}</p>
+                    {item.check ? (
+                      <p className="mt-3">
+                        <Link href={item.check.href} className={entryLink}>
+                          {item.check.label}
+                        </Link>
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
+      </section>
 
-        {/* CTA */}
-        <div className="mt-14 rounded-xl border bg-muted/50 p-8 text-center">
-          <h2 className="font-heading text-3xl font-bold tracking-tight text-primary">
-            Experience the difference yourself.
-          </h2>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
-            Your first phone consultation is always free. Tell us what you
-            need, we&apos;ll tell you honestly how we can help.
-          </p>
-          <Button asChild size="lg" className="mt-6 h-11 px-7">
-            <Link href="/book">
-              Book an Appointment
-              <ArrowRight data-icon="inline-end" />
-            </Link>
-          </Button>
+      {/* ============ § 02 · WHAT THIS MEANS FOR YOUR CASE — the four
+            promises translated per audience; studio-written plain copy,
+            no new facts, no links (the band does the ask) (§3 inventory) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 02 · What this means for your case</p>
+        <div>
+          <h2>What this means for your case</h2>
+          <ul className="measure mt-8">
+            <li className="ruled-entry">
+              <h3>If you&apos;re salaried</h3>
+              <p className="text-body text-ink-muted mt-2">
+                Your return filed before the deadline, the fee agreed first,
+                your papers kept between us.
+              </p>
+            </li>
+            <li className="ruled-entry">
+              <h3>If you run a business</h3>
+              <p className="text-body text-ink-muted mt-2">
+                The GST calendar kept for you, credits claimed properly, and
+                if a notice comes we handle it through to the end.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* ============ THE ACT BAND — hold us to all four (§3 close): one
+           sentence, canonical primary, quiet phone ============ */}
+      <section className="act-band">
+        <div className="ledger-rail py-[var(--space-section)]">
+          <p className="rail-label text-brass">The next step</p>
+          <div>
+            <h2 className="max-w-[24ch]">
+              Hold us to all four — start with the first conversation.
+            </h2>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Book a consultation on WhatsApp
+              </a>
+              <a href={`tel:${site.phoneHref}`} className="btn-quiet">
+                Call the office · {site.phone}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>

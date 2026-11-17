@@ -1,62 +1,211 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/site/page-hero";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { faqs, site } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
+  title: "Common questions — documents, fees, notices",
   description:
-    "Answers about booking a consultation, documents required for ITR filing, fees, tax notices, online consultations and GST registration.",
+    "The questions people ask before their first message — which documents to bring, how fees work, what to do about a tax notice, online consultations and GST registration — answered plainly by P.L. Sharma And Company, Jaisalmer.",
   alternates: { canonical: "/faq" },
 };
 
+/* Page-aware wa.me deep links (user-problem.md §6 measurement ground truth):
+ * the band primary carries the booking prefill with this page's name; the
+ * head's ask-us link keeps the question prefill — a contact message is not
+ * always a booking (page-specs §0.3, §5). */
+const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I would like to book a consultation — via the website's faq page.`
+)}`;
+const questionHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I have a question.`
+)}`;
+
+/* The entry-link underline (tokens.md §4 signature interaction): a persistent
+   hairline that warms to the text gold on hover. */
+const entryLink =
+  "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
+
+/* Owner-confirmed fact (§0.6 — one of exactly three placements on the site).
+   Single source: the fee entry renders it as the answer's final line and the
+   FAQPage payload appends it to the fee answer, so page render and schema
+   cannot drift (a11y O-6: the payload matches exactly what users see). */
+const FREE_FIRST_CONSULTATION = "The first consultation is free.";
+
+/* FAQPage structured data (page-specs §5, closes a11y O-6). Built with
+   JSON.stringify over the same faqs[] config the page renders, so the
+   payload can only ever carry the seven shipped answers — byte-identical,
+   never invented, nothing added (§5 do-not list binds schema too).
+   Exception (O-6 refinement): the fee answer's served block ends with the
+   owner-confirmed free-first line, so the payload appends it — joined with
+   a newline, the plain-text paragraph break the page renders. Order
+   follows config; order carries no meaning in mainEntity and mapping
+   straight over faqs[] keeps the builder drift-free. */
+const faqJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq, i) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text:
+        i === 2
+          ? `${faq.answer}\n${FREE_FIRST_CONSULTATION}`
+          : faq.answer,
+    },
+  })),
+});
+
+/* One FAQ answer, always visible (page-specs §5 — no accordion; hiding the
+   fee answer behind a click is the opposite of this page's job). The number
+   runs 01–07 continuously across the three sections; the § label and the
+   entry marker are different devices (§0.2). `foot` carries the earned quiet
+   links — entries 02 and 03 only (§5 CTA map). */
+function FaqEntry({
+  number,
+  question,
+  answer,
+  foot,
+}: {
+  number: number;
+  question: string;
+  answer?: string;
+  foot?: React.ReactNode;
+}) {
+  return (
+    <li className="ruled-entry">
+      <div className="flex gap-4">
+        <span className="rail-label pt-1" data-numeric>
+          {String(number).padStart(2, "0")}
+        </span>
+        <div>
+          <h3>{question}</h3>
+          {answer ? (
+            <p className="text-body text-ink-muted mt-2">{answer}</p>
+          ) : null}
+          {foot}
+        </div>
+      </div>
+    </li>
+  );
+}
+
 export default function FaqPage() {
+  /* Owner-confirmed fact (§0.6): the fee answer gains the canonical
+     free-first sentence as its final line — rendered from the single
+     shared constant, the same source the schema payload uses. */
+  const feeBody = (
+    <>
+      <p className="text-body text-ink-muted mt-2">{faqs[2].answer}</p>
+      <p className="text-body mt-2">{FREE_FIRST_CONSULTATION}</p>
+      <p className="mt-3">
+        <Link href="/book" className={entryLink}>
+          Book the free first consultation
+        </Link>
+      </p>
+    </>
+  );
+
+  const noticeFoot = (
+    <p className="mt-3">
+      <Link href="/book" className={entryLink}>
+        Send us the notice — start here
+      </Link>
+    </p>
+  );
+
   return (
     <>
-      <PageHero
-        title="Frequently Asked Questions"
-        subtitle="Quick answers to the questions clients ask us most."
-      />
-
-      <section className="mx-auto max-w-3xl px-4 py-16">
-        <h2 className="sr-only">Common questions and answers</h2>
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={faq.question} value={`item-${index}`}>
-              <AccordionTrigger className="text-left text-base font-semibold text-primary">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-
-        <div className="mt-12 rounded-xl border bg-muted/50 p-8 text-center">
-          <h2 className="font-heading text-3xl font-bold tracking-tight text-primary">
-            Have a different question?
-          </h2>
-          <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-            Ask us directly: call, WhatsApp or send a booking request.
-          </p>
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg" className="h-11 px-6">
-              <Link href="/book">Book an Appointment</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="h-11 px-6">
-              <a href={`tel:${site.phoneHref}`}>Call {site.phone}</a>
-            </Button>
+      {/* ============ PAGE HEAD — §0.1 ruled head; the lead plus the ask-us
+           line with the question prefill (§5 fold items 1–3) ============ */}
+      <section className="ledger-rail py-[var(--space-section)]">
+        <p className="rail-label">{site.shortName} · FAQ · Jaisalmer</p>
+        <div>
+          <div>
+            <h1>Documents, fees, notices — the questions, answered plainly.</h1>
+            <p className="text-lead text-ink-muted mt-3 measure">
+              The things people ask before their first message — answered the
+              way we&apos;d answer across the desk.
+            </p>
+            <p className="text-body mt-4">
+              <a href={questionHref} className={entryLink} target="_blank" rel="noopener noreferrer">
+                A question that isn&apos;t here? Send it — a person replies.
+              </a>
+            </p>
           </div>
         </div>
       </section>
+
+      {/* ============ § 01 · THE FIRST QUESTIONS — the decisive trio first,
+            owner copy verbatim, reordered per §4.2 (§5 inventory) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 01 · The first questions</p>
+        <div>
+          <h2>The first questions</h2>
+          <ul className="measure mt-8">
+            <FaqEntry number={1} question={faqs[1].question} answer={faqs[1].answer} />
+            <FaqEntry number={2} question={faqs[2].question} foot={feeBody} />
+            <FaqEntry number={3} question={faqs[4].question} answer={faqs[4].answer} foot={noticeFoot} />
+          </ul>
+        </div>
+      </section>
+
+      {/* ============ § 02 · WORKING WITH US (§5 inventory) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 02 · Working with us</p>
+        <div>
+          <h2>Working with us</h2>
+          <ul className="measure mt-8">
+            <FaqEntry number={4} question={faqs[3].question} answer={faqs[3].answer} />
+            <FaqEntry number={5} question={faqs[0].question} answer={faqs[0].answer} />
+            <FaqEntry number={6} question={faqs[6].question} answer={faqs[6].answer} />
+          </ul>
+        </div>
+      </section>
+
+      {/* ============ § 03 · FOR BUSINESS CLIENTS (§5 inventory) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 03 · For business clients</p>
+        <div>
+          <h2>For business clients</h2>
+          <ul className="measure mt-8">
+            <FaqEntry number={7} question={faqs[5].question} answer={faqs[5].answer} />
+          </ul>
+        </div>
+      </section>
+
+      {/* ============ THE ACT BAND — the earned ask (§5 close): one sentence,
+           canonical primary, quiet phone ============ */}
+      <section className="act-band">
+        <div className="ledger-rail py-[var(--space-section)]">
+          <p className="rail-label text-brass">The next step</p>
+          <div>
+            <h2 className="max-w-[24ch]">
+              A question we haven&apos;t answered? Send it — a person replies.
+            </h2>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Book a consultation on WhatsApp
+              </a>
+              <a href={`tel:${site.phoneHref}`} className="btn-quiet">
+                Call the office · {site.phone}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FAQPage JSON-LD (a11y O-6) — invisible, generated above
+           from the rendered config; exactly one ld+json script per page ============ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
+      />
     </>
   );
 }

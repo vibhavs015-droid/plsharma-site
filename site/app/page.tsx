@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Reveal } from "@/components/site/reveal";
 import { site, services, whyChooseUs, faqs, team } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -51,7 +50,7 @@ export default function HomePage() {
             Since {site.establishedYear}
           </span>
         </p>
-        <Reveal y={8}>
+        <div>
           <div>
             <h1>
               Income tax and GST, handled personally — for individuals and
@@ -103,6 +102,7 @@ export default function HomePage() {
                   height={375}
                   sizes="(min-width: 1024px) 300px, 40vw"
                   priority
+                  fetchPriority="high"
                   unoptimized
                   className="mt-3 block h-auto w-full"
                 />
@@ -110,7 +110,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-        </Reveal>
+        </div>
       </section>
 
       {/* ============ § 01 · SERVICES — the recognition layer ============ */}

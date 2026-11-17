@@ -215,3 +215,21 @@ consultations online.
       #15 LCP image optimisation, `/book` slip rebuild, reduced-motion test, 2
       lint warnings, founder reshoot (#1a), real testimonials/team photos (owner
       data). No push/deploy without the owner.
+- [x] Design-studio Phase 3 complete (15–17 Nov 2026): all 7 remaining routes
+      (`/book`, `/about`, `/services`, `/faq`, `/contact`, `/why-choose-us`,
+      `/testimonials`) built through the full pipeline, each with its own
+      critic APPROVE round 1 (zero majors) — all 8 routes now carry one.
+      Verified: 123/123 e2e + 5/5 unit against the production build, tsc 0,
+      lint 0/0, axe 0 on every route, 40/40 screenshots at charter widths.
+      Stage E closed KNOWN_ISSUES #15: the head-Reveal LCP deferral diagnosed
+      (perf-seo: final LCP candidate ~420 ms past FCP on 7 routes; images and
+      fonts exonerated) and fixed (heads unwrapped ×7; post-fix FCP→LCP gap
+      +0 ms on all 8 routes; simulated confirmation = #17 quiet-machine
+      re-measure). Dead code swept: page-hero, feature-icon, section-header,
+      reveal components + `.reveal-in`/entrance-token CSS retired; lint
+      0 errors / 0 warnings. Honesty rules enforced site-wide (invented
+      testimonials never render — visible text AND RSC payload guarded; the
+      one placeholder clearly marked; FAQPage JSON-LD byte-matches the served
+      answers). Carried: #17 quiet-machine re-measure, FINAL_QA_REPORT.md,
+      owner content (#1a reshoot, #2 testimonials, #3 team photos), push/
+      deploy = owner [GATE].

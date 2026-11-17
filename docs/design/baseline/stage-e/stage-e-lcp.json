@@ -1,0 +1,421 @@
+[
+  {
+    "url": "/",
+    "fcp": 220,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 220
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 220
+      }
+    ],
+    "lcpFinalT": 644,
+    "lcpSize": 77252,
+    "candidates": [
+      {
+        "t": 220,
+        "size": 10410,
+        "tag": "P",
+        "cls": "rail-label",
+        "url": ""
+      },
+      {
+        "t": 644,
+        "size": 77252,
+        "tag": "H1",
+        "cls": "",
+        "url": ""
+      }
+    ],
+    "el": {
+      "tag": "H1",
+      "id": "",
+      "cls": "",
+      "text": "Income tax and GST, handled personally — for individuals and businesses in Jaisalmer.",
+      "img": ""
+    },
+    "insideReveal": true,
+    "revealComputed": {
+      "animName": "reveal-in",
+      "delay": "0s",
+      "dur": "0.42s",
+      "fill": "backwards",
+      "opacity": "1"
+    },
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 1
+  },
+  {
+    "url": "/about",
+    "fcp": 68,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 68
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 68
+      }
+    ],
+    "lcpFinalT": 516,
+    "lcpSize": 102900,
+    "candidates": [
+      {
+        "t": 68,
+        "size": 4410,
+        "tag": "P",
+        "cls": "rail-label",
+        "url": ""
+      },
+      {
+        "t": 516,
+        "size": 102900,
+        "tag": "IMG",
+        "cls": "mt-3 block h-auto w-full",
+        "url": "http://localhost:3200/images/founder-plate.webp"
+      }
+    ],
+    "el": {
+      "tag": "IMG",
+      "id": "",
+      "cls": "mt-3 block h-auto w-full",
+      "text": "",
+      "img": "http://localhost:3200/images/founder-plate.webp"
+    },
+    "insideReveal": true,
+    "revealComputed": {
+      "animName": "reveal-in",
+      "delay": "0s",
+      "dur": "0.42s",
+      "fill": "backwards",
+      "opacity": "1"
+    },
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 1
+  },
+  {
+    "url": "/services",
+    "fcp": 112,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 112
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 112
+      }
+    ],
+    "lcpFinalT": 544,
+    "lcpSize": 57225,
+    "candidates": [
+      {
+        "t": 112,
+        "size": 34944,
+        "tag": "P",
+        "cls": "text-body text-ink-muted mt-2",
+        "url": ""
+      },
+      {
+        "t": 544,
+        "size": 57225,
+        "tag": "H1",
+        "cls": "",
+        "url": ""
+      }
+    ],
+    "el": {
+      "tag": "H1",
+      "id": "",
+      "cls": "",
+      "text": "Income tax, GST, audits, registration — the work, in your words.",
+      "img": ""
+    },
+    "insideReveal": true,
+    "revealComputed": {
+      "animName": "reveal-in",
+      "delay": "0s",
+      "dur": "0.42s",
+      "fill": "backwards",
+      "opacity": "1"
+    },
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 1
+  },
+  {
+    "url": "/why-choose-us",
+    "fcp": 124,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 124
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 124
+      }
+    ],
+    "lcpFinalT": 556,
+    "lcpSize": 70525,
+    "candidates": [
+      {
+        "t": 124,
+        "size": 21280,
+        "tag": "P",
+        "cls": "text-body text-ink-muted mt-2",
+        "url": ""
+      },
+      {
+        "t": 556,
+        "size": 70525,
+        "tag": "H1",
+        "cls": "",
+        "url": ""
+      }
+    ],
+    "el": {
+      "tag": "H1",
+      "id": "",
+      "cls": "",
+      "text": "Fees agreed before work begins. Deadlines kept. Your papers stay confidential.",
+      "img": ""
+    },
+    "insideReveal": true,
+    "revealComputed": {
+      "animName": "reveal-in",
+      "delay": "0s",
+      "dur": "0.42s",
+      "fill": "backwards",
+      "opacity": "1"
+    },
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 1
+  },
+  {
+    "url": "/testimonials",
+    "fcp": 112,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 112
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 112
+      }
+    ],
+    "lcpFinalT": 544,
+    "lcpSize": 51975,
+    "candidates": [
+      {
+        "t": 112,
+        "size": 46596,
+        "tag": "P",
+        "cls": "text-body text-ink-muted mt-4",
+        "url": ""
+      },
+      {
+        "t": 544,
+        "size": 51975,
+        "tag": "H1",
+        "cls": "",
+        "url": ""
+      }
+    ],
+    "el": {
+      "tag": "H1",
+      "id": "",
+      "cls": "",
+      "text": "Real client words — published with permission, and not before.",
+      "img": ""
+    },
+    "insideReveal": true,
+    "revealComputed": {
+      "animName": "reveal-in",
+      "delay": "0s",
+      "dur": "0.42s",
+      "fill": "backwards",
+      "opacity": "1"
+    },
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 1
+  },
+  {
+    "url": "/faq",
+    "fcp": 104,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 104
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 104
+      }
+    ],
+    "lcpFinalT": 540,
+    "lcpSize": 52675,
+    "candidates": [
+      {
+        "t": 104,
+        "size": 41205,
+        "tag": "P",
+        "cls": "text-body text-ink-muted mt-2",
+        "url": ""
+      },
+      {
+        "t": 540,
+        "size": 52675,
+        "tag": "H1",
+        "cls": "",
+        "url": ""
+      }
+    ],
+    "el": {
+      "tag": "H1",
+      "id": "",
+      "cls": "",
+      "text": "Documents, fees, notices — the questions, answered plainly.",
+      "img": ""
+    },
+    "insideReveal": true,
+    "revealComputed": {
+      "animName": "reveal-in",
+      "delay": "0s",
+      "dur": "0.42s",
+      "fill": "backwards",
+      "opacity": "1"
+    },
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 1
+  },
+  {
+    "url": "/contact",
+    "fcp": 120,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 120
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 120
+      }
+    ],
+    "lcpFinalT": 552,
+    "lcpSize": 40033,
+    "candidates": [
+      {
+        "t": 120,
+        "size": 15778,
+        "tag": "P",
+        "cls": "text-body text-ink-muted",
+        "url": ""
+      },
+      {
+        "t": 552,
+        "size": 40033,
+        "tag": "H1",
+        "cls": "",
+        "url": ""
+      }
+    ],
+    "el": {
+      "tag": "H1",
+      "id": "",
+      "cls": "",
+      "text": "One office in Jaisalmer — open six days a week.",
+      "img": ""
+    },
+    "insideReveal": true,
+    "revealComputed": {
+      "animName": "reveal-in",
+      "delay": "0s",
+      "dur": "0.42s",
+      "fill": "backwards",
+      "opacity": "1"
+    },
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 1
+  },
+  {
+    "url": "/book",
+    "fcp": 148,
+    "paints": [
+      {
+        "name": "first-paint",
+        "t": 148
+      },
+      {
+        "name": "first-contentful-paint",
+        "t": 148
+      }
+    ],
+    "lcpFinalT": 148,
+    "lcpSize": 26524,
+    "candidates": [
+      {
+        "t": 148,
+        "size": 26524,
+        "tag": "P",
+        "cls": "text-body text-ink-muted mt-3 measure",
+        "url": ""
+      }
+    ],
+    "el": {
+      "tag": "P",
+      "id": "",
+      "cls": "text-body text-ink-muted mt-3 measure",
+      "text": "Fill in two details — WhatsApp opens with your request ready. We reply and confirm a time; nothing i",
+      "img": ""
+    },
+    "insideReveal": false,
+    "revealComputed": null,
+    "elComputed": {
+      "delay": "0s",
+      "dur": "0s",
+      "opacity": "1"
+    },
+    "revealAnimations": [],
+    "revealCountOnPage": 0
+  }
+]

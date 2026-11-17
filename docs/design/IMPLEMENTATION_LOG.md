@@ -213,3 +213,92 @@ blockers; every smoke-test backlog major verified resolved). All three optional
 minors closed: (1) founder sunglasses = owner-tracked interim (#1a), (2)
 float-graze verified a non-issue, (3) inline styles → utilities. Review:
 `docs/design/critic/phase-2-home-2026-11-15.md`.
+
+## Phase 3 - Content pages (15-17 Nov 2026)
+
+**Work done.** All seven remaining routes built through the full studio pipeline
+(engineering -> qa -> a11y -> screenshots -> critic) in five stages:
+
+- **Stage A `/book`** - the booking slip: request-only form (name / service /
+  message, config-sourced options), `?service=` preselect via
+  `useSyncExternalStore` (Turbopack-prerender-safe; `useSearchParams` breaks
+  static builds without a Suspense boundary), canonical CTA wording table
+  (header "Book a consultation"; primary "Book a consultation on WhatsApp";
+  submit "Open WhatsApp with my request"; phone "Call the office · {number}").
+- **Stage B `/about` + `/services`** - founder plate (owner-tracked interim
+  #1a), one honest stat, services recognition layer with six deep links to
+  `/book?service=`.
+- **Stage C `/faq` + `/contact`** - seven always-visible answers (zero
+  `<details>`), fee sentence exactly once (spec §0.6), slip desk card (tel /
+  WhatsApp / address+Maps / hours / email last, zero iframe), question-prefill
+  exceptions. Closures: O-6 FAQPage JSON-LD generated with `JSON.stringify`
+  over config `faqs[]` (fee pair = config answer + newline + the shared
+  `FREE_FIRST_CONSULTATION` constant, so schema byte-matches the served
+  block); O-7a desk wa.me `aria-label` built from config.
+- **Stage D `/why-choose-us` + `/testimonials`** - manifesto h1; four
+  config-verbatim way-of-working entries with honest check-links to /faq on
+  01/03/04 (the on-time entry deliberately link-free); testimonials honest
+  reserve (one clearly-marked placeholder + collection question-prefill +
+  record line + three proof links + unsigned principal line); the 4 invented
+  config testimonials never render (qa wall extended to visible text AND RSC
+  payload on all routes); `page-hero.tsx` + `feature-icon.tsx` deleted; lint
+  reached 0 errors / 0 warnings; `mapsQuery` removed from site-config.
+- **Stage E (17 Nov) - KNOWN_ISSUES #15 closed by diagnosis:** perf-seo proved
+  the LCP element sat inside the head `<Reveal y={8}>` on all 7 rebuilt routes
+  (final candidate ~420 ms past FCP = the `--motion-enter` ramp; simulated
+  +2.3-2.5 s via the hydration window; `/book` control: LCP = FCP, 0.76 s,
+  perf 99; image weight, fonts and delay props all exonerated - the 14 Nov
+  "image-led" diagnosis was stale). Fix P1: heads unwrapped x7 (minimal-diff:
+  wrapper divs + classNames preserved); P3: `fetchPriority="high"` on both
+  founder images. Post-fix verification: **observed FCP-to-LCP gap +0 ms on
+  all 8 routes** (deterministic criterion; simulated values remain KNOWN_ISSUES
+  #17 upper bounds - the untouched control's perf score fell 99 to 73 on
+  identical bytes, proving run contamination; /about's simulated 3.32 s is the
+  image-arrival model and is flagged for the quiet-machine re-measure).
+  Sanctioned tidy: `section-header.tsx` + `reveal.tsx` deleted (zero
+  consumers), `.reveal-in` rule / keyframes / reduced-motion member +
+  `--motion-enter` / `--ease-entrance` retired from globals.css (motion sheet
+  now 4 tokens, all live); O-8 skip-link fix `<main tabIndex={-1}>` shipped.
+
+**Files changed.** `site/app/**` (7 page files, layout.tsx, globals.css),
+`site/lib/site-config.ts`, `site/components/site/**` (page-hero, feature-icon,
+section-header, reveal deleted), `site/tests/**` (25 new e2e specs since Stage
+B; shared honesty wall in helpers.ts extended to the RSC payload;
+fetchpriority + tabindex guards), plus docs: page-specs, tokens.md,
+DECISION_LOG, a11y report + evidence, 7 critic reviews, 40/40 screenshots,
+stage-e baseline evidence, KNOWN_ISSUES, PHASE_STATUS, SESSION_HANDOFF.
+
+**Dependencies added.** None (all tooling pre-existing and logged in
+TOOLING_LOG.md).
+
+**Tests run.** Final state: **123/123 e2e + 5/5 unit against the production
+build** (served via `next start`; Playwright + `node --test
+tests/booking.test.ts`), tsc 0, lint 0 errors / 0 warnings, all 8 routes 200.
+axe-core: 0 violations on all 8 routes (Stage B/C/D audits; Stage D addendum in
+`docs/design/a11y/phase-3-2026-11-16/report.md`).
+
+**Problems found and resolved.** (1) Free-model quota killed subagent runs
+mid-flight four times (a11y Stage C, a11y Stage D, perf-seo E2, engineer E3) -
+the inventory-first retry protocol recovered every one; in two cases the work
+was already complete and only the report had been lost. (2) Turbopack
+persistent-cache stale CSS (KNOWN_ISSUES #8) - clean prod builds (delete
+`.next` first) used as ground truth; one "clean" build was discovered NOT
+clean (deletion failed on a lock left by the just-killed dev server) and
+re-run properly. (3) React serialises a bare `data-numeric` attribute as
+`"true"` (qa spec fix). (4) `/faq` band assertion `last-child` -> 
+`last-of-type` (the JSON-LD script is a legitimate last child). (5) Next
+16.4.6 emits camelCase `fetchPriority` in SSR HTML (HTML parsing normalizes
+attribute names; qa guards use the rendered DOM). (6) `node --test <dir>`
+fails in this setup - invoke the file directly.
+
+**Exit criteria.** MET: all 8 routes carry their own per-route critic APPROVE
+(round 1, zero majors: book / about / services / faq / contact /
+why-choose-us / testimonials + the Phase 2 Home review); responsive 360-1920
+via 40/40 screenshots at exact charter widths; axe 0 + clean manual audits on
+every route; SEO metadata + FAQPage JSON-LD verified byte-matched; honesty
+rules enforced site-wide (no invented testimonials, no invented fees, zero
+"appointment" on CTA surfaces, the one placeholder clearly marked); LCP
+deterministic criterion met on all routes (simulated confirmation = the
+KNOWN_ISSUES #17 quiet-machine item). Phase 3 closed: this entry + PHASE_STATUS
+DONE + KNOWN_ISSUES refresh + SESSION_HANDOFF update + commit (NO push /
+deploy / publish without the owner).

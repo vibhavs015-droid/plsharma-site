@@ -1,161 +1,185 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase } from "lucide-react";
-import { PageHero } from "@/components/site/page-hero";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { site, team } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: `About ${site.name} — our story, experience and team.`,
+  title: "About the practice",
+  description:
+    "About P.L. Sharma And Company — Parbhati Lal Sharma has practised in Jaisalmer since 2001. You speak to the principal himself, the fee is agreed before work begins, and the first consultation is free.",
   alternates: { canonical: "/about" },
 };
+
+/* Page-aware wa.me deep link for the end-of-page band — same mechanics as
+   Home's band (user-problem.md §2.3): the pre-filled message says which page
+   sent the visitor (ground truth for the §6 measurement plan). */
+const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I would like to book a consultation — via the website's about page.`
+)}`;
+
+/* The entry-link underline (tokens.md §4 signature interaction): a persistent
+   hairline that warms to the text gold on hover. The page's one quiet link
+   besides the band's phone (page-specs §1 CTA map). */
+const entryLink =
+  "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
+
+const founder = team[0];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        title={`About ${site.name}`}
-        subtitle="A practice built on trust, accuracy and personal attention."
-      />
+      {/* ============ PAGE HEAD — §0.1 ruled head + the founder plate in the
+           fold's lower half (§1 fold items 1–4) ============ */}
+      <section className="ledger-rail py-[var(--space-section)]">
+        <p className="rail-label">
+          {site.shortName} · About · Jaisalmer
+        </p>
+        <div>
+          <div>
+            <h1>Parbhati Lal Sharma has practised in Jaisalmer since 2001.</h1>
 
-      {/* Story */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-          <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
-            <h2 className="font-heading text-4xl font-bold tracking-tight text-primary sm:text-[2.75rem]">
-              Our Story
-            </h2>
-            {/* PLACEHOLDER — replace with the real story */}
-            <p>
-              {site.name} was founded in {site.establishedYear} in Jaisalmer,
-              Rajasthan with a simple belief: tax and compliance work should
-              feel <strong className="font-medium text-ink">simple and safe</strong> for the people who depend on it.
-              Over the years, the practice has grown from a one-man
-              consultancy into a full-service firm, serving salaried
-              individuals, shopkeepers, professionals, startups and
-              established businesses across the region.
-            </p>
-            <p>
-              We handle income tax returns, GST registration and compliance,
-              tax audits, TDS, bookkeeping and business registration, but
-              what clients remember us for is the <strong className="font-medium text-ink">personal attention</strong>:
-              you always speak directly with the consultant handling your
-              case, in plain language, with the fee agreed before any work
-              begins.
-            </p>
-            <div className="flex gap-3 rounded-lg border bg-card p-4">
-              <Briefcase className="size-5 shrink-0 text-primary" />
-              <div>
-                <p className="font-semibold text-primary">Local Experience</p>
-                <p className="text-sm">
-                  Deep familiarity with the businesses of Jaisalmer &amp;
-                  western Rajasthan, from trade and hospitality to mining
-                  and contracting.
-                </p>
-              </div>
+            <div className="mt-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-8">
+              <p className="text-lead text-ink-muted measure">
+                You speak to the principal himself — the person who does the
+                work.
+              </p>
+
+              {/* Founder plate: the same interim graded crop as the Home hero
+                  (tokens.md §7, acceptance-tested; reshoot #1a pending) —
+                  never raw father.jpg, no arch, no circle. Not a link here:
+                  this is /about itself. The caption rows beside it carry the
+                  facts, so the image is decorative to assistive tech (alt=""),
+                  as on Home. */}
+              <figure className="w-fit max-w-[300px] shrink-0">
+                <p className="rail-label">{founder.name}</p>
+                <p className="rail-label mt-1">Principal Consultant · Jaisalmer</p>
+                <p className="rail-label mt-1">Since {site.establishedYear}</p>
+                <Image
+                  src="/images/founder-plate.webp"
+                  alt=""
+                  width={300}
+                  height={375}
+                  sizes="(min-width: 1024px) 300px, 40vw"
+                  priority
+                  fetchPriority="high"
+                  unoptimized
+                  className="mt-3 block h-auto w-full"
+                />
+                <span aria-hidden className="mt-3 block h-px w-full bg-line" />
+              </figure>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Founder photo card */}
-          <Card className="overflow-hidden border-[color:var(--accent)]/30 shadow-lg shadow-primary/10">
-            <CardContent className="flex flex-col items-center gap-4 p-8 text-center">
-              <div className="relative size-44 overflow-hidden rounded-full border-4 border-card ring-2 ring-[color:var(--accent)]/60">
-                <Image
-                  src="/images/father.jpg"
-                  alt={`${team[0].name}, Founder of ${site.name}`}
-                  fill
-                  sizes="176px"
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
-              <div>
-                <h3 className="font-heading text-2xl font-bold text-primary">
-                  {team[0].name}
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Founder & Principal Consultant
-                </p>
-              </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {team[0].bio}
+      {/* ============ § 01 · THE PRACTICE — the one honest stat (the record
+           line, same words as Home §03) + the short true story; no mark, no
+           invented milestones (§1 content source) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 01 · The practice</p>
+        <div>
+          <h2>The practice</h2>
+          <ul className="measure mt-8">
+            <li className="ruled-entry">
+              <p className="rail-label" data-numeric>
+                Since {site.establishedYear} · {site.stats[0].label}
               </p>
-            </CardContent>
-          </Card>
+              <p className="text-body text-ink-muted mt-3">
+                The office opened in Jaisalmer in 2001 and has been here
+                since. The work is the everyday work of a tax office: income
+                tax returns and notices, GST registration and returns,
+                audits, business registrations, tax planning, TDS and
+                bookkeeping.
+              </p>
+              <p className="mt-3">
+                <Link href="/services" className={entryLink}>
+                  The work we handle
+                </Link>
+              </p>
+            </li>
+          </ul>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="border-t bg-muted/50">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <div className="mb-10 text-center">
-            <h2 className="font-heading text-4xl font-bold tracking-tight text-primary sm:text-[2.75rem]">
-              Our Team
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-              A small, dedicated team, so every client always knows exactly
-              who is handling their file.
-            </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((member, index) => (
-              <Card key={member.name} className="text-center">
-                <CardContent className="flex flex-col items-center gap-3 p-6">
-                  {/* PHOTO PLACEHOLDER — put team-N.jpg in public/images/ */}
-                  {index === 0 ? (
-                    // Founder — real photo already available
-                    <div className="relative size-20 overflow-hidden rounded-full ring-2 ring-[color:var(--accent)]/50">
-                      <Image
-                        src="/images/father.jpg"
-                        alt={`${member.name} at ${site.name}`}
-                        fill
-                        sizes="80px"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                  ) : (
-                    <Avatar className="size-20">
-                      <AvatarFallback className="bg-secondary text-lg font-bold text-primary">
-                        {member.name
-                          .split(" ")
-                          .map((part) => part[0])
-                          .slice(0, 2)
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                  )}
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary">{member.name}</h3>
-                    <p className="text-xs text-muted-foreground">{member.role}</p>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{member.bio}</p>
-                </CardContent>
-              </Card>
+      {/* ============ § 02 · THE PRINCIPAL — how the work is handled: three
+           owner-confirmed facts, the canonical free-first sentence among
+           them (§0.6 allows exactly three placements; this is /about's) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 02 · The principal</p>
+        <div>
+          <h2>The principal</h2>
+          <ul className="measure mt-8">
+            <li className="ruled-entry">
+              <p className="text-body">
+                The first conversation is about understanding your case.
+              </p>
+            </li>
+            <li className="ruled-entry">
+              <p className="text-body">The fee is agreed before work begins.</p>
+            </li>
+            <li className="ruled-entry">
+              <p className="text-body">The first consultation is free.</p>
+            </li>
+          </ul>
+        </div>
+        {/* Margin-rail note (§1 inventory): the page's single designed gap —
+            M2's founder aside, honest until the owner supplies the line. It
+            auto-places into the margin column at ≥64rem and reads as a
+            footnote below the copy on small screens. */}
+        <p className="placeholder-mark mt-8">
+          [PLACEHOLDER — A LINE FROM THE PRINCIPAL HIMSELF, AWAITING OWNER]
+        </p>
+      </section>
+
+      {/* ============ § 03 · THE TEAM — names only: no roles, no bios, no
+            photos, no initials standing in for people (§1 do-not list);
+            roles in config are provisional and stay unrendered ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 03 · The team</p>
+        <div>
+          <h2>The team</h2>
+          <ul className="measure mt-8">
+            <li className="ruled-entry">
+              <h3>{founder.name}</h3>
+              <p className="text-meta text-ink-muted mt-1">{founder.role}</p>
+            </li>
+            {team.slice(1).map((member) => (
+              <li key={member.name} className="ruled-entry">
+                <h3>{member.name}</h3>
+              </li>
             ))}
-          </div>
+          </ul>
+          {/* Section-level mark (§0.4): the whole section's detail is
+              pending — one mark for it, never one per row. */}
+          <p className="placeholder-mark mt-8">
+            [PLACEHOLDER — TEAM PHOTOS AND CONFIRMED ROLES, AWAITING OWNER]
+          </p>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="hero-pattern relative overflow-hidden rounded-xl bg-primary px-6 py-14 text-center text-primary-foreground sm:py-16">
-          <h2 className="font-heading text-3xl font-bold tracking-tight text-primary-foreground sm:text-[2.25rem]">
-            Let&apos;s discuss your taxes
-          </h2>
-          <p className="mx-auto mt-3 max-w-md text-sm text-white/75 sm:text-base">
-            The first phone consultation is free, and there is no obligation.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 h-12 rounded-full bg-[color:var(--accent)] px-8 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 transition-[background-color,box-shadow] hover:bg-[color:var(--accent)]/90 hover:shadow-xl"
-          >
-            <Link href="/book">Book an Appointment</Link>
-          </Button>
+      {/* ============ THE ACT BAND — the ask in the principal's own terms
+           (§1 close): one sentence, canonical primary, quiet phone ============ */}
+      <section className="act-band">
+        <div className="ledger-rail py-[var(--space-section)]">
+          <p className="rail-label text-brass">The next step</p>
+          <div>
+            <h2 className="max-w-[24ch]">
+              Ask him directly — send your name and what you need on WhatsApp.
+            </h2>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Book a consultation on WhatsApp
+              </a>
+              <a href={`tel:${site.phoneHref}`} className="btn-quiet">
+                Call the office · {site.phone}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>

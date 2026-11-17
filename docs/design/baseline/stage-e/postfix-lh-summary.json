@@ -1,0 +1,364 @@
+[
+  {
+    "file": "postfix-lhr-home.json",
+    "route": "home",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:12:12.046Z",
+    "perf": 71,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 768,
+      "lcpMs": 768,
+      "tbtMs": 2988,
+      "cls": 0,
+      "siMs": 1121
+    },
+    "ttiMs": 4011,
+    "observed": {
+      "fcp": 508,
+      "lcp": 508,
+      "lastVis": 585,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 63,
+        "elementRenderDelay": 445
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,1,SECTION,1,DIV,0,DIV,0,H1",
+        "selector": "section.ledger-rail > div > div > h1",
+        "nodeLabel": "Income tax and GST, handled personally — for individuals and businesses in Jais…",
+        "snippet": "<h1>",
+        "rect": {
+          "top": 166,
+          "w": 372,
+          "h": 210
+        }
+      }
+    },
+    "priorityHinted": null,
+    "byteWeightKB": 366,
+    "requests": 10,
+    "revealInLcp": false
+  },
+  {
+    "file": "postfix-lhr-about.json",
+    "route": "about",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:12:25.690Z",
+    "perf": 62,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 759,
+      "lcpMs": 3319,
+      "tbtMs": 5556,
+      "cls": 0,
+      "siMs": 759
+    },
+    "ttiMs": 6433,
+    "observed": {
+      "fcp": 190,
+      "lcp": 190,
+      "lastVis": 212,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 7,
+        "resourceLoadDelay": 29,
+        "resourceLoadDuration": 8,
+        "elementRenderDelay": 146
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,2,SECTION,1,DIV,0,DIV,1,DIV,1,FIGURE,3,IMG",
+        "selector": "div > div.mt-10 > figure.w-fit > img.mt-3",
+        "nodeLabel": "div > div.mt-10 > figure.w-fit > img.mt-3",
+        "snippet": "<img alt=\"\" fetchpriority=\"high\" width=\"300\" height=\"375\" decoding=\"async\" data-nimg=\"1\" class=\"mt-3 block h-auto w-full\" style=\"color:trans",
+        "rect": {
+          "top": 480,
+          "w": 300,
+          "h": 375
+        }
+      }
+    },
+    "priorityHinted": true,
+    "byteWeightKB": 364,
+    "requests": 10,
+    "revealInLcp": false
+  },
+  {
+    "file": "postfix-lhr-services.json",
+    "route": "services",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:12:39.144Z",
+    "perf": 87,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 758,
+      "lcpMs": 758,
+      "tbtMs": 506,
+      "cls": 0,
+      "siMs": 1782
+    },
+    "ttiMs": 3090,
+    "observed": {
+      "fcp": 1040,
+      "lcp": 1040,
+      "lastVis": 2744,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 7,
+        "elementRenderDelay": 1033
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,2,SECTION,1,DIV,0,DIV,0,H1",
+        "selector": "section.ledger-rail > div > div > h1",
+        "nodeLabel": "Income tax, GST, audits, registration — the work, in your words.",
+        "snippet": "<h1>",
+        "rect": {
+          "top": 151,
+          "w": 372,
+          "h": 168
+        }
+      }
+    },
+    "priorityHinted": null,
+    "byteWeightKB": 343,
+    "requests": 10,
+    "revealInLcp": false
+  },
+  {
+    "file": "postfix-lhr-why-choose-us.json",
+    "route": "why-choose-us",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:12:52.307Z",
+    "perf": 71,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 757,
+      "lcpMs": 757,
+      "tbtMs": 2646,
+      "cls": 0,
+      "siMs": 757
+    },
+    "ttiMs": 3512,
+    "observed": {
+      "fcp": 187,
+      "lcp": 187,
+      "lastVis": 173,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 5,
+        "elementRenderDelay": 181
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,2,SECTION,1,DIV,0,DIV,0,H1",
+        "selector": "section.ledger-rail > div > div > h1",
+        "nodeLabel": "Fees agreed before work begins. Deadlines kept. Your papers stay confidential.",
+        "snippet": "<h1>",
+        "rect": {
+          "top": 151,
+          "w": 372,
+          "h": 210
+        }
+      }
+    },
+    "priorityHinted": null,
+    "byteWeightKB": 320,
+    "requests": 10,
+    "revealInLcp": false
+  },
+  {
+    "file": "postfix-lhr-testimonials.json",
+    "route": "testimonials",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:13:04.594Z",
+    "perf": 70,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 757,
+      "lcpMs": 757,
+      "tbtMs": 5408,
+      "cls": 0,
+      "siMs": 930
+    },
+    "ttiMs": 6315,
+    "observed": {
+      "fcp": 421,
+      "lcp": 421,
+      "lastVis": 2656,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 7,
+        "elementRenderDelay": 414
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,2,SECTION,1,DIV,0,DIV,0,H1",
+        "selector": "section.ledger-rail > div > div > h1",
+        "nodeLabel": "Real client words — published with permission, and not before.",
+        "snippet": "<h1>",
+        "rect": {
+          "top": 151,
+          "w": 372,
+          "h": 168
+        }
+      }
+    },
+    "priorityHinted": null,
+    "byteWeightKB": 316,
+    "requests": 10,
+    "revealInLcp": false
+  },
+  {
+    "file": "postfix-lhr-faq.json",
+    "route": "faq",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:13:17.647Z",
+    "perf": 70,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 757,
+      "lcpMs": 757,
+      "tbtMs": 3630,
+      "cls": 0,
+      "siMs": 878
+    },
+    "ttiMs": 4488,
+    "observed": {
+      "fcp": 403,
+      "lcp": 403,
+      "lastVis": 398,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 6,
+        "elementRenderDelay": 397
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,2,SECTION,1,DIV,0,DIV,0,H1",
+        "selector": "section.ledger-rail > div > div > h1",
+        "nodeLabel": "Documents, fees, notices — the questions, answered plainly.",
+        "snippet": "<h1>",
+        "rect": {
+          "top": 151,
+          "w": 372,
+          "h": 168
+        }
+      }
+    },
+    "priorityHinted": null,
+    "byteWeightKB": 317,
+    "requests": 10,
+    "revealInLcp": false
+  },
+  {
+    "file": "postfix-lhr-contact.json",
+    "route": "contact",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:13:30.775Z",
+    "perf": 72,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 757,
+      "lcpMs": 757,
+      "tbtMs": 2322,
+      "cls": 0,
+      "siMs": 757
+    },
+    "ttiMs": 3196,
+    "observed": {
+      "fcp": 208,
+      "lcp": 208,
+      "lastVis": 202,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 7,
+        "elementRenderDelay": 201
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,2,SECTION,1,DIV,0,DIV,0,H1",
+        "selector": "section.ledger-rail > div > div > h1",
+        "nodeLabel": "One office in Jaisalmer — open six days a week.",
+        "snippet": "<h1>",
+        "rect": {
+          "top": 151,
+          "w": 372,
+          "h": 126
+        }
+      }
+    },
+    "priorityHinted": null,
+    "byteWeightKB": 316,
+    "requests": 10,
+    "revealInLcp": false
+  },
+  {
+    "file": "postfix-lhr-book.json",
+    "route": "book",
+    "lighthouseVersion": "13.6.0",
+    "fetchTime": "2026-11-17T05:13:43.014Z",
+    "perf": 73,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "sim": {
+      "fcpMs": 759,
+      "lcpMs": 759,
+      "tbtMs": 1766,
+      "cls": 0,
+      "siMs": 759
+    },
+    "ttiMs": 3193,
+    "observed": {
+      "fcp": 245,
+      "lcp": 245,
+      "lastVis": 243,
+      "invalidated": false
+    },
+    "lcp": {
+      "phases": {
+        "timeToFirstByte": 7,
+        "elementRenderDelay": 238
+      },
+      "node": {
+        "path": "1,HTML,1,BODY,3,MAIN,2,SECTION,1,DIV,1,P",
+        "selector": "main#main > section.ledger-rail > div > p.text-body",
+        "nodeLabel": "Fill in two details — WhatsApp opens with your request ready. We reply and conf…",
+        "snippet": "<p class=\"text-body text-ink-muted mt-3 measure\">",
+        "rect": {
+          "top": 205,
+          "w": 372,
+          "h": 84
+        }
+      }
+    },
+    "priorityHinted": null,
+    "byteWeightKB": 339,
+    "requests": 10,
+    "revealInLcp": false
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "aboutSettled": [
+    {
+      "tag": "button",
+      "name": "Open menu",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    },
+    {
+      "tag": "a",
+      "name": "Book a consultation",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    },
+    {
+      "tag": "a",
+      "name": "Home",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    },
+    {
+      "tag": "a",
+      "name": "About",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    },
+    {
+      "tag": "a",
+      "name": "The work we handle",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    },
+    {
+      "tag": "a",
+      "name": "Book a consultation on WhatsApp",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    },
+    {
+      "tag": "a",
+      "name": "Call the office · +91 98297 71396",
+      "outline": "2px solid rgb(207, 148, 85)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    }
+  ]
+}

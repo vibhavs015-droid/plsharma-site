@@ -26,7 +26,6 @@ export const site = {
   whatsappNumber: "919829771396", // country code + number, digits only
   email: "plperiwal@yahoo.com",
   address: "109, Indira Colony, Jaisalmer, Rajasthan, India — 345001",
-  mapsQuery: "109, Indira Colony, Jaisalmer, Rajasthan 345001", // used for the embedded map
   mapsLink: "https://maps.app.goo.gl/Ap3EUniM15RsW7oCA", // "Open in Google Maps" link
 
   // Live website URL — used for sitemap.xml, robots.txt, canonical links and
@@ -165,7 +164,7 @@ export const faqs = [
   {
     question: "How do I book a consultation?",
     answer:
-      "Use the booking form on this website or tap the WhatsApp button. Share your name, service needed and preferred date — we will confirm your appointment slot.",
+      "Use the booking form on this website or tap the WhatsApp button. Share your name, service needed and preferred date — we will confirm your slot on WhatsApp.",
   },
   {
     question: "Which documents do I need?",

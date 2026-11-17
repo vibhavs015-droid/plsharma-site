@@ -69,6 +69,8 @@ test.describe("Home — structure & content", () => {
     // Dimensions shipped with the asset (charter page-completion rule).
     await expect(img).toHaveAttribute("width", "300");
     await expect(img).toHaveAttribute("height", "375");
+    // Stage E P3: the plate is the LCP candidate — it must be fetched first.
+    await expect(img).toHaveAttribute("fetchpriority", "high");
     // a11y finding F5: inside a text link the image is decorative — alt=""
     // (WCAG 1.1.1), because the link's accessible name must come from the
     // visible captions, not be doubled by the alt.
@@ -188,7 +190,9 @@ test.describe("Home — honesty regression guards (critic REJECT items)", () => 
     // tokens.md §9.8: the founder arch must go, with the plate.
     expect(html).not.toContain("rounded-t-[999px]");
     expect(html).not.toContain("999px");
-    // tokens.md §5.2: .hero-pattern is a legacy alias — retired on the rebuilt page.
+    // Stage E/E1 ground truth (16 Nov): the .hero-pattern and .card-lift
+    // rules are fully retired from globals.css — zero hits in the shipped
+    // CSS. The assertion stays: no retired-pattern class may reappear on /.
     expect(html).not.toContain("hero-pattern");
     // Cards are retired: no tonal layer above paper on Home.
     expect(html).not.toContain("bg-card");
@@ -283,6 +287,10 @@ test.describe("Home — accessibility smoke", () => {
     await expect(page.locator("nav")).toHaveCount(1);
     await expect(page.locator("main")).toHaveCount(1);
     await expect(page.locator("footer")).toHaveCount(1);
+    // O-8 (Stage E): main is the skip-link's target — focusable without
+    // entering the tab order (site-wide via layout.tsx; asserted here as the
+    // suite's global smoke).
+    await expect(page.locator("main")).toHaveAttribute("tabindex", "-1");
   });
 
   test("every image has an alt attribute (empty allowed for decorative images)", async ({ page }) => {

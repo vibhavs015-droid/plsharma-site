@@ -189,9 +189,14 @@ italic headings — emphasis is weight and colour, not italic (see above).
 |---|---|---|
 | `--motion-fast` | 120ms | focus/hover colour on text, border, icon |
 | `--motion-base` | 220ms | **the signature:** a hairline warms `--line` → `--brass` on hover/focus-within |
-| `--motion-enter` | 420ms | one-time entrance: opacity 0→1, translateY capped at **8px** |
 | `--ease-standard` | `cubic-bezier(0.2,0,0,1)` | colour and border state |
-| `--ease-entrance` | `cubic-bezier(0.22,0.61,0.36,1)` | first paint only |
+
+**Two tokens deleted (17 Nov, Orchestrator-sanctioned).** `--motion-enter` (420ms) and
+`--ease-entrance` (`cubic-bezier(0.22,0.61,0.36,1)`) existed only for `.reveal-in`, which retired
+with the Stage E head-Reveal unwrap; grep confirmed zero consumers in `globals.css`, every `.tsx`
+and the test tree. "Declared but dead" contradicts the ledger-honesty direction, so both are gone
+from `globals.css` rather than left standing. Git history keeps the values, and they return the
+moment a real entrance ships — with the usage that justifies them, never in advance of it.
 
 No parallax, scroll-jacking, counters, reveal-on-scroll repetition, hover lift, pulsing CTA,
 cursor effects. **The WhatsApp float is static** — no pulse, bounce or badge (the component
@@ -213,23 +218,28 @@ colour and state changes still complete instantly, so users never lose feedback.
 | `.act-band` | Ink surface, paper text, 1px brass top rule, 0 radius. One per page, at the end. | Contains the one primary CTA + one quiet phone link. Do not stack two bands. |
 | `.placeholder-mark` | Dashed `--line` underline + `--brass-ink` 12.5px uppercase marker for pending content. Convention: `[PLACEHOLDER — awaiting real testimonial from owner]`. | Brass-ink 6.25 paper / 5.55 sand. The dashed rule is decoration; the text carries the meaning. Never invent a name or a star. |
 | `.slip` | The consultation slip: paper on sand, 1px `--line` border, 2px ink top rule, 0 radius, responsive padding, no shadow. | Fields inside keep `border-line-input` (3.66 paper). |
-| `.slip-head` | Ruled head row inside `.slip` (title + slip number), baseline-aligned, closing hairline. | — |
+| `.slip-head` | Ruled head row inside `.slip`, baseline-aligned, closing hairline. **Title-only by shipped decision** (Orchestrator, DECISION_LOG 15 Nov): no slip number. | No `No.` slot — an invented number on a web form is fiction, and a ruled blank reads as a broken field. If a flow ever needs an office-assigned reference it arrives after confirmation, from the firm, as real data. |
 | `.btn-primary` | 44px min height, 2px radius, Inter 500 15px, no shadow. **On paper: ink fill + paper text (12.53). Inside `.act-band`: brass fill + ink text (5.17).** Hover adds a 2px brass/ink underline and never changes the fill. Focus = the shared 2px `--ring` outline (see §5.3), never an underline. Disabled: sand fill + ink-muted text (6.31). | Never brass fill on paper (2.43 boundary). Never paper text on brass (2.42). Never opacity-disabled. Never a second focus cue. |
 | `.btn-quiet` | The secondary path (phone, mailto, "prefer to talk first"): inherits colour, 1px underline → 2px on hover, brass-ink (paper) / brass (ink) underline; focus = the shared outline. | Never given a fill; never given equal visual weight to `.btn-primary`. |
 | `.measure` | `max-width: 66ch`. | For body copy inside wide columns. |
+
+**First shipped `.slip` instance (precedent for reuse):** the `/book` consultation slip, rebuilt
+15 Nov — a paper slip on the sand band, 2px ink top rule, a `.slip-head` ruled title row reading
+"Consultation request", fields edged in `border-line-input`, and the margin rail beside it
+carrying the three steps as `.rail-label`. The `/contact` desk card (page-specs) starts from that
+precedent, not from a new composition.
 
 CTA wording is fixed by `user-problem.md` §2.3: header "Book a consultation" → `/book`;
 band/float "Book a consultation on WhatsApp"; `/book` submit "Open WhatsApp with my request";
 phone "Call the office". Retire "Book an Appointment", "Send Booking Request", "Get started".
 
-### 5.2 Legacy aliases (kept — the other 7 routes still render)
+### 5.2 Legacy aliases (kept — the other 7 routes still render; retirements noted inline)
 
 | Class | Now | Retire when |
 |---|---|---|
-| `.hero-pattern` | Flat ink ground. The radial glow and diagonal-line texture are gone (gradients + decorative patterns are out of the direction). | the engineer replaces it with `.act-band`/`bg-ink` in each hero |
-| `.card-lift` | **Inert**: transition only, no shadow, no translateY. Cards are retired; the signature lives in `.ruled-entry`. | each card is converted to a ruled entry |
+| `.hero-pattern`, `.card-lift` | **Retired 2026-11-16.** Both rules and the `.hero-pattern` member of the ink-surface focus group are gone from `globals.css`. PageHero (the flat ink hero ground) and feature-icon (the inert card transition) were their last consumers; the Stage D rebuilds of `/why-choose-us` and `/testimonials` deleted those components, leaving zero source consumers. | done — rebuilt routes use `.act-band` for ink ground and `.ruled-entry` for entries; the `tests/e2e/home.spec.ts` guard still asserts no `hero-pattern` markup ships |
 | `.gold-link` | `--brass-ink` text, currentColor underline, `--ink` on hover (6.25 → 12.53). | links adopt `text-brass-ink underline` inline |
-| `.reveal-in` | 420ms entrance, `translateY(min(var(--reveal-y, 8px), 8px))` — the 8px cap is enforced here, so `<Reveal y={24}>` can no longer overshoot. Reduced motion = none. | the rebuild's own entrance wrapper |
+| `.reveal-in` | **Retired 2026-11-17.** The rule, `@keyframes reveal-in` and the reduced-motion `animation: none` member are gone from `globals.css`. Its last consumers were the seven head `<Reveal>` wrappers, removed by the Stage E LCP fix; below-fold staggering never shipped in Phase 3, so nothing else used it. `--reveal-y` (component-set, never declared in CSS) died with the keyframes — zero consumers. | done — no entrance primitive; content ships visible and the reduced-motion block carries only the universal duration collapse. `--motion-enter` / `--ease-entrance` went with it (§4, deleted 17 Nov) |
 
 ---
 
@@ -249,7 +259,6 @@ phone "Call the office". Retire "Book an Appointment", "Send Booking Request", "
   }
   /* must stay last in the layer — same specificity as the rule above */
   .act-band :focus-visible,
-  .hero-pattern :focus-visible,
   .bg-primary :focus-visible { outline-color: var(--focus-on-ink); }
 }
 ```
@@ -257,7 +266,7 @@ phone "Call the office". Retire "Book an Appointment", "Send Booking Request", "
 | Indicator | Value | Measured against its surface |
 |---|---|---|
 | Light surfaces (base fallback, CTA set) | `--ring` = `--ink` `#282E3F`, 2px, offset 2px | **12.53:1 on paper** · **11.13:1 on sand** |
-| Ink surfaces (`.act-band`, `.hero-pattern`, `.bg-primary`) | `--focus-on-ink` = `--brass` `#CF9455`, 2px, offset 2px | **5.17:1 on ink** |
+| Ink surfaces (`.act-band`, `.bg-primary`) | `--focus-on-ink` = `--brass` `#CF9455`, 2px, offset 2px | **5.17:1 on ink** |
 | What this replaced | `--ring` at 50% alpha over paper (`#919296`) | **2.88:1 — failed 3:1** (2.79:1 on sand) |
 
 Rules: outline only (no border, no padding, no layout shift); `outline-offset: 2px` so it never
@@ -419,8 +428,8 @@ clamp + 1.05 + −0.025em + 400; `rounded-xl` → 3px; `max-w-page` → 72.5rem;
    today — keep it that way). Accent *text* on light is `text-brass-ink`.
 2. **Focus is a solid outline now (§5.3).** The old `outline-ring/50` default measured
    **2.88:1** on paper; `:focus-visible` now ships `2px solid var(--ring)` at 2px offset
-   (**12.53** paper / **11.13** sand) and `var(--focus-on-ink)` inside `.act-band`,
-   `.hero-pattern` and `.bg-primary` (**5.17** on ink). Do not re-introduce an alpha focus
+   (**12.53** paper / **11.13** sand) and `var(--focus-on-ink)` inside `.act-band`
+   and `.bg-primary` (**5.17** on ink). Do not re-introduce an alpha focus
    colour, and do not add a second cue to `.btn-primary`/`.btn-quiet` — they already carry
    the outline. Components that opt out with `outline-none` (`button`, `input`, `textarea`,
    `select`, `accordion`) still paint `ring-ring/50` at 2.88:1 — the fix is to delete their
@@ -442,6 +451,8 @@ clamp + 1.05 + −0.025em + 400; `rounded-xl` → 3px; `max-w-page` → 72.5rem;
    (the old founder arch in `page.tsx`) is an arch — it must go, with the plate.
 9. **`<Reveal y={24}>` still passes 24**; `.reveal-in` clamps it to 8px. Pass `y={8}` (or
    omit) when the component is rewritten, so the CSS clamp isn't load-bearing.
+   *(Superseded 17 Nov: the wrapper and the clamp are both gone — see §5.2. Kept as the record of
+   why the 8px cap existed.)*
 10. **Body is 17px** (`--text-body`). Form fields must be ≥16px or iOS zooms the page — keep
     the slip's inputs at `text-body`/`text-base`, not `text-sm`.
 11. **Fonts:** if `--font-display` is missing (Fraunces not loaded), headings fall back to
@@ -485,7 +496,9 @@ Measured with the real compiler (tailwindcss 4.3.3 + oxide scanner, auto root = 
 Per directory, forced positive vs. negated: `docs/` 25 files, `logos/` 51, `.opencode/` 8 — all
 to zero; `repos/` 14 520, already excluded by `.gitignore`.
 
-Survivors, checked in the compiled output: `.ledger-rail`, `.hero-pattern`, `.slip`,
+Survivors, checked in the compiled output (measurement of 15 Nov, **before** the 16 Nov retirement
+of `.hero-pattern`, which has since left the sheet; everything else below is unchanged):
+`.ledger-rail`, `.hero-pattern`, `.slip`,
 `.ruled-entry`, `.placeholder-mark`, `focus:bg-paper` (the skip link), `data-[size=default]:h-10`
 (select), `transition-[color,background-color,border-color]` (header) and `outline-color:
 var(--ring)` from the base `@apply outline-ring`. Gone: `data-[size=default]:h-8`, bare

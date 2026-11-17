@@ -15,7 +15,10 @@ const NUMBER = "919829771396";
 
 test("message always contains header, firm, name and phone", () => {
   const msg = buildBookingMessage({ name: "Ramesh Kumar", phone: "+91 98297 71396" }, FIRM);
-  assert.match(msg, /\*New Appointment Request\*/);
+  // Synced to the shipped slip wording (§2.3 retire rule applied to the
+  // in-chat prefill subject too).
+  assert.match(msg, /\*Consultation Request\*/);
+  assert.doesNotMatch(msg, /appointment/i);
   assert.match(msg, /via P\.L\. Sharma And Company website/);
   assert.match(msg, /Name: Ramesh Kumar/);
   assert.match(msg, /Phone: \+91 98297 71396/);

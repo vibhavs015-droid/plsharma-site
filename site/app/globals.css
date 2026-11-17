@@ -68,10 +68,8 @@
   /* Layout */
   --container-page: 72.5rem; /* 1160 */
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
-  --ease-entrance: cubic-bezier(0.22, 0.61, 0.36, 1);
   --motion-fast: 120ms; /* colour on focus/hover */
   --motion-base: 220ms; /* the hairline warms */
-  --motion-enter: 420ms; /* one-time entrance, never replayed */
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -488,20 +486,6 @@
      Restyled to the Kept Ledger, not renamed. Remove only after the rebuild.
      ═══════════════════════════════════════════════════════════════════════ */
 
-  /* Was: radial glow + diagonal-line texture. Gradients and decorative
-     patterns are out of the direction, so this is now a flat ink ground. */
-  .hero-pattern {
-    background-color: var(--ink);
-    background-image: none;
-  }
-
-  /* Was: shadow + translateY hover lift. Cards are retired and the
-     direction bans hover lift, so this is now inert (transition only). */
-  .card-lift {
-    box-shadow: none;
-    transition: background-color var(--motion-fast) var(--ease-standard);
-  }
-
   /* Accent text on light: the text gold, not the mark gold. */
   .gold-link {
     color: var(--brass-ink); /* 6.25:1 paper */
@@ -514,13 +498,6 @@
     color: var(--ink);
   }
 
-  /* One-time entrance. Content ships visible; this only plays on first paint.
-     --reveal-y is set by <Reveal> and capped at 8px here, so no component
-     can reintroduce a 24px slide. */
-  .reveal-in {
-    animation: reveal-in var(--motion-enter) var(--ease-entrance) backwards;
-  }
-
   /* ═══════════════════════════════════════════════════════════════════════
      FOCUS ON INK SURFACES — must stay last in this layer.
      Same specificity as the CTA focus rules above, so source order decides.
@@ -531,25 +508,14 @@
      links to var(--ring). The rebuild replaces .bg-primary surfaces with
      .act-band and this caveat disappears with them. */
   .act-band :focus-visible,
-  .hero-pattern :focus-visible,
   .bg-primary :focus-visible {
     outline-color: var(--focus-on-ink);
-  }
-}
-
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    transform: translateY(min(var(--reveal-y, 8px), 8px));
   }
 }
 
 /* Reduced motion: every duration collapses, no transforms, and state changes
    still complete instantly (colour feedback is never removed). */
 @media (prefers-reduced-motion: reduce) {
-  .reveal-in {
-    animation: none;
-  }
   *,
   *::before,
   *::after {

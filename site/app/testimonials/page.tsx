@@ -1,61 +1,164 @@
 import type { Metadata } from "next";
-import { Quote, Star } from "lucide-react";
-import { PageHero } from "@/components/site/page-hero";
-import { Reveal } from "@/components/site/reveal";
-import { Card, CardContent } from "@/components/ui/card";
-import { testimonials, site } from "@/lib/site-config";
+import Link from "next/link";
+import { site, team } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Testimonials",
+  title: "Client words — published with permission",
   description:
-    "What clients say about P.L. Sharma And Company — trusted tax consultancy in Jaisalmer, Rajasthan.",
+    "This page stays empty until real clients agree to be quoted — nothing is invented. The proof that exists today: P.L. Sharma And Company has practised in Jaisalmer since 2001.",
   alternates: { canonical: "/testimonials" },
 };
+
+/* Page-aware wa.me deep links (user-problem.md §6): the band primary carries
+ * the booking prefill with this page's name; the §01 collection line keeps
+ * the question prefill — offering a quote is a question, not a booking
+ * (page-specs §4 CTA map, §0.3 exception pattern). */
+const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I would like to book a consultation — via the website's testimonials page.`
+)}`;
+const questionHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I have a question.`
+)}`;
+
+/* The entry-link underline (tokens.md §4 signature interaction): a persistent
+   hairline that warms to the text gold on hover. */
+const entryLink =
+  "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
+
+/* NOTE: `testimonials[]` in site-config is invented sample data. This page
+   deliberately never imports it — the four names must not appear in the
+   rendered HTML or the RSC payload (page-specs §4, qa guard §9.3). The
+   config array stays untouched as the owner's editing surface for the day
+   real quotes arrive. */
+
+const founder = team[0];
 
 export default function TestimonialsPage() {
   return (
     <>
-      <PageHero
-        title="What Our Clients Say"
-        subtitle="Long-term relationships are our proudest achievement."
-      />
-
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-6 sm:grid-cols-2">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={(i % 2) * 0.08}>
-              <Card className="card-lift h-full">
-              <CardContent className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <Quote className="size-7 fill-[color:var(--accent)] text-[color:var(--accent)]" />
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="size-4 fill-[color:var(--accent)] text-[color:var(--accent)]"
-                      />
-                    ))}
-                  </div>
-                </div>
-                <p className="font-heading text-base leading-relaxed text-foreground/85">
-                  “{t.quote}”
-                </p>
-                <div className="mt-1 border-t pt-4">
-                  <p className="font-semibold text-primary">{t.name}</p>
-                  <p className="text-sm text-muted-foreground">{t.role}</p>
-                </div>
-              </CardContent>
-              </Card>
-            </Reveal>
-          ))}
-        </div>
-
-        <p className="mt-10 text-center text-sm text-muted-foreground">
-          {/* PLACEHOLDER note: remove after adding real testimonials */}
-          These are sample testimonials for preview. Real client quotes go in{" "}
-          <code className="rounded bg-muted px-1.5 py-0.5 text-xs">lib/site-config.ts</code>{" "}
-          or straight to the developer.
+      {/* ============ PAGE HEAD — §0.1 ruled head; the h1 states the policy
+           without apologising (§4 fold items 1–2) ============ */}
+      <section className="ledger-rail py-[var(--space-section)]">
+        <p className="rail-label">
+          {site.shortName} · Testimonials · Jaisalmer
         </p>
+        <div>
+          <div>
+            <h1>
+              Real client words — published with permission, and not before.
+            </h1>
+            <p className="text-lead text-ink-muted mt-3 measure">
+              This page stays empty until real clients agree to be quoted.
+              Nothing here is invented.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ § 01 · CLIENT WORDS — the designed gap is the content:
+            the one placeholder mark this page carries (§0.4), visible in
+            the fold, plus the collection invite as a live function (§4
+            inventory). No stars, no invented quotes, no preview framing. ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 01 · Client words</p>
+        <div>
+          <h2>Client words</h2>
+          <div className="ruled-entry measure mt-8">
+            <p className="placeholder-mark">
+              [PLACEHOLDER — AWAITING REAL TESTIMONIAL FROM OWNER]
+            </p>
+            <p className="text-body text-ink-muted mt-4">
+              A quote appears here only after a real client has read it and
+              agreed to be named. Until then the entry stays empty on
+              purpose — this page publishes only what the firm can stand
+              behind.
+            </p>
+            <p className="text-body mt-4">
+              <a href={questionHref} className={entryLink} target="_blank" rel="noopener noreferrer">
+                If this office has handled your file and you&apos;d be willing
+                to be quoted, say so on WhatsApp — your permission decides
+                what appears.
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ § 02 · THE PROOF THAT EXISTS TODAY — the record line
+            plus three quiet links into the real pages; the page never
+            dead-ends (§4 inventory, §4.1 zero journey weight) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 02 · The proof that exists today</p>
+        <div>
+          <h2>The proof that exists today</h2>
+          <div className="ruled-entry measure mt-8">
+            <p className="rail-label" data-numeric>
+              Since {site.establishedYear} · {site.stats[0].label}
+            </p>
+            <div className="mt-3 flex flex-col gap-2">
+              <p className="text-body">
+                <Link href="/about" className={entryLink}>
+                  The principal
+                </Link>
+              </p>
+              <p className="text-body">
+                <Link href="/why-choose-us" className={entryLink}>
+                  How we work
+                </Link>
+              </p>
+              <p className="text-body">
+                <Link href="/faq" className={entryLink}>
+                  Straight answers
+                </Link>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ § 03 · THE SIGNED PAGE (M3) — the principal's name and
+            facts, set in the regular faces (no italic ships in Phase 3,
+            §0.6). The entry's top rule is the hairline. A signature is
+            never drawn, traced or faked — the name only, until the scan
+            arrives (§4 inventory) ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 03 · The signed page</p>
+        <div>
+          <h2>The signed page</h2>
+          <div className="ruled-entry measure mt-8">
+            <h3>{founder.name}</h3>
+            <p className="rail-label mt-1" data-numeric>
+              Principal Consultant · Jaisalmer · Since {site.establishedYear}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ THE ACT BAND — the page waits, the questions don't
+           (§4 close): one sentence, canonical primary, quiet phone ============ */}
+      <section className="act-band">
+        <div className="ledger-rail py-[var(--space-section)]">
+          <p className="rail-label text-brass">The next step</p>
+          <div>
+            <h2 className="max-w-[24ch]">
+              While this page waits, your questions get answered — ask us
+              directly.
+            </h2>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Book a consultation on WhatsApp
+              </a>
+              <a href={`tel:${site.phoneHref}`} className="btn-quiet">
+                Call the office · {site.phone}
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

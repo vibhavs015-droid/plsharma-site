@@ -1,0 +1,486 @@
+[
+  {
+    "route": "faq",
+    "ldJson": [],
+    "faqPageStringInHtml": false,
+    "overflow360": {
+      "scrollW": 360,
+      "innerW": 360
+    },
+    "targets360": {
+      "skip": [
+        {
+          "w": 1,
+          "h": 1,
+          "text": "Skip to main content",
+          "visible": true,
+          "position": "absolute"
+        }
+      ],
+      "bandPrimary": [
+        {
+          "w": 320,
+          "h": 44,
+          "text": "Book a consultation on WhatsApp",
+          "visible": true,
+          "position": "static"
+        }
+      ],
+      "bandQuiet": [
+        {
+          "w": 320,
+          "h": 33,
+          "text": "Call the office · +91 98297 71396",
+          "visible": true,
+          "position": "static"
+        }
+      ],
+      "float": [
+        {
+          "w": 56,
+          "h": 56,
+          "text": "Book a consultation on WhatsApp",
+          "visible": true,
+          "position": "fixed"
+        }
+      ],
+      "entryFoot": [
+        {
+          "w": 248,
+          "h": 20,
+          "text": "Book the free first consultation",
+          "visible": true,
+          "position": "static"
+        },
+        {
+          "w": 253,
+          "h": 20,
+          "text": "Send us the notice — start here",
+          "visible": true,
+          "position": "static"
+        }
+      ],
+      "headAsk": [
+        {
+          "w": 306,
+          "h": 48,
+          "text": "A question that isn't here? Send it — a ",
+          "visible": true,
+          "position": "static"
+        }
+      ]
+    },
+    "circleTest": {
+      "smallTargets": [
+        {
+          "el": "a 'Skip to main content'",
+          "w": 1,
+          "h": 1
+        },
+        {
+          "el": "a 'Book the free first consultation'",
+          "w": 248,
+          "h": 20
+        },
+        {
+          "el": "a 'Send us the notice — start here'",
+          "w": 253,
+          "h": 20
+        },
+        {
+          "el": "a 'Home'",
+          "w": 39,
+          "h": 17
+        },
+        {
+          "el": "a 'About'",
+          "w": 39,
+          "h": 17
+        },
+        {
+          "el": "a 'Services'",
+          "w": 57,
+          "h": 17
+        },
+        {
+          "el": "a 'Why Choose Us'",
+          "w": 106,
+          "h": 17
+        },
+        {
+          "el": "a 'Testimonials'",
+          "w": 82,
+          "h": 17
+        },
+        {
+          "el": "a 'FAQ'",
+          "w": 27,
+          "h": 17
+        },
+        {
+          "el": "a 'Contact'",
+          "w": 52,
+          "h": 17
+        },
+        {
+          "el": "a 'Book a consultation'",
+          "w": 130,
+          "h": 17
+        },
+        {
+          "el": "a 'Income Tax & ITR Filing'",
+          "w": 154,
+          "h": 17
+        },
+        {
+          "el": "a 'GST Registration & Compliance'",
+          "w": 206,
+          "h": 17
+        },
+        {
+          "el": "a 'Audit & Assurance'",
+          "w": 122,
+          "h": 17
+        },
+        {
+          "el": "a 'Business Registration & Licensing'",
+          "w": 222,
+          "h": 17
+        },
+        {
+          "el": "a 'Tax Planning & Advisory'",
+          "w": 160,
+          "h": 17
+        },
+        {
+          "el": "a 'Call the office · +91 98297 71396'",
+          "w": 217,
+          "h": 20
+        },
+        {
+          "el": "a 'plperiwal@yahoo.com'",
+          "w": 147,
+          "h": 20
+        }
+      ],
+      "failures": []
+    },
+    "reflow320": {
+      "scrollW": 320,
+      "innerW": 320,
+      "widestElW": 320,
+      "widestEl": "html.inter_8db6fa51-module__MMaAbG__variable fraunces_d"
+    },
+    "reducedMotion": {
+      "runningAnimations": 0,
+      "animDetails": [],
+      "floatAnimationName": "none",
+      "floatTransitionDuration": "1e-05s",
+      "revealSelector": "reveal-in",
+      "revealOpacity": "1",
+      "revealTransform": "none"
+    }
+  },
+  {
+    "route": "contact",
+    "slipDetail": {
+      "labels": [
+        {
+          "label": "Call the office",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "Call the office+91 98297 71396"
+        },
+        {
+          "label": "+91 98297 71396",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "+91 98297 71396"
+        },
+        {
+          "label": "WhatsApp",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "WhatsApp+91 98297 71396"
+        },
+        {
+          "label": "+91 98297 71396",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "+91 98297 71396"
+        },
+        {
+          "label": "Address",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "Address109, Indira Colony, Jaisalmer, Rajasthan, India — 345001Open in Google Maps"
+        },
+        {
+          "label": "109, Indira Colony, Jaisalmer, Rajasthan, India — 345001",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "109, Indira Colony, Jaisalmer, Rajasthan, India — 345001Open in Google Maps"
+        },
+        {
+          "label": "Open in Google Maps",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "109, Indira Colony, Jaisalmer, Rajasthan, India — 345001Open in Google Maps"
+        },
+        {
+          "label": "Hours",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "HoursMonday – Saturday · 10:00 AM – 7:00 PMSunday · Closed"
+        },
+        {
+          "label": "Monday – Saturday · 10:00 AM – 7:00 PM",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "Monday – Saturday · 10:00 AM – 7:00 PMSunday · Closed"
+        },
+        {
+          "label": "Sunday · Closed",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "Monday – Saturday · 10:00 AM – 7:00 PMSunday · Closed"
+        },
+        {
+          "label": "Email",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "Emailplperiwal@yahoo.com"
+        },
+        {
+          "label": "plperiwal@yahoo.com",
+          "tag": "p",
+          "parentTag": "div",
+          "cellText": "plperiwal@yahoo.com"
+        }
+      ],
+      "hoursLines": [
+        "109, Indira Colony · Monday – Saturday, 10:00 AM – 7:00 PM · WhatsApp and phone reach the same desk.",
+        "Monday – Saturday · 10:00 AM – 7:00 PM",
+        "Sunday · Closed",
+        "Mon to Sat: 10:00 AM to 7:00 PM",
+        "Sunday: Closed"
+      ],
+      "emailLines": [
+        "plperiwal@yahoo.com",
+        "plperiwal@yahoo.com",
+        "plperiwal@yahoo.com"
+      ],
+      "liveAncestorsInSlip": 0
+    },
+    "deskTelSettled": {
+      "found": true,
+      "tag": "a",
+      "name": "+91 98297 71396",
+      "outline": "2px solid rgb(40, 46, 63)",
+      "offset": "2px",
+      "shadow": "none",
+      "fv": true
+    },
+    "overflow360": {
+      "scrollW": 360,
+      "innerW": 360
+    },
+    "targets360": {
+      "skip": [
+        {
+          "w": 1,
+          "h": 1,
+          "text": "Skip to main content",
+          "visible": true,
+          "position": "absolute"
+        }
+      ],
+      "bandPrimary": [
+        {
+          "w": 320,
+          "h": 44,
+          "text": "Book a consultation on WhatsApp",
+          "visible": true,
+          "position": "static"
+        }
+      ],
+      "bandQuiet": [
+        {
+          "w": 320,
+          "h": 33,
+          "text": "Call the office · +91 98297 71396",
+          "visible": true,
+          "position": "static"
+        }
+      ],
+      "float": [
+        {
+          "w": 56,
+          "h": 56,
+          "text": "Book a consultation on WhatsApp",
+          "visible": true,
+          "position": "fixed"
+        }
+      ],
+      "deskLinks": [
+        {
+          "w": 138,
+          "h": 20,
+          "text": "+91 98297 71396",
+          "visible": true,
+          "position": "static"
+        },
+        {
+          "w": 138,
+          "h": 20,
+          "text": "+91 98297 71396",
+          "visible": true,
+          "position": "static"
+        },
+        {
+          "w": 174,
+          "h": 20,
+          "text": "Open in Google Maps",
+          "visible": true,
+          "position": "static"
+        },
+        {
+          "w": 179,
+          "h": 20,
+          "text": "plperiwal@yahoo.com",
+          "visible": true,
+          "position": "static"
+        }
+      ],
+      "maps": [
+        {
+          "w": 174,
+          "h": 20,
+          "text": "Open in Google Maps",
+          "visible": true,
+          "position": "static"
+        }
+      ]
+    },
+    "circleTest": {
+      "smallTargets": [
+        {
+          "el": "a 'Skip to main content'",
+          "w": 1,
+          "h": 1
+        },
+        {
+          "el": "a '+91 98297 71396'",
+          "w": 138,
+          "h": 20
+        },
+        {
+          "el": "a '+91 98297 71396'",
+          "w": 138,
+          "h": 20
+        },
+        {
+          "el": "a 'Open in Google Maps'",
+          "w": 174,
+          "h": 20
+        },
+        {
+          "el": "a 'plperiwal@yahoo.com'",
+          "w": 179,
+          "h": 20
+        },
+        {
+          "el": "a 'Home'",
+          "w": 39,
+          "h": 17
+        },
+        {
+          "el": "a 'About'",
+          "w": 39,
+          "h": 17
+        },
+        {
+          "el": "a 'Services'",
+          "w": 57,
+          "h": 17
+        },
+        {
+          "el": "a 'Why Choose Us'",
+          "w": 106,
+          "h": 17
+        },
+        {
+          "el": "a 'Testimonials'",
+          "w": 82,
+          "h": 17
+        },
+        {
+          "el": "a 'FAQ'",
+          "w": 27,
+          "h": 17
+        },
+        {
+          "el": "a 'Contact'",
+          "w": 52,
+          "h": 17
+        },
+        {
+          "el": "a 'Book a consultation'",
+          "w": 130,
+          "h": 17
+        },
+        {
+          "el": "a 'Income Tax & ITR Filing'",
+          "w": 154,
+          "h": 17
+        },
+        {
+          "el": "a 'GST Registration & Compliance'",
+          "w": 206,
+          "h": 17
+        },
+        {
+          "el": "a 'Audit & Assurance'",
+          "w": 122,
+          "h": 17
+        },
+        {
+          "el": "a 'Business Registration & Licensing'",
+          "w": 222,
+          "h": 17
+        },
+        {
+          "el": "a 'Tax Planning & Advisory'",
+          "w": 160,
+          "h": 17
+        },
+        {
+          "el": "a 'Call the office · +91 98297 71396'",
+          "w": 217,
+          "h": 20
+        },
+        {
+          "el": "a 'plperiwal@yahoo.com'",
+          "w": 147,
+          "h": 20
+        }
+      ],
+      "failures": []
+    },
+    "reflow320": {
+      "scrollW": 320,
+      "innerW": 320,
+      "widestElW": 320,
+      "widestEl": "html.inter_8db6fa51-module__MMaAbG__variable fraunces_d"
+    },
+    "reducedMotion": {
+      "runningAnimations": 0,
+      "animDetails": [],
+      "floatAnimationName": "none",
+      "floatTransitionDuration": "1e-05s",
+      "revealSelector": "reveal-in",
+      "revealOpacity": "1",
+      "revealTransform": "none"
+    }
+  }
+]

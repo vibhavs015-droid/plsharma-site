@@ -1,126 +1,182 @@
 import type { Metadata } from "next";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
-import { PageHero } from "@/components/site/page-hero";
-import { BookingForm } from "@/components/site/booking-form";
-import { Card, CardContent } from "@/components/ui/card";
 import { site } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact & Location",
-  description:
-    "Visit us at 109, Indira Colony, Jaisalmer, Rajasthan 345001. Call +91 98297 71396 or email plperiwal@yahoo.com. Open Mon–Sat, 10 AM – 7 PM.",
+  title: "Contact the office",
+  description: `Visit ${site.address} — open ${site.hours[0].days}, ${site.hours[0].time}. Call or WhatsApp ${site.phone}, or email ${site.email}.`,
   alternates: { canonical: "/contact" },
 };
+
+/* Page-aware wa.me deep links (user-problem.md §6): the band primary carries
+ * the booking prefill with this page's name; the desk card's WhatsApp row
+ * keeps the question prefill — a contact-page message is not always a booking
+ * (page-specs §0.3 exception, §6). */
+const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I would like to book a consultation — via the website's contact page.`
+)}`;
+const questionHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  `Hello ${site.name}, I have a question.`
+)}`;
+
+/* The entry-link underline (tokens.md §4 signature interaction): a persistent
+   hairline that warms to the text gold on hover. Every linked desk row and
+   the maps link use it; email is a quiet text link, never a fill button. */
+const entryLink =
+  "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
+
+/* One desk row: small rail marker above the value, the slip's field rhythm
+   without the fields. No icon tiles — icons are retired; type rules the
+   desk (page-specs §6 do-not list). */
+function DeskRow({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <p className="rail-label">{label}</p>
+      <div className="mt-1">{children}</div>
+    </div>
+  );
+}
 
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        title="Contact Us"
-        subtitle="Call, WhatsApp, email or visit, whichever is easiest for you."
-      />
+      {/* ============ PAGE HEAD — §0.1 ruled head; the lead carries the
+           essentials as searchable text, no image (§6 fold items 1–3).
+           Hours render from config so the stated times can't drift from
+           the desk rows. ============ */}
+      <section className="ledger-rail py-[var(--space-section)]">
+        <p className="rail-label">{site.shortName} · Contact · Jaisalmer</p>
+        <div>
+          <div>
+            <h1>One office in Jaisalmer — open six days a week.</h1>
+            <p className="text-lead text-ink-muted mt-3 measure" data-numeric>
+              109, Indira Colony · {site.hours[0].days}, {site.hours[0].time} ·
+              WhatsApp and phone reach the same desk.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          {/* Contact details */}
-          <div className="space-y-4">
-            <Card>
-              <CardContent className="grid gap-5 p-6">
-                <a
-                  href={`tel:${site.phoneHref}`}
-                  className="flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-muted"
-                >
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
-                    <Phone className="size-5" />
-                  </span>
-                  <span>
-                    <span className="block text-xs text-muted-foreground">Call us</span>
-                    <span className="font-semibold text-primary">{site.phone}</span>
-                  </span>
-                </a>
+      {/* ============ § 01 · THE OFFICE — the desk slip: the .slip primitive
+           from /book's precedent (tokens.md §5 first shipped instance), on
+           its sand ground, ruled head "The office". Rows: phone · WhatsApp
+           (question prefill) · address + the one map link · hours stated
+           from config, never widgeted · email last, quiet text (§6 fold
+           item 4). No embedded map iframe, no booking form. ============ */}
+      <section className="border-y border-line bg-sand">
+        <div className="ledger-rail py-[var(--space-section)]">
+          <p className="rail-label">§ 01 · The office</p>
+          <div>
+            <div className="slip">
+              <div className="slip-head">
+                <h2 className="text-xl">The office</h2>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <DeskRow label="Call the office">
+                  <p className="text-body">
+                    <a href={`tel:${site.phoneHref}`} className={entryLink}>
+                      {site.phone}
+                    </a>
+                  </p>
+                </DeskRow>
 
-                <a
-                  href={`https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
-                    `Hello ${site.shortName}, I have a question.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-muted"
-                >
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-whatsapp/10 text-whatsapp">
-                    <svg viewBox="0 0 32 32" className="size-5 fill-current" aria-hidden="true">
-                      <path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.2 0-2.4-.3-3.4-.8l-.6-.3-4.4.9.9-4.3-.3-.6c-.7-1.2-1-2.5-1-3.8 0-4.9 4-8.9 8.9-8.9s8.9 4 8.9 8.9-4.1 8.9-9 8.9zm4.9-6.6c-.3-.1-1.7-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.6.9-.8 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.4.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1 2.7.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.4-.3z" />
-                    </svg>
-                  </span>
-                  <span>
-                    <span className="block text-xs text-muted-foreground">WhatsApp</span>
-                    <span className="font-semibold text-primary">{site.phone}</span>
-                  </span>
-                </a>
+                <DeskRow label="WhatsApp">
+                  <p className="text-body">
+                    <a
+                      href={questionHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={entryLink}
+                      aria-label={`WhatsApp · ${site.phone}`}
+                    >
+                      {site.phone}
+                    </a>
+                  </p>
+                </DeskRow>
 
-                <a
-                  href={`mailto:${site.email}`}
-                  className="flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-muted"
-                >
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
-                    <Mail className="size-5" />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-xs text-muted-foreground">Email</span>
-                    <span className="block truncate font-semibold text-primary">
-                      {site.email}
-                    </span>
-                  </span>
-                </a>
-
-                <div className="flex items-center gap-4 rounded-lg p-3">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
-                    <Clock className="size-5" />
-                  </span>
-                  <span>
-                    <span className="block text-xs text-muted-foreground">Working hours</span>
-                    <span className="font-semibold text-primary">
-                      Mon to Sat, 10:00 AM to 7:00 PM
-                    </span>
-                  </span>
-                </div>
-
-                <div className="flex items-start gap-4 rounded-lg p-3">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
-                    <MapPin className="size-5" />
-                  </span>
-                  <span>
-                    <span className="block text-xs text-muted-foreground">Office</span>
-                    <span className="font-semibold text-primary">{site.address}</span>
+                <DeskRow label="Address">
+                  <p className="text-body text-ink-muted">{site.address}</p>
+                  <p className="mt-2">
                     <a
                       href={site.mapsLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1 block text-sm font-medium text-primary underline underline-offset-4"
+                      className={entryLink}
                     >
                       Open in Google Maps
                     </a>
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
+                  </p>
+                </DeskRow>
 
-            {/* Map */}
-            <Card className="overflow-hidden">
-              <iframe
-                title={`Map of ${site.name}`}
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                  site.mapsQuery
-                )}&z=15&output=embed`}
-                className="h-64 w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </Card>
+                <DeskRow label="Hours">
+                  {site.hours.map((h) => (
+                    <p key={h.days} className="text-body text-ink-muted" data-numeric>
+                      {h.days} · {h.time}
+                    </p>
+                  ))}
+                </DeskRow>
+
+                <DeskRow label="Email">
+                  <p className="text-body">
+                    <a href={`mailto:${site.email}`} className={entryLink}>
+                      {site.email}
+                    </a>
+                  </p>
+                </DeskRow>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Booking form */}
-          <BookingForm />
+      {/* ============ § 02 · BEFORE YOU COME — the walk-in welcome, sourced
+           from the FAQ online answer (§6 inventory); hours stay stated, no
+           live open/closed badge ============ */}
+      <section className="ledger-rail pb-[var(--space-section)]">
+        <p className="rail-label">§ 02 · Before you come</p>
+        <div>
+          <h2>Before you come</h2>
+          <ul className="measure mt-8">
+            <li className="ruled-entry">
+              <p className="text-body text-ink-muted">
+                Walk in any working day — books and audit papers are easier
+                across a desk. Routine matters (returns, GST filings,
+                documents) often don&apos;t need a visit at all: they move
+                over WhatsApp.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* ============ THE ACT BAND — the page's gravity stays on the primary
+           (§6 close): one sentence, canonical primary, quiet phone ============ */}
+      <section className="act-band">
+        <div className="ledger-rail py-[var(--space-section)]">
+          <p className="rail-label text-brass">The next step</p>
+          <div>
+            <h2 className="max-w-[24ch]">
+              We reply on WhatsApp and fix a time — or just walk in.
+            </h2>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Book a consultation on WhatsApp
+              </a>
+              <a href={`tel:${site.phoneHref}`} className="btn-quiet">
+                Call the office · {site.phone}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>

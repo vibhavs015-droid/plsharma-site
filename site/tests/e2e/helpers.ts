@@ -1,4 +1,4 @@
-import type { Page } from "@playwright/test";
+import { expect, type Page } from "@playwright/test";
 import { site } from "../../lib/site-config";
 
 /**
@@ -26,12 +26,128 @@ export async function gotoHome(page: Page): Promise<void> {
   await page.locator("main h1").waitFor({ state: "attached", timeout: DEV_TIMEOUT });
 }
 
-/** Navigate to /book and wait until the booking form is attached. */
+/** Navigate to /book and wait until the consultation slip is attached. */
 export async function gotoBook(page: Page): Promise<void> {
   await page.goto("/book", { waitUntil: "load", timeout: DEV_TIMEOUT });
   await page
-    .getByRole("button", { name: "Send Booking Request" })
+    .getByRole("button", { name: "Open WhatsApp with my request" })
     .waitFor({ state: "attached", timeout: DEV_TIMEOUT });
+}
+
+/** Navigate to /about and wait until the page head is attached. */
+export async function gotoAbout(page: Page): Promise<void> {
+  await page.goto("/about", { waitUntil: "load", timeout: DEV_TIMEOUT });
+  await page.locator("main h1").waitFor({ state: "attached", timeout: DEV_TIMEOUT });
+}
+
+/** Navigate to /services and wait until the page head is attached. */
+export async function gotoServices(page: Page): Promise<void> {
+  await page.goto("/services", { waitUntil: "load", timeout: DEV_TIMEOUT });
+  await page.locator("main h1").waitFor({ state: "attached", timeout: DEV_TIMEOUT });
+}
+
+/** Navigate to /faq and wait until the page head is attached. */
+export async function gotoFaq(page: Page): Promise<void> {
+  await page.goto("/faq", { waitUntil: "load", timeout: DEV_TIMEOUT });
+  await page.locator("main h1").waitFor({ state: "attached", timeout: DEV_TIMEOUT });
+}
+
+/** Navigate to /contact and wait until the page head is attached. */
+export async function gotoContact(page: Page): Promise<void> {
+  await page.goto("/contact", { waitUntil: "load", timeout: DEV_TIMEOUT });
+  await page.locator("main h1").waitFor({ state: "attached", timeout: DEV_TIMEOUT });
+}
+
+/** Navigate to /why-choose-us and wait until the page head is attached. */
+export async function gotoWhyChooseUs(page: Page): Promise<void> {
+  await page.goto("/why-choose-us", { waitUntil: "load", timeout: DEV_TIMEOUT });
+  await page.locator("main h1").waitFor({ state: "attached", timeout: DEV_TIMEOUT });
+}
+
+/** Navigate to /testimonials and wait until the page head is attached. */
+export async function gotoTestimonials(page: Page): Promise<void> {
+  await page.goto("/testimonials", { waitUntil: "load", timeout: DEV_TIMEOUT });
+  await page.locator("main h1").waitFor({ state: "attached", timeout: DEV_TIMEOUT });
+}
+
+/** The four invented sample-testimonial names — never render. The
+ *  testimonials spec derives the same set straight from the config array;
+ *  pinned here as literals so every route's sweep checks a fixed set. */
+export const INVENTED_TESTIMONIAL_NAMES = [
+  "Rajesh Verma",
+  "Sunita Malhotra",
+  "Amit Khanna",
+  "Priya Nair",
+];
+
+/** The invented sample roles join the guard (Stage D): no route may re-say
+ *  them either — they exist only in the config's placeholder array. */
+const INVENTED_TESTIMONIAL_ROLES = ["Business Owner", "IT Professional"];
+
+/**
+ * §2.4/§9.3 honesty sweep for the rebuilt routes: no star glyphs or star
+ * markup, no rating schema, no fee figures (₹ + digits), none of the invented
+ * testimonial names OR roles — checked against the served HTML including the
+ * RSC flight payload (Stage D guard), not just the visible DOM.
+ */
+export async function expectNoInventedClaims(page: Page): Promise<void> {
+  const html = await page.content();
+  expect(html, "no star glyphs anywhere in the served page").not.toMatch(/[★☆]/);
+  expect(html, "no rating schema markup").not.toMatch(
+    /aggregateRating|ratingValue|bestRating|reviewCount/i
+  );
+  expect(html, "no fee figures (no ₹ + digits)").not.toMatch(/₹\s?\d/);
+  // Token-boundary star classes: "lucide-star" matches, Tailwind's
+  // "inline-start" substring (star followed by "t") does not.
+  const starNodes = await page.evaluate(() => {
+    const starClass = (cls: string) =>
+      cls.split(/\s+/).some((token) => /star(?!t)/i.test(token));
+    return Array.from(document.querySelectorAll("body *")).filter(
+      (el) =>
+        starClass(el.getAttribute("class") ?? "") ||
+        /\bstar\b/i.test(el.getAttribute("aria-label") ?? "")
+    ).length;
+  });
+  expect(starNodes, "no star-rating markup nodes").toBe(0);
+  const mainText = await page.locator("main").innerText();
+  const inventedSet = [...INVENTED_TESTIMONIAL_NAMES, ...INVENTED_TESTIMONIAL_ROLES];
+  for (const invented of inventedSet) {
+    expect(
+      mainText,
+      `invented testimonial datum must not appear: "${invented}"`
+    ).not.toContain(invented);
+    expect(
+      html,
+      `invented testimonial datum must not appear in HTML/RSC payload: "${invented}"`
+    ).not.toContain(invented);
+  }
+  expect(mainText, "no invented percentage stats").not.toMatch(/100%/);
+  expect(mainText, "no invented ratio stats").not.toMatch(/1:1/);
+  expect(mainText, "no invented client counts").not.toMatch(/5000\+|happy clients|trusted by/i);
+}
+
+/**
+ * §2.3 CTA-surface wording guard: no "appointment" inside any link or button
+ * — its text content, aria-label or title. Body copy of the plain word is
+ * allowed; CTA surfaces are not.
+ */
+export async function expectNoAppointmentOnCtaSurfaces(page: Page): Promise<void> {
+  const offenders = await page.evaluate(() => {
+    const bad = [];
+    for (const el of document.querySelectorAll("a, button")) {
+      const surface = `${el.getAttribute("aria-label") ?? ""} ${
+        el.getAttribute("title") ?? ""
+      } ${el.textContent ?? ""}`;
+      if (/appointment/i.test(surface)) {
+        bad.push(`<${el.tagName.toLowerCase()}> ${surface.trim().slice(0, 60)}`);
+      }
+    }
+    return bad;
+  });
+  expect(
+    offenders,
+    "no 'appointment' wording on any CTA surface (link/button text, aria-label, title)"
+  ).toEqual([]);
 }
 
 /**
