@@ -240,3 +240,49 @@ Result: **all canonical surfaces pass**; two deviations, both fixed below.
 9. Sweep all e2e/unit specs for any other pinned string from this file before running the suite (grep-driven).
 
 **Config edits flagged for owner sign-off (owner copy touched):** `site.description` (§3.6), `whyChooseUs[2].description`, `whyChooseUs[3].description` (§3.6), and the one-word bio change (§1.2).
+
+---
+
+## 8 · AMENDMENT (Orchestrator, 17 Nov) — T7 structure override
+
+> The owner's TASK 7 keep-only list is implemented literally. The rows below amend this spec in place; §1–§7 stand except as amended here. The same rows are in the engineer's brief and logged in DECISION_LOG.
+
+### 8.1 Removed on `/testimonials` — §02 and §03, production AND preview (only the sample list is preview-added)
+
+| Spec row | Disposition | Note |
+|---|---|---|
+| §3.1 rows 1–4 (§02/§03 rail-label + h2 renames) | **MOOTED** | Both sections are removed entirely — there is nothing to rename. |
+| §3.1 row 5 (meta rename) | **REPLACED** | By the new meta description in §8.2. |
+| §3.3 (one-line descriptions for the three proof links) | **MOOTED** | The three proof links die with §02. |
+| §3.4 rows 8–9 (record line survives / role line trims) | **MOOTED** | With §02/§03 gone, `/testimonials` renders no 2001 line on-page; the meta description carries the fact per census row 11's rule. |
+| §4 rows | **STAND** | The §01 honesty reserve is the page: mark + note unchanged, CTA reworded with prefill unchanged. The reserved future strings and the preview-only sample line stand as written. |
+
+### 8.2 Lean production page (`/testimonials`)
+
+| Element | String / behavior | Task # | Note |
+|---|---|---|---|
+| Page head | rail-label `{site.shortName} · Testimonials · Jaisalmer` · h1 `Real client words — published with permission, and not before.` · lead `This page stays empty until real clients agree to be quoted. Nothing here is invented.` | 7 | Unchanged from current source. |
+| §01 honesty reserve | `[PLACEHOLDER — AWAITING REAL TESTIMONIAL FROM OWNER]` + the §4 note (unchanged) + CTA `A quote to share? Send it — your permission decides what appears.` (prefill `Hello {site.name}, I have a question.`, unchanged) | 7 | The page's one CTA; §4's rows stand as written. |
+| Metadata | add `robots: { index: false }`; description = `Real client words — published with permission, and not before. Nothing is invented: P.L. Sharma And Company has practised in Jaisalmer since 2001.` | 7 | New description replaces the §3.1 row-5 rename: mirrors the h1; carries the page's 2001 fact in meta only (census row 11's rule). Title stays `Client words — published with permission` (🔒 `testimonials.spec.ts` L149 unchanged). Keep the existing `alternates: { canonical: "/testimonials" }` export otherwise untouched. |
+| Not named in any amendment row (act band, float, header, `§ 01` rail numbering) | — | — | Stand per §6/§0.3 (the lean enumeration names content sections, not constant surfaces); qa confirms against the built page. |
+
+### 8.3 Home §04 — gated, not deleted from the spec
+
+| Spec row | Disposition | Note |
+|---|---|---|
+| §5.2 row 1 (Home §04 note ≈ `/testimonials` §01 note) | **AMENDED** | Production: the whole §04 section is hidden — gated on `visibleTestimonials.length > 0` (no `§ 04 · Client words` rail marker, no h2 `What clients say`, no mark, no note in production HTML). Preview: the section renders with the §5.2 one-sentence note `Real client words will be published with the client's permission — until then this entry stays empty on purpose.` + the quiet link `How we handle client words` → `/testimonials`. |
+
+### 8.4 Nav visibility
+
+| Spec row | Disposition | Note |
+|---|---|---|
+| Header nav (`navLinks`) + footer quick-link list (renders `navLinks` today) | **AMENDED** | The `Testimonials` entry is hidden while `confirmedTestimonials.length === 0 && !showSampleContent`. Implementation: a new `visibleNavLinks` export in `site-config.ts`, derived from `navLinks`, consumed by header and footer; the export imports only the client-safe content-mode flag — `testimonials[]` sample data stays server-only and must never enter a client bundle. |
+
+### 8.5 qa §7 impact
+
+| Spec row | Disposition | Note |
+|---|---|---|
+| §7 items 3–4 | **SHRUNK** | `testimonials.spec.ts` L89–91, L106, L110 pins flip to ABSENCE assertions — the §02/§03 sections, their heading strings and the record/role lines must be absent from DOM and RSC payload in production AND preview; the §3.1 rename pins are deleted, not renamed. The §4 collection-CTA rows stand as written (text + prefill assertions); the L149 title pin is unchanged; qa adds a noindex assertion for the robots export. |
+| `home.spec.ts` L48–58, L145–150 | **MODE-DEPENDENT** | Mechanical consequence of §8.3: in production the rail markers are 4 (§01/§02/§03/§05) and the Home placeholder-mark count is 0; in preview 5 markers + 1 mark. Assertions must read the content-mode flag. |
+
+Amendment decided by the Orchestrator (DECISION_LOG 2026-11-17); rationale: owner instruction outranks ux retention; a Testimonials nav click must deliver testimonials or their honest absence.
