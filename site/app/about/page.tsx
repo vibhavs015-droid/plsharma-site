@@ -3,14 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site-config";
 import { visibleTeam, visiblePrincipalQuote } from "@/lib/sample-content";
+import { practitionerIsCa } from "@/lib/content-mode";
+import { pageMetadata } from "@/lib/page-meta";
 import { SampleTag } from "@/components/site/sample-tag";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About the practice",
   description:
     "About P.L. Sharma And Company — Parbhati Lal Sharma has practised in Jaisalmer since 2001. You speak to the principal himself, the fee is agreed before work begins, and the first consultation is free.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 /* Page-aware wa.me deep link for the end-of-page band — same mechanics as
    Home's band (user-problem.md §2.3): the pre-filled message says which page
@@ -73,11 +75,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ § 01 · THE PRACTICE — the one honest stat (the record
-           line, same words as Home §03) + the short true story; no mark, no
-           invented milestones (§1 content source) ============ */}
+      {/* ============ 01 · THE PRACTICE — the one honest stat (the record
+            line, same words as Home 03) + the short true story; no mark, no
+            invented milestones (§1 content source). The work list is
+            CA-gated (T6): "audits" drops out until the owner confirms. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 01 · The practice</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>01</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">The practice</span>
+        </p>
         <div>
           <h2>The practice</h2>
           <ul className="measure mt-8">
@@ -86,9 +93,9 @@ export default function AboutPage() {
                 Since {site.establishedYear} · {site.stats[0].label}
               </p>
               <p className="text-body text-ink-muted mt-3">
-                The work is the everyday work of a tax office: income tax
-                returns and notices, GST registration and returns, audits,
-                business registrations, tax planning, TDS and bookkeeping.
+                {practitionerIsCa
+                  ? "The work is the everyday work of a tax office: income tax returns and notices, GST registration and returns, audits, business registrations, tax planning, TDS and bookkeeping."
+                  : "The work is the everyday work of a tax office: income tax returns and notices, GST registration and returns, business registrations, tax planning, TDS and bookkeeping."}
               </p>
               <p className="mt-3">
                 <Link href="/services" className={entryLink}>
@@ -100,11 +107,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ============ § 02 · THE PRINCIPAL — how the work is handled: three
+      {/* ============ 02 · THE PRINCIPAL — how the work is handled: three
            owner-confirmed facts, the canonical free-first sentence among
            them (§0.6 allows exactly three placements; this is /about's) ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 02 · The principal</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>02</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">The principal</span>
+        </p>
         <div>
           <h2>The principal</h2>
           <ul className="measure mt-8">
@@ -131,7 +142,7 @@ export default function AboutPage() {
         {/* The principal's own line, in the gap the mark announces — owner
             preview only: production resolves visiblePrincipalQuote to null
             (confirmed: null in config), so this block renders nothing and
-            §02 above is untouched. Preview shows the facts-safe sample
+            02 above is untouched. Preview shows the facts-safe sample
             line, tagged. */}
         {visiblePrincipalQuote ? (
           <div className="mt-6">
@@ -141,13 +152,17 @@ export default function AboutPage() {
         ) : null}
       </section>
 
-      {/* ============ § 03 · THE TEAM — names only: no roles, no bios, no
+      {/* ============ 03 · THE TEAM — names only: no roles, no bios, no
             photos, no initials standing in for people (§1 do-not list).
             Production renders the confirmed tier — the founder only; owner
             preview adds the three sample members, each tagged SAMPLE.
             Roles and bios stay unrendered in both modes. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 03 · The team</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>03</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">The team</span>
+        </p>
         <div>
           <h2>The team</h2>
           <ul className="measure mt-8">

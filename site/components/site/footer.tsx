@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { LogoMark } from "@/components/site/logo-mark";
 import { site, visibleNavLinks, services } from "@/lib/site-config";
+import { practitionerIsCa } from "@/lib/content-mode";
 
 export function SiteFooter() {
   return (
@@ -39,6 +40,11 @@ export function SiteFooter() {
             <li>
               <Link href="/book" className="hover:text-white hover:underline">
                 Book a consultation
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy" className="hover:text-white hover:underline">
+                Privacy
               </Link>
             </li>
           </ul>
@@ -106,7 +112,13 @@ export function SiteFooter() {
           <p>
             © {site.copyrightYear} {site.name}.
           </p>
-          <p>Income Tax, GST, Audit and Business Registration</p>
+          {/* CA-gated service list (T6) — mirrors the service card's audit
+              status in one line. */}
+          <p>
+            {practitionerIsCa
+              ? "Income Tax, GST, Audit and Business Registration"
+              : "Income Tax, GST, Tax Planning and Business Registration"}
+          </p>
         </div>
       </div>
     </footer>

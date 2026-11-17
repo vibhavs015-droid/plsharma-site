@@ -2,18 +2,24 @@ import type { Metadata } from "next";
 import { site, confirmedTestimonials } from "@/lib/site-config";
 import { visibleTestimonials } from "@/lib/sample-content";
 import { showSampleContent } from "@/lib/content-mode";
+import { pageMetadata } from "@/lib/page-meta";
 import { SampleTag } from "@/components/site/sample-tag";
 
+// The helper's full share set, plus this page's own noindex — /testimonials
+// stays out of search engines in BOTH indexing modes (T7 policy; a page-level
+// robots export overrides the layout's).
 export const metadata: Metadata = {
-  title: "Client words — published with permission",
-  description:
-    "Real client words — published with permission, and not before. Nothing is invented: P.L. Sharma And Company has practised in Jaisalmer since 2001.",
+  ...pageMetadata({
+    title: "Client words — published with permission",
+    description:
+      "Real client words — published with permission, and not before. Nothing is invented: P.L. Sharma And Company has practised in Jaisalmer since 2001.",
+    path: "/testimonials",
+  }),
   robots: { index: false },
-  alternates: { canonical: "/testimonials" },
 };
 
 /* Page-aware wa.me deep links (user-problem.md §6): the band primary carries
- * the booking prefill with this page's name; the §01 collection line keeps
+ * the booking prefill with this page's name; the 01 collection line keeps
  * the question prefill — offering a quote is a question, not a booking
  * (spec §4 + §6 prefill map; the exception list extends to this page). */
 const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
@@ -63,13 +69,17 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* ============ § 01 · CLIENT WORDS — the designed gap is the content:
+      {/* ============ 01 · CLIENT WORDS — the designed gap is the content:
             the reserve while no real quote exists; the quotes list + the
             permission note once they do. The ONE collection CTA stands in
             every state, its prefill unchanged. The preview intro + tagged
             samples render only under SHOW_SAMPLE_CONTENT=true. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 01 · Client words</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>01</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">Client words</span>
+        </p>
         <div>
           <h2>Client words</h2>
           {hasConfirmed ? (

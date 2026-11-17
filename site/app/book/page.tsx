@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { BookingForm } from "@/components/site/booking-form";
 import { site } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/page-meta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Book a consultation",
   description:
     "Send a consultation request to P.L. Sharma And Company — fill in two details and WhatsApp opens with your request ready. We reply and confirm a time. Or call +91 98297 71396; the office is open Monday – Saturday, 10:00 AM – 7:00 PM.",
-  alternates: { canonical: "/book" },
-};
+  path: "/book",
+});
 
 /* Quiet phone link (§3 — stated, never sold): the hairline underline the page
    entries use, warming to brass-ink on hover. */
@@ -42,6 +43,12 @@ export default function BookPage() {
           </p>
           <div>
             <BookingForm />
+            {/* The one-line consent note (T10.5) — quiet small print under
+                the slip; the full statement lives on /privacy (footer link). */}
+            <p className="text-meta text-ink-muted mt-4">
+              Your details go straight to the office on WhatsApp — this site
+              stores nothing.
+            </p>
           </div>
         </div>
       </section>

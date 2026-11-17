@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { site, services, whyChooseUs, faqs, yearsInPractice, hoursCompact } from "@/lib/site-config";
+import { site, services, whyChooseUs, faqs, yearsInPractice, hoursCompact, confirmedTeam } from "@/lib/site-config";
 import { visibleTeam, visibleTestimonials } from "@/lib/sample-content";
-import { showSampleContent } from "@/lib/content-mode";
+import { showSampleContent, siteUrl } from "@/lib/content-mode";
+import { pageMetadata } from "@/lib/page-meta";
 import { SampleTag } from "@/components/site/sample-tag";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = pageMetadata({
+  // No title: the layout's default title must survive the template here.
+  description: site.description,
+  path: "/",
+});
 
 /** First sentence of an FAQ answer, for the home-page preview list. */
 function firstSentence(text: string): string {
@@ -40,6 +43,39 @@ const founder = visibleTeam[0];
    gold on hover — the signature interaction from tokens.md §4. */
 const entryLink =
   "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
+
+/* ProfessionalService structured data (T9.5) — server-side, CONFIRMED data
+   only: the firm's name and contact coordinates, the principal as a Person,
+   the served area and the founding year. NO ratings, no aggregateRating,
+   no logo — nothing the site does not already state. Same pattern as /faq's
+   FAQPage payload: a module-level stringify the page renders once, quoting
+   config values so schema and page cannot drift. The address parts are
+   split from site.address (each part verbatim in that config string) and
+   openingHours is the schema.org form of site.hours[0] ("Monday – Saturday
+   · 10:00 AM – 7:00 PM") — kept in sync like hoursCompact. */
+const professionalServiceJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: site.name,
+  url: siteUrl,
+  telephone: site.phone,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "109, Indira Colony",
+    addressLocality: "Jaisalmer",
+    addressRegion: "Rajasthan",
+    postalCode: "345001",
+    addressCountry: "IN",
+  },
+  openingHours: "Mo-Sa 10:00-19:00",
+  founder: {
+    "@type": "Person",
+    name: confirmedTeam[0].name,
+  },
+  areaServed: "Jaisalmer",
+  foundingDate: String(site.establishedYear),
+});
 
 export default function HomePage() {
   return (
@@ -116,9 +152,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ § 01 · SERVICES — the recognition layer ============ */}
+      {/* ============ 01 · SERVICES — the recognition layer ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 01 · Services</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>01</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">Services</span>
+        </p>
         <div>
           <h2>What we handle</h2>
           <p className="text-lead text-ink-muted mt-3 measure">
@@ -148,9 +188,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ § 02 · HOW WE WORK — way-of-working proof ============ */}
+      {/* ============ 02 · HOW WE WORK — way-of-working proof ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 02 · How we work</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>02</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">How we work</span>
+        </p>
         <div>
           <h2>A way of working</h2>
           <p className="text-lead text-ink-muted mt-3 measure">
@@ -169,12 +213,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ § 03 · THE RECORD — five owner-backed facts, the
+      {/* ============ 03 · THE RECORD — five owner-backed facts, the
             census's Home 2001 line (spec §2.2). Numbers computed from config
             (yearsInPractice), hours from the display constant — never
             hard-coded; no periods, sentence case. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 03 · The record</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>03</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">The record</span>
+        </p>
         <div>
           <h2>The record</h2>
           <ul className="measure mt-8">
@@ -199,14 +247,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ § 04 · CLIENT WORDS — gated on the visible tier
+      {/* ============ 04 · CLIENT WORDS — gated on the visible tier
             (spec §5.2 as amended by T7): production shows NOTHING here while
             the confirmed tier is empty; preview shows the tagged samples
             with the reserve furniture. When real quotes exist the quotes
             render with the permission note — no tags, no reserve. ============ */}
       {visibleTestimonials.length > 0 ? (
         <section className="ledger-rail pb-[var(--space-section)]">
-          <p className="rail-label">§ 04 · Client words</p>
+          <p className="rail-label rail-num">
+            <span className="rail-num-figure" data-numeric>04</span>
+            <span className="rail-num-rule" />
+            <span className="rail-num-text">Client words</span>
+          </p>
           <div>
             <h2>What clients say</h2>
             {showSampleContent ? (
@@ -244,9 +296,13 @@ export default function HomePage() {
         </section>
       ) : null}
 
-      {/* ============ § 05 · COMMON QUESTIONS ============ */}
+      {/* ============ 05 · COMMON QUESTIONS ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 05 · Common questions</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>05</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">Common questions</span>
+        </p>
         <div>
           <h2>Common questions</h2>
           <ul className="measure mt-8">
@@ -306,6 +362,14 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ============ ProfessionalService JSON-LD (T9.5) — invisible,
+           generated above from confirmed config; exactly one ld+json script
+           per page, same pattern as /faq's FAQPage payload ============ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: professionalServiceJsonLd }}
+      />
     </>
   );
 }

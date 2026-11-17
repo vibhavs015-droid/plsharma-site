@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site, services } from "@/lib/site-config";
+import { practitionerIsCa } from "@/lib/content-mode";
+import { pageMetadata } from "@/lib/page-meta";
 
-export const metadata: Metadata = {
+// CA-gated meta description (T6): the audit card is "Audit Support & Record
+// Review" while practitionerIsCa is false, so the list drops "audits" —
+// tax planning is already named further in.
+export const metadata: Metadata = pageMetadata({
   title: "Services",
-  description:
-    "Income tax filing, GST registration & compliance, audits, business registration, tax planning, TDS and bookkeeping — by P.L. Sharma And Company, Jaisalmer.",
-  alternates: { canonical: "/services" },
-};
+  description: practitionerIsCa
+    ? "Income tax filing, GST registration & compliance, audits, business registration, tax planning, TDS and bookkeeping — by P.L. Sharma And Company, Jaisalmer."
+    : "Income tax filing, GST registration & compliance, business registration, tax planning, TDS and bookkeeping — by P.L. Sharma And Company, Jaisalmer.",
+  path: "/services",
+});
 
 /* Page-aware wa.me deep link for the end-of-page band — same mechanics as
    Home's band (user-problem.md §2.3): the pre-filled message says which page
@@ -33,8 +39,9 @@ export default function ServicesPage() {
         <div>
           <div>
             <h1>
-              Income tax, GST, audits, registration — the work, in your
-              words.
+              {practitionerIsCa
+                ? "Income tax, GST, audits, registration — the work, in your words."
+                : "Income tax, GST, audit support, registration — the work, in your words."}
             </h1>
             <p className="text-lead text-ink-muted mt-3 measure">
               Six kinds of work people bring to this office. Each entry opens
@@ -44,14 +51,18 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ============ § 01 · SERVICES — six numbered ruled entries in
+      {/* ============ 01 · SERVICES — six numbered ruled entries in
            site-config order (§2 inventory). Titles, descriptions and points
            render verbatim from config; the ?service= value is the same
            title string the /book Select renders, so deep links can't drift
            from the options (page-specs §7.2). No icon tiles — icons are
            retired; the numbered rail replaces them. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 01 · Services</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>01</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">Services</span>
+        </p>
         <div>
           <h2>The work we handle</h2>
           <ul className="measure mt-8">

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site-config";
-import { showSampleContent } from "@/lib/content-mode";
+import { allowIndexing, practitionerIsCa, showSampleContent, siteUrl } from "@/lib/content-mode";
 import { SampleBanner } from "@/components/site/sample-banner";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
@@ -31,28 +31,46 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.siteUrl),
+  // The canonical host — from siteUrl (lib/content-mode.ts), the preview
+  // host until SITE_URL is set on the live one (T9.1). Canonicals, og:url
+  // and JSON-LD resolve against this.
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} — ${site.tagline}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  // "tax audit" is CA-gated like the audit card (T6) — a keyword is a claim.
   keywords: [
     "tax consultant",
     "income tax filing",
     "GST registration",
-    "tax audit",
+    ...(practitionerIsCa ? (["tax audit"] as const) : []),
     "business registration",
     "Jaisalmer",
     "Rajasthan",
   ],
+  // Site-wide indexing guard (T9.4): DEFAULT noindex/nofollow; the page-level
+  // robots exports (e.g. /testimonials) still override when indexing is on.
+  ...(allowIndexing ? {} : { robots: { index: false, follow: false } }),
+  // Fallback openGraph for any route that does not define its own — every
+  // shipped page defines one via pageMetadata(), which REPLACES this whole
+  // block (segment merge rules), so the og:image is re-declared there too.
   openGraph: {
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
     type: "website",
     locale: "en_IN",
-    url: site.siteUrl,
+    url: "/",
     siteName: site.name,
+    images: [
+      {
+        url: "/images/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.tagline}, Jaisalmer`,
+      },
+    ],
   },
 };
 

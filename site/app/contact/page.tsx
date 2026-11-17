@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/page-meta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact the office",
   description: `Visit ${site.address} — open ${site.hours[0].days}, ${site.hours[0].time}. Call or WhatsApp ${site.phone}, or email ${site.email}.`,
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 /* Page-aware wa.me deep links (user-problem.md §6): the band primary carries
  * the booking prefill with this page's name; the desk card's WhatsApp row
@@ -62,7 +63,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ============ § 01 · THE OFFICE — the desk slip: the .slip primitive
+      {/* ============ 01 · THE OFFICE — the desk slip: the .slip primitive
            from /book's precedent (tokens.md §5 first shipped instance), on
            its sand ground, ruled head "The office". Rows: phone · WhatsApp
            (question prefill) · address + the one map link · hours stated
@@ -70,7 +71,11 @@ export default function ContactPage() {
            item 4). No embedded map iframe, no booking form. ============ */}
       <section className="border-y border-line bg-sand">
         <div className="ledger-rail py-[var(--space-section)]">
-          <p className="rail-label">§ 01 · The office</p>
+          <p className="rail-label rail-num">
+            <span className="rail-num-figure" data-numeric>01</span>
+            <span className="rail-num-rule" />
+            <span className="rail-num-text">The office</span>
+          </p>
           <div>
             <div className="slip">
               <div className="slip-head">
@@ -134,11 +139,15 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ============ § 02 · BEFORE YOU COME — the walk-in welcome, sourced
+      {/* ============ 02 · BEFORE YOU COME — the walk-in welcome, sourced
            from the FAQ online answer (§6 inventory); hours stay stated, no
            live open/closed badge ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 02 · Before you come</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>02</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">Before you come</span>
+        </p>
         <div>
           <h2>Before you come</h2>
           <ul className="measure mt-8">

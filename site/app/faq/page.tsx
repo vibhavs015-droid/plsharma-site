@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { faqs, site } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/page-meta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Common questions — documents, fees, notices",
   description:
     "The questions people ask before their first message — which documents to bring, how fees work, what to do about a tax notice, online consultations and GST registration — answered plainly by P.L. Sharma And Company, Jaisalmer.",
-  alternates: { canonical: "/faq" },
-};
+  path: "/faq",
+});
 
 /* Page-aware wa.me deep links (user-problem.md §6 measurement ground truth):
  * the band primary carries the booking prefill with this page's name; the
@@ -58,7 +59,7 @@ const faqJsonLd = JSON.stringify({
 
 /* One FAQ answer, always visible (page-specs §5 — no accordion; hiding the
    fee answer behind a click is the opposite of this page's job). The number
-   runs 01–07 continuously across the three sections; the § label and the
+   runs 01–07 continuously across the three sections; the rail label and the
    entry marker are different devices (§0.2). `foot` carries the earned quiet
    links — entries 02 and 03 only (§5 CTA map). */
 function FaqEntry({
@@ -136,10 +137,14 @@ export default function FaqPage() {
         </div>
       </section>
 
-      {/* ============ § 01 · THE FIRST QUESTIONS — the decisive trio first,
+      {/* ============ 01 · THE FIRST QUESTIONS — the decisive trio first,
             owner copy verbatim, reordered per §4.2 (§5 inventory) ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 01 · The first questions</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>01</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">The first questions</span>
+        </p>
         <div>
           <h2>The first questions</h2>
           <ul className="measure mt-8">
@@ -150,9 +155,13 @@ export default function FaqPage() {
         </div>
       </section>
 
-      {/* ============ § 02 · WORKING WITH US (§5 inventory) ============ */}
+      {/* ============ 02 · WORKING WITH US (§5 inventory) ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 02 · Working with us</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>02</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">Working with us</span>
+        </p>
         <div>
           <h2>Working with us</h2>
           <ul className="measure mt-8">
@@ -163,9 +172,13 @@ export default function FaqPage() {
         </div>
       </section>
 
-      {/* ============ § 03 · FOR BUSINESS CLIENTS (§5 inventory) ============ */}
+      {/* ============ 03 · FOR BUSINESS CLIENTS (§5 inventory) ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 03 · For business clients</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>03</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">For business clients</span>
+        </p>
         <div>
           <h2>For business clients</h2>
           <ul className="measure mt-8">

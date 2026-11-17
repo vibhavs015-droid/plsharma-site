@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site, whyChooseUs } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/page-meta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "How we work",
   description:
     "Fees agreed before work begins. Deadlines kept. Your papers stay confidential. Four things you can hold P.L. Sharma And Company to.",
-  alternates: { canonical: "/why-choose-us" },
-};
+  path: "/why-choose-us",
+});
 
 /* Page-aware wa.me deep link for the end-of-page band — same mechanics as
    Home's band (user-problem.md §2.3): the pre-filled message says which page
@@ -22,7 +23,7 @@ const entryLink =
   "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
 
 /* The four way-of-working entries (§3 inventory): config titles verbatim —
-   the same four Home §02 carries, deliberately the same claims — with each
+   the same four Home 02 carries, deliberately the same claims — with each
    config description tightened to one sentence. The check-link is honest
    pointing, not decoration: it goes to /faq only where a real answer exists.
    The on-time entry gets NO link (§2.4: a statement stands; a fake link is
@@ -75,11 +76,15 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* ============ § 01 · THE WAY OF WORKING — four numbered ruled
+      {/* ============ 01 · THE WAY OF WORKING — four numbered ruled
             entries in config order, which is also the fear order:
             fee → deadline → shame → notice (§3 inventory) ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 01 · The way of working</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>01</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">The way of working</span>
+        </p>
         <div>
           <h2>The way of working</h2>
           <ul className="measure mt-8">
@@ -107,11 +112,15 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* ============ § 02 · WHAT THIS MEANS FOR YOUR CASE — the four
+      {/* ============ 02 · WHAT THIS MEANS FOR YOUR CASE — the four
             promises translated per audience; studio-written plain copy,
             no new facts, no links (the band does the ask) (§3 inventory) ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 02 · What this means for your case</p>
+        <p className="rail-label rail-num">
+          <span className="rail-num-figure" data-numeric>02</span>
+          <span className="rail-num-rule" />
+          <span className="rail-num-text">What this means for your case</span>
+        </p>
         <div>
           <h2>What this means for your case</h2>
           <ul className="measure mt-8">

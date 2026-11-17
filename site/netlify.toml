@@ -15,3 +15,17 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# ── Indexing guard (T9.4) ──────────────────────────────────────────────
+# This file deploys PREVIEW deploys only (netlify deploy --prod=false), so
+# it guards the preview host permanently: every response carries
+# X-Robots-Tag: noindex, nofollow on top of robots.txt's disallow-all and
+# the layout's noindex meta — defence in depth while the site is
+# unpublished. Going live means deploying on the real host (Vercel, per
+# DEPLOYMENT.md) with ALLOW_INDEXING=true there; the preview stays guarded
+# by this file and never inherits the production switch.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

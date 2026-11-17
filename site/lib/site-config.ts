@@ -15,8 +15,9 @@
  *  render. The preview flag is lib/content-mode.ts
  *  (SHOW_SAMPLE_CONTENT=true — OWNER PREVIEW ONLY, never set on a
  *  public deploy); every sample item renders with a visible tag.
- *  The only cross-import is that flag (a boolean, no content) from
- *  lib/content-mode.ts — needed by visibleNavLinks below.
+ *  The cross-imports from lib/content-mode.ts are flags only
+ *  (booleans — no content): showSampleContent drives visibleNavLinks,
+ *  practitionerIsCa gates the audit card and the audit claims below.
  *
  *  ⚠️ Values marked "PLACEHOLDER" must be replaced with real
  *     details before going live.
@@ -26,8 +27,8 @@
 export type Testimonial = { quote: string; name: string; area: string };
 export type TeamMember = { name: string; role: string; bio: string; photo: string };
 
-// The preview flag — a boolean, no content; client-safe (header note above).
-import { showSampleContent } from "./content-mode";
+// Mode flags — booleans only, client-safe (header note above).
+import { practitionerIsCa, showSampleContent } from "./content-mode";
 
 export const site = {
   name: "P.L. Sharma And Company",
@@ -36,8 +37,12 @@ export const site = {
   // User confirmed: the practice has been running for about 25 years → est. ~2001
   establishedYear: 2001,
   copyrightYear: 2026, // update each January (or ask the developer to automate)
-  description:
-    "P.L. Sharma And Company is a tax consultancy in Jaisalmer offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+  // CA-gated practice description (T6): "audits" is claimable only by a
+  // practising CA; until the owner confirms (practitionerIsCa), the listed
+  // area is tax planning instead. Both halves byte-verbatim.
+  description: practitionerIsCa
+    ? "P.L. Sharma And Company is a tax consultancy in Jaisalmer offering income tax filing, GST compliance, audits and business registration services to individuals and businesses."
+    : "P.L. Sharma And Company is a tax consultancy in Jaisalmer offering income tax filing, GST compliance, tax planning and business registration services to individuals and businesses.",
 
   phone: "+91 98297 71396",
   phoneHref: "+919829771396", // digits only, used for tel: links
@@ -46,11 +51,9 @@ export const site = {
   address: "109, Indira Colony, Jaisalmer, Rajasthan, India — 345001",
   mapsLink: "https://maps.app.goo.gl/Ap3EUniM15RsW7oCA", // "Open in Google Maps" link
 
-  // Live website URL — used for sitemap.xml, robots.txt, canonical links and
-  // share previews. After buying the domain either (a) set the
-  // NEXT_PUBLIC_SITE_URL env var on the host, or (b) edit this default.
-  // Recommended domain: plsharmaco.in (see DEPLOYMENT.md for options).
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://plsharmaco.in",
+  // The site URL moved to lib/content-mode.ts as `siteUrl` (T9.1) — it is a
+  // deployment flag, not confirmed content, and now defaults to the preview
+  // host until SITE_URL is set on the live host.
 
   hours: [
     { days: "Monday – Saturday", time: "10:00 AM – 7:00 PM" },
@@ -93,10 +96,19 @@ export const services = [
     icon: "receipt",
   },
   {
-    title: "Audit & Assurance",
-    description:
-      "Independent and reliable audit services that keep your books compliant and give you a clear picture of your business finances.",
-    points: ["Tax audit (44AB)", "Statutory audit", "Stock & internal audit"],
+    // CA-gated card (T6): audit ENGAGEMENTS are claimable only by a
+    // practising CA (statutory audit and s.44AB tax audit are reserved
+    // territory). While practitionerIsCa is false the card offers the
+    // owner-confirmed alternative — audit SUPPORT and record review; when
+    // the owner confirms CA status the original wording returns
+    // byte-verbatim. The other five services stay untouched.
+    title: practitionerIsCa ? "Audit & Assurance" : "Audit Support & Record Review",
+    description: practitionerIsCa
+      ? "Independent and reliable audit services that keep your books compliant and give you a clear picture of your business finances."
+      : "Preparing and reviewing your records so your books are ready — clean, complete books for you and your auditor.",
+    points: practitionerIsCa
+      ? ["Tax audit (44AB)", "Statutory audit", "Stock & internal audit"]
+      : ["Preparing books for your auditor", "Coordination with your auditor", "Ledgers and records review"],
     icon: "clipboard-check",
   },
   {
@@ -217,7 +229,12 @@ export const confirmedTeam: TeamMember[] = [
   {
     name: "Parbhati Lal Sharma",
     role: "Founder & Principal Consultant",
-    bio: "Over two decades of practice in income tax, GST, audits and compliance — known in Jaisalmer for straight advice, careful work and complete confidentiality.", // PROVISIONAL — needs the owner's real bio
+    // CA-gated like the audit card (T6): the practice list drops "audits"
+    // until the owner confirms CA status. PROVISIONAL — needs the owner's
+    // real bio either way.
+    bio: practitionerIsCa
+      ? "Over two decades of practice in income tax, GST, audits and compliance — known in Jaisalmer for straight advice, careful work and complete confidentiality."
+      : "Over two decades of practice in income tax, GST and compliance — known in Jaisalmer for straight advice, careful work and complete confidentiality.",
     photo: "father.jpg", // ✅ photo added by user
   },
 ];
