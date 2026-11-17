@@ -80,6 +80,11 @@
      0px wherever the browser exposes no inset, so every calc below degrades
      to the flat value until `viewport-fit=cover` ships (B4). */
   --header-h: 4.25rem; /* 68  */
+  /* The phones-only action bar, measured the same way: 44px anchor +
+     2 × 8px padding + 1px top rule = 61. --safe-bottom is deliberately NOT
+     part of this number — every use site adds it, so the bar's rendered
+     height and the footer's reserve can never drift apart. */
+  --bar-h: 3.8125rem; /* 61  */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
@@ -290,7 +295,7 @@
     background: var(--brass);
     color: var(--ink);
   }
-  /* Figures sit in a column: years, dates, § numbers, amounts. */
+  /* Figures sit in a column: years, dates, section numerals, amounts. */
   time,
   [data-numeric] {
     font-variant-numeric: tabular-nums;
@@ -596,24 +601,117 @@
     padding-block: 1rem;
   }
 
-  /* ── T4e: the float never sits over the page's last words ──────────────
-     The WhatsApp link is the only body-level link to wa.me (layout.tsx
-     renders it after the footer). z-40, not 50: the sticky header, the sheet
-     and every dialog must win, and none of them may be occluded by a button.
-     Insets keep it off the notch corner and the home indicator. B4 adds a
-     `.whatsapp-float` class — swap the attribute hook then. */
-  body > a[href^="https://wa.me"] {
+  /* ── T12: the sticky action bar (phones only) ──────────────────────────
+     Two actions that follow a thumb: Call (quiet, bordered) and WhatsApp
+     (the one solid). Paper ground with one --line-input rule along the top
+     (3.66:1) so the strip reads as chrome laid over the page, not as a
+     second act band — brass fill stays the band's, once per page, and an
+     always-on brass rectangle would outrank the page's own ask.
+     Breakpoint 48rem = the header's `md`: there the contact strip makes the
+     phone number persistent in the header, so Call already has a home.
+     Below it the header carries only the logo and the /book CTA, and these
+     two are the page's only persistent actions. Display is off by default
+     and switched on below 48rem — outside the query the nav must not
+     render as a stray inline strip above the footer.
+     Geometry: 44px anchor + 2 × 8px padding + 1px rule = 61 = --bar-h;
+     --safe-bottom is added to the bottom padding (so the paper ground
+     reaches the home indicator) and to the footer reserve, never inside
+     --bar-h. */
+  .sticky-action-bar {
+    display: none;
+  }
+  @media (max-width: 47.999rem) {
+    .sticky-action-bar {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 40;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      padding-block: 0.5rem calc(0.5rem + var(--safe-bottom));
+      padding-inline: max(0.75rem, var(--safe-left))
+        max(0.75rem, var(--safe-right));
+      background-color: var(--paper);
+      border-top: 1px solid var(--line-input); /* 3.66:1 paper — a real edge */
+    }
+    .sticky-action-bar > a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem; /* 44px floor, every pointer: the bar is a thumb tool */
+      padding-inline: 0.5rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      line-height: 1.25;
+      text-decoration: none;
+    }
+    /* Call: stated, not sold — an ink-tan rule and ink text on paper. */
+    .sticky-action-bar > a:first-child {
+      border-color: var(--line-input); /* 3.66:1 — the control boundary */
+      color: var(--ink); /* 12.53:1 */
+    }
+    .sticky-action-bar > a:first-child:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--brass-ink); /* 6.25:1 paper */
+      text-underline-offset: 0.3em;
+    }
+    /* WhatsApp: the page's one solid, in the site's paper-on-ink grammar. */
+    .sticky-action-bar > a:last-child {
+      background-color: var(--ink);
+      color: var(--paper); /* 12.53:1 */
+    }
+    .sticky-action-bar > a:last-child:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--brass); /* 5.17:1 on ink */
+      text-underline-offset: 0.3em;
+    }
+  }
+
+  /* ── T4e/T12: the float — one WhatsApp action per screen ───────────────
+     B4 shipped the `.whatsapp-float` hook, so the rule no longer guesses
+     from the href. z-40, not 50: the sticky header, the sheet and every
+     dialog must win, and none of them may be occluded by a button.
+     Below 48rem the bar renders on every page except /book and already
+     carries WhatsApp with the same prefill; a 56px circle 16px above it
+     would be that one action twice on a 375px screen, so the bar retires
+     the float where it exists. /book keeps its float — there the form and
+     the keyboard are the action surface, and the bar is deliberately
+     absent. `a.whatsapp-float` (0,1,1) is deliberate: the component still
+     ships `.bottom-4` / `.z-50` / `.flex`, so element + class wins without
+     `!important` and without touching component code; when B5 strips those
+     utilities the `a` can go. */
+  a.whatsapp-float {
     right: calc(1rem + var(--safe-right));
     bottom: calc(1rem + var(--safe-bottom));
     z-index: 40;
   }
-  /* Below 1296px the page container's outer margin is narrower than the
-     float's 72px footprint, so the float would cover the footer's last line.
-     Reserve its column instead of moving the button: 80px = 56px button +
-     16px inset + 8px air. Above that the margin absorbs it. */
+  @media (max-width: 47.999rem) {
+    body:has(.sticky-action-bar) a.whatsapp-float {
+      display: none;
+    }
+  }
+  /* The footer carries the bottom reserve (body padding would expose paper
+     under the ink footer). Three bands, never summed:
+       <48rem, bar present : 61 (--bar-h) + 16 air + safe-bottom
+       <81rem, no bar      : 56 float + 16 inset + 8 air + safe-bottom
+       ≥81rem              : the base `body > footer` safe-bottom alone —
+                             the page container's outer margin absorbs the
+                             float. 80.999rem is the float's 72px footprint
+                             against that margin; the bar is narrower than the
+                             float, so its band is the 48rem boundary. */
   @media (max-width: 80.999rem) {
     body > footer {
       padding-bottom: calc(5rem + var(--safe-bottom));
+    }
+  }
+  @media (max-width: 47.999rem) {
+    body:has(.sticky-action-bar) > footer {
+      padding-bottom: calc(var(--bar-h) + 1rem + var(--safe-bottom));
     }
   }
 

@@ -181,13 +181,14 @@ italic headings — emphasis is weight and colour, not italic (see above).
   nothing can climb back to 10px). Panels and plates are `rounded-none`. `rounded-full` is
   legal only on the 56px WhatsApp float.
 
-**Chrome geometry (added 17 Nov, polish A1).** Four device-chrome tokens and one measured
-height, all in `@theme`/`:root`:
+**Chrome geometry (added 17 Nov, polish A1/A2).** Six tokens: two measured heights
+(`--header-h`, `--bar-h`) and the four safe-area insets, all in `@theme`/`:root`:
 
 | Token | Value | Why |
 |---|---|---|
 | `--header-h` | `4.25rem` (68px); `6.0625rem` (97px) at ≥48rem | Measured from `header.tsx`: 40px logo + 2×14px padding = 68; the `md` contact strip (28px + 1px rule) adds 29. Feeds `scroll-padding-top` so anchored headings, the skip link and linked form fields clear the sticky bar |
-| `--safe-top` / `--safe-bottom` / `--safe-left` / `--safe-right` | `env(safe-area-inset-*, 0px)` | One name per inset so no rule repeats a raw `env()`. All resolve to 0 today — they start doing work the moment B4 ships `viewport-fit=cover` |
+| `--bar-h` | `3.8125rem` (61px) | The phones-only action bar, measured the same way: 44px anchor + 2×8px padding + 1px top rule. **Excludes `--safe-bottom` on purpose** — every use site adds it, so the bar's rendered height and the footer's reserve cannot drift apart (`docs/design/polish/a2-notes.md` §1) |
+| `--safe-top` / `--safe-bottom` / `--safe-left` / `--safe-right` | `env(safe-area-inset-*, 0px)` | One name per inset so no rule repeats a raw `env()`. All resolve to 0 until `viewport-fit=cover` (shipped in B4) exposes them |
 
 `html` carries `scroll-padding-top: calc(var(--header-h) + var(--safe-top) + 1.25rem)`; fields
 carry `scroll-margin-block-end: calc(5rem + var(--safe-bottom))` so a focused input never lands
@@ -195,6 +196,27 @@ under the float. `body > header` pads `--safe-top` and both header and footer pa
 `--safe-left`/`--safe-right`, while `.ledger-rail` uses `max(var(--gutter), var(--safe-*))` —
 so the ink bleeds edge to edge but no word sits under a landscape notch. The element selectors
 need no markup change: layout.tsx renders `<header>` and `<footer>` as body's direct children.
+
+**The action bar (T12, added 17 Nov A2).** `.sticky-action-bar` is fixed to the bottom, full
+width, **below 48rem only** — the header's own `md`, where the contact strip makes the phone
+number persistent, so Call already has a home. Above 48rem `display: none`; the bar is switched
+on inside the `max-width: 47.999rem` query rather than off outside it, so it can never render as
+a stray inline strip above the footer. Paper ground, one `--line-input` top rule (3.66), no
+radius, no shadow, `z-index: 40` (below the z-50 header/sheet, above page content). Two equal
+anchors, both 44px tall at every pointer: **Call** quiet — `--line-input` border (3.66), `--ink`
+text (12.53), `--brass-ink` hover underline (6.25); **WhatsApp** solid — `--ink` fill, `--paper`
+text (12.53), `--brass` hover underline (5.17). Brass fill remains the act band's: a permanent
+brass rectangle would outrank the page's one ask.
+
+**Bottom reserves — three bands, never summed.** The footer carries them (body padding would
+expose paper under the ink footer): below 48rem with the bar, `calc(var(--bar-h) + 1rem +
+var(--safe-bottom))` = 77 + safe; below 81rem without the bar, `calc(5rem + var(--safe-bottom))`
+= 80 + safe (the float's 56px + 16px inset + 8px air); at ≥81rem the base `--safe-bottom` alone,
+because the container's outer margin absorbs the float. The `body:has(.sticky-action-bar)` rule
+out-ranks the flat band, and `/book` — no bar, float kept — stays on the float reserve. The float
+retires where the bar renders (`body:has(.sticky-action-bar) a.whatsapp-float { display: none }`
+below 48rem): the bar already carries WhatsApp with the same prefill, and one action twice on a
+375px screen is noise, not reach.
 
 ---
 
@@ -228,7 +250,7 @@ colour and state changes still complete instantly, so users never lose feedback.
 | Class | What it is | Rules the engineer must not break |
 |---|---|---|
 | `.ledger-rail` | Container + margin rail in one grid. 180px rail at ≥64rem, 220px at ≥80rem, single column (marker above content) below. Carries `max-w-page`, `--gutter` padding. | Content goes in the second grid cell. One rail per page section. |
-| `.rail-label` | The 12.5px tracked uppercase marker (Inter 500, tabular, `text-wrap: balance`), declared as `:where(.rail-label)` — zero specificity, so any `text-*` utility on the marker wins the colour and the rail picks its surface token; the default stays `--ink-muted` (7.10) for markers that name no colour. Shipped markers: `text-brass-ink` on paper (6.25) and `text-brass` on ink (5.17). Used for section numerals, dates, plate captions. **The `§ NN · Title` form retires in B3** — numbered markers become `01 — Services` via `.rail-num` (below). | Never below 12px; never `--brass` on paper; a marker on an ink surface must carry `text-brass` or `text-paper` (the muted default is a paper value — 1.77:1 on ink). |
+| `.rail-label` | The 12.5px tracked uppercase marker (Inter 500, tabular, `text-wrap: balance`), declared as `:where(.rail-label)` — zero specificity, so any `text-*` utility on the marker wins the colour and the rail picks its surface token; the default stays `--ink-muted` (7.10) for markers that name no colour. Shipped markers: `text-brass-ink` on paper (6.25) and `text-brass` on ink (5.17). Used for section numerals, dates, plate captions. **The `§ NN · Title` form retired in B3** — numbered markers are `01 — Services` via `.rail-num` (below), and the swap is live on all eight pages. | Never below 12px; never `--brass` on paper; a marker on an ink surface must carry `text-brass` or `text-paper` (the muted default is a paper value — 1.77:1 on ink). |
 | `.ruled-entry` | The card replacement: 1px `--line` top rule, 0 radius, transparent, `--space-entry` padding, brass hairline on hover/focus-within, closing rule on `:last-child`. | No shadow, no background fill, no radius. Each entry owns exactly one heading. |
 | `.act-band` | Ink surface, paper text, 1px brass top rule, 0 radius. One per page, at the end. | Contains the one primary CTA + one quiet phone link. Do not stack two bands. |
 | `.placeholder-mark` | Dashed `--line` underline + `--brass-ink` 12.5px uppercase marker for pending content. Convention: `[PLACEHOLDER — awaiting real testimonial from owner]`. | Brass-ink 6.25 paper / 5.55 sand. The dashed rule is decoration; the text carries the meaning. Never invent a name or a star. |
@@ -236,6 +258,8 @@ colour and state changes still complete instantly, so users never lose feedback.
 | `.slip-head` | Ruled head row inside `.slip`, baseline-aligned, closing hairline. **Title-only by shipped decision** (Orchestrator, DECISION_LOG 15 Nov): no slip number. | No `No.` slot — an invented number on a web form is fiction, and a ruled blank reads as a broken field. If a flow ever needs an office-assigned reference it arrives after confirmation, from the firm, as real data. |
 | `.btn-primary` | 44px min height, 2px radius, Inter 500 15px, no shadow. **On paper: ink fill + paper text (12.53). Inside `.act-band`: brass fill + ink text (5.17).** Hover adds a 2px brass/ink underline and never changes the fill. Focus = the shared 2px `--ring` outline (see §5.3), never an underline. Disabled: sand fill + ink-muted text (6.31). | Never brass fill on paper (2.43 boundary). Never paper text on brass (2.42). Never opacity-disabled. Never a second focus cue. |
 | `.btn-quiet` | The secondary path (phone, mailto, "prefer to talk first"): inherits colour, 1px underline → 2px on hover, brass-ink (paper) / brass (ink) underline; focus = the shared outline. | Never given a fill; never given equal visual weight to `.btn-primary`. |
+| `.sticky-action-bar` | **The phones-only action bar (A2, T12):** fixed bottom, switched on below 48rem only, paper ground + 1px `--line-input` top rule (3.66), no radius, no shadow, `z-index: 40`. Two equal 44px anchors, 8px gap, 8px block padding; `--safe-bottom` is added as padding, never inside `--bar-h`. Call = quiet (`--line-input` border 3.66, `--ink` text 12.53, `--brass-ink` hover underline 6.25); WhatsApp = solid (`--ink` fill, `--paper` text 12.53, `--brass` hover underline 5.17). | Markup stays two bare anchors in `<nav aria-label="Quick actions">` — no classes, no icons. The bar renders on the 8 pages that include it and must never render on `/book`. Never brass fill (that is the act band's), never a shadow, never above z-50. Moving the 48rem boundary invalidates both `--header-h`'s `md` assumption and the footer reserve. |
+| `.whatsapp-float` | The one floating action: 56px circle (`rounded-full` is legal here and nowhere else), 16px + safe inset, `z-index: 40`. Visible at every width except below 48rem on pages that render the bar (`body:has(.sticky-action-bar)`), where the bar already carries the same WhatsApp action. | Never above z-50 (header, sheet, dialogs). `/book` keeps it — that page has no bar and the form's send button is the only other WhatsApp path. The component's `.bottom-4` / `.z-50` utilities are overridden by `a.whatsapp-float` (0,1,1); strip them at the next component pass. |
 | `.measure` | `max-width: 66ch`. | For body copy inside wide columns. |
 | `.rail-num` + `.rail-num-figure` / `.rail-num-rule` / `.rail-num-text` | **The section numeral (A1, T5):** the owner's `01 / Services` with the slash replaced by a 20px brass hairline. Flex row, no wrap; figure in `--ink` (12.53 paper, `--paper` 12.53 on ink via `.act-band`), rule = 1px `--brass` (the mark), words wrap inside their own column. Markup is real text — no `::before`/`attr()`, so the number is announced and indexed. | Use `.rail-num` **together with** `.rail-label` (the type comes from the label); never on an unnumbered marker; never add a literal `/`; keep the figure two digits and `data-numeric`. Contract: `docs/design/polish/a1-notes.md` §1. |
 | `.ruled-entry:has(> p:only-child)` | One-fact entries (Home §03's five record lines, /about §02's three promises) drop to 16px block padding — the same rule at ledger density instead of a 360px stack of air. | Only fires on an entry whose **only** child is a `<p>`; entries with a heading or a wrapper keep `--space-entry`. |
