@@ -167,3 +167,57 @@ first backlog carried into the build phases.
 - Delegations: (who, what, when)
 - Critic verdicts: (APPROVE/REJECT + round count)
 ```
+
+## Phase 4 — Polish pass (owner-approved, 17 Nov 2026) — IN PROGRESS
+
+Owner's 17 Nov message = the approval for THIS pass. 13 tasks (T0–T13), run serially
+in batches, **one commit per task on branch `polish-pass`** (created from main's
+`8f10ae1` + chore `a64d8bf`; main pointer untouched; **no push, no deploy**).
+Site language stays English. **Never invent qualifications, awards, statistics,
+client counts, memberships or years beyond 2001** — sample content exists ONLY
+behind the T0 preview flag with visible SAMPLE tags.
+
+- **Goal:** execute the owner's 13-task polish list at production quality through
+  the studio pipeline.
+- **Inputs:** owner task list (17 Nov); STUDIO_CHARTER; KNOWN_ISSUES; DECISION_LOG;
+  the site as of `8f10ae1` (+ preview tooling chore `a64d8bf`).
+- **Outputs:** `docs/design/CHANGELOG_POLISH.md`, `OWNER_CHECKLIST.md` (root),
+  `docs/design/LINK_CHECK.md`, updated ledgers, critic review, per-task commits.
+- **File scope this phase (binding):**
+  - `frontend-engineer`: `site/**` source (app, components, lib, public,
+    next.config, netlify.toml) + appends to `OWNER_CHECKLIST.md`. NOT
+    `site/app/globals.css` (art-director's) and NOT tests.
+  - `art-director`: `site/app/globals.css` + `docs/design/phase-2/tokens.md` +
+    `docs/design/polish/**` notes.
+  - `qa-engineer`: `site/tests/**` + `docs/design/LINK_CHECK.md` (sanctioned
+    exception, logged in DECISION_LOG) + `docs/design/screenshots/polish/**` +
+    evidence files under `docs/design/polish-evidence/**`.
+  - `ux-strategist`: `docs/design/polish/**`.
+  - `a11y-checker`, `perf-seo`, `critic`: reports only (critic →
+    `docs/design/critic/**`).
+  - Orchestrator: PHASE_STATUS, DECISION_LOG, IMPLEMENTATION_LOG, KNOWN_ISSUES,
+    PROJECT-NOTES, CHANGELOG_POLISH, OWNER_CHECKLIST.
+- **Delegations (serial where files overlap):**
+  - B1 engineer: T0 sample-content tiers + banner + tag (runs NOW, parallel with
+    qa crawl + ux spec — no servers/builds for the engineer while qa owns
+    ports/.next; tsc + lint only).
+  - qa: T8 BEFORE-crawl of the local build + deployed preview (owns :3000/:3200
+    and `.next`).
+  - ux-strategist: wording spec for T1/T2/T3/T7/T11 (docs only).
+  - Then B2 engineer (T1/2/3/7/11) → art-director CSS pass A1 (T4/5/12 CSS
+    incl. sample-banner + nowrap-phone + CTA stacking) → B3 engineer (T6/9/10)
+    → B4 engineer (T12 markup/manifest/bar) → art-director A2 (bar + final) →
+    B5 engineer (T8 404 page + fixes) → qa test syncs per batch → T13 verify:
+    qa (format/lint/build/tests) + a11y (axe) + perf-seo (Lighthouse
+    foreground) + screenshots (360/390/430/768/1024/1440 × 9 pages incl.
+    /privacy) → critic review (≤3 rounds, then Orchestrator decides + logs).
+- **Exit criteria:** every task DONE or honestly BLOCKED with reason; build
+  exit 0; lint 0/0; tsc 0; unit + e2e green (strings updated); axe 0 on ALL
+  pages incl. /privacy; sample strings provably absent from the production
+  build output (qa guard); sample mode shows tags + top banner; screenshots at
+  the 6 widths for all 9 pages; critic APPROVE; CHANGELOG_POLISH complete;
+  OWNER_CHECKLIST complete (CA status, reshoot, testimonials+permission, team
+  photos/roles, domain, domain email, privacy review, real-phone tests,
+  quiet-machine LHCI).
+- **Commit discipline:** the Orchestrator commits after each task (engineers do
+  not run git). Commit messages reference the task numbers.
