@@ -11,7 +11,7 @@ pending), netlify CLI (preview only) — all local, no paid services.
 
 | # | Task | Status | Commit(s) |
 |---|---|---|---|
-| 0 | Sample-content switch (`SHOW_SAMPLE_CONTENT`, default false) | DONE (qa build-level guard in flight) | `c48a861` |
+| 0 | Sample-content switch (`SHOW_SAMPLE_CONTENT`, default false) | DONE — qa runtime check staged (memory window) | `c48a861` · `71bd77f` |
 | 1 | Hero bio + caption below photo + halo tone-down + phone nowrap / CTA stack | pending | — |
 | 2 | "The record" fact band | pending | — |
 | 3 | Wording replacements + jargon sweep | pending | — |
@@ -42,7 +42,7 @@ pending), netlify CLI (preview only) — all local, no paid services.
 **Evidence**
 - `npx tsc --noEmit` → 0 · `npm run lint` → 0/0 (after adding `site/.netlify/**` to eslint globalIgnores — qa's deploy artifacts had exploded lint to 4890 problems, none in source; logged in DECISION_LOG).
 - Honesty greps: invented names 0 hits in `site/{app,components,lib}`; sample strings confined to `sample-content.ts`, the two component literals, and comments/env names.
-- qa (in flight): production sample-string guard (6 strings × 8 routes vs HTML+RSC), one `SHOW_SAMPLE_CONTENT=true` preview-build positive check (banner + tags + quote), tier-aware migration of `about.spec.ts` / `testimonials.spec.ts`. Result recorded here when it lands.
+- qa sync committed (`71bd77f`): `about.spec.ts` / `testimonials.spec.ts` migrated to the tier imports (html+RSC-level absence sweeps) and NEW `sample-content.spec.ts` — the owner-required production guard (6 leak strings × 8 routes vs served HTML + RSC payload, plus zero `.sample-banner`/`.sample-tag` DOM nodes). **Runtime run STAGED:** the production build is temporarily blocked by a machine memory squeeze (owner applications hold ~14 GB; 4 build attempts OOM'd at the TypeScript stage; standalone `tsc` passes → not a product bug). Runs at the next build window (post-B2 qa sync or T13), together with the `SHOW_SAMPLE_CONTENT=true` preview-build positive check.
 
 ## TASK 8 — PARTIAL — before-half done (commit `e2f712d`)
 

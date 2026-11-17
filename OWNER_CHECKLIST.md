@@ -57,6 +57,10 @@ item. Created 17 Nov 2026 (polish pass).
 - [ ] **whyChooseUs descriptions tightened** — "agreed-upon" → "agreed";
       "Strict deadlines discipline — returns and filings are completed well before
       due dates." → "Returns and filings are completed well before their due dates."
+- [ ] **/testimonials meta description (lean page)** — `Real client words —
+      published with permission, and not before. Nothing is invented: P.L. Sharma
+      And Company has practised in Jaisalmer since 2001.` (follows from removing
+      the page's record band under TASK 7; the h1 is unchanged).
 
 ## Launch gates (charter)
 

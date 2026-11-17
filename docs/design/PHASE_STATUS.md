@@ -270,3 +270,25 @@ behind the T0 preview flag with visible SAMPLE tags.
   testimonials + principal quote), then the default-state rebuild + full suite.
   **B2 (T1/2/3/7/11 per spec) launches the moment qa lands** — the engineer
   must not touch `site/**` while qa's builds run.
+- **T0 test sync COMMITTED (`71bd77f`):** about/testimonials specs migrated
+  (confirmed*/visible* imports, html+RSC-level absence sweeps), NEW
+  `sample-content.spec.ts` = the 8-route production guard (6 leak strings vs
+  HTML + RSC payload + zero `.sample-banner`/`.sample-tag` nodes). tsc 0.
+  **Runtime verification STAGED, not run:** 4 build attempts died at the
+  TypeScript stage with V8 OOM (`NewSpace::EnsureCurrentCapacity`, exit 134) —
+  the machine has ~1.5 GB free commit while the owner's apps (chrome ~1.2 GB,
+  five java processes, opencode-cli) hold the rest; standalone tsc passes and
+  TASK 8 built this morning → **not a product bug**. Ready-to-run plan staged
+  in the qa session (build → serve → 3 specs → full suite, expect 132 e2e /
+  5 unit → `SHOW_SAMPLE_CONTENT=true` probe → default restore). Runs at the
+  next build window (post-B2 qa sync or T13).
+- **DECISION (DECISION_LOG): TASK 7 structure override** — the owner's
+  keep-only list is implemented literally: `/testimonials` §02 + §03 REMOVED
+  (spec §3.1 rows 1–5, §3.3, §3.4 rows 8–9 mooted; new lean-page meta string),
+  Home §04 hidden entirely in production, nav link gated via `visibleNavLinks`
+  (client-safe: content-mode flag only). ux amendment appended to the spec (§8).
+- **B2 engineer LAUNCHED** (session reused): T1 bio + caption moves + polished
+  founder plates (sharp, new files only) + phone-number markup hooks; T2 record
+  band (`yearsInPractice` + hours constant); T3/T11 spec rows + the SENT-tel:
+  fix; T7 restructure per the override. NO builds/servers (memory squeeze) —
+  tsc + source eslint only.
