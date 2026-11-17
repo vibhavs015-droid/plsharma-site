@@ -14,7 +14,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { site, navLinks } from "@/lib/site-config";
+import { site, visibleNavLinks } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 function Logo({ onDark = true }: { onDark?: boolean }) {
@@ -59,7 +59,8 @@ export function SiteHeader() {
               className="flex items-center gap-1.5 transition-[color,background-color,border-color] hover:text-[color:var(--accent)]"
             >
               <Phone className="size-3.5" aria-hidden />
-              Call the office · {site.phone}
+              Call the office ·{" "}
+              <span className="phone-number">{site.phone}</span>
             </a>
             <a
               href={`mailto:${site.email}`}
@@ -77,7 +78,7 @@ export function SiteHeader() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-7 lg:flex">
-          {navLinks.map((link) => (
+          {visibleNavLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -123,7 +124,7 @@ export function SiteHeader() {
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 px-4">
-                {navLinks.map((link) => (
+                {visibleNavLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
                     <Link
                       href={link.href}

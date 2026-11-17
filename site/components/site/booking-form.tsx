@@ -131,7 +131,8 @@ export function BookingForm() {
         <p className="text-body text-ink-muted mt-3">
           Didn&apos;t open?{" "}
           <a href={`tel:${site.phoneHref}`} className={quietLink}>
-            Call us directly at {site.phone}
+            Call the office ·{" "}
+            <span className="phone-number">{site.phone}</span>
           </a>
         </p>
         <button type="button" onClick={reset} className="btn-quiet mt-6">
@@ -248,9 +249,7 @@ export function BookingForm() {
         </div>
 
         <div className="grid gap-2 sm:col-span-2">
-          <Label htmlFor="message">
-            Briefly describe your requirement (optional)
-          </Label>
+          <Label htmlFor="message">What you need help with (optional)</Label>
           <Textarea
             id="message"
             rows={4}

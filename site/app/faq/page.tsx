@@ -129,7 +129,7 @@ export default function FaqPage() {
             </p>
             <p className="text-body mt-4">
               <a href={questionHref} className={entryLink} target="_blank" rel="noopener noreferrer">
-                A question that isn&apos;t here? Send it — a person replies.
+                Something else on your mind? Send it — a person replies.
               </a>
             </p>
           </div>
@@ -193,7 +193,8 @@ export default function FaqPage() {
                 Book a consultation on WhatsApp
               </a>
               <a href={`tel:${site.phoneHref}`} className="btn-quiet">
-                Call the office · {site.phone}
+                Call the office ·{" "}
+                <span className="phone-number">{site.phone}</span>
               </a>
             </div>
           </div>

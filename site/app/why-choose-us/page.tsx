@@ -5,7 +5,7 @@ import { site, whyChooseUs } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "How we work",
   description:
-    "Fees agreed before work begins. Deadlines kept. Your papers stay confidential. Four things you can hold P.L. Sharma And Company to — and where to check each.",
+    "Fees agreed before work begins. Deadlines kept. Your papers stay confidential. Four things you can hold P.L. Sharma And Company to.",
   alternates: { canonical: "/why-choose-us" },
 };
 
@@ -32,7 +32,7 @@ const entryLink =
 const wayOfWorking = [
   {
     title: whyChooseUs[2].title,
-    body: "Clear, agreed-upon fees before work begins — no hidden charges, no surprises.",
+    body: "Clear, agreed fees before work begins — no hidden charges, no surprises.",
     check: { label: "Read the fee answer", href: "/faq" },
   },
   {
@@ -69,7 +69,7 @@ export default function WhyChooseUsPage() {
               stay confidential.
             </h1>
             <p className="text-lead text-ink-muted mt-3 measure">
-              Four things you can hold us to — and where to check each.
+              Four things you can hold us to.
             </p>
           </div>
         </div>
@@ -152,7 +152,8 @@ export default function WhyChooseUsPage() {
                 Book a consultation on WhatsApp
               </a>
               <a href={`tel:${site.phoneHref}`} className="btn-quiet">
-                Call the office · {site.phone}
+                Call the office ·{" "}
+                <span className="phone-number">{site.phone}</span>
               </a>
             </div>
           </div>

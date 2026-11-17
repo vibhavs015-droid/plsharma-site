@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { LogoMark } from "@/components/site/logo-mark";
-import { site, navLinks, services } from "@/lib/site-config";
+import { site, visibleNavLinks, services } from "@/lib/site-config";
 
 export function SiteFooter() {
   return (
@@ -18,9 +18,8 @@ export function SiteFooter() {
             <span className="font-heading text-base font-bold">{site.name}</span>
           </div>
           <p className="text-sm leading-relaxed text-primary-foreground/80">
-            Trusted tax consultancy serving individuals and businesses
-            since {site.establishedYear}. Accurate filing, honest advice,
-            complete confidentiality.
+            Tax consultancy serving individuals and businesses in Jaisalmer.
+            Accurate filing, honest advice, complete confidentiality.
           </p>
         </div>
 
@@ -30,7 +29,7 @@ export function SiteFooter() {
             Quick links
           </h3>
           <ul className="space-y-2.5 text-sm text-primary-foreground/80">
-            {navLinks.map((link) => (
+            {visibleNavLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="hover:text-white hover:underline">
                   {link.label}
@@ -51,7 +50,7 @@ export function SiteFooter() {
             Services
           </h3>
           <ul className="space-y-2.5 text-sm text-primary-foreground/80">
-            {services.slice(0, 5).map((service) => (
+            {services.map((service) => (
               <li key={service.title}>
                 <Link href="/services" className="hover:text-white hover:underline">
                   {service.title}
@@ -78,7 +77,8 @@ export function SiteFooter() {
             <li className="flex gap-2.5">
               <Phone className="mt-0.5 size-4 shrink-0 text-[color:var(--accent)]" aria-hidden />
               <a href={`tel:${site.phoneHref}`} className="hover:text-white hover:underline">
-                Call the office · {site.phone}
+                Call the office ·{" "}
+                <span className="phone-number">{site.phone}</span>
               </a>
             </li>
             <li className="flex gap-2.5">
@@ -90,9 +90,11 @@ export function SiteFooter() {
             <li className="flex gap-2.5">
               <Clock className="mt-0.5 size-4 shrink-0 text-[color:var(--accent)]" />
               <span>
-                Mon to Sat: 10:00 AM to 7:00 PM
-                <br />
-                Sunday: Closed
+                {site.hours.map((h) => (
+                  <span key={h.days} className="block">
+                    {h.days} · {h.time}
+                  </span>
+                ))}
               </span>
             </li>
           </ul>

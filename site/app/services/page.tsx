@@ -101,7 +101,7 @@ export default function ServicesPage() {
               before the band. The former "not sure which service?" panel is
               deleted — its job moved into the band sentence below. */}
           <Link href="/faq" className="btn-quiet mt-8">
-            Questions about documents, fees or notices — the common questions
+            Documents, fees, notices — the common questions
           </Link>
         </div>
       </section>
@@ -126,7 +126,8 @@ export default function ServicesPage() {
                 Book a consultation on WhatsApp
               </a>
               <a href={`tel:${site.phoneHref}`} className="btn-quiet">
-                Call the office · {site.phone}
+                Call the office ·{" "}
+                <span className="phone-number">{site.phone}</span>
               </a>
             </div>
           </div>

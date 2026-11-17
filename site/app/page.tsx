@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { site, services, whyChooseUs, faqs } from "@/lib/site-config";
-import { visibleTeam } from "@/lib/sample-content";
+import { site, services, whyChooseUs, faqs, yearsInPractice, hoursCompact } from "@/lib/site-config";
+import { visibleTeam, visibleTestimonials } from "@/lib/sample-content";
+import { showSampleContent } from "@/lib/content-mode";
+import { SampleTag } from "@/components/site/sample-tag";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -46,10 +48,7 @@ export default function HomePage() {
            one plain sentence, the one action, the principal's plate ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
         <p className="rail-label">
-          {site.shortName} · {site.tagline} · Jaisalmer ·{" "}
-          <span className="text-brass-ink">
-            Since {site.establishedYear}
-          </span>
+          {site.shortName} · {site.tagline} · Jaisalmer
         </p>
         <div>
           <div>
@@ -73,14 +72,17 @@ export default function HomePage() {
                     href={`tel:${site.phoneHref}`}
                     className="btn-quiet"
                   >
-                    Call the office · {site.phone}
+                    Call the office ·{" "}
+                    <span className="phone-number">{site.phone}</span>
                   </a>
                 </div>
-                <p className="mt-6 text-body text-ink-muted">
-                  You speak to the principal himself, not a call centre.
-                </p>
-                <p className="mt-1 text-meta text-ink-muted">
-                  The first consultation is free.
+                <p className="text-body text-ink-muted mt-6">
+                  {founder.name} has run his tax practice in Jaisalmer since
+                  2001. Individuals and businesses come to him with the
+                  everyday work of Indian tax: a return to file, a GST
+                  registration, a notice that needs a reply. He handles each
+                  case himself, agrees the fee before work begins, and keeps
+                  your papers confidential. The first consultation is free.
                 </p>
               </div>
 
@@ -92,12 +94,8 @@ export default function HomePage() {
                 href="/about"
                 className="w-fit max-w-[300px] shrink-0"
               >
-                <p className="rail-label">{founder.name}</p>
-                <p className="rail-label mt-1">
-                  Principal Consultant · Jaisalmer · Since {site.establishedYear}
-                </p>
                 <Image
-                  src="/images/founder-plate.webp"
+                  src="/images/founder-plate-polished.webp"
                   alt=""
                   width={300}
                   height={375}
@@ -105,8 +103,12 @@ export default function HomePage() {
                   priority
                   fetchPriority="high"
                   unoptimized
-                  className="mt-3 block h-auto w-full"
+                  className="block h-auto w-full"
                 />
+                <p className="rail-label mt-3">{founder.name}</p>
+                <p className="rail-label mt-1">
+                  Principal Consultant · Jaisalmer
+                </p>
                 <span aria-hidden className="mt-3 block h-px w-full bg-line" />
               </Link>
             </div>
@@ -167,34 +169,80 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ § 03 · THE RECORD — the one honest stat, as a ledger line ============ */}
+      {/* ============ § 03 · THE RECORD — five owner-backed facts, the
+            census's Home 2001 line (spec §2.2). Numbers computed from config
+            (yearsInPractice), hours from the display constant — never
+            hard-coded; no periods, sentence case. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
         <p className="rail-label">§ 03 · The record</p>
-        <div className="ruled-entry">
-          <h2>
-            <span data-numeric>Since 2001</span> — 25+ Years in Practice in
-            Jaisalmer
-          </h2>
+        <div>
+          <h2>The record</h2>
+          <ul className="measure mt-8">
+            <li className="ruled-entry">
+              <p className="text-body" data-numeric>Since 2001</p>
+            </li>
+            <li className="ruled-entry">
+              <p className="text-body" data-numeric>
+                {yearsInPractice} years in practice
+              </p>
+            </li>
+            <li className="ruled-entry">
+              <p className="text-body" data-numeric>{hoursCompact}</p>
+            </li>
+            <li className="ruled-entry">
+              <p className="text-body">First consultation free</p>
+            </li>
+            <li className="ruled-entry">
+              <p className="text-body">Office in Jaisalmer</p>
+            </li>
+          </ul>
         </div>
       </section>
 
-      {/* ============ § 04 · CLIENT WORDS — pending content, marked not faked ============ */}
-      <section className="ledger-rail pb-[var(--space-section)]">
-        <p className="rail-label">§ 04 · Client words</p>
-        <div>
-          <h2>What clients say</h2>
-          <div className="ruled-entry measure mt-8">
-            <p className="placeholder-mark">
-              [PLACEHOLDER — awaiting real testimonial from owner]
-            </p>
-            <p className="text-body text-ink-muted mt-4">
-              Real client words will be published here, with the client&apos;s
-              permission, once they arrive. Until then this entry stays empty on
-              purpose — we show only what we can stand behind.
-            </p>
+      {/* ============ § 04 · CLIENT WORDS — gated on the visible tier
+            (spec §5.2 as amended by T7): production shows NOTHING here while
+            the confirmed tier is empty; preview shows the tagged samples
+            with the reserve furniture. When real quotes exist the quotes
+            render with the permission note — no tags, no reserve. ============ */}
+      {visibleTestimonials.length > 0 ? (
+        <section className="ledger-rail pb-[var(--space-section)]">
+          <p className="rail-label">§ 04 · Client words</p>
+          <div>
+            <h2>What clients say</h2>
+            {showSampleContent ? (
+              <div className="ruled-entry measure mt-8">
+                <p className="placeholder-mark">
+                  [PLACEHOLDER — awaiting real testimonial from owner]
+                </p>
+                <p className="text-body text-ink-muted mt-4">
+                  Real client words will be published with the client&apos;s
+                  permission — until then this entry stays empty on purpose.
+                </p>
+                <p className="mt-4">
+                  <Link href="/testimonials" className={entryLink}>
+                    How we handle client words
+                  </Link>
+                </p>
+              </div>
+            ) : (
+              <p className="text-body text-ink-muted mt-4">
+                Shared with the client&apos;s permission.
+              </p>
+            )}
+            <ul className="measure mt-8">
+              {visibleTestimonials.map((t) => (
+                <li key={t.area} className="ruled-entry">
+                  <p className="text-body">“{t.quote}”</p>
+                  <p className="rail-label mt-2">
+                    {t.name} · {t.area}{" "}
+                    {showSampleContent ? <SampleTag /> : null}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {/* ============ § 05 · COMMON QUESTIONS ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
@@ -251,7 +299,8 @@ export default function HomePage() {
                 href={`tel:${site.phoneHref}`}
                 className="btn-quiet"
               >
-                Call the office · {site.phone}
+                Call the office ·{" "}
+                <span className="phone-number">{site.phone}</span>
               </a>
             </div>
           </div>

@@ -55,7 +55,8 @@ export default function BookPage() {
             <li className="ruled-entry">
               <p className="text-body">
                 <a href={`tel:${site.phoneHref}`} className={entryLink}>
-                  Call the office · {site.phone}
+                  Call the office ·{" "}
+                  <span className="phone-number">{site.phone}</span>
                 </a>
               </p>
             </li>

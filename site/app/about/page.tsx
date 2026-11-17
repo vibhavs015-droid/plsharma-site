@@ -49,15 +49,12 @@ export default function AboutPage() {
               {/* Founder plate: the same interim graded crop as the Home hero
                   (tokens.md §7, acceptance-tested; reshoot #1a pending) —
                   never raw father.jpg, no arch, no circle. Not a link here:
-                  this is /about itself. The caption rows beside it carry the
+                  this is /about itself. The caption rows below it carry the
                   facts, so the image is decorative to assistive tech (alt=""),
                   as on Home. */}
               <figure className="w-fit max-w-[300px] shrink-0">
-                <p className="rail-label">{founder.name}</p>
-                <p className="rail-label mt-1">Principal Consultant · Jaisalmer</p>
-                <p className="rail-label mt-1">Since {site.establishedYear}</p>
                 <Image
-                  src="/images/founder-plate.webp"
+                  src="/images/founder-plate-polished.webp"
                   alt=""
                   width={300}
                   height={375}
@@ -65,8 +62,10 @@ export default function AboutPage() {
                   priority
                   fetchPriority="high"
                   unoptimized
-                  className="mt-3 block h-auto w-full"
+                  className="block h-auto w-full"
                 />
+                <p className="rail-label mt-3">{founder.name}</p>
+                <p className="rail-label mt-1">Principal Consultant · Jaisalmer</p>
                 <span aria-hidden className="mt-3 block h-px w-full bg-line" />
               </figure>
             </div>
@@ -87,11 +86,9 @@ export default function AboutPage() {
                 Since {site.establishedYear} · {site.stats[0].label}
               </p>
               <p className="text-body text-ink-muted mt-3">
-                The office opened in Jaisalmer in 2001 and has been here
-                since. The work is the everyday work of a tax office: income
-                tax returns and notices, GST registration and returns,
-                audits, business registrations, tax planning, TDS and
-                bookkeeping.
+                The work is the everyday work of a tax office: income tax
+                returns and notices, GST registration and returns, audits,
+                business registrations, tax planning, TDS and bookkeeping.
               </p>
               <p className="mt-3">
                 <Link href="/services" className={entryLink}>
@@ -194,7 +191,8 @@ export default function AboutPage() {
                 Book a consultation on WhatsApp
               </a>
               <a href={`tel:${site.phoneHref}`} className="btn-quiet">
-                Call the office · {site.phone}
+                Call the office ·{" "}
+                <span className="phone-number">{site.phone}</span>
               </a>
             </div>
           </div>

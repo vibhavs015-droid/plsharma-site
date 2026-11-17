@@ -80,7 +80,7 @@ export default function ContactPage() {
                 <DeskRow label="Call the office">
                   <p className="text-body">
                     <a href={`tel:${site.phoneHref}`} className={entryLink}>
-                      {site.phone}
+                      <span className="phone-number">{site.phone}</span>
                     </a>
                   </p>
                 </DeskRow>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                       className={entryLink}
                       aria-label={`WhatsApp · ${site.phone}`}
                     >
-                      {site.phone}
+                      <span className="phone-number">{site.phone}</span>
                     </a>
                   </p>
                 </DeskRow>
@@ -173,7 +173,8 @@ export default function ContactPage() {
                 Book a consultation on WhatsApp
               </a>
               <a href={`tel:${site.phoneHref}`} className="btn-quiet">
-                Call the office · {site.phone}
+                Call the office ·{" "}
+                <span className="phone-number">{site.phone}</span>
               </a>
             </div>
           </div>

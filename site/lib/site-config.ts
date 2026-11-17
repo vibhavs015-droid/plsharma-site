@@ -15,6 +15,8 @@
  *  render. The preview flag is lib/content-mode.ts
  *  (SHOW_SAMPLE_CONTENT=true — OWNER PREVIEW ONLY, never set on a
  *  public deploy); every sample item renders with a visible tag.
+ *  The only cross-import is that flag (a boolean, no content) from
+ *  lib/content-mode.ts — needed by visibleNavLinks below.
  *
  *  ⚠️ Values marked "PLACEHOLDER" must be replaced with real
  *     details before going live.
@@ -24,6 +26,9 @@
 export type Testimonial = { quote: string; name: string; area: string };
 export type TeamMember = { name: string; role: string; bio: string; photo: string };
 
+// The preview flag — a boolean, no content; client-safe (header note above).
+import { showSampleContent } from "./content-mode";
+
 export const site = {
   name: "P.L. Sharma And Company",
   shortName: "P.L. Sharma & Co.",
@@ -32,7 +37,7 @@ export const site = {
   establishedYear: 2001,
   copyrightYear: 2026, // update each January (or ask the developer to automate)
   description:
-    "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+    "P.L. Sharma And Company is a tax consultancy in Jaisalmer offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
 
   phone: "+91 98297 71396",
   phoneHref: "+919829771396", // digits only, used for tel: links
@@ -60,6 +65,17 @@ export const site = {
     { value: "Since 2001", label: "25+ Years in Practice in Jaisalmer" },
   ],
 };
+
+// ── DERIVED FACT CONSTANTS (spec §2.2 binding notes) ───────────────
+// Computed, never hard-coded: copyrightYear is bumped each January, so the
+// band re-derives itself. (new Date() at prerender is forbidden — Cache
+// Components; this stays build-time arithmetic on config values.)
+export const yearsInPractice = site.copyrightYear - site.establishedYear;
+
+// Compact hours display for fact bands — keep in sync with site.hours[0].
+// /contact, /book and the footer render site.hours verbatim; only compact
+// fact bands use this abbreviation.
+export const hoursCompact = "Mon–Sat 10:00–7:00";
 
 export const services = [
   {
@@ -122,13 +138,13 @@ export const whyChooseUs = [
   {
     title: "Transparent Pricing",
     description:
-      "Clear, agreed-upon fees before work begins. No hidden charges, no surprises.",
+      "Clear, agreed fees before work begins. No hidden charges, no surprises.",
     icon: "shield-check",
   },
   {
     title: "On-Time, Every Time",
     description:
-      "Strict deadlines discipline — returns and filings are completed well before due dates.",
+      "Returns and filings are completed well before their due dates.",
     icon: "clock",
   },
   {
@@ -215,3 +231,15 @@ export const navLinks = [
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
+
+// ── NAV VISIBILITY — /testimonials stays in the nav only once real client
+// words exist (the honesty wall: production with zero confirmed quotes
+// hides the link in header + footer; owner preview keeps it). Derived from
+// the confirmed tier — no sample data involved, so this export stays
+// client-safe (header.tsx is a "use client" component and imports it).
+export const visibleNavLinks = navLinks.filter(
+  (l) =>
+    l.href !== "/testimonials" ||
+    confirmedTestimonials.length > 0 ||
+    showSampleContent
+);
