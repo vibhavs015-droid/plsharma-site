@@ -291,4 +291,19 @@ behind the T0 preview flag with visible SAMPLE tags.
   founder plates (sharp, new files only) + phone-number markup hooks; T2 record
   band (`yearsInPractice` + hours constant); T3/T11 spec rows + the SENT-tel:
   fix; T7 restructure per the override. NO builds/servers (memory squeeze) —
-  tsc + source eslint only.
+  tsc + source eslint only. B2 COMMITTED (`dcc4977`, 14 files): tsc 0, eslint
+  0/0, grep proofs clean (removed strings 0 hits; sample wall intact; §8
+  amendment note — the engineer's "spec missing §8" claim was a stale early
+  read; the file has §8 at L246–288, commit `d7363a0` verified). Engineering
+  judgment calls: §03 five items as `ul.ruled-entry`; §04 preview order
+  reserve→note→link→samples; footer hours via block spans. CTA container
+  classes handed to the art-director. Image inspection: saturation 0.8 too
+  subtle on the halo — one targeted iteration launched (gradient-masked top
+  desaturation + global 0.75).
+- **NEXT BATCHES:** art-director A1 (globals.css: T4 anchored-heading/clamp/
+  rail/float fixes, T5 numeral-rule CSS + markup contract for B3, T12 CSS
+  safe parts, sample-tag/banner styling, `.phone-number` nowrap, CTA
+  full-width stacking) → B3 engineer (T5 numerals markup + T6
+  `PRACTITIONER_IS_CA` + T9 SEO/og/robots + T10 /privacy) → B4 (T12 markup:
+  viewport meta, manifest/icons, action bar, dvh/scroll-lock) → A2 (bar +
+  final) → B5 (T8 branded 404) → post-B-sync qa runtime windows → T13.

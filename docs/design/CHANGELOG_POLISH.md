@@ -12,17 +12,17 @@ pending), netlify CLI (preview only) — all local, no paid services.
 | # | Task | Status | Commit(s) |
 |---|---|---|---|
 | 0 | Sample-content switch (`SHOW_SAMPLE_CONTENT`, default false) | DONE — qa runtime check staged (memory window) | `c48a861` · `71bd77f` |
-| 1 | Hero bio + caption below photo + halo tone-down + phone nowrap / CTA stack | pending | — |
-| 2 | "The record" fact band | pending | — |
-| 3 | Wording replacements + jargon sweep | pending | — |
-| 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | pending | — |
-| 5 | Section numbering (§ → numerals + rule) | pending | — |
+| 1 | Hero bio + caption below photo + halo tone-down + phone nowrap / CTA stack | DONE (code) — A1 CSS + runtime pending | `dcc4977` |
+| 2 | "The record" fact band | DONE (code) — runtime pending | `dcc4977` |
+| 3 | Wording replacements + jargon sweep | DONE (code) — runtime pending | `dcc4977` |
+| 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | pending (art-director A1) | — |
+| 5 | Section numbering (§ → numerals + rule) | pending (B3 markup + A1 CSS) | — |
 | 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | pending | — |
-| 7 | Testimonials page + section (zero-confirmed behaviour) | pending | — |
+| 7 | Testimonials page + section (zero-confirmed behaviour) | DONE (code) — runtime pending | `dcc4977` |
 | 8 | Link check + branded 404 | PARTIAL (before-crawl done) | `e2f712d` |
 | 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | pending | — |
 | 10 | Privacy page `/privacy` | pending | — |
-| 11 | Small inconsistencies (footer services/hours/claims) | pending | — |
+| 11 | Small inconsistencies (footer services/hours/claims) | DONE (code) — runtime pending | `dcc4977` |
 | 12 | Android/iOS optimisation | pending | — |
 | 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | pending | — |
 
@@ -52,6 +52,22 @@ pending), netlify CLI (preview only) — all local, no paid services.
 - Honest surprises: the deployed preview is publicly reachable (owner flipped the Netlify visibility; the prior 401 is recorded as attributed evidence); the 404 already renders inside the branded chrome (default Next copy, status 404); all icons present (favicon.ico/png/svg + apple-icon) — the "missing icons" hypothesis is disproven with evidence; `<title>`s and canonicals are already per-page.
 - **Remaining:** branded 404 page (engineer batch B5) + the AFTER re-crawl appended to `LINK_CHECK.md`.
 
+## BATCH B2 — TASKS 1, 2, 3, 7, 11 — code complete (commit `dcc4977`)
+
+Engineer batch, 14 files. Verification: `npx tsc --noEmit` → 0 · `npx eslint app lib components` → 0/0 · grep proofs for every removed/new string. Runtime behaviour (served HTML in both modes) verifies at the qa window / T13.
+
+**TASK 1 — hero, bio, photo.** Home hero: the two short lines → the owner-supplied bio paragraph (single spec deviation "questions"→"work" — owner sign-off item; "The first consultation is free." survives exactly once on Home). Founder plates on Home + /about: captions moved BELOW the image (`Parbhati Lal Sharma` / `Principal Consultant · Jaisalmer`), the `· Since 2001` variants deleted per the §3.4 census; the name stays inside the `/about` link so the accessible name keeps the principal. New polished plates `founder-plate-polished.webp` (45.8 KB) + `.avif` (62.4 KB), 600×750, derived from the current plate via sharp `modulate({ saturation: 0.8 })` — originals byte-untouched (sizes verified pre/post); a stronger targeted iteration follows (see TASK 1 refinement). Phone numbers wrapped in `.phone-number` spans ×14 site-wide; the `white-space: nowrap` CSS lands with art-director A1. The reshoot item is already in OWNER_CHECKLIST.
+
+**TASK 2 — the record band.** Home §03 single line → h2 `The record` + five items: `Since 2001` · `{yearsInPractice} years in practice` (computed `site.copyrightYear − site.establishedYear`, renders 25; `new Date()` still nowhere) · `Mon–Sat 10:00–7:00` (config-derived constant with keep-in-sync comment) · `First consultation free` · `Office in Jaisalmer`. `stats[0]` untouched (renders on /about §01). `data-numeric` on the three numeric items.
+
+**TASK 3 — wording.** Every applicable spec row applied: hero rail drops `· Since 2001`; "and where to check each" removed from the /why-choose-us lead + meta; /services quiet-link stutter fixed; /faq head ask de-duplicated; `site.description` "trusted"→"in Jaisalmer"; `whyChooseUs[2]` "agreed" form; `whyChooseUs[3]` "Strict deadlines discipline" removed; booking-form label "requirement"→"What you need help with (optional)"; /about §01 drops the 2001-restating sentence; /book SENT tel → canonical `Call the office · {number}` (spec §6 deviation; its task-cell "6" corrected to this batch). §3.1 rows 1–5 + §3.3 + §3.4 rows 8–9 mooted per the §8 amendment. The kept-list is untouched.
+
+**TASK 7 — testimonials restructure (per §8 amendment).** /testimonials: §02 + §03 removed entirely; lean page = head + §01 honesty reserve + reworded CTA `A quote to share? Send it — your permission decides what appears.` (prefill unchanged); `robots: { index: false }`; new meta description; future-proofed gated strings (permission note + lead replacement) ready for real quotes; preview adds the intro line + 4 tagged samples. Home §04 hidden in production (gated on `visibleTestimonials`); preview shows the §5.2 note + quiet link + tagged samples. `visibleNavLinks` in site-config (client-safe: content-mode flag only) hides the nav + footer Testimonials links in production; header consumes it.
+
+**TASK 11 — footer.** All 6 services (`.slice(0, 5)` removed; titles byte-match config); blurb self-claim "Trusted" dropped → "in Jaisalmer" form; hours rendered from `site.hours` in the /contact `{days} · {time}` composition; bottom descriptor + copyright unchanged.
+
+**Evidence:** grep proofs — 0 hits for every removed string (`slice(0, 5)`, "Trusted tax consultancy", "Mon to Sat: 10:00 AM", "agreed-upon", "Strict deadlines discipline", "Call us directly at", old hero bio, old §04 note, hero/plate `Since 2001`); new strings verified present; sample-string wall intact (zero sample strings in site-config or any `"use client"` file). CTA container classes reported to the art-director. **Pending:** A1 CSS (nowrap, CTA stacking, sample chrome, T4/T5/T12), qa runtime (mode-gating, noindex, computed band, nav absence — sync list extended with the §8 flips), critic at T13.
+
 ---
 
-Tasks 1–7 and 9–13: entries appended as each lands.
+Tasks 9, 10, 12, 13 and the remaining parts: entries appended as each lands.

@@ -83,3 +83,8 @@ No new npm packages were added in Phase 2; the rows above are an in-repo script,
 - **The owner's pre-existing site `funny-gecko-81d00b` (created 12 Oct 2026) was NOT touched.**
 - **Gotchas paid for:** (1) PowerShell 5.1 strips the inner quotes from JSON passed to `netlify api --data` (and `cmd /c` mangles it further) — fixed by avoiding JSON-bearing calls entirely: `netlify sites:create --name <name> --account-slug <slug>` with the slug from `netlify api listAccountsForUser`. (2) netlify-cli 27 no longer accepts `--prod=false`: a draft deploy IS the default — just omit `--prod`.
 - **Token note:** `netlify status` works, but the auth token is NOT in `%APPDATA%\netlify\config.json` (newer CLI stores it elsewhere/keyring) — do not rely on reading it from disk.
+
+## Changed 17 Nov 2026 (polish pass) — sharp for the founder-plate tone-down
+
+- **sharp 0.35.5** — already present in `site/node_modules` (Next.js image-optimization dependency); NOT newly installed. Free/local, logged per the free-tooling clause.
+- **Use (TASK 1):** `founder-plate.webp` → `.modulate({ saturation: 0.8 })` → NEW files `founder-plate-polished.webp` (q85, 45.8 KB) + `.avif` (q80, 62.4 KB), 600×750 preserved, encoders matched to the original plate's (process-founder-photo.mjs L101–102). Originals byte-untouched (sizes verified pre/post). A stronger gradient-masked refinement follows the Orchestrator's visual inspection (saturation 0.8 proved too subtle on the pink/blue halo).
