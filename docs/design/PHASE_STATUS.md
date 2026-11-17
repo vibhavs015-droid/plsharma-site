@@ -329,9 +329,14 @@ behind the T0 preview flag with visible SAMPLE tags.
   on 8 pages (/book excluded, zero styling — A2's), Radix RemoveScroll
   verified (overflow-y-auto added for tall sheets), Item-0 noindex/sitemap
   conditional. tsc 0, eslint 0/0.
-- **REMAINING:** A2 art-director (RUNNING: sticky-bar styling + `--bar-h` +
-  phones-only breakpoint + float selector swap + footer-clearance
-  coordination + og-font decision + final CSS review) → B5 engineer (T8
-  branded 404 page) → qa runtime windows (staged T0 guard + B2/B3/B4 sync
-  lists) → T13 (format/lint/build/tests/axe/LHCI/screenshots ×9 pages ×6
-  widths → critic ≤3 rounds) → CHANGELOG final table.
+- **A2 COMMITTED (`66d4bf7`, art-director):** `--bar-h` 61px + phones-only
+  <48rem bar (the header's own md boundary), three reserve bands that never
+  sum, float RETIRED where the bar renders (one WhatsApp action per screen —
+  deviation accepted, DECISION_LOG; one-declaration revert documented),
+  selector swap to `.whatsapp-float`, og font ACCEPT Georgia (recipe logged),
+  final review 12/12 incl. contrast deep-equal. qa hand-off: home.spec L287
+  nav-count assertion must be scoped (the bar adds a second nav).
+- **REMAINING:** B5 engineer (RUNNING: T8 branded 404 — app/not-found.tsx in
+  the system's voice) → qa runtime windows (staged T0 guard + B2/B3/B4 sync
+  lists + T8 after-crawl) → T13 (format/lint/build/tests/axe/LHCI/screenshots
+  ×9 pages ×6 widths → critic ≤3 rounds) → CHANGELOG final table.

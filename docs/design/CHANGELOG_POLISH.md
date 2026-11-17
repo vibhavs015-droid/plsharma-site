@@ -102,6 +102,14 @@ Engineer batch, 14 files. Verification: `npx tsc --noEmit` → 0 · `npx eslint 
 - **Item 0 (DECISION_LOG refinement):** `/testimonials` `robots.index` + its sitemap entry now conditional on `confirmedTestimonials.length > 0` — agrees with the page's `hasConfirmed` and the visible-tier derivation in all three places.
 - **Evidence:** tsc 0 · eslint 0/0 · grep-proof 0 ActionBar hits in `/book`. **Pending:** qa window (viewport meta content, manifest route + auto `<link>`, bar DOM/a11y tree, Item 0 in both modes), T13 device-emulation runs, real phones (OWNER_CHECKLIST list).
 
+## BATCH A2 — TASK 12 CSS finish (art-director, commit `66d4bf7`)
+
+- **Bar geometry:** `--bar-h` = 61px (arithmetic: 44px anchor + 2×8px padding + 1px rule; excludes `--safe-bottom` by design — every use site adds the inset so the reserve cannot drift). Phones-only **below 48rem** — the header's own `md` boundary (the contact strip makes the phone number persistent there, so the bar's Call has a home; no second breakpoint invented). Fixed, z-40 (under the z-50 header/sheet ladder), paper ground + hairline, two equal anchors: Call quiet (ink text 12.53:1), WhatsApp solid ink fill (12.53:1) — brass fill deliberately NOT used (that is the act band's one rectangle per page).
+- **Reserves never sum:** three bands on the footer (bar band 77px+safe; float band 80px+safe; ≥81rem safe only), `body:has(.sticky-action-bar) > footer` overriding rather than adding; the bar band is 3px shorter than the float band so a double match still cannot cover text.
+- **Float retirement (deviation accepted, DECISION_LOG):** where the bar renders (phones, all pages but /book) the float is hidden instead of lifted above it — the bar already carries WhatsApp with the identical prefill; a 56px circle 16px above an identical action would be one action twice on a 375px screen. `/book` keeps its float; ≥48rem unchanged. Revert = one declaration, quoted in a2-notes §2.
+- **og:image font — ACCEPT Georgia** (rationale: 300–500px preview render, same transitional-serif register, brand carried by ground/mark/rule; the Fraunces alternative needs build machinery — exact recipe logged in a2-notes §3 for B5 only if the owner asks).
+- **Final review 12/12 pass:** parse, cascade order, reserves, contrast deep-equal (19 pairs), no `!important` outside reduced-motion, zero new transitions (static bar), z-ladder, 44px floors, aria-labels contain visible labels (WCAG 2.5.3), no dead tokens, no `100vh`; two stale-comment honesty fixes. **Left for T13** (a2-notes): real iOS bar height, footer-last-line clearance, the 48rem handover, `/book` float-vs-submit edge (product call noted), landscape-phone bar weight, and qa's `home.spec` L287 `nav` count (the bar adds a second nav element — qa scopes the assertion).
+
 ---
 
 Task 13 and the remaining parts: entries appended as each lands.
