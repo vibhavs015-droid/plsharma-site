@@ -297,9 +297,7 @@ behind the T0 preview flag with visible SAMPLE tags.
   read; the file has §8 at L246–288, commit `d7363a0` verified). Engineering
   judgment calls: §03 five items as `ul.ruled-entry`; §04 preview order
   reserve→note→link→samples; footer hours via block spans. CTA container
-  classes handed to the art-director. Image inspection: saturation 0.8 too
-  subtle on the halo — one targeted iteration launched (gradient-masked top
-  desaturation + global 0.75).
+  classes handed to the art-director. Image inspection: saturation 0.8 proved too subtle — one targeted iteration applied and verified (gradient-masked top desaturation ×0.5 + global ×0.75; measured top-region channel spread 26.5 → 14.0, −47%; face global-pass-only; visually confirmed tamer halo, same subject).
 - **NEXT BATCHES:** art-director A1 (globals.css: T4 anchored-heading/clamp/
   rail/float fixes, T5 numeral-rule CSS + markup contract for B3, T12 CSS
   safe parts, sample-tag/banner styling, `.phone-number` nowrap, CTA
