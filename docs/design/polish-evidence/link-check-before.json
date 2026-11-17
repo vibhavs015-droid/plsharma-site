@@ -1,0 +1,4544 @@
+{
+  "generatedAt": "2026-11-17T09:30:15.614Z",
+  "base": "http://localhost:3000",
+  "build": "next start (production build)",
+  "totals": {
+    "pages": 8,
+    "anchorsRecorded": 275,
+    "anchorsGetChecked": 204,
+    "linkTagChecks": 48,
+    "imageGetChecks": 2,
+    "sitemapLocsChecked": 8,
+    "brokenCount": 0,
+    "issueCount": 10
+  },
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "metaRobots": "(absent)",
+      "metaDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in",
+      "jsonLd": [],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20home%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20home%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's home page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/about",
+          "text": "Parbhati Lal Sharma Principal Consultant · Jaisalmer · Since 2001",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "TDS, Payroll &amp; Bookkeeping",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "Which documents do I need?",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "What are your fees?",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "I got a tax notice. What now?",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "All common questions",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20home%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20home%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's home page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 43,
+        "anchorChecks": 33,
+        "linkTags": 7,
+        "images": 1,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": [
+        {
+          "src": "/images/founder-plate.webp",
+          "http": {
+            "status": 200,
+            "contentType": "image/webp",
+            "error": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "title": "About the practice | P.L. Sharma And Company",
+      "metaRobots": "(absent)",
+      "metaDescription": "About P.L. Sharma And Company — Parbhati Lal Sharma has practised in Jaisalmer since 2001. You speak to the principal himself, the fee is agreed before work begins, and the first consultation is free.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in/about",
+      "jsonLd": [],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "The work we handle",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20about%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20about%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's about page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in/about",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 31,
+        "anchorChecks": 23,
+        "linkTags": 7,
+        "images": 1,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": [
+        {
+          "src": "/images/founder-plate.webp",
+          "http": {
+            "status": 200,
+            "contentType": "image/webp",
+            "error": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "title": "Services | P.L. Sharma And Company",
+      "metaRobots": "(absent)",
+      "metaDescription": "Income tax filing, GST registration & compliance, audits, business registration, tax planning, TDS and bookkeeping — by P.L. Sharma And Company, Jaisalmer.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in/services",
+      "jsonLd": [],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/book?service=Income%20Tax%20%26%20ITR%20Filing",
+          "text": "Book a consultation — the form opens with this service chosen.",
+          "ariaLabel": "Book a consultation — the form opens with Income Tax & ITR Filing chosen.",
+          "kind": "internal",
+          "abs": "http://localhost:3000/book?service=Income%20Tax%20%26%20ITR%20Filing",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book?service=Income%20Tax%20%26%20ITR%20Filing",
+            "error": null
+          }
+        },
+        {
+          "href": "/book?service=GST%20Registration%20%26%20Compliance",
+          "text": "Book a consultation — the form opens with this service chosen.",
+          "ariaLabel": "Book a consultation — the form opens with GST Registration & Compliance chosen.",
+          "kind": "internal",
+          "abs": "http://localhost:3000/book?service=GST%20Registration%20%26%20Compliance",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book?service=GST%20Registration%20%26%20Compliance",
+            "error": null
+          }
+        },
+        {
+          "href": "/book?service=Audit%20%26%20Assurance",
+          "text": "Book a consultation — the form opens with this service chosen.",
+          "ariaLabel": "Book a consultation — the form opens with Audit & Assurance chosen.",
+          "kind": "internal",
+          "abs": "http://localhost:3000/book?service=Audit%20%26%20Assurance",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book?service=Audit%20%26%20Assurance",
+            "error": null
+          }
+        },
+        {
+          "href": "/book?service=Business%20Registration%20%26%20Licensing",
+          "text": "Book a consultation — the form opens with this service chosen.",
+          "ariaLabel": "Book a consultation — the form opens with Business Registration & Licensing chosen.",
+          "kind": "internal",
+          "abs": "http://localhost:3000/book?service=Business%20Registration%20%26%20Licensing",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book?service=Business%20Registration%20%26%20Licensing",
+            "error": null
+          }
+        },
+        {
+          "href": "/book?service=Tax%20Planning%20%26%20Advisory",
+          "text": "Book a consultation — the form opens with this service chosen.",
+          "ariaLabel": "Book a consultation — the form opens with Tax Planning & Advisory chosen.",
+          "kind": "internal",
+          "abs": "http://localhost:3000/book?service=Tax%20Planning%20%26%20Advisory",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book?service=Tax%20Planning%20%26%20Advisory",
+            "error": null
+          }
+        },
+        {
+          "href": "/book?service=TDS%2C%20Payroll%20%26%20Bookkeeping",
+          "text": "Book a consultation — the form opens with this service chosen.",
+          "ariaLabel": "Book a consultation — the form opens with TDS, Payroll & Bookkeeping chosen.",
+          "kind": "internal",
+          "abs": "http://localhost:3000/book?service=TDS%2C%20Payroll%20%26%20Bookkeeping",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book?service=TDS%2C%20Payroll%20%26%20Bookkeeping",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "Questions about documents, fees or notices — the common questions",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20services%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20services%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's services page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in/services",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 37,
+        "anchorChecks": 29,
+        "linkTags": 7,
+        "images": 0,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": []
+    },
+    {
+      "path": "/book",
+      "status": 200,
+      "title": "Book a consultation | P.L. Sharma And Company",
+      "metaRobots": "(absent)",
+      "metaDescription": "Send a consultation request to P.L. Sharma And Company — fill in two details and WhatsApp opens with your request ready. We reply and confirm a time. Or call +91 98297 71396; the office is open Monday – Saturday, 10:00 AM – 7:00 PM.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in/book",
+      "jsonLd": [],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com?subject=Consultation%20Request%20(Website)&body=Name%3A%20%0APhone%3A%20%0AService%3A%20%0APreferred%20Date%2FTime%3A%20%0ANote%3A%20",
+          "text": "Or send by email instead",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com?subject=Consultation%20Request%20(Website)&body=Name%3A%20%0APhone%3A%20%0AService%3A%20%0APreferred%20Date%2FTime%3A%20%0ANote%3A%20",
+            "shapeOk": true,
+            "matchesConfig": false,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in/book",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 30,
+        "anchorChecks": 22,
+        "linkTags": 7,
+        "images": 0,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": []
+    },
+    {
+      "path": "/faq",
+      "status": 200,
+      "title": "Common questions — documents, fees, notices | P.L. Sharma And Company",
+      "metaRobots": "(absent)",
+      "metaDescription": "The questions people ask before their first message — which documents to bring, how fees work, what to do about a tax notice, online consultations and GST registration — answered plainly by P.L. Sharma And Company, Jaisalmer.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in/faq",
+      "jsonLd": [
+        {
+          "scriptType": "application/ld+json",
+          "@type": "FAQPage",
+          "parseError": false
+        }
+      ],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.",
+          "text": "A question that isn&#x27;t here? Send it — a person replies.",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I have a question.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book the free first consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Send us the notice — start here",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20faq%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20faq%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's faq page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in/faq",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 33,
+        "anchorChecks": 24,
+        "linkTags": 7,
+        "images": 0,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": []
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "title": "Contact the office | P.L. Sharma And Company",
+      "metaRobots": "(absent)",
+      "metaDescription": "Visit 109, Indira Colony, Jaisalmer, Rajasthan, India — 345001 — open Monday – Saturday, 10:00 AM – 7:00 PM. Call or WhatsApp +91 98297 71396, or email plperiwal@yahoo.com.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in/contact",
+      "jsonLd": [],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "+91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.",
+          "text": "+91 98297 71396",
+          "ariaLabel": "WhatsApp · +91 98297 71396",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I have a question.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "https://maps.app.goo.gl/Ap3EUniM15RsW7oCA",
+          "text": "Open in Google Maps",
+          "ariaLabel": null,
+          "kind": "external",
+          "abs": "https://maps.app.goo.gl/Ap3EUniM15RsW7oCA",
+          "http": {
+            "status": 200,
+            "finalUrl": "https://www.google.com/maps/place/Indira+Colony,+Jaisalmer,+Rajasthan+345001/@26.9147386,70.9388623,254a,75y,114.58h,90t/data=!3m7!1e1!3m5!1s-vi4nzcpJnn0q-0XuYJqvQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-vi4nzcpJnn0q-0XuYJqvQ%26yaw%3D114.58207!7i13312!8i6656!4m6!3m5!1s0x3947bc463bc1c1f9:0x76d37be04cf71c26!8m2!3d26.9138891!4d70.938333!16s%2Fg%2F1jky58d0h?entry=tts&g_ep=EgoyMDI2MTEwOC4wIPu8ASoASAFQAw%3D%3D&skid=a4860a9f-f439-49b9-8dbd-6f776f03cb33",
+            "error": null
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20contact%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20contact%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's contact page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in/contact",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 34,
+        "anchorChecks": 23,
+        "linkTags": 7,
+        "images": 0,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": []
+    },
+    {
+      "path": "/why-choose-us",
+      "status": 200,
+      "title": "How we work | P.L. Sharma And Company",
+      "metaRobots": "(absent)",
+      "metaDescription": "Fees agreed before work begins. Deadlines kept. Your papers stay confidential. Four things you can hold P.L. Sharma And Company to — and where to check each.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in/why-choose-us",
+      "jsonLd": [],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "Read the fee answer",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "Read the confidentiality answer",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "Read the notice answer",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20why-choose-us%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20why-choose-us%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's why-choose-us page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in/why-choose-us",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 33,
+        "anchorChecks": 25,
+        "linkTags": 7,
+        "images": 0,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": []
+    },
+    {
+      "path": "/testimonials",
+      "status": 200,
+      "title": "Client words — published with permission | P.L. Sharma And Company",
+      "metaRobots": "(absent)",
+      "metaDescription": "This page stays empty until real clients agree to be quoted — nothing is invented. The proof that exists today: P.L. Sharma And Company has practised in Jaisalmer since 2001.",
+      "ogUrl": "https://plsharmaco.in",
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a trusted tax consultancy offering income tax filing, GST compliance, audits and business registration services to individuals and businesses.",
+      "ogImage": "(absent)",
+      "canonical": "https://plsharmaco.in/testimonials",
+      "jsonLd": [],
+      "xRobotsTagHeader": "(absent)",
+      "anchors": [
+        {
+          "href": "#main",
+          "text": "Skip to main content",
+          "ariaLabel": null,
+          "kind": "fragment"
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "/",
+          "text": "P.L. Sharma And Company Tax Consultants &amp; Financial Advisors",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.",
+          "text": "If this office has handled your file and you&#x27;d be willing to be quoted, say",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I have a question.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "/about",
+          "text": "The principal",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "How we work",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "Straight answers",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20testimonials%20page.",
+          "text": "Book a consultation on WhatsApp",
+          "ariaLabel": null,
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20testimonials%20page.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation — via the website's testimonials page.",
+            "note": "wa.me/919829771396"
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "/",
+          "text": "Home",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/",
+            "error": null
+          }
+        },
+        {
+          "href": "/about",
+          "text": "About",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/about",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/about",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Services",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/why-choose-us",
+          "text": "Why Choose Us",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/why-choose-us",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/why-choose-us",
+            "error": null
+          }
+        },
+        {
+          "href": "/testimonials",
+          "text": "Testimonials",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/testimonials",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/testimonials",
+            "error": null
+          }
+        },
+        {
+          "href": "/faq",
+          "text": "FAQ",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/faq",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/faq",
+            "error": null
+          }
+        },
+        {
+          "href": "/contact",
+          "text": "Contact",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/contact",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/contact",
+            "error": null
+          }
+        },
+        {
+          "href": "/book",
+          "text": "Book a consultation",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/book",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/book",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Income Tax &amp; ITR Filing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "GST Registration &amp; Compliance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Audit &amp; Assurance",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Business Registration &amp; Licensing",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "/services",
+          "text": "Tax Planning &amp; Advisory",
+          "ariaLabel": null,
+          "kind": "internal",
+          "abs": "http://localhost:3000/services",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/services",
+            "error": null
+          }
+        },
+        {
+          "href": "tel:+919829771396",
+          "text": "Call the office · +91 98297 71396",
+          "ariaLabel": null,
+          "kind": "tel",
+          "validation": {
+            "href": "tel:+919829771396",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "tel:+919829771396",
+            "note": "digits/+ only"
+          }
+        },
+        {
+          "href": "mailto:plperiwal@yahoo.com",
+          "text": "plperiwal@yahoo.com",
+          "ariaLabel": null,
+          "kind": "mailto",
+          "validation": {
+            "href": "mailto:plperiwal@yahoo.com",
+            "shapeOk": true,
+            "matchesConfig": true,
+            "expected": "mailto:plperiwal@yahoo.com"
+          }
+        },
+        {
+          "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+          "text": "",
+          "ariaLabel": "Book a consultation on WhatsApp",
+          "kind": "wa",
+          "validation": {
+            "href": "https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.",
+            "numberOk": true,
+            "matchesConfig": true,
+            "hasText": true,
+            "decodedText": "Hello P.L. Sharma And Company, I would like to book a consultation.",
+            "note": "wa.me/919829771396"
+          }
+        }
+      ],
+      "linkTags": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "as": "script",
+          "type": null
+        },
+        {
+          "rel": "canonical",
+          "href": "https://plsharmaco.in/testimonials",
+          "as": null,
+          "type": null
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "as": null,
+          "type": "image/x-icon"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "as": null,
+          "type": "image/png"
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "as": null,
+          "type": "image/svg+xml"
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "as": null,
+          "type": "image/png"
+        }
+      ],
+      "images": [],
+      "counts": {
+        "anchors": 34,
+        "anchorChecks": 25,
+        "linkTags": 7,
+        "images": 0,
+        "srcsetEntries": 0,
+        "non200": 0
+      },
+      "linkTagChecks": [
+        {
+          "rel": "stylesheet",
+          "href": "/_next/static/chunks/0bkf9o9g34m0-.css",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/0bkf9o9g34m0-.css",
+            "error": null
+          }
+        },
+        {
+          "rel": "preload",
+          "href": "/_next/static/chunks/1pcw6gskne7pf.js",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/_next/static/chunks/1pcw6gskne7pf.js",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/favicon.ico?favicon.117ezoe8m31dk.ico",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/favicon.ico?favicon.117ezoe8m31dk.ico",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.png?icon.1yt_rysy4xnl6.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.png?icon.1yt_rysy4xnl6.png",
+            "error": null
+          }
+        },
+        {
+          "rel": "icon",
+          "href": "/icon.svg?icon.3_8eyg6e2kg5n.svg",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/icon.svg?icon.3_8eyg6e2kg5n.svg",
+            "error": null
+          }
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+          "http": {
+            "status": 200,
+            "finalUrl": "http://localhost:3000/apple-icon.png?apple-icon.1lno_q4a0skko.png",
+            "error": null
+          }
+        }
+      ],
+      "imageChecks": []
+    }
+  ],
+  "notFound": {
+    "url": "http://localhost:3000/this-page-does-not-exist",
+    "status": 404,
+    "title": "404: This page could not be found.",
+    "isUnbrandedNextDefault": false,
+    "characterization": "Next default 404 copy rendered inside the branded root layout (brand name / skip link / footer chrome present)",
+    "markers": {
+      "hasNextDefaultCopy": true,
+      "hasBrandName": true,
+      "hasSkipLink": true,
+      "hasFooterChrome": true,
+      "hasOurStylesheet": true,
+      "hasNextDevIndicator": false
+    },
+    "bodySnippet": "<!DOCTYPE html><html lang=\"en\" class=\"MMaAbG_variable KIiAAa_variable h-full antialiased\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/0bkf9o9g34m0-.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/1pcw6gskne7pf.js\"/><script src=\"/_next/static/chunks/3hfss7l9vn436.js\" async=\"\"></script><script src=\"/_next/static/chunks/3iz8_hoapa1o_.js\" async=\"\"></script><script src=\"/_next/static/chunks/3cyy9enzkmp3k.js\" async=\"\"></script><script src"
+  },
+  "sitemap": {
+    "status": 200,
+    "contentType": "application/xml",
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n<url>\n<loc>https://plsharmaco.in</loc>\n<changefreq>monthly</changefreq>\n<priority>1</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/about</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/services</loc>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/why-choose-us</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/testimonials</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/faq</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/contact</loc>\n<changefreq>monthly</changefreq>\n<priority>0.8</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/book</loc>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n</urlset>\n",
+    "host": "plsharmaco.in",
+    "locs": [
+      {
+        "loc": "https://plsharmaco.in",
+        "host": "plsharmaco.in",
+        "pathname": "/",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      },
+      {
+        "loc": "https://plsharmaco.in/about",
+        "host": "plsharmaco.in",
+        "pathname": "/about",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      },
+      {
+        "loc": "https://plsharmaco.in/services",
+        "host": "plsharmaco.in",
+        "pathname": "/services",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      },
+      {
+        "loc": "https://plsharmaco.in/why-choose-us",
+        "host": "plsharmaco.in",
+        "pathname": "/why-choose-us",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      },
+      {
+        "loc": "https://plsharmaco.in/testimonials",
+        "host": "plsharmaco.in",
+        "pathname": "/testimonials",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      },
+      {
+        "loc": "https://plsharmaco.in/faq",
+        "host": "plsharmaco.in",
+        "pathname": "/faq",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      },
+      {
+        "loc": "https://plsharmaco.in/contact",
+        "host": "plsharmaco.in",
+        "pathname": "/contact",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      },
+      {
+        "loc": "https://plsharmaco.in/book",
+        "host": "plsharmaco.in",
+        "pathname": "/book",
+        "http": {
+          "status": null,
+          "finalUrl": null,
+          "error": "fetch failed"
+        }
+      }
+    ],
+    "routeSet": {
+      "locCount": 8,
+      "routesCovered": [
+        "/",
+        "/about",
+        "/book",
+        "/contact",
+        "/faq",
+        "/services",
+        "/testimonials",
+        "/why-choose-us"
+      ],
+      "missingRoutes": [],
+      "extraPaths": []
+    },
+    "expectedRoutes": [
+      "/",
+      "/about",
+      "/services",
+      "/book",
+      "/faq",
+      "/contact",
+      "/why-choose-us",
+      "/testimonials"
+    ]
+  },
+  "robots": {
+    "status": 200,
+    "contentType": "text/plain",
+    "body": "User-Agent: *\nAllow: /\n\nSitemap: https://plsharmaco.in/sitemap.xml\n"
+  },
+  "preview": [
+    {
+      "url": "https://plsharma-site-preview.netlify.app/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "xRobotsTag": null,
+      "hasLoginRedirect": false,
+      "pointsToEdgeAccess": false,
+      "bodySnippet": "<!DOCTYPE html><html lang=\"en\" class=\"MMaAbG_variable KIiAAa_variable h-full antialiased\"><head><meta charSet=\"utf-8\"/>\n<!-- This site is hosted on Netlify. Anyone can build and deploy a site\n     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=73a966b5-834f-4b56-aac2-e67f60ae8e9c\n     Netlify hosting facts for this site: static/SSR served via Netlify Edge. --><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/0bkf9o9g34m0-.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/1pcw6gskne7pf.js\"/><script src=\"/_next/static/chunks/3hfss7l9vn436.js\" async=\"\"></script><script src=\"/_next/static/chunks/3iz8_hoapa1o_.js\" async=\"\"></script><script src=\"/_next/static/chunks/3cyy9enzkmp3k.js\" async=\"\"></script><script src=\"/_next/static/chunks/turbopack-2u1d16houkiyo.js\" async=\"\"></script><script src=\"/_next/static/chunks/0wj0noag-9_fs.js\" async=\"\"></script><script src=\"/_next/static/chunks/26ktqkexxi728.js\" async=\"\"></script><script src=\"/_next/static/chunks/2n5z1fyf2uzqr.js\" async=\"\"></sc",
+      "error": null
+    },
+    {
+      "url": "https://plsharma-site-preview.netlify.app/faq",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "xRobotsTag": null,
+      "hasLoginRedirect": false,
+      "pointsToEdgeAccess": false,
+      "bodySnippet": "<!DOCTYPE html><html lang=\"en\" class=\"MMaAbG_variable KIiAAa_variable h-full antialiased\"><head><meta charSet=\"utf-8\"/>\n<!-- This site is hosted on Netlify. Anyone can build and deploy a site\n     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=73a966b5-834f-4b56-aac2-e67f60ae8e9c\n     Netlify hosting facts for this site: static/SSR served via Netlify Edge. --><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/0bkf9o9g34m0-.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/1pcw6gskne7pf.js\"/><script src=\"/_next/static/chunks/3hfss7l9vn436.js\" async=\"\"></script><script src=\"/_next/static/chunks/3iz8_hoapa1o_.js\" async=\"\"></script><script src=\"/_next/static/chunks/3cyy9enzkmp3k.js\" async=\"\"></script><script src=\"/_next/static/chunks/turbopack-2u1d16houkiyo.js\" async=\"\"></script><script src=\"/_next/static/chunks/0wj0noag-9_fs.js\" async=\"\"></script><script src=\"/_next/static/chunks/26ktqkexxi728.js\" async=\"\"></script><script src=\"/_next/static/chunks/2n5z1fyf2uzqr.js\" async=\"\"></sc",
+      "error": null
+    },
+    {
+      "url": "https://plsharma-site-preview.netlify.app/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml",
+      "xRobotsTag": null,
+      "hasLoginRedirect": false,
+      "pointsToEdgeAccess": false,
+      "bodySnippet": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n<url>\n<loc>https://plsharmaco.in</loc>\n<changefreq>monthly</changefreq>\n<priority>1</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/about</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/services</loc>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/why-choose-us</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/testimonials</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/faq</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/contact</loc>\n<changefreq>monthly</changefreq>\n<priority>0.8</priority>\n</url>\n<url>\n<loc>https://plsharmaco.in/book</loc>\n<changefreq>monthly</changefreq>\n<priority>0.9</priority>\n</url>\n</urlset>\n",
+      "error": null
+    }
+  ],
+  "broken": [],
+  "issues": [
+    "sitemap loc did not return 200: https://plsharmaco.in (fetch failed)",
+    "sitemap loc did not return 200: https://plsharmaco.in/about (fetch failed)",
+    "sitemap loc did not return 200: https://plsharmaco.in/services (fetch failed)",
+    "sitemap loc did not return 200: https://plsharmaco.in/why-choose-us (fetch failed)",
+    "sitemap loc did not return 200: https://plsharmaco.in/testimonials (fetch failed)",
+    "sitemap loc did not return 200: https://plsharmaco.in/faq (fetch failed)",
+    "sitemap loc did not return 200: https://plsharmaco.in/contact (fetch failed)",
+    "sitemap loc did not return 200: https://plsharmaco.in/book (fetch failed)",
+    "sitemap.xml URLs use host \"plsharmaco.in\" — that domain is not owned/parked yet (TASK 9: SITE_URL env)",
+    "robots.txt allows full indexing (no Disallow) while the site is an unlaunched preview (TASK 9: ALLOW_INDEXING + X-Robots-Tag)"
+  ]
+}

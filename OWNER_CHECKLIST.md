@@ -44,11 +44,7 @@ item. Created 17 Nov 2026 (polish pass).
       sticky bottom bar (Call + WhatsApp) never covers content and is absent
       on /book; keyboard does not hide the submit button; tel: and wa.me links
       open the right apps.
-- [ ] **Preview hosting** — the Netlify preview `plsharma-site-preview`
-      currently requires a Netlify login to view (site created via CLI is
-      private by default; the API cannot change it). Either flip it to Public
-      in the dashboard (Project → Site configuration → Access control) or say
-      the word to drop the preview site.
+- [x] **Preview hosting** — RESOLVED 17 Nov: `https://plsharma-site-preview.netlify.app` is now publicly reachable (the qa crawl confirms 200s; the earlier CLI-created-site login wall is gone). Say the word if you'd rather drop the preview site instead of keeping it.
 
 ## Launch gates (charter)
 

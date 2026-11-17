@@ -221,3 +221,16 @@ behind the T0 preview flag with visible SAMPLE tags.
   quiet-machine LHCI).
 - **Commit discipline:** the Orchestrator commits after each task (engineers do
   not run git). Commit messages reference the task numbers.
+- **T8 progress (qa) — BEFORE-crawl DONE (17 Nov):** clean prod build (one
+  transient `0xC00000FD` stack-overflow crash, retry exit 0 — recorded in
+  Method); 8/8 pages 200; 275 anchors recorded, 204 GET-checked → **0 broken**;
+  48 `<link>` GETs + images all 200; sitemap 200 (8 locs, route set exact);
+  robots 200. Honest surprises: **the deployed preview is now PUBLIC** (owner
+  flipped the Netlify visibility — evidence in LINK_CHECK.md; the 401 is
+  recorded as prior attributed evidence), which makes T9's indexing guard
+  urgent (KNOWN_ISSUES #18); the 404 already renders inside the branded chrome
+  (optional polish, B5 still adds a branded page); **icons are NOT missing**
+  (favicon.ico/png/svg + apple-icon all present, hypothesis disproven);
+  titles + canonicals are already per-page — the shared `og:*` trio is the
+  real gap (→ T9). 10 issues consolidated: 8 → T9, 2 optional. Deliverables:
+  `docs/design/LINK_CHECK.md` + `docs/design/polish-evidence/link-check-before.json`.
