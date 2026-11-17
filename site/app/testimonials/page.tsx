@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { site, team } from "@/lib/site-config";
+import { site } from "@/lib/site-config";
+import { visibleTeam, visibleTestimonials } from "@/lib/sample-content";
+import { SampleTag } from "@/components/site/sample-tag";
 
 export const metadata: Metadata = {
   title: "Client words — published with permission",
@@ -25,13 +27,16 @@ const questionHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURICompo
 const entryLink =
   "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
 
-/* NOTE: `testimonials[]` in site-config is invented sample data. This page
-   deliberately never imports it — the four names must not appear in the
-   rendered HTML or the RSC payload (page-specs §4, qa guard §9.3). The
-   config array stays untouched as the owner's editing surface for the day
-   real quotes arrive. */
+/* NOTE: client words live in two tiers (site-config): `confirmed` — real
+   quotes, deliberately EMPTY until the owner sends them — and `sample` —
+   generic preview copy shown only when SHOW_SAMPLE_CONTENT=true. This
+   page renders the derived `visibleTestimonials` only: production
+   resolves to the empty confirmed tier, so the honesty reserve below is
+   the whole section and no sample string is rendered; owner preview adds
+   the four sample entries, each visibly tagged SAMPLE (page-specs §4,
+   qa guard §9.3). */
 
-const founder = team[0];
+const founder = visibleTeam[0];
 
 export default function TestimonialsPage() {
   return (
@@ -81,6 +86,18 @@ export default function TestimonialsPage() {
               </a>
             </p>
           </div>
+          {/* Owner preview only: the four generic sample entries, each
+              visibly tagged. Production resolves visibleTestimonials to
+              the empty confirmed tier, so this map renders nothing and
+              the reserve above stays the entire section. */}
+          {visibleTestimonials.map((t) => (
+            <div key={t.area} className="ruled-entry measure mt-8">
+              <p className="text-body">“{t.quote}”</p>
+              <p className="rail-label mt-2">
+                {t.name} · {t.area} <SampleTag />
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

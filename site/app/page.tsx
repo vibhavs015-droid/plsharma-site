@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { site, services, whyChooseUs, faqs, team } from "@/lib/site-config";
+import { site, services, whyChooseUs, faqs } from "@/lib/site-config";
+import { visibleTeam } from "@/lib/sample-content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -30,7 +31,7 @@ const wayOfWorking = whyChooseUs.slice(2);
    documents, fees, notices. */
 const faqPreview = [faqs[1], faqs[2], faqs[4]];
 
-const founder = team[0];
+const founder = visibleTeam[0];
 
 /* Entry headings are the links (deep links to /book?service= arrive with the
    /services phase). A persistent hairline underline that warms to the text

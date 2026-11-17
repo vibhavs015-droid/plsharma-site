@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { site, team } from "@/lib/site-config";
+import { site } from "@/lib/site-config";
+import { visibleTeam, visiblePrincipalQuote } from "@/lib/sample-content";
+import { SampleTag } from "@/components/site/sample-tag";
 
 export const metadata: Metadata = {
   title: "About the practice",
@@ -23,7 +25,7 @@ const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURICompo
 const entryLink =
   "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
 
-const founder = team[0];
+const founder = visibleTeam[0];
 
 export default function AboutPage() {
   return (
@@ -129,11 +131,24 @@ export default function AboutPage() {
         <p className="placeholder-mark mt-8">
           [PLACEHOLDER — A LINE FROM THE PRINCIPAL HIMSELF, AWAITING OWNER]
         </p>
+        {/* The principal's own line, in the gap the mark announces — owner
+            preview only: production resolves visiblePrincipalQuote to null
+            (confirmed: null in config), so this block renders nothing and
+            §02 above is untouched. Preview shows the facts-safe sample
+            line, tagged. */}
+        {visiblePrincipalQuote ? (
+          <div className="mt-6">
+            <SampleTag />
+            <p className="text-body mt-2">“{visiblePrincipalQuote}”</p>
+          </div>
+        ) : null}
       </section>
 
       {/* ============ § 03 · THE TEAM — names only: no roles, no bios, no
-            photos, no initials standing in for people (§1 do-not list);
-            roles in config are provisional and stay unrendered ============ */}
+            photos, no initials standing in for people (§1 do-not list).
+            Production renders the confirmed tier — the founder only; owner
+            preview adds the three sample members, each tagged SAMPLE.
+            Roles and bios stay unrendered in both modes. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
         <p className="rail-label">§ 03 · The team</p>
         <div>
@@ -143,9 +158,12 @@ export default function AboutPage() {
               <h3>{founder.name}</h3>
               <p className="text-meta text-ink-muted mt-1">{founder.role}</p>
             </li>
-            {team.slice(1).map((member) => (
+            {visibleTeam.slice(1).map((member) => (
               <li key={member.name} className="ruled-entry">
                 <h3>{member.name}</h3>
+                <p className="mt-1">
+                  <SampleTag />
+                </p>
               </li>
             ))}
           </ul>

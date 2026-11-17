@@ -1,15 +1,28 @@
 /**
  * ============================================================
- *  SITE CONTENT — P.L. Sharma And Company
+ *  SITE CONTENT (confirmed tier only) — P.L. Sharma And Company
  * ============================================================
- *  This is the ONLY file you need to edit to update the website
- *  content: name, phone, WhatsApp, email, address, services,
- *  testimonials, FAQs, team, stats, working hours.
+ *  This file holds the CLIENT-SAFE content: name, phone, WhatsApp,
+ *  email, address, services, FAQs, nav links, the confirmed team
+ *  (the founder) and the confirmed client-words tier (empty until
+ *  the owner sends real quotes). Client components ("use client")
+ *  import from here, so EVERYTHING in this file ships in the
+ *  production JS bundle — keep it free of sample/placeholder data.
+ *
+ *  SAMPLE content lives in lib/sample-content.ts (server-side
+ *  consumption only): the sample testimonial and team arrays, the
+ *  principal-quote tiers and the derived visible* exports pages
+ *  render. The preview flag is lib/content-mode.ts
+ *  (SHOW_SAMPLE_CONTENT=true — OWNER PREVIEW ONLY, never set on a
+ *  public deploy); every sample item renders with a visible tag.
  *
  *  ⚠️ Values marked "PLACEHOLDER" must be replaced with real
  *     details before going live.
  * ============================================================
  */
+
+export type Testimonial = { quote: string; name: string; area: string };
+export type TeamMember = { name: string; role: string; bio: string; photo: string };
 
 export const site = {
   name: "P.L. Sharma And Company",
@@ -132,33 +145,13 @@ export const whyChooseUs = [
   },
 ];
 
-// ⚠️ PLACEHOLDER testimonials — replace with real client feedback
-export const testimonials = [
-  {
-    quote:
-      "P.L. Sharma ji has been handling my personal and business taxes for over 10 years. Filing is always done early and I've never once worried about a notice.",
-    name: "Rajesh Verma",
-    role: "Business Owner",
-  },
-  {
-    quote:
-      "They registered my company and handled everything — GST, TAN, MSME. I didn't have to visit any office. Very professional and honest about fees.",
-    name: "Sunita Malhotra",
-    role: "Founder, Retail Business",
-  },
-  {
-    quote:
-      "I received a scrutiny notice and was very stressed. Sharma sir handled the entire process and it closed smoothly. Truly experienced hands.",
-    name: "Amit Khanna",
-    role: "Salaried Professional",
-  },
-  {
-    quote:
-      "Clear advice, no jargon, and he explains everything patiently. My parents also file their returns here now.",
-    name: "Priya Nair",
-    role: "IT Professional",
-  },
-];
+// ── CLIENT WORDS — confirmed tier ──────────────────────────────────
+// Real, owner-supplied client words. Stays EMPTY until the owner
+// sends real quotes — the /testimonials honesty reserve renders
+// nothing from it, and nothing invented may ever fill it. The
+// sample tier and the derived visible lists live in
+// lib/sample-content.ts.
+export const confirmedTestimonials: Testimonial[] = [];
 
 export const faqs = [
   {
@@ -198,33 +191,18 @@ export const faqs = [
   },
 ];
 
-// Photos go in public/images/. father.jpg is already wired in.
-// NOTE: roles/bios below are presentable interim copy — swap in the real
-// details when the user provides them (see PROJECT-NOTES pending list).
-export const team = [
+// ── TEAM — confirmed tier ──────────────────────────────────────────
+// The principal: real, owner-confirmed name and role; his bio below
+// is PROVISIONAL and needs the owner's real bio. The three sample
+// associate entries live in lib/sample-content.ts until the owner
+// confirms real names, roles, bios and photos (see PROJECT-NOTES
+// pending list). Photos go in public/images/. father.jpg is wired in.
+export const confirmedTeam: TeamMember[] = [
   {
     name: "Parbhati Lal Sharma",
     role: "Founder & Principal Consultant",
-    bio: "Over two decades of practice in income tax, GST, audits and compliance — known in Jaisalmer for straight advice, careful work and complete confidentiality.", // provisional — replace with real qualifications/bio
+    bio: "Over two decades of practice in income tax, GST, audits and compliance — known in Jaisalmer for straight advice, careful work and complete confidentiality.", // PROVISIONAL — needs the owner's real bio
     photo: "father.jpg", // ✅ photo added by user
-  },
-  {
-    name: "Vikram Singh Soda",
-    role: "Senior Tax Associate", // provisional role
-    bio: "Handles assessments, returns and client coordination with careful attention to every deadline.",
-    photo: "team-1.jpg", // awaiting photo
-  },
-  {
-    name: "Bhawani",
-    role: "GST & Compliance Associate", // provisional role
-    bio: "Manages GST registrations, returns and reconciliations for our business clients.",
-    photo: "team-2.jpg", // awaiting photo
-  },
-  {
-    name: "Hemraj",
-    role: "Accounts & Bookkeeping Executive", // provisional role
-    bio: "Keeps client books accurate and audit-ready, month after month.",
-    photo: "team-3.jpg", // awaiting photo
   },
 ];
 

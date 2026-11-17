@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Netlify CLI artifacts (linked-site state + bundled server handler);
+    // gitignored, never source.
+    ".netlify/**",
   ]),
 ]);
 

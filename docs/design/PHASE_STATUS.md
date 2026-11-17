@@ -234,3 +234,18 @@ behind the T0 preview flag with visible SAMPLE tags.
   titles + canonicals are already per-page — the shared `og:*` trio is the
   real gap (→ T9). 10 issues consolidated: 8 → T9, 2 optional. Deliverables:
   `docs/design/LINK_CHECK.md` + `docs/design/polish-evidence/link-check-before.json`.
+- **T0 progress (engineer B1) — implementation DONE, one refinement running:** 8
+  files changed — `content-mode.ts` (env flag, default false), `site-config.ts`
+  (tier restructure; the 4 invented testimonials DELETED outright; visible-*
+  derived exports so prod cannot render or prop-drill sample data), `sample-tag.tsx`
+  + `sample-banner.tsx` (visible "SAMPLE — not real, replace before launch" / first
+  element in body), layout/home/about/testimonials wired; tsc 0, source eslint
+  clean; old invented names zero hits in source; qa's specs flagged for the tier
+  sync. **Orchestrator fixes applied:** `.netlify/**` added to eslint globalIgnores
+  (qa's deploy artifacts inside `site/` had turned full lint red — 4890 problems,
+  all under `.netlify/**`; after the fix `npm run lint` = 0/0, exit 0). **Refinement
+  in flight:** sample data moves OUT of `site-config.ts` into a new
+  `site/lib/sample-content.ts` — a client component importing any `site-config`
+  export pulls the whole module into the client bundle, so sample strings would
+  otherwise ship in prod JS chunks; the split keeps the client bundle
+  sample-string-free. Commit follows the refinement + qa verification.
