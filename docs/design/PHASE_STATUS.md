@@ -298,10 +298,21 @@ behind the T0 preview flag with visible SAMPLE tags.
   judgment calls: §03 five items as `ul.ruled-entry`; §04 preview order
   reserve→note→link→samples; footer hours via block spans. CTA container
   classes handed to the art-director. Image inspection: saturation 0.8 proved too subtle — one targeted iteration applied and verified (gradient-masked top desaturation ×0.5 + global ×0.75; measured top-region channel spread 26.5 → 14.0, −47%; face global-pass-only; visually confirmed tamer halo, same subject).
-- **NEXT BATCHES:** art-director A1 (globals.css: T4 anchored-heading/clamp/
-  rail/float fixes, T5 numeral-rule CSS + markup contract for B3, T12 CSS
-  safe parts, sample-tag/banner styling, `.phone-number` nowrap, CTA
-  full-width stacking) → B3 engineer (T5 numerals markup + T6
-  `PRACTITIONER_IS_CA` + T9 SEO/og/robots + T10 /privacy) → B4 (T12 markup:
-  viewport meta, manifest/icons, action bar, dvh/scroll-lock) → A2 (bar +
-  final) → B5 (T8 branded 404) → post-B-sync qa runtime windows → T13.
+- **A1 COMMITTED (`f269e61`, art-director):** tokens — display clamp 32–56
+  (FAQ/wcu h1s ~3 lines), `--header-h` (68/97) + safe-area tokens,
+  `scroll-padding-top`, `.rail-num` figure/rule/text system + B3 markup
+  contract (a1-notes.md §1; uppercase kept, owner case-change one declaration
+  away), entry density rule, float inset/z + footer clearance + field
+  scroll-margin, coarse-pointer 44px floors, sample-tag/banner styling,
+  `.phone-number` nowrap. Honest already-satisfied verdicts: CTA stacking
+  (flex stretch) + inputs ≥16px + zero `100vh`. Contrast script deep-equal
+  (19 pairs). B4 notes captured. Residual: float can clip mid-page right edge
+  on 375px — B4/A2 decision.
+- **REMAINING:** B3 engineer (RUNNING: T5 numerals markup per the A1 contract,
+  T6 `PRACTITIONER_IS_CA`, T9 SITE_URL/per-page og/og:image/ALLOW_INDEXING +
+  X-Robots-Tag + JSON-LD, T10 /privacy) → B4 (T12 markup per a1-notes §B4:
+  viewport meta incl. viewport-fit=cover, manifest/icons, action bar,
+  min-h-dvh, menu scroll lock) → A2 (bar styling + final) → B5 (T8 branded
+  404) → qa runtime windows (staged T0 guard + B2/§8 sync list) → T13
+  (format/lint/build/tests/axe/LHCI/screenshots ×9 pages ×6 widths → critic
+  ≤3 rounds) → CHANGELOG final table.

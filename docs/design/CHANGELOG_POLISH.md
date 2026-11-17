@@ -15,15 +15,15 @@ pending), netlify CLI (preview only) — all local, no paid services.
 | 1 | Hero bio + caption below photo + halo tone-down + phone nowrap / CTA stack | DONE (code) — A1 CSS + runtime pending | `dcc4977` |
 | 2 | "The record" fact band | DONE (code) — runtime pending | `dcc4977` |
 | 3 | Wording replacements + jargon sweep | DONE (code) — runtime pending | `dcc4977` |
-| 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | pending (art-director A1) | — |
-| 5 | Section numbering (§ → numerals + rule) | pending (B3 markup + A1 CSS) | — |
+| 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | DONE (code) — screenshot verify at T13 | `f269e61` |
+| 5 | Section numbering (§ → numerals + rule) | PARTIAL — CSS done, B3 markup pending | `f269e61` |
 | 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | pending | — |
 | 7 | Testimonials page + section (zero-confirmed behaviour) | DONE (code) — runtime pending | `dcc4977` |
 | 8 | Link check + branded 404 | PARTIAL (before-crawl done) | `e2f712d` |
 | 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | pending | — |
 | 10 | Privacy page `/privacy` | pending | — |
 | 11 | Small inconsistencies (footer services/hours/claims) | DONE (code) — runtime pending | `dcc4977` |
-| 12 | Android/iOS optimisation | pending | — |
+| 12 | Android/iOS optimisation | PARTIAL — CSS layer done, B4 markup pending | `f269e61` |
 | 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | pending | — |
 
 ---
@@ -68,6 +68,16 @@ Engineer batch, 14 files. Verification: `npx tsc --noEmit` → 0 · `npx eslint 
 
 **Evidence:** grep proofs — 0 hits for every removed string (`slice(0, 5)`, "Trusted tax consultancy", "Mon to Sat: 10:00 AM", "agreed-upon", "Strict deadlines discipline", "Call us directly at", old hero bio, old §04 note, hero/plate `Since 2001`); new strings verified present; sample-string wall intact (zero sample strings in site-config or any `"use client"` file). CTA container classes reported to the art-director. **Pending:** A1 CSS (nowrap, CTA stacking, sample chrome, T4/T5/T12), qa runtime (mode-gating, noindex, computed band, nav absence — sync list extended with the §8 flips), critic at T13.
 
+## BATCH A1 — TASKS 4/5/12 CSS layer (art-director, commit `f269e61`)
+
+**T4:** `scroll-padding-top` = header height (`--header-h`: 68px, 97px ≥md, +20px air) + safe-area tokens; display headings clamped to 32–56px (the 62-ch /faq and 82-ch /why-choose-us h1s drop to ~3 lines at ≥1024); rail-label ragged wraps fixed with `text-wrap: balance`; the left rail already stacks above headings below tablet (verified); dead space killed via a one-line-entry density rule (`:has(> p:only-child)`) rather than touching section rhythm; WhatsApp float given explicit safe-area inset + z-index rank over utility classes, footer bottom clearance + field `scroll-margin` so it can't cover form fields or footer ends.
+
+**T5 CSS (markup contract → `docs/design/polish/a1-notes.md` §1):** `.rail-num` system — figure (`--ink`, 12.53:1 on paper) + 1px brass rule ×20px + text column; number and rule never wrap. B3 swaps `§ 01 · Services` → the three-child markup site-wide. Uppercase kept (system consistency); the owner's mixed case is one `text-transform` declaration away — noted for owner review.
+
+**T12 CSS:** `env(safe-area-inset-*)` on header/footer/float/`body > header|footer`; coarse-pointer 44×44 floors; field `scroll-margin` for keyboard submission. Already-satisfied verdicts (honest, verified not assumed): CTA buttons stretch full-width below `sm` via the existing flex containers; inputs already ≥16px; no `100vh` anywhere in `site/`. **B4 notes** (a1-notes.md): `viewportFit: "cover"` is the switch that activates the safe-area layer; `themeColor` stays `#282E3F`; candidate `interactiveWidget: "resizes-content"` (validate against the bundled Next docs); `<body>` → `min-h-dvh`; `whatsapp-float` class hook; sticky-bar reserve `--bar-h` in A2.
+
+**Sample chrome:** `.sample-tag` (amber/gold badge, high contrast) + `.sample-banner` (brass strip above header, unmistakably non-production). `.phone-number` nowrap. Contrast script deep-equal (19 pairs, no new colours); reduced-motion untouched. **Residual risk (honest):** the 56px float circle can still clip a paragraph's right edge mid-page on 375px columns — the two ends are guarded; a hard mid-page guarantee needs the B4 bar or a reserved gutter (markup decision, A2).
+
 ---
 
-Tasks 9, 10, 12, 13 and the remaining parts: entries appended as each lands.
+Tasks 9, 10, 13 and the remaining parts: entries appended as each lands.
