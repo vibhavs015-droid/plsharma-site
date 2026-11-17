@@ -336,7 +336,18 @@ behind the T0 preview flag with visible SAMPLE tags.
   selector swap to `.whatsapp-float`, og font ACCEPT Georgia (recipe logged),
   final review 12/12 incl. contrast deep-equal. qa hand-off: home.spec L287
   nav-count assertion must be scoped (the bar adds a second nav).
-- **REMAINING:** B5 engineer (RUNNING: T8 branded 404 — app/not-found.tsx in
-  the system's voice) → qa runtime windows (staged T0 guard + B2/B3/B4 sync
-  lists + T8 after-crawl) → T13 (format/lint/build/tests/axe/LHCI/screenshots
-  ×9 pages ×6 widths → critic ≤3 rounds) → CHANGELOG final table.
+- **B5 COMMITTED (`023798d`):** branded 404 (`app/not-found.tsx`, one file) —
+  identity marker + h1 `That page isn't here.` + honest line + five verbatim
+  quick links; doc-verified layout wrapping/main landmark/auto-noindex; no
+  ActionBar by design. tsc 0, eslint 0/0. ALL 13 tasks now code-complete
+  except T13's verification pass itself.
+- **MEMORY WINDOW OPEN:** 6.5 GB free physical, Chrome/java gone from the top
+  processes — the qa BIG SYNC WINDOW launched: clean build → serve :3000 →
+  T0 staged verification (default guard + `SHOW_SAMPLE_CONTENT=true` probe +
+  restore) → spec syncs (§7 pins + §8/B2 flips + B3 rail-num/conditional-h1 +
+  B4 viewport/manifest/bar + B5 404 checks) → T8 after-crawl → full suite
+  (unit file-form + Playwright). qa owns ports 3000/3200 + `site/.next`.
+- **REMAINING:** qa window (RUNNING) → commit test sync → T13 (a11y axe ×9
+  pages, perf-seo LHCI foreground, screenshots ×9 pages ×6 widths →
+  `docs/design/screenshots/polish/` → critic ≤3 rounds) → CHANGELOG final
+  table → final DONE/PARTIAL/BLOCKED report. No push, no deploy (owner-gated).

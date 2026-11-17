@@ -19,7 +19,7 @@ pending), netlify CLI (preview only) — all local, no paid services.
 | 5 | Section numbering (§ → numerals + rule) | DONE (code) — runtime pending | `f269e61` · `62f471a` |
 | 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | DONE (code) — owner CA confirmation governs | `62f471a` |
 | 7 | Testimonials page + section (zero-confirmed behaviour) | DONE (code) — runtime pending | `dcc4977` |
-| 8 | Link check + branded 404 | PARTIAL (before-crawl done) | `e2f712d` |
+| 8 | Link check + branded 404 | DONE (code) — after-crawl pending qa window | `e2f712d` · `023798d` |
 | 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | DONE (code) — runtime pending | `62f471a` |
 | 10 | Privacy page `/privacy` | DONE (code) — runtime pending | `62f471a` |
 | 11 | Small inconsistencies (footer services/hours/claims) | DONE (code) — runtime pending | `dcc4977` |
@@ -109,6 +109,16 @@ Engineer batch, 14 files. Verification: `npx tsc --noEmit` → 0 · `npx eslint 
 - **Float retirement (deviation accepted, DECISION_LOG):** where the bar renders (phones, all pages but /book) the float is hidden instead of lifted above it — the bar already carries WhatsApp with the identical prefill; a 56px circle 16px above an identical action would be one action twice on a 375px screen. `/book` keeps its float; ≥48rem unchanged. Revert = one declaration, quoted in a2-notes §2.
 - **og:image font — ACCEPT Georgia** (rationale: 300–500px preview render, same transitional-serif register, brand carried by ground/mark/rule; the Fraunces alternative needs build machinery — exact recipe logged in a2-notes §3 for B5 only if the owner asks).
 - **Final review 12/12 pass:** parse, cascade order, reserves, contrast deep-equal (19 pairs), no `!important` outside reduced-motion, zero new transitions (static bar), z-ladder, 44px floors, aria-labels contain visible labels (WCAG 2.5.3), no dead tokens, no `100vh`; two stale-comment honesty fixes. **Left for T13** (a2-notes): real iOS bar height, footer-last-line clearance, the 48rem handover, `/book` float-vs-submit edge (product call noted), landscape-phone bar weight, and qa's `home.spec` L287 `nav` count (the bar adds a second nav element — qa scopes the assertion).
+
+---
+
+## BATCH B5 — TASK 8 part 2: branded 404 (commit `023798d`)
+
+`app/not-found.tsx` — one new file, nothing else touched. The page head identity marker (`P.L. Sharma & Co. · 404 · Jaisalmer`, plain rail-label — not a numbered section), h1 `That page isn't here.`, one honest line (`The address may be out of date, or the link was typed wrong.`), and five real quick links with verbatim site-config labels (`Book a consultation` → `/book`, `Home`, `Services`, `FAQ`, `Contact`). One deliberate exactness win: `/faq`'s existing label is `FAQ`, not the brief's guessed `Common questions` — the site-config-match rule outranks the brief's example. No act band, no apology voice; all classes pre-existing (grep-proven per class); no ActionBar (the root-layout chrome already carries both CTAs, and the 404 should stay lean).
+
+Doc-verified against the bundled Next 16 docs: the root not-found handles every unmatched URL app-wide and renders inside the root layout (brand header/footer/skip link wrap it; all routes one level deep, so no nested not-found files); content lands inside the layout's `<main id="main">`, so the skip link + h1 landmark chain holds; Next auto-injects `<meta name="robots" content="noindex">` on 404s AND the layout's `ALLOW_INDEXING=false` guard applies (double insurance; no page metadata added — the docs show root not-found does support `generateMetadata`, left unused per brief). Server Component + `<Link>` only — zero client JS added.
+
+**Evidence:** tsc 0 · eslint 0/0. **Pending (qa window):** after-crawl — status 404 on an unknown URL, branded copy present, Next's default `This page could not be found.` gone, the five links → 200, chrome intact (header/footer/skip/float), exactly one h1, list semantics, Next's auto-noindex meta in the head.
 
 ---
 
