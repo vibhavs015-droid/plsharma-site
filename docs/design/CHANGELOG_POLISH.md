@@ -16,12 +16,12 @@ pending), netlify CLI (preview only) — all local, no paid services.
 | 2 | "The record" fact band | DONE (code) — runtime pending | `dcc4977` |
 | 3 | Wording replacements + jargon sweep | DONE (code) — runtime pending | `dcc4977` |
 | 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | DONE (code) — screenshot verify at T13 | `f269e61` |
-| 5 | Section numbering (§ → numerals + rule) | PARTIAL — CSS done, B3 markup pending | `f269e61` |
-| 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | pending | — |
+| 5 | Section numbering (§ → numerals + rule) | DONE (code) — runtime pending | `f269e61` · `62f471a` |
+| 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | DONE (code) — owner CA confirmation governs | `62f471a` |
 | 7 | Testimonials page + section (zero-confirmed behaviour) | DONE (code) — runtime pending | `dcc4977` |
 | 8 | Link check + branded 404 | PARTIAL (before-crawl done) | `e2f712d` |
-| 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | pending | — |
-| 10 | Privacy page `/privacy` | pending | — |
+| 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | DONE (code) — runtime pending | `62f471a` |
+| 10 | Privacy page `/privacy` | DONE (code) — runtime pending | `62f471a` |
 | 11 | Small inconsistencies (footer services/hours/claims) | DONE (code) — runtime pending | `dcc4977` |
 | 12 | Android/iOS optimisation | PARTIAL — CSS layer done, B4 markup pending | `f269e61` |
 | 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | pending | — |
@@ -80,4 +80,18 @@ Engineer batch, 14 files. Verification: `npx tsc --noEmit` → 0 · `npx eslint 
 
 ---
 
-Tasks 9, 10, 13 and the remaining parts: entries appended as each lands.
+## BATCH B3 — TASKS 5, 6, 9, 10 (commit `62f471a`)
+
+**TASK 5 — numerals.** 21 `.rail-num` markers (17 converted + 4 on /privacy) per the A1 contract — three children in order, two-digit figure with `data-numeric`, zero `§`/`/`/`·` in markup (grep-proven). The 12 remaining plain `.rail-label`s are the contract's sanctioned exclusions (hero identity markers, act band `The next step`, plate captions, in-entry numerals); the 92 comment-only `§` hits are documentation citations, untouched.
+
+**TASK 6 — audit gate.** `PRACTITIONER_IS_CA` (default false) in content-mode.ts. Non-CA state ships: card `Audit Support & Record Review` + the owner's exact three bullets; `site.description`, /services meta + h1, /about §01 story, layout keywords, and the footer bottom descriptor all drop audit claims. CA state restores the current wording byte-verbatim. Keeps (rationale logged): /faq's "costs much less than a business audit" fee comparison, /contact's "audit papers" (the clients' papers, not the office's engagements), the sample bio's "audit-ready" (inside the sample wall).
+
+**TASK 9 — SEO / sharing / indexing guard.** `SITE_URL` (default = the preview URL; `plsharmaco.in` appears exactly once, in a "set when live" comment). New `pageMetadata` helper → per-page OG title/description/url + Twitter `summary_large_image` (layout keeps a fallback carrier; Next's replace-not-merge semantics documented in the helper). Branded og:image 1200×630, 34 KB PNG (ivory/brass/ink composition, only confirmed facts; Georgia serif because librsvg cannot load next/font's self-hosted files without machine-level changes — flagged to A2; Orchestrator-inspected). `ALLOW_INDEXING` default false → site-wide noindex meta + disallow-all robots.ts + `X-Robots-Tag: noindex, nofollow` for `/*` in netlify.toml (guards the Netlify preview permanently; going live = Vercel + env flips) — the KNOWN_ISSUES #18 fix, in tree. ProfessionalService JSON-LD on Home: name/url/telephone/email/address/openingHours/founder/areaServed/foundingDate — every field from confirmed config (address carries no PLACEHOLDER mark, grep-verified); no ratings, no logo, no invented fields.
+
+**TASK 10 — /privacy.** h1 `One form collects your details — this site stores nothing.` + four numbered sections in the rail-num system: what the form collects (the form's real field list — name, phone, optional email, optional message, plus service/date/time "only if you choose them"), where details go (WhatsApp opens addressed to the office; email second path; the site stores/processes nothing), cookies/analytics (none; `If that changes, this page will say so.`), correcting/deleting (office phone + email) + `Last updated 17 November 2026` (hard-coded string). Footer Quick-links entry; sitemap `/privacy` (0.3); consent note under the booking slip: `Your details go straight to the office on WhatsApp — this site stores nothing.`
+
+**Evidence:** tsc 0 · eslint 0/0 · grep proofs (plain rail markers = exclusions only; `plsharmaco.in` ×1 comment; `NEXT_PUBLIC_SITE_URL`/`site.siteUrl` 0 hits). **Pending:** qa runtime window (per-page `<head>` diff, robots.txt both modes, X-Robots-Tag on a real Netlify response, JSON-LD serialization, /privacy axe at T13); the noindex/sitemap self-consistency refinement (B4, DECISION_LOG); owner env vars (OWNER_CHECKLIST).
+
+---
+
+Task 13 and the remaining parts: entries appended as each lands.

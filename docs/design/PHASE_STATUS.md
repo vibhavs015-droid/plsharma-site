@@ -308,11 +308,25 @@ behind the T0 preview flag with visible SAMPLE tags.
   (flex stretch) + inputs ≥16px + zero `100vh`. Contrast script deep-equal
   (19 pairs). B4 notes captured. Residual: float can clip mid-page right edge
   on 375px — B4/A2 decision.
-- **REMAINING:** B3 engineer (RUNNING: T5 numerals markup per the A1 contract,
-  T6 `PRACTITIONER_IS_CA`, T9 SITE_URL/per-page og/og:image/ALLOW_INDEXING +
-  X-Robots-Tag + JSON-LD, T10 /privacy) → B4 (T12 markup per a1-notes §B4:
-  viewport meta incl. viewport-fit=cover, manifest/icons, action bar,
-  min-h-dvh, menu scroll lock) → A2 (bar styling + final) → B5 (T8 branded
-  404) → qa runtime windows (staged T0 guard + B2/§8 sync list) → T13
-  (format/lint/build/tests/axe/LHCI/screenshots ×9 pages ×6 widths → critic
-  ≤3 rounds) → CHANGELOG final table.
+- **B3 COMMITTED (`62f471a`, 18 files):** T5 — 21 `.rail-num` markers per the
+  A1 contract, zero `§` in markup (exclusions + doc citations held); T6 —
+  `PRACTITIONER_IS_CA` default false, audit card renamed with the owner's three
+  bullets, every audit claim gated (grep table in CHANGELOG; three honest
+  keeps); T9 — `SITE_URL` default preview URL, per-page OG/Twitter via the
+  `pageMetadata` helper, branded og:image (Orchestrator-inspected: clean,
+  Georgia serif flagged to A2), `ALLOW_INDEXING` default false → noindex +
+  disallow-all robots + X-Robots-Tag in netlify.toml (KNOWN_ISSUES #18 fix in
+  tree), ProfessionalService JSON-LD from confirmed config only; T10 — /privacy
+  (real field list, no-storage statement, deletion path, hard-coded date) +
+  footer link + sitemap + consent note under the slip. tsc 0, eslint 0/0.
+- **DECISION (DECISION_LOG): /testimonials noindex refined** — conditional
+  while `confirmedTestimonials.length === 0` (both modes); sitemap entry gated
+  on the same condition; self-maintaining when real quotes land (supersedes
+  §8's "always noindex" wording). B4 implements the two-line change.
+- **REMAINING:** B4 engineer (RUNNING: T12 markup per a1-notes — viewport meta
+  incl. viewport-fit=cover, min-h-dvh, manifest/icons 192/512, sticky action
+  bar omitted on /book, menu scroll-lock check, whatsapp-float class, skip-link
+  safe-area + the noindex/sitemap refinement) → A2 (bar styling, og font
+  option, final) → B5 (T8 branded 404) → qa runtime windows (staged T0 guard +
+  B2/B3 sync lists) → T13 (format/lint/build/tests/axe/LHCI/screenshots ×9
+  pages ×6 widths → critic ≤3 rounds) → CHANGELOG final table.

@@ -64,6 +64,11 @@ item. Created 17 Nov 2026 (polish pass).
 
 ## Launch gates (charter)
 
+- [ ] **Launch env vars** (polish TASKS 6/9; set at deploy time on the real
+      host): `SITE_URL=https://plsharmaco.in` · `ALLOW_INDEXING=true` ·
+      `PRACTITIONER_IS_CA=true` ONLY if the CA confirmation above is yes.
+      Until then every build ships noindex + disallow-all robots + the
+      X-Robots-Tag header (the Netlify preview keeps its header permanently).
 - [ ] **Quiet-machine Lighthouse re-measure** (KNOWN_ISSUES #17) — perf ≥ 90
       and LCP < 2.5 s confirmed off this machine.
 - [ ] **Deploy/publish [GATE]** — production hosting (Vercel per
