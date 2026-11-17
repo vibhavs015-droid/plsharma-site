@@ -3,11 +3,13 @@ import {
   expectNoAppointmentOnCtaSurfaces,
   expectNoInventedClaims,
   gotoTestimonials,
+  INVENTED_TESTIMONIAL_NAMES,
   prefillOf,
   site,
   TEL_HREF,
 } from "./helpers";
-import { team, testimonials } from "../../lib/site-config";
+import { confirmedTeam, confirmedTestimonials } from "../../lib/site-config";
+import { visibleTeam, visibleTestimonials } from "../../lib/sample-content";
 
 /**
  * Phase 3 Stage D QA — `/testimonials`, the designed honest reserve.
@@ -15,8 +17,9 @@ import { team, testimonials } from "../../lib/site-config";
  * Sources of truth: docs/design/phase-3/page-specs.md §0 (global rules) and
  * §4 (the honest reserve: the one placeholder mark is the content, zero
  * journey weight, the proof that exists today, the signed page in regular
- * faces); honesty rules per §2.4/§9 — the invented sample data in
- * `site-config.testimonials[]` must NEVER render, on this page or anywhere.
+ * faces); honesty rules per §2.4/§9 — no invented data and no sample-tier
+ * content may render in the default production build (TASK 0 tier system:
+ * the sample tier is owner-preview only).
  */
 
 const EXPECTED_TESTIMONIALS_PREFILL = `Hello ${site.name}, I would like to book a consultation — via the website's testimonials page.`;
@@ -105,7 +108,7 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     const section = page.locator("main section.ledger-rail").nth(3);
     await expect(section.locator("p.rail-label").first()).toHaveText("§ 03 · The signed page");
     const entry = section.locator(".ruled-entry");
-    await expect(entry.locator("h3")).toHaveText(team[0].name);
+    await expect(entry.locator("h3")).toHaveText(visibleTeam[0].name);
     const line = entry.locator("p.rail-label[data-numeric]");
     await expect(line).toHaveText(`Principal Consultant · Jaisalmer · Since ${site.establishedYear}`);
     // §0.6: no italic ships in Phase 3 — no <em>, no italic utility class on
@@ -157,28 +160,36 @@ test.describe("Testimonials — honesty regression guards (the invented-data wal
     await gotoTestimonials(page);
   });
 
-  test("NONE of the invented sample data renders — names and roles, derived from config", async ({ page }) => {
-    // §4 content source: testimonials[] is invented sample data and must not
-    // render. The guard set is DERIVED from the config array, so if the owner
-    // edits the samples, the guard follows the edit. (If real quotes arrive
-    // and the page starts rendering them, this page is rebuilt and this test
-    // is rewritten with it.)
+  test("the confirmed tier ships empty — the reserve is §01's entire list", async ({ page }) => {
+    // TASK 0 tier system: production resolves visibleTestimonials to the
+    // EMPTY confirmed tier (real quotes arrive only from the owner), so the
+    // placeholder block is the section's only entry — no quote entry may
+    // render from either tier in the default build.
+    expect(
+      confirmedTestimonials,
+      "the confirmed tier must ship empty until the owner sends real quotes"
+    ).toHaveLength(0);
+    expect(
+      visibleTestimonials,
+      "the page's visible list must equal the confirmed tier in the default build"
+    ).toHaveLength(0);
+    const section = page.locator("main section.ledger-rail").nth(1);
+    await expect(section.locator(".ruled-entry")).toHaveCount(1);
+    await expect(section.locator(".placeholder-mark")).toHaveCount(1);
+  });
+
+  test("NONE of the invented or sample-tier data renders — html/RSC-level", async ({ page }) => {
+    // The four invented detail testimonials are deleted from source; their
+    // pinned names stay guarded site-wide (helpers sweep) and re-asserted
+    // here at html level for this page. The sample tier's generic byline is
+    // the other leak risk — production must not carry either. (The founder
+    // h3 comes from visibleTeam[0], which equals confirmedTeam[0] in the
+    // default build — asserted above via the §03 test.)
     const html = await page.content(); // includes the RSC flight payload
-    for (const sample of testimonials) {
-      expect(html, `invented sample name must not render: "${sample.name}"`).not.toContain(
-        sample.name
-      );
-      expect(html, `invented sample role must not render: "${sample.role}"`).not.toContain(
-        sample.role
-      );
+    for (const name of INVENTED_TESTIMONIAL_NAMES) {
+      expect(html, `invented name must not render: "${name}"`).not.toContain(name);
     }
-    // Quotes are invented too — a distinctive fragment of each must not render.
-    for (const sample of testimonials) {
-      expect(
-        html,
-        `invented sample quote must not render: "${sample.quote.slice(0, 40)}…"`
-      ).not.toContain(sample.quote.slice(0, 40));
-    }
+    expect(html, "sample-tier byline must not render in production").not.toContain("Sample client");
   });
 
   test("zero 'appointment' on CTA surfaces (link/button text, aria-labels, titles)", async ({ page }) => {

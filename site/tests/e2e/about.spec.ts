@@ -7,7 +7,8 @@ import {
   TEL_HREF,
   site,
 } from "./helpers";
-import { team } from "../../lib/site-config";
+import { confirmedTeam } from "../../lib/site-config";
+import { sampleTeam } from "../../lib/sample-content";
 
 /**
  * Phase 3 Stage B QA — `/about` on the Kept Ledger system.
@@ -66,7 +67,7 @@ test.describe("About — structure & content (page-specs §1)", () => {
     const plate = page.locator("main figure").filter({
       has: page.locator('img[src*="founder-plate"]'), // relative to the figure
     });
-    await expect(plate).toContainText(team[0].name);
+    await expect(plate).toContainText(confirmedTeam[0].name);
     await expect(plate).toContainText("Principal Consultant · Jaisalmer");
     await expect(plate).toContainText(`Since ${site.establishedYear}`);
   });
@@ -82,17 +83,25 @@ test.describe("About — structure & content (page-specs §1)", () => {
     await expect(page.locator("main")).toContainText("The first consultation is free.");
   });
 
-  test("the team renders names only — provisional roles stay unrendered", async ({ page }) => {
+  test("the team renders the confirmed tier — the founder only; associates stay preview-only", async ({ page }) => {
+    // TASK 0 tier system: a default production build resolves visibleTeam
+    // to the confirmed tier — the founder, whose confirmed role renders;
+    // the three sample associates (sample-content.ts) are owner-preview
+    // only and must leak nowhere, roles included.
     const names = page.locator("main h3");
-    await expect(names).toHaveCount(4);
-    await expect(names).toHaveText([team[0].name, team[1].name, team[2].name, team[3].name]);
-    // The founder's confirmed role shows; the associates' provisional roles do not.
-    await expect(page.locator("main")).toContainText(team[0].role);
-    const mainText = await page.locator("main").innerText();
-    for (const provisionalRole of [team[1].role, team[2].role, team[3].role]) {
-      expect(mainText, `provisional role must stay unrendered: "${provisionalRole}"`).not.toContain(
-        provisionalRole
-      );
+    await expect(names).toHaveCount(confirmedTeam.length);
+    await expect(names).toHaveText(confirmedTeam.map((member) => member.name));
+    await expect(page.locator("main")).toContainText(confirmedTeam[0].role);
+    const html = await page.content(); // includes the RSC flight payload
+    for (const sample of sampleTeam) {
+      expect(
+        html,
+        `sample associate must not render in production: "${sample.name}"`
+      ).not.toContain(sample.name);
+      expect(
+        html,
+        `sample associate role must not render in production: "${sample.role}"`
+      ).not.toContain(sample.role);
     }
   });
 
