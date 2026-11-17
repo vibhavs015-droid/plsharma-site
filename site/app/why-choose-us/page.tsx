@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { site, whyChooseUs } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 
 export const metadata: Metadata = pageMetadata({
   title: "How we work",
@@ -168,6 +169,7 @@ export default function WhyChooseUsPage() {
           </div>
         </div>
       </section>
+      <ActionBar />
     </>
   );
 }

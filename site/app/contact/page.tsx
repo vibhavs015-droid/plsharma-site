@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact the office",
@@ -189,6 +190,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <ActionBar />
     </>
   );
 }

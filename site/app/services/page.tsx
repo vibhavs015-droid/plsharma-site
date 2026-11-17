@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site, services } from "@/lib/site-config";
 import { practitionerIsCa } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 
 // CA-gated meta description (T6): the audit card is "Audit Support & Record
 // Review" while practitionerIsCa is false, so the list drops "audits" —
@@ -144,6 +145,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <ActionBar />
     </>
   );
 }

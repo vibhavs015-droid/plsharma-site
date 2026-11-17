@@ -5,6 +5,7 @@ import { site } from "@/lib/site-config";
 import { visibleTeam, visiblePrincipalQuote } from "@/lib/sample-content";
 import { practitionerIsCa } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 import { SampleTag } from "@/components/site/sample-tag";
 
 export const metadata: Metadata = pageMetadata({
@@ -213,6 +214,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <ActionBar />
     </>
   );
 }

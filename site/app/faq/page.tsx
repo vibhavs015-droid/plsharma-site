@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { faqs, site } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 
 export const metadata: Metadata = pageMetadata({
   title: "Common questions — documents, fees, notices",
@@ -220,6 +221,7 @@ export default function FaqPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: faqJsonLd }}
       />
+      <ActionBar />
     </>
   );
 }

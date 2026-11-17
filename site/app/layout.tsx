@@ -74,8 +74,16 @@ export const metadata: Metadata = {
   },
 };
 
+// Android/iOS viewport markup (TASK 12.1). viewportFit=cover lets content
+// paint edge-to-edge behind notches — the safe-area vars in globals.css
+// only resolve when it is set. interactiveWidget=resizes-content makes the
+// Android keyboard resize the layout instead of overlaying it, so the /book
+// form stays reachable while typing. Both fields verified typed in this
+// Next: generate-viewport.md docs + dist/lib/metadata/types/extra-types.d.ts.
 export const viewport: Viewport = {
   themeColor: "#282E3F",
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -84,11 +92,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      {/* dvh body (TASK 12.2): min-height tracks the dynamic viewport, so
+          nothing is stranded behind mobile browser chrome; html keeps its
+          h-full. Replaces the min-h-full (100%) chain. */}
+      <body className="flex min-h-dvh flex-col">
         {showSampleContent ? <SampleBanner /> : null}
+        {/* Skip link (TASK 12.3): on focus it lands below the notch —
+            max(1rem, var(--safe-top)) — instead of a fixed 1rem. */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-4 focus:left-4 focus:bg-paper focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink focus:border focus:border-brass"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-[max(1rem,var(--safe-top))] focus:left-4 focus:bg-paper focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink focus:border focus:border-brass"
         >
           Skip to main content
         </a>

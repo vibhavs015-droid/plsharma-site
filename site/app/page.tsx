@@ -5,6 +5,7 @@ import { site, services, whyChooseUs, faqs, yearsInPractice, hoursCompact, confi
 import { visibleTeam, visibleTestimonials } from "@/lib/sample-content";
 import { showSampleContent, siteUrl } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 import { SampleTag } from "@/components/site/sample-tag";
 
 export const metadata: Metadata = pageMetadata({
@@ -370,6 +371,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: professionalServiceJsonLd }}
       />
+      <ActionBar />
     </>
   );
 }

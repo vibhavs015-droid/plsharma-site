@@ -3,11 +3,13 @@ import { site, confirmedTestimonials } from "@/lib/site-config";
 import { visibleTestimonials } from "@/lib/sample-content";
 import { showSampleContent } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 import { SampleTag } from "@/components/site/sample-tag";
 
-// The helper's full share set, plus this page's own noindex — /testimonials
-// stays out of search engines in BOTH indexing modes (T7 policy; a page-level
-// robots export overrides the layout's).
+// The helper's full share set, plus the conditional robots flag (Item 0):
+// noindex while the confirmed tier is empty — production AND preview — and
+// automatically indexable the moment real permissioned quotes land. A
+// page-level robots export overrides the layout's site-wide guard.
 export const metadata: Metadata = {
   ...pageMetadata({
     title: "Client words — published with permission",
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
       "Real client words — published with permission, and not before. Nothing is invented: P.L. Sharma And Company has practised in Jaisalmer since 2001.",
     path: "/testimonials",
   }),
-  robots: { index: false },
+  robots: { index: confirmedTestimonials.length > 0 },
 };
 
 /* Page-aware wa.me deep links (user-problem.md §6): the band primary carries
@@ -170,6 +172,7 @@ export default function TestimonialsPage() {
           </div>
         </div>
       </section>
+      <ActionBar />
     </>
   );
 }

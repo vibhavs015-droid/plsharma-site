@@ -114,9 +114,13 @@ export function SiteHeader() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
+            {/* overflow-y-auto (TASK 12.6): the sheet's base classes are a
+                full-height flex column with NO scroll — with the body locked,
+                tall menu content would clip. The Radix scroll lock stays;
+                this keeps the panel itself scrollable. */}
             <SheetContent
               side="right"
-              className="w-72 border-white/10 bg-primary text-primary-foreground"
+              className="w-72 overflow-y-auto border-white/10 bg-primary text-primary-foreground"
             >
               <SheetHeader>
                 <SheetTitle>

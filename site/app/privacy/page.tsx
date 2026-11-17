@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/page-meta";
+import { ActionBar } from "@/components/site/action-bar";
 
 export const metadata: Metadata = pageMetadata({
   title: "Privacy",
@@ -175,6 +176,7 @@ export default function PrivacyPage() {
           <p className="text-meta text-ink-muted mt-8">{LAST_UPDATED}</p>
         </div>
       </section>
+      <ActionBar />
     </>
   );
 }

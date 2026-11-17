@@ -9,6 +9,10 @@ import { site } from "@/lib/site-config";
  * wording. `rounded-full` is legal here and nowhere else in the system
  * (docs/design/phase-2/tokens.md §3); the drop shadow is the one shadow
  * the design allows (vibe board §3.2).
+ *
+ * `.whatsapp-float` on the anchor (TASK 12.4) is the art-director's A2
+ * styling hook: the CSS still targets body > a[href^="https://wa.me"]
+ * and keeps working; the selector swap happens in the art pass, not here.
  */
 export function WhatsAppFloat() {
   const message = encodeURIComponent(
@@ -21,7 +25,7 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Book a consultation on WhatsApp"
-      className="fixed right-4 bottom-4 z-50 flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg"
+      className="fixed right-4 bottom-4 z-50 flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-lg whatsapp-float"
     >
       {/* Official WhatsApp glyph */}
       <svg viewBox="0 0 32 32" className="size-6 fill-current" aria-hidden="true">
