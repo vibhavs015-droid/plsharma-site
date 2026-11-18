@@ -383,3 +383,11 @@ behind the T0 preview flag with visible SAMPLE tags.
   links (`ba9462d`).
 - **REMAINING:** critic round 1 (≤3) → fix round if REJECT → CHANGELOG final
   table → final DONE/PARTIAL/BLOCKED report. No push, no deploy.
+- **T13 COMPLETE — CRITIC APPROVE (round 1, zero fixes; 18 Nov):** review at
+  `docs/design/critic/polish-pass-t13-r1.md` — scores 4/4.5/4.5/4.5/5/5/4.5
+  (originality/hierarchy/consistency/usability/accessibility/performance/
+  brand-fit); 4 optional minors logged, none release-blocking. CHANGELOG final
+  task table written (all 13 DONE). **POLISH PASS CLOSED** pending owner
+  actions only: redeploy, launch env vars, CA confirmation, reshoot, real
+  testimonials, real-phone tests (OWNER_CHECKLIST). Nothing pushed; main
+  untouched at `8f10ae1`.

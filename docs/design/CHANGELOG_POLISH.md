@@ -122,4 +122,31 @@ Doc-verified against the bundled Next 16 docs: the root not-found handles every 
 
 ---
 
-Task 13 and the remaining parts: entries appended as each lands.
+## BATCH T13 — FINAL VERIFICATION (18 Nov 2026)
+
+**Gates:** build exit 0 (18 routes) · tsc 0 · lint 0 (after `fd733f5`) · format N/A (no formatter configured) · suite **175/175 e2e + 5/5 unit** (`3af15af`) · **axe WCAG 2.2 AA: 20/20 runs, 0 violations** (`b464d02` → `polish-evidence/t13-axe.json`) · **LHCI quiet machine: perf 100, LCP 0.757 s, CLS 0.000, TBT 64 ms, home ×2 variance 0** (`t13-lhci-*.json`; KNOWN_ISSUES **#15 + #17 CLOSED**; SEO 66–69 = the intentional noindex guard, flips at launch) · **65 screenshots** (`8f69819`) · after-crawl **0 broken links** (`ba9462d`).
+
+**CritIC: APPROVE — round 1 of 3, zero required fixes** (`docs/design/critic/polish-pass-t13-r1.md`). Scores /5: originality **4** · hierarchy **4.5** · consistency **4.5** · usability **4.5** · accessibility **5** · performance **5** · brand fit **4.5**. Four optional minors logged (404 title platform constraint; rail uppercase = owner option; menu Escape focus-return; og:image Georgia) — none release-blocking.
+
+## FINAL TASK TABLE — all 13 tasks DONE (18 Nov 2026)
+
+| # | Task | Verdict | Evidence |
+|---|---|---|---|
+| 0 | Sample-content switch (`SHOW_SAMPLE_CONTENT`, default false) | **DONE** | `c48a861` · `71bd77f` · probe + negative guard (`ba9462d`, 0 leaks × 8 routes) |
+| 1 | Hero bio + captions below photo + halo tone-down + phone nowrap / CTA stack | **DONE** | `dcc4977` · `1ae324a` (halo −47% measured) · suite + screenshots |
+| 2 | "The record" fact band | **DONE** | `dcc4977` · suite (5-item pins) + screenshots |
+| 3 | Wording replacements + jargon sweep | **DONE** | `dcc4977` · suite + grep sweep (0 removed-string hits) |
+| 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | **DONE** | `f269e61` · screenshots (phone set) |
+| 5 | Section numbering (§ → numerals + rule) | **DONE** | `f269e61` · `62f471a` · suite rail-num pins (21 markers, 0 § in markup) |
+| 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | **DONE** | `62f471a` · suite (both h1 branches) · owner CA gate = OWNER_CHECKLIST |
+| 7 | Testimonials page + section (zero-confirmed behaviour) | **DONE** | `4085eaf` (owner override) · `dcc4977` · `d7363a0` (spec §8) · suite + screenshots |
+| 8 | Link check + branded 404 | **DONE** | `e2f712d` (before) · `023798d` (404) · `ba9462d` (after: 0 broken, issues 10 → 2 owner-pending) |
+| 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | **DONE** | `62f471a` · `seo-head` suite (9 pages) · X-Robots-Tag runtime = post-redeploy check |
+| 10 | Privacy page `/privacy` | **DONE** | `62f471a` · suite + axe + screenshots |
+| 11 | Small inconsistencies (footer services/hours/claims) | **DONE** | `dcc4977` · suite (footer pins) |
+| 12 | Android/iOS optimisation | **DONE** | `f269e61` (CSS) · `d3c6717` (markup) · suite + axe · real-device = OWNER_CHECKLIST |
+| 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | **DONE** | gates above + **critic APPROVE r1** (`polish-pass-t13-r1.md`) |
+
+**Owner-gated follow-ups** (not task failures — tracked in `OWNER_CHECKLIST.md`): preview redeploy (clears the 10 deployedLag items + verifies X-Robots-Tag on the host), launch env vars (`SITE_URL` / `ALLOW_INDEXING` / `PRACTITIONER_IS_CA`), CA/ICAI confirmation, founder reshoot, real testimonials, team photos/roles, domain + domain email, privacy review, real-phone tests, wording sign-offs. KNOWN_ISSUES still open: #1/#2/#3 (content placeholders/photos — owner), #4/#5/#7/#8/#11/#12 (tracked tooling/cosmetic), #18 (fix in tree; runtime verify after redeploy).
+
+**Nothing pushed; main untouched at `8f10ae1`.**
