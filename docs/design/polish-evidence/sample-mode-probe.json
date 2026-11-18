@@ -1,0 +1,147 @@
+{
+  "summary": {
+    "generatedAt": "2026-11-17T12:06:22.273Z",
+    "base": "http://localhost:3000",
+    "build": "next start (SHOW_SAMPLE_CONTENT=true production build)",
+    "routes": 8,
+    "bannerOnAll": true,
+    "bannerTextUniform": true,
+    "bannerAlwaysFirstBodyElement": false
+  },
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 4,
+      "checks": {
+        "section04_present": true,
+        "reserveMark": true,
+        "note": true,
+        "link": true,
+        "taggedSamples": 4,
+        "navHasTestimonials": true
+      }
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 4,
+      "checks": {
+        "associateNames": [
+          {
+            "name": "Vikram Singh Soda",
+            "present": true
+          },
+          {
+            "name": "Bhawani",
+            "present": true
+          },
+          {
+            "name": "Hemraj",
+            "present": true
+          }
+        ],
+        "associateRolesRendered": [
+          {
+            "role": "Senior Tax Associate",
+            "present": false
+          },
+          {
+            "role": "GST & Compliance Associate",
+            "present": false
+          },
+          {
+            "role": "Accounts & Bookkeeping Executive",
+            "present": false
+          }
+        ],
+        "principalQuote": true,
+        "quoteTagged": true
+      }
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 0
+    },
+    {
+      "route": "/why-choose-us",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 0
+    },
+    {
+      "route": "/testimonials",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 4,
+      "checks": {
+        "previewIntroLine": true,
+        "sampleQuotes": true,
+        "sampleClientBylines": 0,
+        "sampleQuote1": true,
+        "sections02_03_absent": {
+          "proofBand": true,
+          "signedPage": true,
+          "meetPrincipal": true,
+          "founderBandName": true
+        },
+        "noindexMeta": true,
+        "navHasTestimonials": true
+      }
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 0
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 0
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "banner": {
+        "present": true,
+        "text": "Design preview — sample content shown",
+        "firstBodyElementHtml": "<div hidden=\"\"><!--$--><!--/$--></div><p class=\"sample-banner\">Design preview — sample content shown</p><a hre"
+      },
+      "sampleTagCount": 0
+    }
+  ]
+}

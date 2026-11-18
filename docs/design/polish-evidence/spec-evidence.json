@@ -1,0 +1,505 @@
+{
+  "home": {
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · Tax Consultants & Financial Advisors · Jaisalmer"
+      },
+      {
+        "cls": "mt-3",
+        "fig": null,
+        "txt": null,
+        "full": "Parbhati Lal Sharma"
+      },
+      {
+        "cls": "mt-1",
+        "fig": null,
+        "txt": null,
+        "full": "Principal Consultant · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "Services",
+        "full": "01Services"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "02",
+        "txt": "How we work",
+        "full": "02How we work"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "03",
+        "txt": "The record",
+        "full": "03The record"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "05",
+        "txt": "Common questions",
+        "full": "05Common questions"
+      },
+      {
+        "cls": "text-brass",
+        "fig": null,
+        "txt": null,
+        "full": "The next step"
+      }
+    ],
+    "h1": [
+      "Income tax and GST, handled personally — for individuals and businesses in Jaisalmer."
+    ],
+    "heroBio": "The work people bring to this office, in the words they use for it.",
+    "recordBandHtml": "rt</h3><p class=\"text-body text-ink-muted mt-2\">From first consultation to notice handling — we stay with you through the whole process.</p></li></ul></div></section><section class=\"ledger-rail pb-[var(--space-section)]\"><p class=\"rail-label rail-num\"><span class=\"rail-num-figure\" data-numeric=\"true\">03</span><span class=\"rail-num-rule\"></span><span class=\"rail-num-text\">The record</span></p><div><h2>The record</h2><ul class=\"measure mt-8\"><li class=\"ruled-entry\"><p class=\"text-body\" data-numeric=\"true\">Since 2001</p></li><li class=\"ruled-entry\"><p class=\"text-body\" data-numeric=\"true\">25<!-- --> years in practice</p></li><li class=\"ruled-entry\"><p class=\"text-body\" data-numeric=\"true\">Mon–Sat 10:00–7:00</p></li><li class=\"ruled-entry\"><p class=\"text-body\">First consultation free</p></li><li class=\"ruled-entry\"><p class=\"text-body\">Office in Jaisalmer</p></li></ul></div></section><section class=\"ledger-rail pb-[var(--space-section)]\"><p class=\"rail-label rail-num\"><span class=\"rail-num-figure\" data-numeric=\"true\">05</span><span class=\"rail-num-rule\"></span><span class=\"rail-num-text\">Common questions</span></p><div><h2>Common questions</h2><ul class=\"measure mt-8\"><li class=\"ruled-entry\"><div class=\"flex gap-4\"><span class=\"rail-label pt-1\">01</span><div><h3><a class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" href=\"/faq\">Which documents do I need?</a></h3><p class=\"text-meta text-ink-muted mt-2\">For salaried individuals: Form 16, interest certificates, investment proofs (80C, 80D etc.) and Aadhaar/PAN.</p></div></div></li><li class=\"ruled-entry\"><div class=\"flex gap-4\"><span class=\"rail-label pt-1\">02</span><div><h3><a class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" href=\"/faq\">What are your fees?</a></h3><p class=\"text-meta text-ink-muted mt-2\">Fees depend on the complexity of the work — a simple salary return costs much less than a business audit.</p></div></div></li><li class=\"ruled-entry\"><div class=\"flex gap-4\"><span class=\"rail-label pt-1\">03</span><div><h3><a class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" href=\"/faq\">I got a tax notice. What now?</a></h3><p class=\"text-meta text-ink-muted mt-2\">Don't panic, and don't ignore it.</p></div></div></li></ul><a class=\"btn-quiet mt-8\" href=\"/faq\">All common questions</a></div></section><section class=\"act-band\"><div class=\"ledger-rail py-[var(--space-section)]\"><p class=\"rail-label text-brass\">The next step</p><div><h2 class=\"max-w-[24",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "P.L. Sharma And Company",
+        "url": "https://plsharma-site-preview.netlify.app",
+        "telephone": "+91 98297 71396",
+        "email": "plperiwal@yahoo.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "109, Indira Colony",
+          "addressLocality": "Jaisalmer",
+          "addressRegion": "Rajasthan",
+          "postalCode": "345001",
+          "addressCountry": "IN"
+        },
+        "openingHours": "Mo-Sa 10:00-19:00",
+        "founder": {
+          "@type": "Person",
+          "name": "Parbhati Lal Sharma"
+        },
+        "areaServed": "Jaisalmer",
+        "foundingDate": "2001"
+      }
+    ],
+    "imgs": [
+      "<img alt=\"\" fetchPriority=\"high\" width=\"300\" height=\"375\" decoding=\"async\" data-nimg=\"1\" class=\"block h-auto w-full\" style=\"color:transparent\" src=\"/images/founder-plate-polished.webp\"/>"
+    ],
+    "plateFigure": null,
+    "headerNav": "<nav class=\"hidden items-center gap-7 lg:flex\"><a class=\"relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap text-[color:var(--accent)] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:bg-[color:var(--accent)]\" href=\"/\">Home</a><a class=\"relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap text-white/75 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[color:var(--accent)] after:transition-transform hover:text-white hover:after:scale-x-100\" href=\"/about\">About</a><a class=\"relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap text-white/75 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[color:var(--accent)] after:transition-transform hover:text-white hover:after:scale-x-100\" href=\"/services\">Services</a><a class=\"relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap text-white/75 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[color:var(--accent)] after:transition-transform hover:text-white hover:after:scale-x-100\" href=\"/why-choose-us\">Why Choose Us</a><a class=\"relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap text-white/75 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[color:var(--accent)] after:transition-transform hover:text-white hover:after:scale-x-100\" href=\"/faq\">FAQ</a><a class=\"relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap text-white/75 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[color:var(--accent)] after:transition-transform hover:text-white hover:after:scale-x-100\" href=\"/contact\">Contact</a></nav>",
+    "footerHtml": "<footer class=\"relative border-t bg-primary text-primary-foreground\"><h2 class=\"sr-only\">Site footer</h2><div class=\"absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[color:var(--accent)] to-transparent\"></div><div class=\"mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4\"><div><div class=\"mb-4 flex items-center gap-3\"><svg viewBox=\"48 48 416 416\" fill=\"none\" class=\"size-9 shrink-0\" aria-hidden=\"true\"><g stroke=\"#FAF6EE\" stroke-width=\"34\" stroke-linecap=\"round\"><path d=\"M 161 96 L 161 416\"></path><circle cx=\"225\" cy=\"160\" r=\"64\"></circle><path d=\"M 161 399 L 351 399\"></path></g><circle cx=\"225\" cy=\"160\" r=\"24\" fill=\"#D9A866\"></circle><circle cx=\"225\" cy=\"160\" r=\"8\" fill=\"#262F3D\"></circle></svg><span class=\"font-heading text-base font-bold\">P.L. Sharma And Company</span></div><p class=\"text-sm leading-relaxed text-primary-foreground/80\">Tax consultancy serving individuals and businesses in Jaisalmer. Accurate filing, honest advice, complete confidentiality.</p></div><div><h3 class=\"mb-4 text-sm font-semibold text-[color:var(--accent)]\">Quick links</h3><ul class=\"space-y-2.5 text-sm text-primary-foreground/80\"><li><a class=\"hover:text-white hover:underline\" href=\"/\">Home</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/about\">About</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/services\">Services</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/why-choose-us\">Why Choose Us</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/faq\">FAQ</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/contact\">Contact</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/book\">Book a consultation</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/privacy\">Privacy</a></li></ul></div><div><h3 class=\"mb-4 text-sm font-semibold text-[color:var(--accent)]\">Services</h3><ul class=\"space-y-2.5 text-sm text-primary-foreground/80\"><li><a class=\"hover:text-white hover:underline\" href=\"/services\">Income Tax & ITR Filing</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/services\">GST Registration & Compliance</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/services\">Audit Support & Record Review</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/services\">Business Registration & Licensing</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/services\">Tax Planning & Advisory</a></li><li><a class=\"hover:text-white hover:underline\" href=\"/services\">TDS, Payroll & Bookkeeping</a></li></ul></div><div><h3 class=\"mb-4 text-sm font-semibold text-[color:var(--accent)]\">Contact</h3><ul class=\"space-y-3 text-sm text-primary-foreground/80\"><li class=\"flex gap-2.5\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-map-pin mt-0.5 size-4 shrink-0 text-[color:var(--accent)]\" aria-hidden=\"true\"><path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle></svg><span>109, Indira Colony, Jaisalmer,<br/>Rajasthan 345001</span></li><li class=\"flex gap-2.5\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-phone mt-0.5 size-4 shrink-0 text-[color:var(--accent)]\" aria-hidden=\"true\"><path d=\"M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384\"></path></svg><a href=\"tel:+919829771396\" class=\"hover:text-white hover:underline\">Call the office ·<!-- --> <span class=\"phone-number\">+91 98297 71396</span></a></li><li class=\"flex gap-2.5\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-mail mt-0.5 size-4 shrink-0 text-[color:var(--accent)]\" aria-hidden=\"true\"><path d=\"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7\"></path><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"></rect></svg><a href=\"mailto:plperiwal@yahoo.com\" class=\"break-all hover:text-white hover:underline\">plperiwal@yahoo.com</a></li><li class=\"flex gap-2.5\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clock mt-0.5 size-4 shrink-0 text-[color:var(--accent)]\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 6v6l4 2\"></path></svg><span><span class=\"block\">Monday – Saturday<!-- --> · <!-- -->10:00 AM – 7:00 PM</span><span class=\"block\">Sunday<!-- --> · <!-- -->Closed</span></span></li></ul></div></div><div class=\"border-t border-white/10\"><div class=\"mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs text-primary-foreground/60 sm:flex-row\"><p>© <!-- -->2026<!-- --> <!-- -->P.L. Sharma And Company<!-- -->.</p><p>Income Tax, GST, Tax Planning and Business Registration</p></div></div></footer>",
+    "section04": {
+      "whatClientsSay": false,
+      "howWeHandle": false
+    },
+    "placeholderMarks": 0
+  },
+  "about": {
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · About · Jaisalmer"
+      },
+      {
+        "cls": "mt-3",
+        "fig": null,
+        "txt": null,
+        "full": "Parbhati Lal Sharma"
+      },
+      {
+        "cls": "mt-1",
+        "fig": null,
+        "txt": null,
+        "full": "Principal Consultant · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "The practice",
+        "full": "01The practice"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "Since 2001 · 25+ Years in Practice in Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "02",
+        "txt": "The principal",
+        "full": "02The principal"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "03",
+        "txt": "The team",
+        "full": "03The team"
+      },
+      {
+        "cls": "text-brass",
+        "fig": null,
+        "txt": null,
+        "full": "The next step"
+      }
+    ],
+    "h1": [
+      "Parbhati Lal Sharma has practised in Jaisalmer since 2001."
+    ],
+    "imgs": [
+      "<img alt=\"\" fetchPriority=\"high\" width=\"300\" height=\"375\" decoding=\"async\" data-nimg=\"1\" class=\"block h-auto w-full\" style=\"color:transparent\" src=\"/images/founder-plate-polished.webp\"/>"
+    ],
+    "plateFigure": "<figure class=\"w-fit max-w-[300px] shrink-0\"><img alt=\"\" fetchPriority=\"high\" width=\"300\" height=\"375\" decoding=\"async\" data-nimg=\"1\" class=\"block h-auto w-full\" style=\"color:transparent\" src=\"/images/founder-plate-polished.webp\"/><p class=\"rail-label mt-3\">Parbhati Lal Sharma</p><p class=\"rail-label mt-1\">Principal Consultant · Jaisalmer</p><span aria-hidden=\"true\" class=\"mt-3 block h-px w-full bg-line\"></span></figure>",
+    "section01": "rail-num-text\">The practice</span></p><div><h2>The practice</h2><ul class=\"measure mt-8\"><li class=\"ruled-entry\"><p class=\"rail-label\" data-numeric=\"true\">Since <!-- -->2001<!-- --> · <!-- -->25+ Years in Practice in Jaisalmer</p><p class=\"text-body text-ink-muted mt-3\">The work is the everyday work of a tax office: income tax returns and notices, GST registration and returns, business registrations, tax planning, TDS and bookkeeping.</p><p class=\"mt-3\"><a class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" href=\"/services\">The work we handle</a></p></li></ul></div></section><section class=\"ledger-rail pb-[var(--space-section)]\"><p class=\"rail-label rail-num\"><span class=\"rail-num-figure\" data-numeric=\"true\">02</span><span class=\"rail-num-rule\"></span><span class=\"rail-num-text\">The principal</span></p><div><h2>The principal</h2><ul class=\"measure mt-8\"><li class=\"ruled-entry\"><p class=\"text-body\">The first conversation is about understanding your case.</p></li><li class=\"ruled-entry\"><p class=\"text-body\">The fee is agreed before work begins.</p></li><li class=\"ruled-entry\"><p class=\"text-body\">The first consultation is free.</p></li></ul></div><p class=\"placeholder-mark mt-8\">[PLACEHOLDER — A LINE FROM THE PRINCIPAL HIMSELF, AWAITING OWNER]</p></section><section class=\"ledger-rail pb-[var(--space-section)]\"><p class=\"rail-label rail-num\"><span class=\"rail-num-figure\" data-numeric=\"true\">03</span><span class=\"rail-num-rule\"></span><span class=\"rail-num-text\">The team</span></p><div><h2>The team</h2><ul class=\"measure mt-8\"><li class=\"ruled-entry\"><h3>Parbhati Lal Sharma</h3><p class=\"text-meta text-ink-muted mt-1\">Founder & Principal Consultant</p></li></ul><p class=\"placeholder-mark mt-8\">[PLACEHOLDER — TEAM PHOTOS AND CONFIRMED ROLES, AWAITING OWNER]</p></div></section><section class=\"act-band\"><div class=\"ledger-rail py-[var(--space-section)]\"><p class=\"rail-label text-brass\">The next step</p><div><h2 class=\"max-w-[24ch]\">Ask him directly — send your name and what you need on WhatsApp.</h2><div class=\"mt-8 flex flex-col gap-3 sm:flex-row sm:items-center\"><a href=\"https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20about%20page.\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-primary\">Book a consultation on WhatsApp</a><a href=\"tel:+919829771396\" class=\"btn-quiet\">Call the office ·<!-- --> <span class=\"phone-number\">+91 9",
+    "dataNumericCount": 4,
+    "placeholderMarks": []
+  },
+  "testimonials": {
+    "main": "<!--&--><!--&--><section class=\"ledger-rail py-[var(--space-section)]\"><p class=\"rail-label\">P.L. Sharma & Co.<!-- --> · Testimonials · Jaisalmer</p><div><div><h1>Real client words — published with permission, and not before.</h1><p class=\"text-lead text-ink-muted mt-3 measure\">This page stays empty until real clients agree to be quoted. Nothing here is invented.</p></div></div></section><section class=\"ledger-rail pb-[var(--space-section)]\"><p class=\"rail-label rail-num\"><span class=\"rail-num-figure\" data-numeric=\"true\">01</span><span class=\"rail-num-rule\"></span><span class=\"rail-num-text\">Client words</span></p><div><h2>Client words</h2><div class=\"ruled-entry measure mt-8\"><p class=\"placeholder-mark\">[PLACEHOLDER — AWAITING REAL TESTIMONIAL FROM OWNER]</p><p class=\"text-body text-ink-muted mt-4\">A quote appears here only after a real client has read it and agreed to be named. Until then the entry stays empty on purpose — this page publishes only what the firm can stand behind.</p></div><p class=\"text-body mt-4\"><a href=\"https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.\" class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" target=\"_blank\" rel=\"noopener noreferrer\">A quote to share? Send it — your permission decides what appears.</a></p></div></section><section class=\"act-band\"><div class=\"ledger-rail py-[var(--space-section)]\"><p class=\"rail-label text-brass\">The next step</p><div><h2 class=\"max-w-[24ch]\">While this page waits, your questions get answered — ask us directly.</h2><div class=\"mt-8 flex flex-col gap-3 sm:flex-row sm:items-center\"><a href=\"https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website's%20testimonials%20page.\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-primary\">Book a consultation on WhatsApp</a><a href=\"tel:+919829771396\" class=\"btn-quiet\">Call the office ·<!-- --> <span class=\"phone-number\">+91 98297 71396</span></a></div></div></div></section><nav class=\"sticky-action-bar\" aria-label=\"Quick actions\"><a href=\"tel:+919829771396\" aria-label=\"Call the office · +91 98297 71396\">Call</a><a href=\"https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Book a consultation on WhatsApp\">WhatsApp</a></nav><!--$--><!--/$--><!--/&--><!--/&-->",
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · Testimonials · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "Client words",
+        "full": "01Client words"
+      },
+      {
+        "cls": "text-brass",
+        "fig": null,
+        "txt": null,
+        "full": "The next step"
+      }
+    ],
+    "h1": [
+      "Real client words — published with permission, and not before."
+    ],
+    "robotsMeta": "noindex",
+    "description": "Real client words — published with permission, and not before. Nothing is invented: P.L. Sharma And Company has practised in Jaisalmer since 2001."
+  },
+  "services": {
+    "h1": [
+      "Income tax, GST, audit support, registration — the work, in your words."
+    ],
+    "faqLink": "<a class=\"relative py-1 text-sm font-medium tracking-wide transition-[color,background-color,border-color] whitespace-nowrap text-white/75 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[color:var(--accent)] after:transition-transform hover:text-white hover:after:scale-x-100\" href=\"/faq\">FAQ</a>",
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · Services · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "Services",
+        "full": "01Services"
+      },
+      {
+        "cls": "text-brass",
+        "fig": null,
+        "txt": null,
+        "full": "The next step"
+      }
+    ]
+  },
+  "faq": {
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · FAQ · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "The first questions",
+        "full": "01The first questions"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "02",
+        "txt": "Working with us",
+        "full": "02Working with us"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "03",
+        "txt": "For business clients",
+        "full": "03For business clients"
+      },
+      {
+        "cls": "text-brass",
+        "fig": null,
+        "txt": null,
+        "full": "The next step"
+      }
+    ],
+    "h1": [
+      "Documents, fees, notices — the questions, answered plainly."
+    ],
+    "askLink": "<a href=\"https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20have%20a%20question.\" class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" target=\"_blank\" rel=\"noopener noreferrer\">Something else on your mind? Send it — a person replies.</a>"
+  },
+  "contact": {
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · Contact · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "The office",
+        "full": "01The office"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "Call the office"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "WhatsApp"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "Address"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "Hours"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "Email"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "02",
+        "txt": "Before you come",
+        "full": "02Before you come"
+      },
+      {
+        "cls": "text-brass",
+        "fig": null,
+        "txt": null,
+        "full": "The next step"
+      }
+    ],
+    "h1": [
+      "One office in Jaisalmer — open six days a week."
+    ]
+  },
+  "wcu": {
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · Why choose us · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "The way of working",
+        "full": "01The way of working"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "02",
+        "txt": "What this means for your case",
+        "full": "02What this means for your case"
+      },
+      {
+        "cls": "text-brass",
+        "fig": null,
+        "txt": null,
+        "full": "The next step"
+      }
+    ],
+    "h1": [
+      "Fees agreed before work begins. Deadlines kept. Your papers stay confidential."
+    ],
+    "lead": "Four things you can hold us to.",
+    "entry01": [
+      "<li class=\"ruled-entry\"><div class=\"flex gap-4\"><span class=\"rail-label pt-1\" data-numeric=\"true\">01</span><div><h3>Transparent Pricing</h3><p class=\"text-body text-ink-muted mt-2\">Clear, agreed fees before work begins — no hidden charges, no surprises.</p><p class=\"mt-3\"><a class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" href=\"/faq\">Read the fee answer</a></p></div></div></li>"
+    ]
+  },
+  "book": {
+    "consentNoteContext": "ed sm:col-span-2\"><a class=\"underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink\" href=\"mailto:plperiwal@yahoo.com?subject=Consultation%20Request%20(Website)&body=Name%3A%20%0APhone%3A%20%0AService%3A%20%0APreferred%20Date%2FTime%3A%20%0ANote%3A%20\">Or send by email instead</a></p></form></div><p class=\"text-meta text-ink-muted mt-4\">Your details go straight to the office on WhatsApp — this site stores nothing.</p></div></div></section><section class=\"ledger-rail py-[var(--space-section)]\"><p class=\"rail",
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · Book · Jaisalmer"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "1 your name · 2 when suits you · 3 send on WhatsApp"
+      },
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "Prefer to talk first?"
+      }
+    ],
+    "actionBarAbsent": true
+  },
+  "notFound": {
+    "h1": [
+      "That page isn't here."
+    ],
+    "quickLinks": [
+      {
+        "href": "/",
+        "text": "P.L. Sharma And CompanyTax Consultants & Financial Advisors"
+      },
+      {
+        "href": "/",
+        "text": "Home"
+      },
+      {
+        "href": "/services",
+        "text": "Services"
+      },
+      {
+        "href": "/faq",
+        "text": "FAQ"
+      },
+      {
+        "href": "/contact",
+        "text": "Contact"
+      },
+      {
+        "href": "/book",
+        "text": "Book a consultation"
+      },
+      {
+        "href": "/book",
+        "text": "Book a consultation"
+      },
+      {
+        "href": "/",
+        "text": "Home"
+      },
+      {
+        "href": "/services",
+        "text": "Services"
+      },
+      {
+        "href": "/faq",
+        "text": "FAQ"
+      },
+      {
+        "href": "/contact",
+        "text": "Contact"
+      },
+      {
+        "href": "/",
+        "text": "Home"
+      },
+      {
+        "href": "/services",
+        "text": "Services"
+      },
+      {
+        "href": "/faq",
+        "text": "FAQ"
+      },
+      {
+        "href": "/contact",
+        "text": "Contact"
+      },
+      {
+        "href": "/book",
+        "text": "Book a consultation"
+      },
+      {
+        "href": "/services",
+        "text": "Income Tax & ITR Filing"
+      },
+      {
+        "href": "/services",
+        "text": "GST Registration & Compliance"
+      },
+      {
+        "href": "/services",
+        "text": "Audit Support & Record Review"
+      },
+      {
+        "href": "/services",
+        "text": "Business Registration & Licensing"
+      },
+      {
+        "href": "/services",
+        "text": "Tax Planning & Advisory"
+      },
+      {
+        "href": "/services",
+        "text": "TDS, Payroll & Bookkeeping"
+      }
+    ],
+    "marker": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · 404 · Jaisalmer"
+      }
+    ],
+    "mainLandmark": "<!--&--><!--&--><section class=\"ledger-rail py-[var(--space-section)]\"><p class=\"rail-label\">P.L. Sharma & Co.<!-- --> · 404 · Jaisalmer</p><div><div><h1>That page isn't here.</h1><p class=\"text-lead text-ink-muted mt-3 measure\">The address may be out of date, or the link was typed wrong.</p><ul class=\"measure mt-8\"><li class=\"ruled-entry\"><p class=\"text-body\"><a class=\"underline decoration-line d"
+  },
+  "actionBar": "<nav class=\"sticky-action-bar\" aria-label=\"Quick actions\"><a href=\"tel:+919829771396\" aria-label=\"Call the office · +91 98297 71396\">Call</a><a href=\"https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation.\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Book a consultation on WhatsApp\">WhatsApp</a></nav>",
+  "privacy": {
+    "h1": [
+      "One form collects your details — this site stores nothing."
+    ],
+    "railLabels": [
+      {
+        "cls": "",
+        "fig": null,
+        "txt": null,
+        "full": "P.L. Sharma & Co. · Privacy · Jaisalmer"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "01",
+        "txt": "What the form collects",
+        "full": "01What the form collects"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "02",
+        "txt": "Where your details go",
+        "full": "02Where your details go"
+      },
+      {
+        "cls": "rail-num",
+        "fig": "03",
+        "txt": "Cookies and analytics",
+        "full": "03Cookies and analytics"
+      }
+    ]
+  }
+}

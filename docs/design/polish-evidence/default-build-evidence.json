@@ -1,0 +1,739 @@
+{
+  "generatedAt": "2026-11-17T12:08:59.131Z",
+  "base": "http://localhost:3000",
+  "build": "next start (default production build, flags unset)",
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "P.L. Sharma And Company — Tax Consultants &amp; Financial Advisors",
+      "description": "P.L. Sharma And Company is a tax consultancy in Jaisalmer offering income tax filing, GST compliance, tax planning and business registration services to individuals and businesses.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "P.L. Sharma And Company — Tax Consultants & Financial Advisors",
+      "ogDescription": "P.L. Sharma And Company is a tax consultancy in Jaisalmer offering income tax filing, GST compliance, tax planning and business registration services to individuals and businesses.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "P.L. Sharma And Company",
+          "url": "https://plsharma-site-preview.netlify.app",
+          "telephone": "+91 98297 71396",
+          "email": "plperiwal@yahoo.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "109, Indira Colony",
+            "addressLocality": "Jaisalmer",
+            "addressRegion": "Rajasthan",
+            "postalCode": "345001",
+            "addressCountry": "IN"
+          },
+          "openingHours": "Mo-Sa 10:00-19:00",
+          "founder": {
+            "@type": "Person",
+            "name": "Parbhati Lal Sharma"
+          },
+          "areaServed": "Jaisalmer",
+          "foundingDate": "2001"
+        }
+      ],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": true,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": true
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": true
+          },
+          {
+            "s": "First consultation free",
+            "present": true
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": true
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": true,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "title": "About the practice | P.L. Sharma And Company",
+      "description": "About P.L. Sharma And Company — Parbhati Lal Sharma has practised in Jaisalmer since 2001. You speak to the principal himself, the fee is agreed before work begins, and the first consultation is free.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "About the practice | P.L. Sharma And Company",
+      "ogDescription": "About P.L. Sharma And Company — Parbhati Lal Sharma has practised in Jaisalmer since 2001. You speak to the principal himself, the fee is agreed before work begins, and the first consultation is free.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/about",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/about",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "title": "Services | P.L. Sharma And Company",
+      "description": "Income tax filing, GST registration & compliance, business registration, tax planning, TDS and bookkeeping — by P.L. Sharma And Company, Jaisalmer.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "Services | P.L. Sharma And Company",
+      "ogDescription": "Income tax filing, GST registration & compliance, business registration, tax planning, TDS and bookkeeping — by P.L. Sharma And Company, Jaisalmer.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/services",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/services",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/book",
+      "status": 200,
+      "title": "Book a consultation | P.L. Sharma And Company",
+      "description": "Send a consultation request to P.L. Sharma And Company — fill in two details and WhatsApp opens with your request ready. We reply and confirm a time. Or call +91 98297 71396; the office is open Monday – Saturday, 10:00 AM – 7:00 PM.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "Book a consultation | P.L. Sharma And Company",
+      "ogDescription": "Send a consultation request to P.L. Sharma And Company — fill in two details and WhatsApp opens with your request ready. We reply and confirm a time. Or call +91 98297 71396; the office is open Monday – Saturday, 10:00 AM – 7:00 PM.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/book",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/book",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [],
+      "actionBarPresent": false,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "title": "Common questions — documents, fees, notices | P.L. Sharma And Company",
+      "description": "The questions people ask before their first message — which documents to bring, how fees work, what to do about a tax notice, online consultations and GST registration — answered plainly by P.L. Sharma And Company, Jaisalmer.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "Common questions — documents, fees, notices | P.L. Sharma And Company",
+      "ogDescription": "The questions people ask before their first message — which documents to bring, how fees work, what to do about a tax notice, online consultations and GST registration — answered plainly by P.L. Sharma And Company, Jaisalmer.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/faq",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/faq",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I book a consultation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use the booking form on this website or tap the WhatsApp button. Share your name, service needed and preferred date — we will confirm your slot on WhatsApp."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which documents do I need?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For salaried individuals: Form 16, interest certificates, investment proofs (80C, 80D etc.) and Aadhaar/PAN. For businesses: books of account, bank statements, sales & purchase details. We will give you a checklist specific to your case."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are your fees?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Fees depend on the complexity of the work — a simple salary return costs much less than a business audit. You will always be told the exact fee upfront before we begin. Please contact us for a quote.\nThe first consultation is free."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can consultations happen online?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. While we welcome you at our office, most routine matters (ITR filing, GST returns, documents) can be handled completely over WhatsApp, email or phone."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "I got a tax notice. What now?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Don't panic, and don't ignore it. Bring or send us the notice as soon as possible — we will read it, explain what it means in plain language, and prepare a proper response within the deadline."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you handle GST registration?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — registration, amendments, monthly/quarterly returns and annual reconciliation. We also advise on whether GST registration is required for your turnover and business type."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my information confidential?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely. Professional confidentiality is a cornerstone of our practice. Your documents and data are never shared with any third party."
+              }
+            }
+          ]
+        }
+      ],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "title": "Contact the office | P.L. Sharma And Company",
+      "description": "Visit 109, Indira Colony, Jaisalmer, Rajasthan, India — 345001 — open Monday – Saturday, 10:00 AM – 7:00 PM. Call or WhatsApp +91 98297 71396, or email plperiwal@yahoo.com.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "Contact the office | P.L. Sharma And Company",
+      "ogDescription": "Visit 109, Indira Colony, Jaisalmer, Rajasthan, India — 345001 — open Monday – Saturday, 10:00 AM – 7:00 PM. Call or WhatsApp +91 98297 71396, or email plperiwal@yahoo.com.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/contact",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/contact",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/why-choose-us",
+      "status": 200,
+      "title": "How we work | P.L. Sharma And Company",
+      "description": "Fees agreed before work begins. Deadlines kept. Your papers stay confidential. Four things you can hold P.L. Sharma And Company to.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "How we work | P.L. Sharma And Company",
+      "ogDescription": "Fees agreed before work begins. Deadlines kept. Your papers stay confidential. Four things you can hold P.L. Sharma And Company to.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/why-choose-us",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/why-choose-us",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/testimonials",
+      "status": 200,
+      "title": "Client words — published with permission | P.L. Sharma And Company",
+      "description": "Real client words — published with permission, and not before. Nothing is invented: P.L. Sharma And Company has practised in Jaisalmer since 2001.",
+      "robots": [
+        "noindex"
+      ],
+      "ogTitle": "Client words — published with permission | P.L. Sharma And Company",
+      "ogDescription": "Real client words — published with permission, and not before. Nothing is invented: P.L. Sharma And Company has practised in Jaisalmer since 2001.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/testimonials",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/testimonials",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "title": "Privacy | P.L. Sharma And Company",
+      "description": "What the booking form collects, where your details go — straight to the office on WhatsApp — and what this site stores: nothing. How to have your details corrected or deleted.",
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "ogTitle": "Privacy | P.L. Sharma And Company",
+      "ogDescription": "What the booking form collects, where your details go — straight to the office on WhatsApp — and what this site stores: nothing. How to have your details corrected or deleted.",
+      "ogUrl": "https://plsharma-site-preview.netlify.app/privacy",
+      "ogImage": "https://plsharma-site-preview.netlify.app/images/og-default.png",
+      "ogImageAlt": "P.L. Sharma And Company — Tax Consultants & Financial Advisors, Jaisalmer",
+      "twitterCard": "summary_large_image",
+      "canonical": "https://plsharma-site-preview.netlify.app/privacy",
+      "manifestLink": "/manifest.webmanifest",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+      "jsonLd": [],
+      "actionBarPresent": true,
+      "sampleBanner": false,
+      "sampleTags": 0,
+      "railNums": [],
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60",
+      "recordBand": {
+        "h2": false,
+        "items": [
+          {
+            "s": "Since 2001",
+            "present": false
+          },
+          {
+            "s": "25 years in practice",
+            "present": false
+          },
+          {
+            "s": "Mon–Sat 10:00–7:00",
+            "present": false
+          },
+          {
+            "s": "First consultation free",
+            "present": false
+          },
+          {
+            "s": "Office in Jaisalmer",
+            "present": false
+          }
+        ],
+        "dataNumericCount": 0
+      },
+      "section04Absent": true,
+      "heroBio": false,
+      "heroRailSince2001": false,
+      "footer": {
+        "blurb": true,
+        "noTrusted": true,
+        "servicesCount": 0,
+        "privacyLink": true,
+        "bookLink": true,
+        "hoursRows": false,
+        "bottomDescriptor": true,
+        "since2001inFooter": false
+      }
+    }
+  ],
+  "extras": {
+    "robots": {
+      "status": 200,
+      "body": "User-Agent: *\nDisallow: /\n\n"
+    },
+    "sitemap": {
+      "status": 200,
+      "contentType": null,
+      "locs": [
+        "https://plsharma-site-preview.netlify.app",
+        "https://plsharma-site-preview.netlify.app/about",
+        "https://plsharma-site-preview.netlify.app/services",
+        "https://plsharma-site-preview.netlify.app/why-choose-us",
+        "https://plsharma-site-preview.netlify.app/faq",
+        "https://plsharma-site-preview.netlify.app/contact",
+        "https://plsharma-site-preview.netlify.app/book",
+        "https://plsharma-site-preview.netlify.app/privacy"
+      ],
+      "hasTestimonials": false
+    },
+    "manifest": {
+      "status": 200,
+      "body": "{\"name\":\"P.L. Sharma And Company\",\"short_name\":\"P.L. Sharma & Co.\",\"start_url\":\"/\",\"display\":\"standalone\",\"background_color\":\"#faf6ec\",\"theme_color\":\"#282e3f\",\"icons\":[{\"src\":\"/icons/icon-192.png\",\"sizes\":\"192x192\",\"type\":\"image/png\",\"purpose\":\"any\"},{\"src\":\"/icons/icon-512.png\",\"sizes\":\"512x512\",\"type\":\"image/png\",\"purpose\":\"any\"}]}"
+    },
+    "ogImage": {
+      "status": 200,
+      "contentType": null,
+      "bytes": null
+    },
+    "icons": {
+      "icon192": 200,
+      "icon512": 200
+    },
+    "notFound": {
+      "status": 404,
+      "title": "P.L. Sharma And Company — Tax Consultants &amp; Financial Advisors",
+      "h1": "That page isn't here.",
+      "marker": false,
+      "defaultCopyPresent": false,
+      "quickLinks": [
+        {
+          "l": "Book a consultation",
+          "present": true
+        },
+        {
+          "l": "Home",
+          "present": true
+        },
+        {
+          "l": "Services",
+          "present": true
+        },
+        {
+          "l": "FAQ",
+          "present": true
+        },
+        {
+          "l": "Contact",
+          "present": true
+        }
+      ],
+      "chrome": {
+        "header": true,
+        "footer": true,
+        "skipLink": true,
+        "whatsappFloat": true,
+        "actionBar": false
+      },
+      "robotsMeta": "<meta name=\"robots\" content=\"noindex\"",
+      "h1InMain": true,
+      "bodyStart": "<body class=\"flex min-h-dvh flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:z-60"
+    },
+    "book": {
+      "consentNote": true,
+      "hoursRows": false,
+      "actionBarAbsent": true
+    }
+  }
+}

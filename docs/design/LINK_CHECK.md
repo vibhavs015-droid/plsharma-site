@@ -147,3 +147,151 @@ Root-cause story (updated to the observed state):
 | 10 | site-wide | No web manifest link (absent, not broken) | TASK 9/12 (optional) |
 
 Not issues (recorded so nobody re-investigates): all icons present and 200; titles and canonicals already per-page; all 275 anchors format-correct; maps link resolves; `/book`'s parameterized mailto is by design; the transient build-worker crash (`0xC00000FD`) did not reproduce on retry.
+
+---
+
+# LINK_CHECK.md — the AFTER audit (polish pass)
+
+**Date:** 17 Nov 2026 · **Branch:** `polish-pass` @ `78bdb6c` · **Author:** qa-engineer (TASK 8 after-half)
+**Raw machine evidence:** `docs/design/polish-evidence/link-check-after.json` — every claim below traces to a status code or a copied string in that file.
+
+**Headline, plainly:** on the local production build (polish-pass default build — no rebuild this window), **0 broken links**: all 224 GET-checked anchors, all 63 internal `<link>` targets, both images, `/sitemap.xml` and `/robots.txt` returned 200. Before's **10 issues → 2**, both owner/deploy-pending (SITE_URL host; X-Robots-Tag runtime). Broken-link count before → after: **0 → 0**. Ten failures were recorded against the **deployed preview host** instead — that build still runs pre-polish code (new evidence category `deployedLag`, listed below).
+
+## Method
+
+1. Same crawler, adapted: `%TEMP%\opencode\link-crawl-after.mjs` — extraction, format validators and GET logic mirror `link-crawl.mjs` (before) exactly. Two documented deltas:
+   - ROUTES = **9** shipped pages (`/privacy` added by the polish pass); sitemap expectation = **8** (`SITEMAP_ROUTES` = all except `/testimonials` — Item 0 while the confirmed tier is empty).
+   - Failures on the deployed preview host route to **`deployedLag`**, never `broken` — `broken` stays "local build link health", exactly as in the before run.
+2. No build step: `.next` was already the fresh default build (BUILD_ID written after `78bdb6c`; brief forbade a rebuild). Served with `npx next start -p 3000`.
+3. Same limitation as before: no JS execution (fully static site — served HTML *is* the product); only internal `<link>` targets are GET-tested, canonical/OG absolute targets recorded only (methodology unchanged).
+
+## Local build (AFTER) — summary
+
+All 9 pages returned **200**. Counts per page:
+
+| Page | Anchors | GET-checked | tel | mailto | wa.me | fragment | link tags | imgs | Non-200s (local) |
+|---|---|---|---|---|---|---|---|---|---|
+| `/` | 45 | 33 | 5 | 2 | 4 | 1 | 8 | 1 | **0** |
+| `/about` | 33 | 23 | 4 | 2 | 3 | 1 | 8 | 1 | **0** |
+| `/services` | 39 | 29 | 4 | 2 | 3 | 1 | 8 | 0 | **0** |
+| `/book` | 30 | 22 | 3 | 3 | 1 | 1 | 8 | 0 | **0** |
+| `/faq` | 35 | 24 | 4 | 2 | 4 | 1 | 8 | 0 | **0** |
+| `/contact` | 36 | 23 | 5 | 3 | 4 | 1 | 8 | 0 | **0** |
+| `/why-choose-us` | 35 | 25 | 4 | 2 | 3 | 1 | 8 | 0 | **0** |
+| `/testimonials` | 33 | 22 | 4 | 2 | 4 | 1 | 8 | 0 | **0** |
+| `/privacy` | 35 | 23 | 5 | 4 | 2 | 1 | 8 | 0 | **0** |
+| **Total** | **321** | **224** | 38 | 22 | 28 | 9 | 72 | 2 | **0** |
+
+- Every anchor accounted for: 321 = 224 GET-checked + 38 tel + 22 mailto + 28 wa.me + 9 fragment.
+- Link tags: 72 recorded (8/page — the manifest `<link>` is new), **63 GET-tested** (the 9 canonicals point at the absolute siteUrl host and are excluded by the same rule as the before run).
+- The JSON's raw per-page `non200` reads 1 on all nine pages — every one is the og:image URL in `deployedLag` below, **not** a local target; local non-200 = 0 everywhere.
+- Anchor growth vs before (275 → 321) tracks the polish: the new `/privacy` page, the sticky bar (+2 on each bar route), the footer's new `Privacy` link, minus the retired nav `Testimonials` link and the three deleted §02 proof links on `/testimonials`.
+
+### Broken links — EMPTY (local build)
+
+| Page | Kind | href | Status |
+|---|---|---|---|
+| — | — | — | none. Every localhost GET-checked link returned 200. |
+
+### deployedLag — 10 failures, all on the deployed preview (pre-polish build)
+
+| Where | Kind | URL | Status | Root cause |
+|---|---|---|---|---|
+| all 9 pages | og:image | `https://plsharma-site-preview.netlify.app/images/og-default.png` | 404 | asset added by the polish pass; deployed build predates it. Local file: **200** (pinned by `seo-head.spec.ts`) |
+| sitemap loc | sitemap-loc | `https://plsharma-site-preview.netlify.app/privacy` | 404 | route added by the polish pass; deployed build has no `/privacy` |
+
+Every one clears on the owner's redeploy. Evidence: `deployedLag[]` in the JSON; `preview[].servesPolishBuild=false` on all three probed routes.
+
+## Before → after: the 10 before-issues
+
+| # | Before issue | After status |
+|---|---|---|
+| 1 | sitemap host `plsharmaco.in` — unowned, all 8 locs DNS-fail | **Changed:** local sitemap now serves 8 locs on `https://plsharma-site-preview.netlify.app` (owned; 7×200 + the `/privacy` lag-404 above). **Still open for launch:** the preview host stands in until the owner sets `SITE_URL` — and the DEPLOYED preview's own sitemap still serves the old `plsharmaco.in` XML including `/testimonials` (pre-T9 deploy; evidence `preview[2].bodySnippet`) |
+| 2 | robots.txt allows full indexing (`Allow: /`) | **FIXED** — local body verbatim below: disallow-all, no sitemap line |
+| 3 | `netlify.toml` had no `[[headers]]` — no X-Robots-Tag anywhere | **Config added** (`X-Robots-Tag = "noindex, nofollow"` under `[[headers]]`), **runtime still absent** on every local page (`xRobotsTagHeader: "(absent)"` ×9) and on the deployed preview — see the verbatim caveat in the preview section |
+| 4 | og:url identical on all 8 pages | **FIXED** — 9 distinct og:urls, each == that page's canonical (`pages[].ogUrl` / `canonical`) |
+| 5 | og:title identical layout default on all 8 | **FIXED** — og:title == `<title>` on all 9, titles per-page (JSON + `seo-head.spec.ts` 9/9 pass) |
+| 6 | og:description identical on all 8 | **FIXED** — 9 distinct values; og:description == meta description on all 9 (JSON) |
+| 7 | og:image absent site-wide | **SHIPPED locally** — one site-wide `…/images/og-default.png`, local GET 200 (`seo-head.spec.ts`). Resolves on the preview host only after redeploy (see deployedLag) |
+| 8 | Deployed preview publicly reachable (200), owner SSO/publish decision | **Unchanged** — 200, no login redirect (re-probed this pass). Owner decision still open |
+| 9 | 404 = Next default copy inside branded chrome | **FIXED** — custom branded 404 (markers below) |
+| 10 | No web manifest link | **FIXED** — `link[rel=manifest]` → `/manifest.webmanifest` on all 9 pages; local GET 200, identity JSON pinned by `seo-head.spec.ts` |
+
+**Remaining issues: 2** (JSON `issues[]`): (a) sitemap host = preview host, pending owner `SITE_URL`; (b) the X-Robots-Tag runtime caveat.
+
+## sitemap.xml (AFTER)
+
+- `GET /sitemap.xml` → **200**, `content-type: application/xml`.
+- **8 `<loc>` entries**; route set exactly the 8 fixed routes: `missingRoutes: []`, `extraPaths: []`, and **`omittedWhileConfirmedTierEmpty: ["/testimonials"]`** — Item 0's sitemap half, live.
+- Host on every `<loc>`: `https://plsharma-site-preview.netlify.app` (before: `plsharmaco.in`).
+- GET of each loc: **7×200** (routes the deployed build already has) + `/privacy` → **404** (deployed-lag, above).
+
+## robots.txt (AFTER)
+
+- `GET /robots.txt` → **200**, `content-type: text/plain`. Body, verbatim:
+
+```
+User-Agent: *
+Disallow: /
+
+```
+
+- Before: `Allow: /` plus a `Sitemap:` line. TASK 9's default gating is in effect locally — every page head carries `noindex, nofollow` site-wide, with `/testimonials` overriding to exact `noindex` (its own flag; both halves of Item 0 pinned by `seo-head.spec.ts` / `testimonials.spec.ts`).
+
+## Canonical / OG / heads (AFTER — 9 pages)
+
+| Page | `<title>` | og:url == canonical | robots | manifest | action bar |
+|---|---|---|---|---|---|
+| `/` | P.L. Sharma And Company — Tax Consultants & Financial Advisors (layout default) | `…/` | noindex, nofollow | yes | yes |
+| `/about` | About the practice \| P.L. Sharma And Company | `…/about` | noindex, nofollow | yes | yes |
+| `/services` | Services \| P.L. Sharma And Company | `…/services` | noindex, nofollow | yes | yes |
+| `/book` | Book a consultation \| P.L. Sharma And Company | `…/book` | noindex, nofollow | yes | **no** (by design — the form is the action surface) |
+| `/faq` | Common questions — documents, fees, notices \| P.L. Sharma And Company | `…/faq` | noindex, nofollow | yes | yes |
+| `/contact` | Contact the office \| P.L. Sharma And Company | `…/contact` | noindex, nofollow | yes | yes |
+| `/why-choose-us` | How we work \| P.L. Sharma And Company | `…/why-choose-us` | noindex, nofollow | yes | yes |
+| `/testimonials` | Client words — published with permission \| P.L. Sharma And Company | `…/testimonials` | **noindex** (page's own flag) | yes | yes |
+| `/privacy` | Privacy \| P.L. Sharma And Company | `…/privacy` | noindex, nofollow | yes | yes |
+
+- og:image: one site-wide value on all 9. Viewport: one uniform value on all 9 — `width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content`.
+- JSON-LD: `/` → `ProfessionalService` (parses clean), `/faq` → `FAQPage`; the other 7 pages none (as designed).
+- Before, for contrast: identical og trio on all 8 pages, no og:image, no robots meta, no manifest link.
+
+## wa.me / tel / mailto formats (AFTER — no follow, shape validation)
+
+38 `tel:` + 28 `wa.me` + 22 `mailto:` anchors across the 9 pages. Every one validated:
+
+| Shape | Occurrences | Verdict |
+|---|---|---|
+| `tel:+919829771396` | 38 | **all exact** config match — digits/`+` only |
+| `https://wa.me/919829771396?text=…` | 28 | **all correct** — number matches; prefills decode cleanly: bar prefills are the unattributed `Hello P.L. Sharma And Company, I would like to book a consultation.`, in-page bands stay page-attributed (e.g. `…via the website's home page.`) |
+| `mailto:plperiwal@yahoo.com` (bare) | 21 | **all exact** |
+| `mailto:plperiwal@yahoo.com?subject=…&body=…` | 1 | /book form fallback — recipient exact, richer shape **by design** (same known item as the before run; the JSON's single format-failure line is this one, `matchesConfig:false` under exact-href compare) |
+
+External anchor: `/contact` → maps link, **200** (unchanged).
+
+## Favicon / icons / manifest (AFTER)
+
+Icons unchanged — same four targets as the before run, all present and GET **200**. **Manifest now ships**: `link[rel=manifest]` on all 9 pages → `/manifest.webmanifest` **200** locally (name / short_name / both icon sizes pinned by `seo-head.spec.ts`). Images: the founder plate is now `founder-plate-polished.webp` on `/` and `/about`, both GET **200**; **0 srcset** entries site-wide; og:image as above.
+
+## 404 behaviour (AFTER — `/this-page-does-not-exist`)
+
+- HTTP status: **404** (unchanged).
+- Characterization: **"custom branded 404 — shipped h1/marker present, Next default copy absent, wrapped in the root layout chrome"** (before: "Next default 404 copy rendered inside the branded root layout").
+- Markers: `hasNextDefaultCopy: false` · `hasShippedH1: true` (`That page isn't here.`) · `hasPlainMarker: true` (`P.L. Sharma & Co. · 404 · Jaisalmer` — tested on decoded, comment-stripped HTML because React splits it as `Co.<!-- --> · 404`) · brand / skip link / footer chrome / stylesheet all true · `hasAutoNoindex: true` · `quickExitCount: 5` · `<title>` = layout default.
+
+## Deployed preview (AFTER re-probe)
+
+| URL | Status | Login redirect | Serves polish build? | x-robots-tag |
+|---|---|---|---|---|
+| `/` | **200** | no | **no** (`sticky-action-bar` / `rail-num` absent) | absent |
+| `/faq` | **200** | no | **no** | absent |
+| `/sitemap.xml` | **200** (application/xml — still the old `plsharmaco.in` XML including `/testimonials`) | no | **no** | absent |
+
+Caveat, verbatim: the deployed preview still runs the PRE-polish build, so `X-Robots-Tag` runtime verification on the deployed host pends the owner's redeploy (header verified in `netlify.toml` config only).
+
+## Not issues (recorded so nobody re-investigates)
+
+- Local broken links: **0** before and **0** after — the polish pass introduced none.
+- All localhost link targets 200; every format shape valid (one by-design parameterized mailto).
+- Item 0 is live on both halves: `/testimonials` carries exact `noindex` and is omitted from the sitemap while `confirmedTestimonials` is empty.
+- The 10 deployedLag failures are deploy-order facts, not code defects — each clears on the owner's redeploy, which also resolves issue #1's deployed half and the X-Robots-Tag caveat.
