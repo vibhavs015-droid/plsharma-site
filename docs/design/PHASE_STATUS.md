@@ -347,7 +347,28 @@ behind the T0 preview flag with visible SAMPLE tags.
   restore) → spec syncs (§7 pins + §8/B2 flips + B3 rail-num/conditional-h1 +
   B4 viewport/manifest/bar + B5 404 checks) → T8 after-crawl → full suite
   (unit file-form + Playwright). qa owns ports 3000/3200 + `site/.next`.
-- **REMAINING:** qa window (RUNNING) → commit test sync → T13 (a11y axe ×9
-  pages, perf-seo LHCI foreground, screenshots ×9 pages ×6 widths →
-  `docs/design/screenshots/polish/` → critic ≤3 rounds) → CHANGELOG final
-  table → final DONE/PARTIAL/BLOCKED report. No push, no deploy (owner-gated).
+- **QA WINDOW DONE (commits `3af15af` tests + `ba9462d` evidence):** run-1
+  passes (T0 positive probe, negative guard 0 leaks, spec evidence) + run-2
+  completion: 10 specs migrated + 4 new (not-found, seo-head, action-bar,
+  privacy) + `expectRailNum` helper; 2 test-side fixes (404 double robots meta
+  scoped; float accessible name scoped vs bar); product bugs 0; suite **175/175
+  e2e + 5/5 unit**; after-crawl 0 broken local links (issues 10 → 2, both
+  owner/deploy-pending, LINK_CHECK after-half with the redeploy caveat);
+  server killed, ports 3000/3200 clear.
+- **T13 BRIEF (final phase — gate now running):**
+  - **Gate:** `npx tsc --noEmit` 0 · `npm run lint` 0 (2 test-file problems
+    sent back to qa for fix) · no formatter configured (prettier absent —
+    format gate N/A, no new installs) · production `npm run build` exit 0
+    (memory 7.5 GB free; OOM-retry-once rule) · serve :3000.
+  - **a11y-checker:** axe-core WCAG 2.2 AA across all 9 pages (incl. /privacy
+    and the 404 via unknown URL), production build, report = violations per
+    page with node evidence → persisted by the Orchestrator. Target: 0.
+  - **qa screenshots:** 9 pages × 6 widths (360/390/430/768/1024/1440) →
+    `docs/design/screenshots/polish/` (script in `site/tests/**`, granted
+    lane extension); includes /privacy + action-bar/float states.
+  - **perf-seo:** Lighthouse CI foreground AFTER a11y/screenshots land
+    (quiet machine; KNOWN_ISSUES #17 evidence): perf ≥ 90, LCP < 2.5 s.
+  - **critic (≤3 rounds):** screenshots (esp. phone sizes 360/390/430) +
+    a11y + LHCI reports + CHANGELOG draft → APPROVE/REJECT per charter.
+  - **Finish:** CHANGELOG final task table + final DONE/PARTIAL/BLOCKED
+    message with per-task evidence. No push, no deploy (owner-gated).
