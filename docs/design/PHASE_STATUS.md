@@ -457,7 +457,20 @@ behind the T0 preview flag with visible SAMPLE tags.
     - IN FLIGHT: **qa** test sync — 13 stale pins handed off (9 eyebrow,
       placeholder, exact-mailto, maps-count 1→3, leak-guard names now
       confirmed tier) + full suite + local link check.
-    - LEFT: fix loop (if qa finds product bugs) → deploy `--prod` →
-      live verification A–J (evidence in report) → critic persona audit →
-      ledgers (CHANGELOG T14, DECISION_LOG) → push → final report to
-      owner.
+    - **DONE since:** qa green (`5603bcb`: 179/179 e2e, 5/5 unit, tsc/lint
+      0, local link check 0 broken, `## T14 (local)` in LINK_CHECK);
+      deploy `6afde0b5` live; **live verification 78/78** + 5 screenshots
+      (`79dcf85`: `t14-live-verification.md`, LINK_CHECK `## T14
+      (deployed)`); ledgers (`6ab789a`: CHANGELOG A–J table, DECISION_LOG
+      7 decisions); **critic persona audit delivered** — verdict **YES
+      (would contact the office today)**, **0 P1**, 5 P2, 5 P3, saved
+      `docs/design/critic/t14-persona-tax-client.md`.
+    - IN FLIGHT: **critic quick-fix round** — F1 (home counter skips 04
+      when Client words hidden; persists to launch) + F3 (last 2 bracket
+      placeholder marks: testimonials empty-state visible live, home
+      sample block) — engineer → qa pin sync → redeploy → verify.
+    - LEFT: quick-fix deploy + verify → push (tag decision) → final
+      report to owner (incl. F2/F4/F5 = owner-input findings: team roles,
+      one honest fee figure, CA credential line; flags: HOME/404 eyebrow
+      readings, hand-at-collar in plate, about lead line replaced,
+      preview sample-content OFF on Netlify deploys).
