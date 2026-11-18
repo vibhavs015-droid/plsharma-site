@@ -107,11 +107,12 @@ export default function TestimonialsPage() {
               ) : null}
             </>
           ) : (
+            // T14-F3: the bracketed placeholder mark is gone (owner hates
+            // that style — same rule as T14-B on /about). The plain note
+            // below carries the empty state on its own, so it now sits at
+            // the entry's top padding with no extra lead-in gap.
             <div className="ruled-entry measure mt-8">
-              <p className="placeholder-mark">
-                [PLACEHOLDER — AWAITING REAL TESTIMONIAL FROM OWNER]
-              </p>
-              <p className="text-body text-ink-muted mt-4">
+              <p className="text-body text-ink-muted">
                 A quote appears here only after a real client has read it and
                 agreed to be named. Until then the entry stays empty on
                 purpose — this page publishes only what the firm can stand

@@ -270,11 +270,12 @@ export default function HomePage() {
           <div>
             <h2>What clients say</h2>
             {showSampleContent ? (
+              // T14-F3: bracketed placeholder mark removed (owner taste —
+              // same rule as T14-B); the plain note + link below carry the
+              // block, so the note drops its lead-in margin and sits on the
+              // entry's top padding.
               <div className="ruled-entry measure mt-8">
-                <p className="placeholder-mark">
-                  [PLACEHOLDER — awaiting real testimonial from owner]
-                </p>
-                <p className="text-body text-ink-muted mt-4">
+                <p className="text-body text-ink-muted">
                   Real client words will be published with the client&apos;s
                   permission — until then this entry stays empty on purpose.
                 </p>
