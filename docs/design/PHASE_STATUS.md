@@ -442,3 +442,17 @@ behind the T0 preview flag with visible SAMPLE tags.
     suite green, link check 0 broken, critic persona report saved and
     relayed, ledgers updated (CHANGELOG T14, DECISION_LOG decisions),
     pushed.
+  - **PROGRESS (checkpoint):**
+    - DONE: brief committed (`ffada28`); engineer items **A+B** (`6b87005`
+      eyebrow = page name only ×10 heads + 404, both placeholders
+      removed), **C** (`1903c91` shared founder bio in `lib/founder-bio.ts`,
+      free line trimmed on /about), **D** (`0461832` plate uncropped
+      head+shoulders, tool geometry + patches adapted, q85/q80 600×750
+      kept), **E** (`0c2e0cd` 3 names → `confirmedTeam`, name-only boxes,
+      `sampleTeam` emptied).
+    - IN FLIGHT: engineer items **F** (contact §02 rhythm) + **G**
+      (tel/maps/mailto-prefill) — still running.
+    - LEFT: qa test sync + full suite + link check (local + deployed) →
+      fix loop → deploy `--prod` → live verification A–J (evidence in
+      report) → critic persona audit → ledgers (CHANGELOG T14,
+      DECISION_LOG) → push → final report to owner.
