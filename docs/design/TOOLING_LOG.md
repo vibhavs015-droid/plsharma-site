@@ -84,6 +84,13 @@ No new npm packages were added in Phase 2; the rows above are an in-repo script,
 - **Gotchas paid for:** (1) PowerShell 5.1 strips the inner quotes from JSON passed to `netlify api --data` (and `cmd /c` mangles it further) — fixed by avoiding JSON-bearing calls entirely: `netlify sites:create --name <name> --account-slug <slug>` with the slug from `netlify api listAccountsForUser`. (2) netlify-cli 27 no longer accepts `--prod=false`: a draft deploy IS the default — just omit `--prod`.
 - **Token note:** `netlify status` works, but the auth token is NOT in `%APPDATA%\netlify\config.json` (newer CLI stores it elsewhere/keyring) — do not rely on reading it from disk.
 
+## Added 18 Nov 2026 — v3.0.0 push + redeploy (owner-ordered)
+
+- **Re-auth gotcha:** the 17 Nov login expired within a day — `netlify status` fails with "Your session has expired". Fix: `netlify logout` then `netlify login` (opens a browser authorization URL; the OWNER must click Authorize — cannot be automated). Session then lasted through two deploys.
+- **Deploy command used:** from `site/`: `npx netlify deploy --prod -m "<message>"` — CLI 27 runs `npm run build` from `netlify.toml` automatically (no separate build step). Two deploys: `6afd8c31bba193df95444733` (polish build, 1m26s) and `6afd92b1804cb0ee3e33a82a` (header fix, 2m46s). Build logs: `app.netlify.com/projects/plsharma-site-preview/deploys/<deployId>`.
+- **Gotcha paid for (the T9.4 header):** a structurally-correct `[[headers]]` block in `netlify.toml` is **NOT applied by the Netlify Next runtime** — verified absent live on HTML, the 404 AND static `/robots.txt`. Fix shipped in `next.config.ts` `headers()` (commit `a142e4a`), which travels inside the build's routes-manifest and works on any host; gated on `ALLOW_INDEXING` alongside the meta + robots.txt. Keep the toml block as defence-in-depth. Local verification recipe before spending a deploy: `npm run build` → `npx next start -p 3000` → `Invoke-WebRequest` header check on `/`, `/robots.txt` and an unknown URL (catch `WebException` for the 404 and read `GetResponseStream()`).
+- **PS 5.1 404-body recipe (re-used twice):** `Invoke-WebRequest` throws on 404 — catch `$_.Exception.Response`, wrap in `StreamReader(GetResponseStream())`, read `.Content` from the success path only (`.Content` does not exist on `HttpWebResponse`).
+
 ## Changed 17 Nov 2026 (polish pass) — sharp for the founder-plate tone-down
 
 - **sharp 0.35.5** — already present in `site/node_modules` (Next.js image-optimization dependency); NOT newly installed. Free/local, logged per the free-tooling clause.

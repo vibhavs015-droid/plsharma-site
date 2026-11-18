@@ -141,12 +141,12 @@ Doc-verified against the bundled Next 16 docs: the root not-found handles every 
 | 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | **DONE** | `62f471a` · suite (both h1 branches) · owner CA gate = OWNER_CHECKLIST |
 | 7 | Testimonials page + section (zero-confirmed behaviour) | **DONE** | `4085eaf` (owner override) · `dcc4977` · `d7363a0` (spec §8) · suite + screenshots |
 | 8 | Link check + branded 404 | **DONE** | `e2f712d` (before) · `023798d` (404) · `ba9462d` (after: 0 broken, issues 10 → 2 owner-pending) |
-| 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | **DONE** | `62f471a` · `seo-head` suite (9 pages) · X-Robots-Tag runtime = post-redeploy check |
+| 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | **DONE** | `62f471a` · `seo-head` suite (9 pages) · **X-Robots-Tag verified live 18 Nov** (4 surfaces; header fix `a142e4a`) |
 | 10 | Privacy page `/privacy` | **DONE** | `62f471a` · suite + axe + screenshots |
 | 11 | Small inconsistencies (footer services/hours/claims) | **DONE** | `dcc4977` · suite (footer pins) |
 | 12 | Android/iOS optimisation | **DONE** | `f269e61` (CSS) · `d3c6717` (markup) · suite + axe · real-device = OWNER_CHECKLIST |
 | 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | **DONE** | gates above + **critic APPROVE r1** (`polish-pass-t13-r1.md`) |
 
-**Owner-gated follow-ups** (not task failures — tracked in `OWNER_CHECKLIST.md`): preview redeploy (clears the 10 deployedLag items + verifies X-Robots-Tag on the host), launch env vars (`SITE_URL` / `ALLOW_INDEXING` / `PRACTITIONER_IS_CA`), CA/ICAI confirmation, founder reshoot, real testimonials, team photos/roles, domain + domain email, privacy review, real-phone tests, wording sign-offs. KNOWN_ISSUES still open: #1/#2/#3 (content placeholders/photos — owner), #4/#5/#7/#8/#11/#12 (tracked tooling/cosmetic), #18 (fix in tree; runtime verify after redeploy).
+**Owner-gated follow-ups** (not task failures — tracked in `OWNER_CHECKLIST.md`): ~~preview redeploy~~ **DONE 18 Nov** (owner-ordered; `6afd8c31` + `6afd92b1` — clears the 10 deployedLag items, verifies X-Robots-Tag live), launch env vars (`SITE_URL` / `ALLOW_INDEXING` / `PRACTITIONER_IS_CA`), CA/ICAI confirmation, founder reshoot, real testimonials, team photos/roles, domain + domain email, privacy review, real-phone tests, wording sign-offs. KNOWN_ISSUES still open: #1/#2/#3 (content placeholders/photos — owner), #4/#5/#7/#8/#11/#12 (tracked tooling/cosmetic); **#18 CLOSED 18 Nov** (live verification on all guard layers).
 
-**Nothing pushed; main untouched at `8f10ae1`.**
+**Pushed as `v3.0.0` (owner-ordered):** branch `polish-pass` + tag on GitHub; Netlify preview redeployed — live at **https://plsharma-site-preview.netlify.app**. Main untouched at `8f10ae1` (no merge requested).

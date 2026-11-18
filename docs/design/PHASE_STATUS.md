@@ -387,7 +387,13 @@ behind the T0 preview flag with visible SAMPLE tags.
   `docs/design/critic/polish-pass-t13-r1.md` — scores 4/4.5/4.5/4.5/5/5/4.5
   (originality/hierarchy/consistency/usability/accessibility/performance/
   brand-fit); 4 optional minors logged, none release-blocking. CHANGELOG final
-  task table written (all 13 DONE). **POLISH PASS CLOSED** pending owner
-  actions only: redeploy, launch env vars, CA confirmation, reshoot, real
-  testimonials, real-phone tests (OWNER_CHECKLIST). Nothing pushed; main
-  untouched at `8f10ae1`.
+  task table written (all 13 DONE). **POLISH PASS CLOSED.**
+- **OWNER-ORDERED PUSH + DEPLOY (18 Nov):** branch `polish-pass` + tag
+  **`v3.0.0`** pushed to GitHub (main untouched at `8f10ae1`, no merge
+  requested); Netlify session re-authed (owner clicked Authorize) and the
+  preview redeployed twice — `6afd8c31` (polish build) then `6afd92b1`
+  (header fix `a142e4a`). Live verification ALL GREEN: X-Robots-Tag on 4
+  surface types, branded 404 body complete, polish markers, robots/sitemap
+  guard. KNOWN_ISSUES **#18 CLOSED**. Remaining owner actions only:
+  launch env vars, CA confirmation, reshoot, real testimonials, real-phone
+  tests (OWNER_CHECKLIST). Link: **https://plsharma-site-preview.netlify.app**

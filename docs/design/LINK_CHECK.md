@@ -289,6 +289,15 @@ Icons unchanged — same four targets as the before run, all present and GET **2
 
 Caveat, verbatim: the deployed preview still runs the PRE-polish build, so `X-Robots-Tag` runtime verification on the deployed host pends the owner's redeploy (header verified in `netlify.toml` config only).
 
+## POST-REDEPLOY VERIFICATION (18 Nov 2026, superseding the caveat above)
+
+The owner ordered the v3 redeploy; two deploys landed (`6afd8c31` polish build, then `6afd92b1` after the header fix below). Live re-probe of `https://plsharma-site-preview.netlify.app`:
+
+- **`X-Robots-Tag: noindex, nofollow` present on all four surface types:** `/` (HTML 200), `/privacy` (HTML 200), `/robots.txt` (static 200), `/does-not-exist-xyz` (404). The `netlify.toml` `[[headers]]` block was verified structurally correct but **not applied by the Netlify Next runtime** — the header now ships from `next.config.ts` `headers()` (commit `a142e4a`), gated on the same `ALLOW_INDEXING` switch as the meta and robots.txt so the launch flip removes all three together. Host-agnostic: also applies if the site moves to Vercel.
+- **deployedLag cleared:** home serves the polish build (`rail-num`, record band, branded `og:image`, no `/testimonials` nav anchor, no sample banner); `/privacy` 200 with the shipped h1; `robots.txt` = `User-Agent: * / Disallow: /`; sitemap = 8 locs on the preview host, no `/testimonials`.
+- **Branded 404 live:** status 404 · h1 `That page isn't here.` · default `This page could not be found.` absent · all 5 quick links present · auto-noindex meta present.
+- **Remaining issues: 1** (JSON `issues[]`): sitemap/canonical host = preview host, pending owner `SITE_URL` at launch. Issue (b) — the X-Robots-Tag caveat — is resolved.
+
 ## Not issues (recorded so nobody re-investigates)
 
 - Local broken links: **0** before and **0** after — the polish pass introduced none.
