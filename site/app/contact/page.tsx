@@ -142,8 +142,14 @@ export default function ContactPage() {
 
       {/* ============ 02 · BEFORE YOU COME — the walk-in welcome, sourced
            from the FAQ online answer (§6 inventory); hours stay stated, no
-           live open/closed badge ============ */}
-      <section className="ledger-rail pb-[var(--space-section)]">
+           live open/closed badge. T14-F: this is the one paper section that
+           follows a bordered band, so it carries the section space itself —
+           the standard pb-only rhythm assumes the previous section's
+           padding sits on paper, and here it sits inside the sand band
+           (owner screenshot: h2 jammed under the hairline). pt gives the
+           h2 one clean --space-section of paper above it, the same gap
+           every other section gets from its predecessor. ============ */}
+      <section className="ledger-rail pt-[var(--space-section)] pb-[var(--space-section)]">
         <p className="rail-label rail-num">
           <span className="rail-num-figure" data-numeric>02</span>
           <span className="rail-num-rule" />
