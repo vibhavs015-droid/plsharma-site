@@ -304,3 +304,17 @@ The owner ordered the v3 redeploy; two deploys landed (`6afd8c31` polish build, 
 - All localhost link targets 200; every format shape valid (one by-design parameterized mailto).
 - Item 0 is live on both halves: `/testimonials` carries exact `noindex` and is omitted from the sitemap while `confirmedTestimonials` is empty.
 - The 10 deployedLag failures are deploy-order facts, not code defects — each clears on the owner's redeploy, which also resolves issue #1's deployed half and the X-Robots-Tag caveat.
+
+## T14 (local) — test-sync window re-audit (18 Nov 2026)
+
+T14 re-synced the suite to the owner-feedback changes (A–G) and re-ran the link audit against the same local production build the tests ran on.
+
+- **Method:** `npm run build` (polish-pass @ `00380f8`, `SHOW_SAMPLE_CONTENT` unset) → `next start -p 3000` → `link-crawl-t14.mjs` (mirror of the TASK 8 crawler with four documented deltas: T14 evidence path; mailto shape now = scheme + exact recipient + non-empty `subject`+`body` prefill per T14-G; **local only** — the deployed preview host is not probed, preview-host sitemap locs recorded as skipped since the deployed re-check is the post-deploy lane; the 404 plain-marker regex tracks T14-A's bare `404` marker). Evidence: `docs/design/polish-evidence/link-check-t14.json`.
+- **Summary:** 9 pages · 331 anchors recorded (234 GET-checked) · 63 `<link>`/asset checks · 11 image GETs · 8 sitemap locs · **brokenCount 0** · deployedLag 0 (not probed, local-only pass) · issues **1**.
+- **Formats (no follow, shape validation):** `tel:` 38/38 valid + config-exact · `wa.me` 28/28 number+text valid + config-exact · `mailto:` 22/22 recipient exact **and 22/22 carrying non-empty subject+body prefill — 0 mailtos without the T14-G prefill** (validation failures 0 across all kinds).
+- **Internal targets:** all localhost anchors 200 (0 non-200), all `<link>` tags 200, all images 200, og:image 200.
+- **404 probe:** 404 · custom branded (shipped h1 + bare `404` rail-label present, Next default copy absent, root chrome + auto-noindex intact, 5 quick links).
+- **sitemap.xml:** 200, 8 locs, route set exact (`/` `/about` `/book` `/contact` `/faq` `/privacy` `/services` `/why-choose-us`; `/testimonials` omitted while the confirmed tier is empty, Item 0); host = preview host, locs recorded as skipped (not GET-tested — local-only pass).
+- **robots.txt:** 200 `User-Agent: * / Disallow: /`; `X-Robots-Tag: noindex, nofollow` on all 9 pages (matches the POST-REDEPLOY verification above).
+- **Remaining issue: 1** — sitemap/canonical host = `plsharma-site-preview.netlify.app`, pending owner `SITE_URL` at launch (TASK 9 owner half; unchanged).
+- **Deployed surface:** not re-probed in T14 — the Orchestrator re-checks `https://plsharma-site-preview.netlify.app` after the next Netlify deploy of this branch.

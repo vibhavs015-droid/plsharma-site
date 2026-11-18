@@ -8,6 +8,7 @@ import {
   site,
   TEL_HREF,
 } from "./helpers";
+import { emailHref } from "../../lib/site-config";
 
 /**
  * Phase 3 Stage C QA — `/contact` on the Kept Ledger system.
@@ -42,9 +43,12 @@ test.describe("Contact — structure & content (page-specs §6)", () => {
     await expect(h1).toHaveText("One office in Jaisalmer — open six days a week.");
   });
 
-  test("ruled head: rail-label, and the lead carries the essentials as searchable text", async ({ page }) => {
+  test("ruled head: bare CONTACT eyebrow, and the lead carries the essentials as searchable text (T14-A)", async ({ page }) => {
     const head = page.locator("main section.ledger-rail").first();
-    await expect(head.locator("p.rail-label")).toHaveText(`${site.shortName} · Contact · Jaisalmer`);
+    const label = head.locator("p.rail-label");
+    await expect(label).toHaveText("CONTACT");
+    await expect(label, "no firm name in the eyebrow").not.toContainText(site.shortName);
+    await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
     const lead = head.locator("p.text-lead");
     await expect(lead).toContainText("109, Indira Colony");
     // Hours in the lead render from config so the stated times can't drift.
@@ -116,13 +120,29 @@ test.describe("Contact — structure & content (page-specs §6)", () => {
     );
   });
 
-  test("exactly one Google Maps link, in the Address row, byte-equal to config", async ({ page }) => {
+  test("three Google Maps links — lead, desk row, footer — all byte-equal to config (T14-G)", async ({ page }) => {
+    // T14-G (owner order): the address opens Google Maps in three places —
+    // the head lead, the desk Address row and the footer address.
     const maps = page.locator('a[href*="maps.app.goo.gl"]');
-    await expect(maps, "one map link on the whole page").toHaveCount(1);
-    await expect(maps).toHaveAttribute("href", site.mapsLink);
-    await expect(maps).toHaveText("Open in Google Maps");
-    // It lives in the Address desk row (the third row, per the order test).
-    await expect(page.locator(".slip div.grid > div").nth(2).locator('a[href*="maps.app.goo.gl"]')).toHaveCount(1);
+    await expect(maps, "three map links on the whole page").toHaveCount(3);
+    const hrefs = await maps.evaluateAll((els) =>
+      els.map((el) => el.getAttribute("href"))
+    );
+    expect(hrefs, "every map link byte-equals site.mapsLink").toEqual([
+      site.mapsLink,
+      site.mapsLink,
+      site.mapsLink,
+    ]);
+    // Lead (first) and footer (last) surfaces:
+    const lead = page.locator("main section.ledger-rail").first().locator('a[href*="maps.app.goo.gl"]');
+    await expect(lead).toHaveCount(1);
+    await expect(lead).toHaveText("109, Indira Colony");
+    await expect(page.locator('footer a[href*="maps.app.goo.gl"]')).toHaveCount(1);
+    // The desk Address row (third row, per the order test) still carries one,
+    // labelled for the desk:
+    const desk = page.locator(".slip div.grid > div").nth(2).locator('a[href*="maps.app.goo.gl"]');
+    await expect(desk).toHaveCount(1);
+    await expect(desk).toHaveText("Open in Google Maps");
     // The address itself renders as text next to the link.
     await expect(page.locator(".slip div.grid > div").nth(2)).toContainText(site.address);
   });
@@ -143,11 +163,38 @@ test.describe("Contact — structure & content (page-specs §6)", () => {
     await expect(hoursRow.locator("a"), "no widget or link inside the Hours row").toHaveCount(0);
   });
 
-  test("email is a quiet mailto: link, and it is the last desk row", async ({ page }) => {
+  test("email is a quiet mailto: link with the shared prefill, and it is the last desk row (T14-G)", async ({ page }) => {
     const email = page.locator(".slip div.grid > div").nth(4).locator('a[href^="mailto:"]');
     await expect(email).toHaveCount(1);
-    await expect(email).toHaveAttribute("href", `mailto:${site.email}`);
+    // T14-G: every displayed email opens the visitor's mail app with the
+    // shared subject+body scaffold — byte-tracked to config.
+    const href = await email.getAttribute("href");
+    expect(href).toBe(emailHref);
+    const url = new URL(href!);
+    expect(url.protocol).toBe("mailto:");
+    expect(url.pathname).toBe(site.email);
+    expect(url.searchParams.get("subject"), "prefilled subject is non-empty").toBeTruthy();
+    expect(url.searchParams.get("body"), "prefilled body is non-empty").toBeTruthy();
     await expect(email).toHaveText(site.email);
+  });
+
+  test("every displayed email on /contact — header, desk, footer — carries the shared prefill (T14-G)", async ({ page }) => {
+    const emails = page.locator('a[href^="mailto:"]');
+    await expect(emails, "header strip + desk row + footer").toHaveCount(3);
+    const hrefs = await emails.evaluateAll((els) =>
+      els.map((el) => el.getAttribute("href"))
+    );
+    expect(hrefs, "all three mailtos byte-equal the shared emailHref").toEqual([
+      emailHref,
+      emailHref,
+      emailHref,
+    ]);
+    for (const href of hrefs) {
+      const url = new URL(href!);
+      expect(url.pathname).toBe(site.email);
+      expect(url.searchParams.get("subject")).toBeTruthy();
+      expect(url.searchParams.get("body")).toBeTruthy();
+    }
   });
 
   test("§02 carries the walk-in entry under its rail-num label", async ({ page }) => {

@@ -43,11 +43,14 @@ test.describe("Services — structure & content (page-specs §2)", () => {
     );
   });
 
-  test("ruled head: rail-label + h1 in the opening ledger rail", async ({ page }) => {
+  test("ruled head: bare SERVICES eyebrow + h1 in the opening ledger rail (T14-A)", async ({ page }) => {
     const head = page.locator("main section.ledger-rail").first();
-    await expect(head.locator("p.rail-label").first()).toHaveText(
-      `${site.shortName} · Services · Jaisalmer`
+    const label = head.locator("p.rail-label").first();
+    await expect(label).toHaveText("SERVICES");
+    await expect(label, "no firm name in the eyebrow").not.toContainText(
+      site.shortName
     );
+    await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
     await expect(head.locator("h1")).toHaveCount(1);
   });
 

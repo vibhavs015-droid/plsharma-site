@@ -15,16 +15,17 @@ import { expect, test } from "@playwright/test";
  * This is the test that fails a production build that ships sample content.
  */
 
-// The leak set: the banner line, the tag line, the generic sample byline,
-// and the three sample associate names. If the sample tier grows, this
-// list grows with it.
+// The leak set: the banner line, the tag line, the generic sample byline.
+// If the sample tier grows, this list grows with it.
+// T14-E (owner order): the three associate names (Vikram Singh Soda,
+// Bhawani, Hemraj) MOVED to the confirmed tier (site-config confirmedTeam)
+// and render from it on /about by owner order — they are no longer sample
+// content and no longer belong in the leak set. The guard keeps every
+// preview-only sample string: banner, SAMPLE tag line, sample byline.
 const LEAK_STRINGS = [
   "Design preview — sample content shown",
   "SAMPLE — not real, replace before launch",
   "Sample client",
-  "Vikram Singh Soda",
-  "Bhawani",
-  "Hemraj",
 ];
 
 const ROUTES = [

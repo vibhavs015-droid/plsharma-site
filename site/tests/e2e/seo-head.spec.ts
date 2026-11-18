@@ -121,6 +121,32 @@ test.describe("SEO heads — guards, files and schema (B3/B4)", () => {
     }
   });
 
+  test("page heads carry the BARE eyebrow — no firm name, no place (T14-A cross-page)", async ({
+    page,
+  }) => {
+    // Owner order: every page head's rail-label is the bare page name.
+    // The per-page specs pin the exact word; this loop is the cross-page
+    // net — all nine heads must drop the firm name AND the place.
+    for (const { path } of PAGES) {
+      const res = await page.goto(path, { waitUntil: "load" });
+      expect(res?.status(), `${path} must return 200`).toBe(200);
+      const label = page
+        .locator("main section.ledger-rail")
+        .first()
+        .locator("p.rail-label")
+        .first();
+      await expect(label, `${path} eyebrow visible`).toBeVisible();
+      const text = ((await label.textContent()) ?? "").trim();
+      expect(text, `${path} eyebrow carries no firm name`).not.toMatch(
+        /P\.L\. Sharma/i
+      );
+      expect(text, `${path} eyebrow carries no tagline`).not.toMatch(
+        /Tax Consultants/i
+      );
+      expect(text, `${path} eyebrow carries no place`).not.toContain("Jaisalmer");
+    }
+  });
+
   test("viewport ships viewport-fit=cover and interactive-widget=resizes-content", async ({
     page,
   }) => {

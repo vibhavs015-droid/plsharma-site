@@ -46,11 +46,14 @@ test.describe("Why choose us — structure & content (page-specs §3)", () => {
     );
   });
 
-  test("ruled head: rail-label and the hold-us-to lead", async ({ page }) => {
+  test("ruled head: bare WHY CHOOSE US eyebrow and the hold-us-to lead (T14-A)", async ({ page }) => {
     const head = page.locator("main section.ledger-rail").first();
-    await expect(head.locator("p.rail-label")).toHaveText(
-      `${site.shortName} · Why choose us · Jaisalmer`
+    const label = head.locator("p.rail-label");
+    await expect(label).toHaveText("WHY CHOOSE US");
+    await expect(label, "no firm name in the eyebrow").not.toContainText(
+      site.shortName
     );
+    await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
     // §7/B3: "and where to check each" was deleted from the lead (§3.2
     // sweep — the check-links below still do the pointing).
     await expect(head.locator("p.text-lead")).toHaveText("Four things you can hold us to.");

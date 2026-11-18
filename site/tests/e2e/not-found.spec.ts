@@ -26,13 +26,19 @@ test.describe("404 — unknown URL (B5)", () => {
     await expect(h1).toHaveText("That page isn't here.");
   });
 
-  test("identity marker is a PLAIN rail-label — a 404 is not a numbered section", async ({
+  test("identity marker is the BARE 404 rail-label — a 404 is not a numbered section (T14-A)", async ({
     page,
   }) => {
     await page.goto(UNKNOWN, { waitUntil: "load" });
     const marker = page.locator("main p.rail-label");
     await expect(marker).toHaveCount(1);
-    await expect(marker).toHaveText("P.L. Sharma & Co. · 404 · Jaisalmer");
+    // T14-A (owner order): the marker is the bare "404" — the firm name
+    // and place were removed from the page head.
+    await expect(marker).toHaveText("404");
+    await expect(marker, "no firm name in the marker").not.toContainText(
+      "P.L. Sharma"
+    );
+    await expect(marker, "no place in the marker").not.toContainText("Jaisalmer");
     await expect(marker, "no rail-num device on the 404 marker").not.toHaveClass(
       /rail-num/
     );

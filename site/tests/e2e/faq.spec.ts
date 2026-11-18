@@ -48,9 +48,12 @@ test.describe("FAQ — structure & content (page-specs §5)", () => {
     await expect(h1).toHaveText("Documents, fees, notices — the questions, answered plainly.");
   });
 
-  test("ruled head: rail-label, lead, and the quiet ask line with the QUESTION prefill", async ({ page }) => {
+  test("ruled head: bare FAQ eyebrow, lead, and the quiet ask line with the QUESTION prefill (T14-A)", async ({ page }) => {
     const head = page.locator("main section.ledger-rail").first();
-    await expect(head.locator("p.rail-label")).toHaveText(`${site.shortName} · FAQ · Jaisalmer`);
+    const label = head.locator("p.rail-label");
+    await expect(label).toHaveText("FAQ");
+    await expect(label, "no firm name in the eyebrow").not.toContainText(site.shortName);
+    await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
     await expect(head.locator("p.text-lead")).toHaveText(
       "The things people ask before their first message — answered the way we'd answer across the desk."
     );
@@ -108,12 +111,11 @@ test.describe("FAQ — structure & content (page-specs §5)", () => {
   test("§ sections group the entries 3 / 3 / 1 under their rail-num labels", async ({ page }) => {
     const sections = page.locator("main section.ledger-rail");
     await expect(sections).toHaveCount(4); // head + §01 + §02 + §03
-    // The head keeps its plain identity rail-label; the three § labels ship
-    // the B3 rail-num device (figure + rule + text, `data-numeric` on each
-    // figure). Served evidence: spec-evidence.json → faq.railLabels.
-    await expect(sections.nth(0).locator("p.rail-label")).toHaveText(
-      `${site.shortName} · FAQ · Jaisalmer`
-    );
+    // The head keeps its plain identity rail-label (bare FAQ, T14-A); the
+    // three § labels ship the B3 rail-num device (figure + rule + text,
+    // `data-numeric` on each figure). Served evidence: spec-evidence.json →
+    // faq.railLabels.
+    await expect(sections.nth(0).locator("p.rail-label")).toHaveText("FAQ");
     const figs = page.locator("main p.rail-label.rail-num .rail-num-figure");
     await expect(figs).toHaveCount(3);
     await expect(figs.nth(0)).toHaveText("01");

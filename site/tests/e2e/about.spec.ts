@@ -10,6 +10,7 @@ import {
 } from "./helpers";
 import { confirmedTeam } from "../../lib/site-config";
 import { practitionerIsCa } from "../../lib/content-mode";
+import { founderBioAbout } from "../../lib/founder-bio";
 import { sampleTeam } from "../../lib/sample-content";
 
 /**
@@ -35,12 +36,32 @@ test.describe("About — structure & content (page-specs §1)", () => {
     await expect(h1).toHaveText("Parbhati Lal Sharma has practised in Jaisalmer since 2001.");
   });
 
-  test("ruled head: rail-label + h1 in the opening ledger rail", async ({ page }) => {
+  test("ruled head: bare ABOUT eyebrow + h1 in the opening ledger rail (T14-A)", async ({ page }) => {
+    // T14-A (owner order): the page-head eyebrow is the BARE page name —
+    // no firm name, no place, no tagline.
     const head = page.locator("main section.ledger-rail").first();
-    await expect(head.locator("p.rail-label").first()).toHaveText(
-      `${site.shortName} · About · Jaisalmer`
+    const label = head.locator("p.rail-label").first();
+    await expect(label).toHaveText("ABOUT");
+    await expect(label, "no firm name in the eyebrow").not.toContainText(
+      site.shortName
     );
+    await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
+    await expect(label, "no tagline in the eyebrow").not.toContainText(site.tagline);
     await expect(head.locator("h1")).toHaveCount(1);
+  });
+
+  test("hero lead renders the shared founder bio WITHOUT the free sentence (T14-C, §0.6 three placements)", async ({ page }) => {
+    // The /about hero lead is the SAME source as Home's hero paragraph
+    // (lib/founder-bio.ts), minus the final free-consultation sentence —
+    // /about §02 owns that line.
+    const head = page.locator("main section.ledger-rail").first();
+    const lead = head.locator("p.text-lead");
+    await expect(lead).toHaveCount(1);
+    await expect(lead).toHaveText(founderBioAbout);
+    await expect(
+      lead,
+      "the hero must not carry the free sentence — §02 owns it"
+    ).not.toContainText("The first consultation is free.");
   });
 
   test("§ numbering restarts: 01 practice, 02 principal, 03 team (rail-num device)", async ({ page }) => {
@@ -126,21 +147,33 @@ test.describe("About — structure & content (page-specs §1)", () => {
     }
   });
 
-  test("the canonical free-first sentence ships in §02", async ({ page }) => {
+  test("the canonical free-first sentence ships in §02 — exactly once on the page", async ({ page }) => {
     // §0.6: exactly three placements site-wide; /about §02 is one of them.
+    // T14-C: the hero must NOT carry it (pinned separately above), so the
+    // page total is exactly one.
     await expect(page.locator("main")).toContainText("The first consultation is free.");
+    const occurrences = (await page.locator("main").innerText()).match(
+      /The first consultation is free\./g
+    )?.length;
+    expect(occurrences, "'The first consultation is free.' appears exactly once on /about").toBe(1);
   });
 
-  test("the team renders the confirmed tier — the founder only; associates stay preview-only", async ({ page }) => {
-    // TASK 0 tier system: a default production build resolves visibleTeam
-    // to the confirmed tier — the founder, whose confirmed role renders;
-    // the three sample associates (sample-content.ts) are owner-preview
-    // only and must leak nowhere, roles included.
+  test("the team renders the confirmed tier — 4 name boxes, founder + role, no SAMPLE tags", async ({ page }) => {
+    // TASK 0 tier system + T14-E (owner order): the confirmed tier is the
+    // founder (name + role) plus the three owner-confirmed associate names
+    // (name only — roles pending, empty on purpose). sampleTeam is empty,
+    // so preview and production cannot duplicate them; nothing sample-tagged
+    // may render on /about in ANY tier.
+    expect(confirmedTeam, "owner-confirmed team is the founder + 3 associates").toHaveLength(4);
     const names = page.locator("main h3");
     await expect(names).toHaveCount(confirmedTeam.length);
     await expect(names).toHaveText(confirmedTeam.map((member) => member.name));
     await expect(page.locator("main")).toContainText(confirmedTeam[0].role);
-    const html = await page.content(); // includes the RSC flight payload
+    // T14-E: zero SAMPLE tags on /about — the names are confirmed content.
+    await expect(page.locator(".sample-tag")).toHaveCount(0);
+    const body = await page.content();
+    expect(body, "no SAMPLE tag text on /about").not.toContain("SAMPLE");
+    const html = body; // includes the RSC flight payload
     for (const sample of sampleTeam) {
       expect(
         html,
@@ -153,14 +186,15 @@ test.describe("About — structure & content (page-specs §1)", () => {
     }
   });
 
-  test("placeholder marks ship exactly where content is pending (§0.4)", async ({ page }) => {
+  test("no placeholder marks ship on /about — both removed by owner order (T14-B)", async ({ page }) => {
+    // §0.4 flipped: the two [PLACEHOLDER — …] marks the page used to carry
+    // are gone by owner order (T14-B). The pin now asserts ABSENCE — the
+    // page is complete, not pending.
     const marks = page.locator("main .placeholder-mark");
-    await expect(marks).toHaveCount(2);
-    await expect(marks.nth(0)).toHaveText(
-      "[PLACEHOLDER — A LINE FROM THE PRINCIPAL HIMSELF, AWAITING OWNER]"
-    );
-    await expect(marks.nth(1)).toHaveText(
-      "[PLACEHOLDER — TEAM PHOTOS AND CONFIRMED ROLES, AWAITING OWNER]"
+    await expect(marks, "zero placeholder marks on /about").toHaveCount(0);
+    const html = await page.content(); // includes the RSC flight payload
+    expect(html, "no [PLACEHOLDER string anywhere on /about").not.toContain(
+      "[PLACEHOLDER"
     );
   });
 

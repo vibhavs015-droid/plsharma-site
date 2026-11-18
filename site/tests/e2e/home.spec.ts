@@ -39,11 +39,14 @@ test.describe("Home — structure & content", () => {
     await expect(h1).toContainText("Jaisalmer");
   });
 
-  test("hero rail label carries the three owner-confirmed identity facts — no 'Since 2001'", async ({ page }) => {
+  test("hero rail label is the bare HOME eyebrow — no identity facts, no 'Since 2001' (T14-A)", async ({ page }) => {
+    // T14-A (owner order): the home eyebrow is literally "HOME" — the
+    // firm name, tagline and place were removed from the page head.
     const label = page.locator("main p.rail-label").first();
-    await expect(label).toContainText(site.shortName); // P.L. Sharma & Co.
-    await expect(label).toContainText(site.tagline); // Tax Consultants & Financial Advisors
-    await expect(label).toContainText("Jaisalmer");
+    await expect(label).toHaveText("HOME");
+    await expect(label, "no firm name in the eyebrow").not.toContainText(site.shortName);
+    await expect(label, "no tagline in the eyebrow").not.toContainText(site.tagline);
+    await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
     // T3/§3.4 census (B2): "· Since 2001" is retired from the hero rail —
     // the record band (§03) carries Home's one 2001 line instead. Served
     // evidence: spec-evidence.json → home.railLabels[0].
@@ -355,6 +358,21 @@ test.describe("Home — CTA wording per surface (user-problem.md §2.3)", () => 
       .evaluateAll((els) => els.map((el) => el.getAttribute("href")));
     expect(allTelHrefs.length).toBeGreaterThanOrEqual(4); // header strip, hero, footer, act band
     for (const href of allTelHrefs) expect(href).toBe(TEL_HREF);
+
+    // T14-G rule: every anchor whose visible text displays the phone number
+    // is a tel: dial link (the WhatsApp rows elsewhere show the number only
+    // behind an aria-label distinguishing them — not on this page).
+    const anchors = await page.locator("a").evaluateAll((els) =>
+      els.map((el) => ({
+        text: el.textContent ?? "",
+        href: el.getAttribute("href") ?? "",
+      }))
+    );
+    const displayingPhone = anchors.filter((a) => a.text.includes(site.phone));
+    expect(displayingPhone.length, "the page displays the phone at least in header/hero/footer/band").toBeGreaterThanOrEqual(4);
+    for (const a of displayingPhone) {
+      expect(a.href, `anchor "${a.text.trim().slice(0, 40)}" showing the phone must dial tel:`).toMatch(/^tel:/);
+    }
   });
 });
 
@@ -524,5 +542,10 @@ test.describe("Home — polish pass pins (wording-spec §1/§2/§3, B2/B3)", () 
     );
     // §3.4 census: no "since 2001" survives in the footer blurb area.
     await expect(footer).not.toContainText("serving individuals and businesses since 2001");
+    // T14-G: the footer address opens Google Maps, byte-equal to config.
+    const footerMap = footer.locator('a[href*="maps.app.goo.gl"]');
+    await expect(footerMap).toHaveCount(1);
+    await expect(footerMap).toHaveAttribute("href", site.mapsLink);
+    await expect(footerMap).toContainText("109, Indira Colony");
   });
 });

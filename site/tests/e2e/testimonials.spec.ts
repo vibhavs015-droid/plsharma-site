@@ -46,11 +46,14 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     await expect(h1).toHaveText("Real client words — published with permission, and not before.");
   });
 
-  test("ruled head: rail-label and the nothing-invented lead", async ({ page }) => {
+  test("ruled head: bare TESTIMONIALS eyebrow and the nothing-invented lead (T14-A)", async ({ page }) => {
     const head = page.locator("main section.ledger-rail").first();
-    await expect(head.locator("p.rail-label")).toHaveText(
-      `${site.shortName} · Testimonials · Jaisalmer`
+    const label = head.locator("p.rail-label");
+    await expect(label).toHaveText("TESTIMONIALS");
+    await expect(label, "no firm name in the eyebrow").not.toContainText(
+      site.shortName
     );
+    await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
     await expect(head.locator("p.text-lead")).toHaveText(
       "This page stays empty until real clients agree to be quoted. Nothing here is invented."
     );
