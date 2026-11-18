@@ -52,7 +52,7 @@ export default function ContactPage() {
            Hours render from config so the stated times can't drift from
            the desk rows. ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">{site.shortName} · Contact · Jaisalmer</p>
+        <p className="rail-label">CONTACT</p>
         <div>
           <div>
             <h1>One office in Jaisalmer — open six days a week.</h1>

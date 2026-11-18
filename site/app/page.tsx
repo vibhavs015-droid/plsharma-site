@@ -84,9 +84,7 @@ export default function HomePage() {
       {/* ============ HERO — the ruled opening: identity in the margin rail,
            one plain sentence, the one action, the principal's plate ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">
-          {site.shortName} · {site.tagline} · Jaisalmer
-        </p>
+        <p className="rail-label">HOME</p>
         <div>
           <div>
             <h1>

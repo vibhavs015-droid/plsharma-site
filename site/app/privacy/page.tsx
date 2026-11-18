@@ -28,9 +28,7 @@ export default function PrivacyPage() {
            No act band on this page: the contact facts in 04 are the close,
            stated, never sold (T10). ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">
-          {site.shortName} · Privacy · Jaisalmer
-        </p>
+        <p className="rail-label">PRIVACY</p>
         <div>
           <div>
             <h1>One form collects your details — this site stores nothing.</h1>

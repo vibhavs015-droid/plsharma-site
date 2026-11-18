@@ -34,9 +34,7 @@ export default function ServicesPage() {
       {/* ============ PAGE HEAD — §0.1 ruled head; the lead names the
            deep-link mechanic honestly (§2 fold item 3) ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">
-          {site.shortName} · Services · Jaisalmer
-        </p>
+        <p className="rail-label">SERVICES</p>
         <div>
           <div>
             <h1>

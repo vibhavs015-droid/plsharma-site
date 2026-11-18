@@ -36,9 +36,7 @@ export default function AboutPage() {
       {/* ============ PAGE HEAD — §0.1 ruled head + the founder plate in the
            fold's lower half (§1 fold items 1–4) ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">
-          {site.shortName} · About · Jaisalmer
-        </p>
+        <p className="rail-label">ABOUT</p>
         <div>
           <div>
             <h1>Parbhati Lal Sharma has practised in Jaisalmer since 2001.</h1>
@@ -133,18 +131,15 @@ export default function AboutPage() {
             </li>
           </ul>
         </div>
-        {/* Margin-rail note (§1 inventory): the page's single designed gap —
-            M2's founder aside, honest until the owner supplies the line. It
-            auto-places into the margin column at ≥64rem and reads as a
-            footnote below the copy on small screens. */}
-        <p className="placeholder-mark mt-8">
-          [PLACEHOLDER — A LINE FROM THE PRINCIPAL HIMSELF, AWAITING OWNER]
-        </p>
-        {/* The principal's own line, in the gap the mark announces — owner
-            preview only: production resolves visiblePrincipalQuote to null
-            (confirmed: null in config), so this block renders nothing and
-            02 above is untouched. Preview shows the facts-safe sample
-            line, tagged. */}
+        {/* Margin-rail note (§1 inventory): the designed gap stays for the
+            principal's own line, but the placeholder mark that announced it
+            is gone (T14-B — owner dislikes the marks). It auto-places into
+            the margin column at ≥64rem and reads as a footnote below the
+            copy on small screens. */}
+        {/* The principal's own line, in that gap — owner preview only:
+            production resolves visiblePrincipalQuote to null (confirmed:
+            null in config), so this block renders nothing and 02 above is
+            untouched. Preview shows the facts-safe sample line, tagged. */}
         {visiblePrincipalQuote ? (
           <div className="mt-6">
             <SampleTag />
@@ -180,11 +175,9 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-          {/* Section-level mark (§0.4): the whole section's detail is
-              pending — one mark for it, never one per row. */}
-          <p className="placeholder-mark mt-8">
-            [PLACEHOLDER — TEAM PHOTOS AND CONFIRMED ROLES, AWAITING OWNER]
-          </p>
+          {/* Section-level detail (photos and confirmed roles) is still
+              pending with the owner — the placeholder mark that said so is
+              gone (T14-B); the facts themselves stay unrendered. */}
         </div>
       </section>
 

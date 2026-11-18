@@ -54,9 +54,7 @@ export default function TestimonialsPage() {
            without apologising (§4 fold items 1–2). The lead swaps to the
            reserved line once real quotes render (spec §4). ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">
-          {site.shortName} · Testimonials · Jaisalmer
-        </p>
+        <p className="rail-label">TESTIMONIALS</p>
         <div>
           <div>
             <h1>

@@ -121,7 +121,7 @@ export default function FaqPage() {
       {/* ============ PAGE HEAD — §0.1 ruled head; the lead plus the ask-us
            line with the question prefill (§5 fold items 1–3) ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">{site.shortName} · FAQ · Jaisalmer</p>
+        <p className="rail-label">FAQ</p>
         <div>
           <div>
             <h1>Documents, fees, notices — the questions, answered plainly.</h1>

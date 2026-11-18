@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { site } from "@/lib/site-config";
 
 /**
  * ============================================================
@@ -47,7 +46,7 @@ const quickLinks = [
 export default function NotFound() {
   return (
     <section className="ledger-rail py-[var(--space-section)]">
-      <p className="rail-label">{site.shortName} · 404 · Jaisalmer</p>
+      <p className="rail-label">404</p>
       <div>
         <div>
           <h1>That page isn&apos;t here.</h1>

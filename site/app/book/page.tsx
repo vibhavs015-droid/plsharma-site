@@ -21,9 +21,7 @@ export default function BookPage() {
       {/* ============ PAGE HEAD — identity rail, one plain h1, the honest
            next-step line verbatim (user-problem.md §5.2 item 1) ============ */}
       <section className="ledger-rail pt-[var(--space-section)] pb-[var(--space-entry)]">
-        <p className="rail-label">
-          {site.shortName} · Book · Jaisalmer
-        </p>
+        <p className="rail-label">BOOK</p>
         <div>
           <h1>Book a consultation</h1>
           <p className="text-body text-ink-muted mt-3 measure">

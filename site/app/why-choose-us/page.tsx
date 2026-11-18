@@ -61,9 +61,7 @@ export default function WhyChooseUsPage() {
            statement (the page's one loud moment — no second giant statement
            repeats it, §3 fold item 2) ============ */}
       <section className="ledger-rail py-[var(--space-section)]">
-        <p className="rail-label">
-          {site.shortName} · Why choose us · Jaisalmer
-        </p>
+        <p className="rail-label">WHY CHOOSE US</p>
         <div>
           <div>
             <h1>
