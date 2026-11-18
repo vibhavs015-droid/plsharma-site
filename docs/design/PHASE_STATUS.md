@@ -447,12 +447,17 @@ behind the T0 preview flag with visible SAMPLE tags.
       eyebrow = page name only ×10 heads + 404, both placeholders
       removed), **C** (`1903c91` shared founder bio in `lib/founder-bio.ts`,
       free line trimmed on /about), **D** (`0461832` plate uncropped
-      head+shoulders, tool geometry + patches adapted, q85/q80 600×750
-      kept), **E** (`0c2e0cd` 3 names → `confirmedTeam`, name-only boxes,
-      `sampleTeam` emptied).
-    - IN FLIGHT: engineer items **F** (contact §02 rhythm) + **G**
-      (tel/maps/mailto-prefill) — still running.
-    - LEFT: qa test sync + full suite + link check (local + deployed) →
-      fix loop → deploy `--prod` → live verification A–J (evidence in
-      report) → critic persona audit → ledgers (CHANGELOG T14,
-      DECISION_LOG) → push → final report to owner.
+      head+shoulders, tool geometry + patches adapted, q85/q80 600×750,
+      45→101 KB webp), **E** (`0c2e0cd` 3 names → `confirmedTeam`,
+      name-only boxes, `sampleTeam` emptied), **F** (`abac9e7` contact §02
+      rhythm: 96px paper gap + label/h2 box-top match, 320px clean),
+      **G** (`00380f8` tel/maps/mailto-prefill: new `site-config
+      .emailHref`, header/footer/contact/privacy). Gates green at every
+      commit; originals SHA256-unchanged.
+    - IN FLIGHT: **qa** test sync — 13 stale pins handed off (9 eyebrow,
+      placeholder, exact-mailto, maps-count 1→3, leak-guard names now
+      confirmed tier) + full suite + local link check.
+    - LEFT: fix loop (if qa finds product bugs) → deploy `--prod` →
+      live verification A–J (evidence in report) → critic persona audit →
+      ledgers (CHANGELOG T14, DECISION_LOG) → push → final report to
+      owner.
