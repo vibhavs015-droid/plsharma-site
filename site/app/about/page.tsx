@@ -152,11 +152,12 @@ export default function AboutPage() {
         ) : null}
       </section>
 
-      {/* ============ 03 · THE TEAM — names only: no roles, no bios, no
-            photos, no initials standing in for people (§1 do-not list).
-            Production renders the confirmed tier — the founder only; owner
-            preview adds the three sample members, each tagged SAMPLE.
-            Roles and bios stay unrendered in both modes. ============ */}
+      {/* ============ 03 · THE TEAM — names only: no bios, no photos, no
+            initials standing in for people (§1 do-not list). T14-E: the
+            three owner-confirmed associate names render from the confirmed
+            tier as name-only boxes — the v2.0.0 structure, no SAMPLE tags
+            (roles stay pending and unrendered). Owner preview adds nothing
+            extra: sampleTeam is empty. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
         <p className="rail-label rail-num">
           <span className="rail-num-figure" data-numeric>03</span>
@@ -173,15 +174,9 @@ export default function AboutPage() {
             {visibleTeam.slice(1).map((member) => (
               <li key={member.name} className="ruled-entry">
                 <h3>{member.name}</h3>
-                <p className="mt-1">
-                  <SampleTag />
-                </p>
               </li>
             ))}
           </ul>
-          {/* Section-level detail (photos and confirmed roles) is still
-              pending with the owner — the placeholder mark that said so is
-              gone (T14-B); the facts themselves stay unrendered. */}
         </div>
       </section>
 

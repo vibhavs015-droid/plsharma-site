@@ -51,30 +51,12 @@ export const sampleTestimonials: Testimonial[] = [
 ];
 
 // ── SAMPLE TEAM ────────────────────────────────────────────────────
-// The three associate entries — the interim copy is EXPLICITLY
-// SAMPLE data: shown only in owner preview, each tagged, until the
-// owner confirms real names, roles, bios and photos (see
-// PROJECT-NOTES pending list).
-export const sampleTeam: TeamMember[] = [
-  {
-    name: "Vikram Singh Soda",
-    role: "Senior Tax Associate", // sample role — awaiting owner confirmation
-    bio: "Handles assessments, returns and client coordination with careful attention to every deadline.",
-    photo: "team-1.jpg", // sample — awaiting photo
-  },
-  {
-    name: "Bhawani",
-    role: "GST & Compliance Associate", // sample role — awaiting owner confirmation
-    bio: "Manages GST registrations, returns and reconciliations for our business clients.",
-    photo: "team-2.jpg", // sample — awaiting photo
-  },
-  {
-    name: "Hemraj",
-    role: "Accounts & Bookkeeping Executive", // sample role — awaiting owner confirmation
-    bio: "Keeps client books accurate and audit-ready, month after month.",
-    photo: "team-3.jpg", // sample — awaiting photo
-  },
-];
+// Empty as of T14-E: the three associate names the owner confirmed
+// moved to the confirmed tier (lib/site-config.ts), and this tier
+// empties so preview and production cannot duplicate them. Kept as a
+// tier for any future sample entry — anything added here renders
+// owner-preview-only with a SAMPLE tag.
+export const sampleTeam: TeamMember[] = [];
 
 // ── THE PRINCIPAL'S OWN LINE ───────────────────────────────────────
 // `confirmed`: null until the owner supplies the real first-person

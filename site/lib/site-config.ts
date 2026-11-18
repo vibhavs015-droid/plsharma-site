@@ -221,10 +221,14 @@ export const faqs = [
 
 // ── TEAM — confirmed tier ──────────────────────────────────────────
 // The principal: real, owner-confirmed name and role; his bio below
-// is PROVISIONAL and needs the owner's real bio. The three sample
-// associate entries live in lib/sample-content.ts until the owner
-// confirms real names, roles, bios and photos (see PROJECT-NOTES
-// pending list). Photos go in public/images/. father.jpg is wired in.
+// is PROVISIONAL and needs the owner's real bio. The three associates
+// below are T14-E: the owner confirmed their NAMES, so they moved here
+// from the preview tier. Roles, bios and photos are still pending with
+// the owner — deliberately empty strings, never fabricated, never
+// rendered (/about §03 shows name-only boxes, the v2.0.0 pattern).
+// The preview tier (sample-content.ts sampleTeam) is now empty so the
+// two tiers cannot duplicate. Photos go in public/images/ when the
+// owner supplies them. father.jpg is wired in.
 export const confirmedTeam: TeamMember[] = [
   {
     name: "Parbhati Lal Sharma",
@@ -236,6 +240,26 @@ export const confirmedTeam: TeamMember[] = [
       ? "Over two decades of practice in income tax, GST, audits and compliance — known in Jaisalmer for straight advice, careful work and complete confidentiality."
       : "Over two decades of practice in income tax, GST and compliance — known in Jaisalmer for straight advice, careful work and complete confidentiality.",
     photo: "father.jpg", // ✅ photo added by user
+  },
+  {
+    // T14-E: name owner-confirmed; role/bio/photo pending — empty on
+    // purpose (no fabrication). /about §03 renders the name only.
+    name: "Vikram Singh Soda",
+    role: "",
+    bio: "",
+    photo: "",
+  },
+  {
+    name: "Bhawani",
+    role: "",
+    bio: "",
+    photo: "",
+  },
+  {
+    name: "Hemraj",
+    role: "",
+    bio: "",
+    photo: "",
   },
 ];
 
