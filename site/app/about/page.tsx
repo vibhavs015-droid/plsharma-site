@@ -5,6 +5,7 @@ import { site } from "@/lib/site-config";
 import { visibleTeam, visiblePrincipalQuote } from "@/lib/sample-content";
 import { practitionerIsCa } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
+import { founderBioAbout } from "@/lib/founder-bio";
 import { ActionBar } from "@/components/site/action-bar";
 import { SampleTag } from "@/components/site/sample-tag";
 
@@ -42,9 +43,12 @@ export default function AboutPage() {
             <h1>Parbhati Lal Sharma has practised in Jaisalmer since 2001.</h1>
 
             <div className="mt-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-8">
+              {/* T14-C: the hero's blank now carries the founder paragraph —
+                  the SAME shared source as Home's hero (lib/founder-bio.ts),
+                  with the free-consultation sentence trimmed because /about
+                  §02 owns that line (wording-spec §0.6 three placements). */}
               <p className="text-lead text-ink-muted measure">
-                You speak to the principal himself — the person who does the
-                work.
+                {founderBioAbout}
               </p>
 
               {/* Founder plate: the same interim graded crop as the Home hero

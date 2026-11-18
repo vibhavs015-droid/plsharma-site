@@ -5,6 +5,7 @@ import { site, services, whyChooseUs, faqs, yearsInPractice, hoursCompact, confi
 import { visibleTeam, visibleTestimonials } from "@/lib/sample-content";
 import { showSampleContent, siteUrl } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
+import { founderBio } from "@/lib/founder-bio";
 import { ActionBar } from "@/components/site/action-bar";
 import { SampleTag } from "@/components/site/sample-tag";
 
@@ -112,12 +113,7 @@ export default function HomePage() {
                   </a>
                 </div>
                 <p className="text-body text-ink-muted mt-6">
-                  {founder.name} has run his tax practice in Jaisalmer since
-                  2001. Individuals and businesses come to him with the
-                  everyday work of Indian tax: a return to file, a GST
-                  registration, a notice that needs a reply. He handles each
-                  case himself, agrees the fee before work begins, and keeps
-                  your papers confidential. The first consultation is free.
+                  {founderBio}
                 </p>
               </div>
 
