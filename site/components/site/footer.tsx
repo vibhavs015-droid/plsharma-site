@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { LogoMark } from "@/components/site/logo-mark";
-import { site, visibleNavLinks, services } from "@/lib/site-config";
+import { site, emailHref, visibleNavLinks, services } from "@/lib/site-config";
 import { practitionerIsCa } from "@/lib/content-mode";
 
 export function SiteFooter() {
@@ -74,11 +74,18 @@ export function SiteFooter() {
           <ul className="space-y-3 text-sm text-primary-foreground/80">
             <li className="flex gap-2.5">
               <MapPin className="mt-0.5 size-4 shrink-0 text-[color:var(--accent)]" />
-              <span>
+              {/* T14-G: the address opens Google Maps (same link the
+                  contact desk row offers). */}
+              <a
+                href={site.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white hover:underline"
+              >
                 109, Indira Colony, Jaisalmer,
                 <br />
                 Rajasthan 345001
-              </span>
+              </a>
             </li>
             <li className="flex gap-2.5">
               <Phone className="mt-0.5 size-4 shrink-0 text-[color:var(--accent)]" aria-hidden />
@@ -89,7 +96,7 @@ export function SiteFooter() {
             </li>
             <li className="flex gap-2.5">
               <Mail className="mt-0.5 size-4 shrink-0 text-[color:var(--accent)]" />
-              <a href={`mailto:${site.email}`} className="break-all hover:text-white hover:underline">
+              <a href={emailHref} className="break-all hover:text-white hover:underline">
                 {site.email}
               </a>
             </li>

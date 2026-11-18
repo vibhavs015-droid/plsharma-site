@@ -75,6 +75,16 @@ export const site = {
 // Components; this stays build-time arithmetic on config values.)
 export const yearsInPractice = site.copyrightYear - site.establishedYear;
 
+// T14-G — the shared email prefill: every displayed email address opens
+// the visitor's mail app with the same subject and body scaffold, so a
+// first message arrives structured (owner feedback: mailto with
+// subject+body prefill everywhere). The booking form keeps its own
+// booking-specific prefill — that is booking-flow behaviour, untouched
+// by design.
+export const emailHref = `mailto:${site.email}?subject=${encodeURIComponent(
+  "Website enquiry"
+)}&body=${encodeURIComponent("Name: \nPhone: \nHow can we help: \n")}`;
+
 // Compact hours display for fact bands — keep in sync with site.hours[0].
 // /contact, /book and the footer render site.hours verbatim; only compact
 // fact bands use this abbreviation.

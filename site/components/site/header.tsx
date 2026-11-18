@@ -14,7 +14,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { site, visibleNavLinks } from "@/lib/site-config";
+import { site, emailHref, visibleNavLinks } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 function Logo({ onDark = true }: { onDark?: boolean }) {
@@ -63,7 +63,7 @@ export function SiteHeader() {
               <span className="phone-number">{site.phone}</span>
             </a>
             <a
-              href={`mailto:${site.email}`}
+              href={emailHref}
               className="flex items-center gap-1.5 transition-[color,background-color,border-color] hover:text-[color:var(--accent)]"
             >
               <Mail className="size-3.5" aria-hidden />

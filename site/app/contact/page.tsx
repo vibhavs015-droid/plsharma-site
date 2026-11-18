@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site-config";
+import { site, emailHref } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/page-meta";
 import { ActionBar } from "@/components/site/action-bar";
 
@@ -57,8 +57,17 @@ export default function ContactPage() {
           <div>
             <h1>One office in Jaisalmer — open six days a week.</h1>
             <p className="text-lead text-ink-muted mt-3 measure" data-numeric>
-              109, Indira Colony · {site.hours[0].days}, {site.hours[0].time} ·
-              WhatsApp and phone reach the same desk.
+              {/* T14-G: the lead's address opens Google Maps. */}
+              <a
+                href={site.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={entryLink}
+              >
+                109, Indira Colony
+              </a>{" "}
+              · {site.hours[0].days}, {site.hours[0].time} · WhatsApp and
+              phone reach the same desk.
             </p>
           </div>
         </div>
@@ -129,7 +138,7 @@ export default function ContactPage() {
 
                 <DeskRow label="Email">
                   <p className="text-body">
-                    <a href={`mailto:${site.email}`} className={entryLink}>
+                    <a href={emailHref} className={entryLink}>
                       {site.email}
                     </a>
                   </p>

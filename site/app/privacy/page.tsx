@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { site } from "@/lib/site-config";
+import { site, emailHref } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/page-meta";
 import { ActionBar } from "@/components/site/action-bar";
 
@@ -104,7 +104,7 @@ export default function PrivacyPage() {
             <li className="ruled-entry">
               <p className="text-body text-ink-muted">
                 The form has an email option too — the same details, sent to{" "}
-                <a href={`mailto:${site.email}`} className={entryLink}>
+                <a href={emailHref} className={entryLink}>
                   {site.email}
                 </a>{" "}
                 from your own email app.
@@ -164,7 +164,7 @@ export default function PrivacyPage() {
                   <span className="phone-number">{site.phone}</span>
                 </a>
                 , or email{" "}
-                <a href={`mailto:${site.email}`} className={entryLink}>
+                <a href={emailHref} className={entryLink}>
                   {site.email}
                 </a>
                 . A correction, a deletion — just ask.
