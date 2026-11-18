@@ -6,25 +6,25 @@ Branch base: main `8f10ae1` + chore `a64d8bf` (carried preview-deploy tooling).
 Final DONE/PARTIAL/BLOCKED table for the owner closes out this file.
 
 Free tooling this pass (Charter-compliant, logged in `docs/design/TOOLING_LOG.md`):
-Playwright (e2e/crawl), axe-core, Lighthouse CI, sharp (T1 image processing,
-pending), netlify CLI (preview only) — all local, no paid services.
+Playwright (e2e/crawl), axe-core, Lighthouse CI, sharp (T1 image processing),
+netlify CLI (preview only) — all local, no paid services.
 
 | # | Task | Status | Commit(s) |
 |---|---|---|---|
-| 0 | Sample-content switch (`SHOW_SAMPLE_CONTENT`, default false) | DONE — qa runtime check staged (memory window) | `c48a861` · `71bd77f` |
-| 1 | Hero bio + caption below photo + halo tone-down + phone nowrap / CTA stack | DONE (code) — A1 CSS + runtime pending | `dcc4977` |
-| 2 | "The record" fact band | DONE (code) — runtime pending | `dcc4977` |
-| 3 | Wording replacements + jargon sweep | DONE (code) — runtime pending | `dcc4977` |
-| 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | DONE (code) — screenshot verify at T13 | `f269e61` |
-| 5 | Section numbering (§ → numerals + rule) | DONE (code) — runtime pending | `f269e61` · `62f471a` |
-| 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | DONE (code) — owner CA confirmation governs | `62f471a` |
-| 7 | Testimonials page + section (zero-confirmed behaviour) | DONE (code) — runtime pending | `dcc4977` |
-| 8 | Link check + branded 404 | DONE (code) — after-crawl pending qa window | `e2f712d` · `023798d` |
-| 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | DONE (code) — runtime pending | `62f471a` |
-| 10 | Privacy page `/privacy` | DONE (code) — runtime pending | `62f471a` |
-| 11 | Small inconsistencies (footer services/hours/claims) | DONE (code) — runtime pending | `dcc4977` |
-| 12 | Android/iOS optimisation | DONE (code) — runtime + real-device pending | `f269e61` · `d3c6717` |
-| 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | pending | — |
+| 0 | Sample-content switch (`SHOW_SAMPLE_CONTENT`, default false) | DONE — probe + negative guard verified (evidence committed) | `c48a861` · `71bd77f` |
+| 1 | Hero bio + caption below photo + halo tone-down + phone nowrap / CTA stack | DONE — verified (suite + screenshots) | `dcc4977` · `1ae324a` |
+| 2 | "The record" fact band | DONE — verified (suite + screenshots) | `dcc4977` |
+| 3 | Wording replacements + jargon sweep | DONE — verified (suite + grep sweep) | `dcc4977` |
+| 4 | Spacing/layout (scroll-padding, clamp, rail, WhatsApp overlap) | DONE — verified (screenshots) | `f269e61` |
+| 5 | Section numbering (§ → numerals + rule) | DONE — verified (suite: rail-num pins) | `f269e61` · `62f471a` |
+| 6 | Audit claim flag (`PRACTITIONER_IS_CA`, default false) | DONE — verified (suite; owner CA gate governs) | `62f471a` |
+| 7 | Testimonials page + section (zero-confirmed behaviour) | DONE — verified (suite + screenshots) | `dcc4977` |
+| 8 | Link check + branded 404 | DONE — after-crawl 0 broken links (`link-check-after`) | `e2f712d` · `023798d` |
+| 9 | Canonical/SEO/sharing (SITE_URL, per-page og, ALLOW_INDEXING) | DONE — verified (seo-head suite; LH SEO 66–69 = guard intent) | `62f471a` |
+| 10 | Privacy page `/privacy` | DONE — verified (suite + axe + screenshots) | `62f471a` |
+| 11 | Small inconsistencies (footer services/hours/claims) | DONE — verified (suite) | `dcc4977` |
+| 12 | Android/iOS optimisation | DONE — verified (suite + axe + screenshots); real-device = owner | `f269e61` · `d3c6717` |
+| 13 | Verify (build/tests/axe/LHCI/screenshots/critic) | IN PROGRESS — build 0 · 175+5 tests · axe 20/20 · LHCI 100/0.757 s · 65 shots; critic round 1 | `fd733f5` · `b464d02` · `8f69819` |
 
 ---
 

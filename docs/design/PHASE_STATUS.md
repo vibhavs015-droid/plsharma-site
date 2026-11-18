@@ -372,3 +372,14 @@ behind the T0 preview flag with visible SAMPLE tags.
     a11y + LHCI reports + CHANGELOG draft → APPROVE/REJECT per charter.
   - **Finish:** CHANGELOG final task table + final DONE/PARTIAL/BLOCKED
     message with per-task evidence. No push, no deploy (owner-gated).
+- **T13 GATE STATUS (18 Nov):** build exit 0 (18 routes) · lint 0 (after
+  `fd733f5`) · tsc 0 · format N/A (no formatter configured) · suite 175/175
+  e2e + 5/5 unit (`3af15af`) · **axe 20/20 CLEAN, 0 violations** (`b464d02`,
+  `polish-evidence/t13-axe.json`) · **LHCI quiet-machine PASS: perf 100
+  (≥90), LCP 0.757 s (<2.5), CLS 0.000, home ×2 variance 0** (evidence
+  `t13-lhci-*.json`; KNOWN_ISSUES #15 + #17 CLOSED; SEO 66–69 = intentional
+  T9 guard, flips at launch) · **65 screenshots** (`8f69819`) incl.
+  360/390/430 phone set + 390-vp bar/float + 2 × 404 · after-crawl 0 broken
+  links (`ba9462d`).
+- **REMAINING:** critic round 1 (≤3) → fix round if REJECT → CHANGELOG final
+  table → final DONE/PARTIAL/BLOCKED report. No push, no deploy.
