@@ -150,3 +150,21 @@ Doc-verified against the bundled Next 16 docs: the root not-found handles every 
 **Owner-gated follow-ups** (not task failures — tracked in `OWNER_CHECKLIST.md`): ~~preview redeploy~~ **DONE 18 Nov** (owner-ordered; `6afd8c31` + `6afd92b1` — clears the 10 deployedLag items, verifies X-Robots-Tag live), launch env vars (`SITE_URL` / `ALLOW_INDEXING` / `PRACTITIONER_IS_CA`), CA/ICAI confirmation, founder reshoot, real testimonials, team photos/roles, domain + domain email, privacy review, real-phone tests, wording sign-offs. KNOWN_ISSUES still open: #1/#2/#3 (content placeholders/photos — owner), #4/#5/#7/#8/#11/#12 (tracked tooling/cosmetic); **#18 CLOSED 18 Nov** (live verification on all guard layers).
 
 **Pushed as `v3.0.0` (owner-ordered):** branch `polish-pass` + tag on GitHub; Netlify preview redeployed — live at **https://plsharma-site-preview.netlify.app**. Main untouched at `8f10ae1` (no merge requested).
+
+## T14 — OWNER FEEDBACK ROUND (18 Nov 2026, post-v3.0.0)
+
+Owner reviewed the live preview and sent 4 feedback batches (items A–J). All product items shipped, tests synced, deployed, and live-verified.
+
+| Item | What changed | Commit(s) |
+|---|---|---|
+| A | Eyebrow = **bare page name only** on all 10 page heads + 404 marker (`HOME`, `ABOUT`, `FAQ`, `BOOK`, `CONTACT`, `PRIVACY`, `SERVICES`, `TESTIMONIALS`, `WHY CHOOSE US`, `404`) — no company, no Jaisalmer, no tagline; captions/footer/titles/JSON-LD untouched | `6b87005` |
+| B | **Both** `/about` placeholder marks removed (owner: "remove this i dont like this"; identical-style team mark goes too) | `6b87005` |
+| C | About hero blank → **shared founder bio** (`lib/founder-bio.ts`, single source with Home hero); free-consultation sentence trimmed on /about (wording §0.6 three-placements: Home fold / /about §02 / /faq) | `1903c91` |
+| D | **Founder plate uncropped** to head+shoulders from `father-src.jpg` (tool geometry + acceptance patches adapted; 600×750 q85/q80 kept; 45→101 KB webp / 62→117 KB avif; originals SHA256-unchanged; Home + About auto-update) | `0461832` |
+| E | **Team restored to v2.0.0**: founder name+role + 3 owner-confirmed member name boxes (Vikram Singh Soda, Bhawani, Hemraj) moved sample→confirmed tier, `sampleTeam` emptied, no SAMPLE tags | `0c2e0cd` |
+| F | **Contact §02 rhythm**: standard ledger-rail section after the band — band→label 82px (= /book exactly), label→h2 27px (= /about exactly); visually verified | `abac9e7` |
+| G | **Contact actions**: every displayed email = `mailto:` with shared subject+body prefill (`site-config.emailHref`) on header/footer/contact/privacy; footer + contact-lead addresses open Google Maps; phones already `tel:` everywhere (counted) | `00380f8` |
+| H | Link check: local 0 broken (331 anchors, 22/22 prefilled mailtos) + deployed re-probe 0 broken, maps/wa.me 200 | `5603bcb`, `79dcf85` |
+| J | Live verification of every item: **78/78 HTTP checks** + 5 visual captures | `79dcf85` (`t14-live-verification.md`) |
+
+**Gates:** tsc 0 · lint 0 · build 0 (18/18) at every commit · **179/179 e2e + 5/5 unit** after pin sync · deployed re-probe 78/78. Deploy `6afde0b5` (prod, 1m05s). Critic persona audit (item I) → `docs/design/critic/t14-persona-tax-client.md`.
