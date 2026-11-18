@@ -40,6 +40,16 @@ const faqPreview = [faqs[1], faqs[2], faqs[4]];
 
 const founder = visibleTeam[0];
 
+/* T14-F1 (critic persona audit) — ONE source of truth for the rail count.
+   §04 Client words below renders only while the visible testimonial tier
+   has entries (`visibleTestimonials.length > 0`), which is FALSE on every
+   production deploy until real quotes land. When the section hides, the
+   rail must stay gapless — 01, 02, 03, 04 — so §05 Common questions takes
+   its figure from the SAME condition that gates §04: "05" when Client
+   words renders, "04" when it doesn't. Never hard-code either figure
+   independently of this const, or the counter skips a number again. */
+const clientWordsSectionVisible = visibleTestimonials.length > 0;
+
 /* Entry headings are the links (deep links to /book?service= arrive with the
    /services phase). A persistent hairline underline that warms to the text
    gold on hover — the signature interaction from tokens.md §4. */
@@ -246,8 +256,11 @@ export default function HomePage() {
             (spec §5.2 as amended by T7): production shows NOTHING here while
             the confirmed tier is empty; preview shows the tagged samples
             with the reserve furniture. When real quotes exist the quotes
-            render with the permission note — no tags, no reserve. ============ */}
-      {visibleTestimonials.length > 0 ? (
+            render with the permission note — no tags, no reserve.
+            T14-F1: the gate is `clientWordsSectionVisible` (module top) —
+            §05's figure derives from the same const, so hiding this section
+            renumbers the rail instead of leaving a 03 → 05 gap. ============ */}
+      {clientWordsSectionVisible ? (
         <section className="ledger-rail pb-[var(--space-section)]">
           <p className="rail-label rail-num">
             <span className="rail-num-figure" data-numeric>04</span>
@@ -291,10 +304,15 @@ export default function HomePage() {
         </section>
       ) : null}
 
-      {/* ============ 05 · COMMON QUESTIONS ============ */}
+      {/* ============ 04/05 · COMMON QUESTIONS — the figure is dynamic
+            (T14-F1): 05 when §04 Client words renders above, 04 when that
+            section is hidden — derived from clientWordsSectionVisible, the
+            same const that gates §04, so the rail never skips a number. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
         <p className="rail-label rail-num">
-          <span className="rail-num-figure" data-numeric>05</span>
+          <span className="rail-num-figure" data-numeric>
+            {clientWordsSectionVisible ? "05" : "04"}
+          </span>
           <span className="rail-num-rule" />
           <span className="rail-num-text">Common questions</span>
         </p>
