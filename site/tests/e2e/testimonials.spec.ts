@@ -9,7 +9,7 @@ import {
   site,
   TEL_HREF,
 } from "./helpers";
-import { confirmedTeam, confirmedTestimonials } from "../../lib/site-config";
+import { confirmedTestimonials } from "../../lib/site-config";
 import { visibleTestimonials } from "../../lib/sample-content";
 
 /**

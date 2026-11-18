@@ -11,6 +11,31 @@ import { confirmedTestimonials } from "../../lib/site-config";
  * live head check (viewport, robots.txt body, sitemap locs).
  */
 
+/**
+ * The home JSON-LD payload shape this file asserts on — the schema.org
+ * ProfessionalService subset the page ships (verified field-by-field in the
+ * JSON-LD test below against served HTML).
+ */
+interface ProfessionalServiceLd {
+  "@context": string;
+  "@type": string;
+  name: string;
+  url: string;
+  telephone: string;
+  email: string;
+  openingHours: string;
+  foundingDate: string;
+  areaServed: string;
+  founder: { "@type": string; name: string };
+  address: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+}
+
 // Title pins: the layout template is "%s | <site.name>"; home deliberately
 // exports NO title (page.tsx), so the layout's absolute default survives.
 const PAGES: Array<{ path: string; title: string }> = [
@@ -180,10 +205,9 @@ test.describe("SEO heads — guards, files and schema (B3/B4)", () => {
     await page.goto("/", { waitUntil: "load" });
     const scripts = page.locator('script[type="application/ld+json"]');
     await expect(scripts).toHaveCount(1);
-    const payload = JSON.parse((await scripts.first().textContent())!) as Record<
-      string,
-      any
-    >;
+    const payload = JSON.parse(
+      (await scripts.first().textContent())!
+    ) as ProfessionalServiceLd;
     expect(payload["@context"]).toBe("https://schema.org");
     expect(payload["@type"]).toBe("ProfessionalService");
     expect(payload.name).toBe(site.name);
