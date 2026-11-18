@@ -59,7 +59,9 @@ test.describe("FAQ — structure & content (page-specs §5)", () => {
     // prefill — NOT a booking-request prefill.
     const ask = head.locator('a[href^="https://wa.me/"]');
     await expect(ask).toHaveCount(1);
-    await expect(ask).toHaveText("A question that isn't here? Send it — a person replies.");
+    // §7 lockstep 7 (B3): the ask line was rewritten; the QUESTION prefill
+    // below it is unchanged — an ask is still not always a booking.
+    await expect(ask).toHaveText("Something else on your mind? Send it — a person replies.");
     const prefill = prefillOf((await ask.getAttribute("href"))!);
     expect(prefill).toBe(QUESTION_PREFILL);
     expect(prefill, "the head ask link is a question, not a booking request").not.toMatch(
@@ -103,15 +105,26 @@ test.describe("FAQ — structure & content (page-specs §5)", () => {
     );
   });
 
-  test("§ sections group the entries 3 / 3 / 1 under their labels", async ({ page }) => {
+  test("§ sections group the entries 3 / 3 / 1 under their rail-num labels", async ({ page }) => {
     const sections = page.locator("main section.ledger-rail");
     await expect(sections).toHaveCount(4); // head + §01 + §02 + §03
-    await expect(page.locator("main section > p.rail-label")).toHaveText([
-      `${site.shortName} · FAQ · Jaisalmer`,
-      "§ 01 · The first questions",
-      "§ 02 · Working with us",
-      "§ 03 · For business clients",
-    ]);
+    // The head keeps its plain identity rail-label; the three § labels ship
+    // the B3 rail-num device (figure + rule + text, `data-numeric` on each
+    // figure). Served evidence: spec-evidence.json → faq.railLabels.
+    await expect(sections.nth(0).locator("p.rail-label")).toHaveText(
+      `${site.shortName} · FAQ · Jaisalmer`
+    );
+    const figs = page.locator("main p.rail-label.rail-num .rail-num-figure");
+    await expect(figs).toHaveCount(3);
+    await expect(figs.nth(0)).toHaveText("01");
+    await expect(figs.nth(1)).toHaveText("02");
+    await expect(figs.nth(2)).toHaveText("03");
+    for (let i = 0; i < 3; i++) {
+      await expect(figs.nth(i)).toHaveAttribute("data-numeric", "true");
+    }
+    await expect(
+      page.locator("main p.rail-label.rail-num .rail-num-text")
+    ).toHaveText(["The first questions", "Working with us", "For business clients"]);
     await expect(sections.nth(1).locator("li.ruled-entry")).toHaveCount(3);
     await expect(sections.nth(2).locator("li.ruled-entry")).toHaveCount(3);
     await expect(sections.nth(3).locator("li.ruled-entry")).toHaveCount(1);

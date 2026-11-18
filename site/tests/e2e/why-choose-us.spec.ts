@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import {
   expectNoAppointmentOnCtaSurfaces,
   expectNoInventedClaims,
+  expectRailNum,
   gotoWhyChooseUs,
   prefillOf,
   site,
@@ -50,16 +51,15 @@ test.describe("Why choose us — structure & content (page-specs §3)", () => {
     await expect(head.locator("p.rail-label")).toHaveText(
       `${site.shortName} · Why choose us · Jaisalmer`
     );
-    await expect(head.locator("p.text-lead")).toHaveText(
-      "Four things you can hold us to — and where to check each."
-    );
+    // §7/B3: "and where to check each" was deleted from the lead (§3.2
+    // sweep — the check-links below still do the pointing).
+    await expect(head.locator("p.text-lead")).toHaveText("Four things you can hold us to.");
   });
 
   test("§01 carries the four way-of-working entries in config order, titles byte-verbatim", async ({ page }) => {
     const section = page.locator("main section.ledger-rail").nth(1);
-    await expect(section.locator("p.rail-label").first()).toHaveText(
-      "§ 01 · The way of working"
-    );
+    // B3: rail-num device replaces the "§ 01 · …" string label.
+    await expectRailNum(section.locator("p.rail-label.rail-num"), "01", "The way of working");
     const entries = section.locator("li.ruled-entry");
     await expect(entries).toHaveCount(4);
     // whyChooseUs[2..5] — the same four Home §02 carries; never reordered.
@@ -73,7 +73,8 @@ test.describe("Why choose us — structure & content (page-specs §3)", () => {
     // §3: the config description tightened to one sentence — studio copy, no
     // new facts. Pinned so neither drift direction escapes.
     const bodies = [
-      "Clear, agreed-upon fees before work begins — no hidden charges, no surprises.",
+      // §7 lockstep 5 (B3): "agreed-upon" → "agreed" (jargon sweep §3.6).
+      "Clear, agreed fees before work begins — no hidden charges, no surprises.",
       "Returns and filings are completed well before their due dates.",
       "Your financial data stays strictly between us — professional secrecy is the foundation of our practice.",
       "From first consultation to notice handling — we stay with you through the whole process.",
@@ -108,8 +109,10 @@ test.describe("Why choose us — structure & content (page-specs §3)", () => {
 
   test("§02 translates the promises per audience — two unnumbered, link-free entries", async ({ page }) => {
     const section = page.locator("main section.ledger-rail").nth(2);
-    await expect(section.locator("p.rail-label").first()).toHaveText(
-      "§ 02 · What this means for your case"
+    await expectRailNum(
+      section.locator("p.rail-label.rail-num"),
+      "02",
+      "What this means for your case"
     );
     const entries = section.locator("li.ruled-entry");
     await expect(entries).toHaveCount(2);

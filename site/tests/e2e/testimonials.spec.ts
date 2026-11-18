@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import {
   expectNoAppointmentOnCtaSurfaces,
   expectNoInventedClaims,
+  expectRailNum,
   gotoTestimonials,
   INVENTED_TESTIMONIAL_NAMES,
   prefillOf,
@@ -9,7 +10,7 @@ import {
   TEL_HREF,
 } from "./helpers";
 import { confirmedTeam, confirmedTestimonials } from "../../lib/site-config";
-import { visibleTeam, visibleTestimonials } from "../../lib/sample-content";
+import { visibleTestimonials } from "../../lib/sample-content";
 
 /**
  * Phase 3 Stage D QA — `/testimonials`, the designed honest reserve.
@@ -28,12 +29,9 @@ const EXPECTED_TESTIMONIALS_PREFILL = `Hello ${site.name}, I would like to book 
 // (page-specs §0.3 exception pattern).
 const QUESTION_PREFILL = `Hello ${site.name}, I have a question.`;
 
-// §4 §02: the three quiet proof links — the page never dead-ends.
-const PROOF_LINKS: Array<[string, string]> = [
-  ["The principal", "/about"],
-  ["How we work", "/why-choose-us"],
-  ["Straight answers", "/faq"],
-];
+// §02's three quiet proof links ("The principal" / "How we work" / "Straight
+// answers") shipped on the pre-§8 page and left with it — see the lean-page
+// test below (wording-spec §8 amendment).
 
 test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
   test.setTimeout(90_000);
@@ -74,11 +72,14 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
 
   test("the collection invite is a quiet wa.me link with the QUESTION prefill — not a booking request", async ({ page }) => {
     const section = page.locator("main section.ledger-rail").nth(1);
-    await expect(section.locator("p.rail-label").first()).toHaveText("§ 01 · Client words");
+    // B3: §01's "§ 01 · Client words" string became the rail-num device.
+    await expectRailNum(section.locator("p.rail-label.rail-num"), "01", "Client words");
     const collect = section.locator('a[href^="https://wa.me/"]');
     await expect(collect).toHaveCount(1);
+    // §7 lockstep 3 (B2): the invite was shortened; the prefill below is
+    // unchanged — a quote offer stays a QUESTION, never a booking request.
     await expect(collect).toHaveText(
-      "If this office has handled your file and you'd be willing to be quoted, say so on WhatsApp — your permission decides what appears."
+      "A quote to share? Send it — your permission decides what appears."
     );
     const prefill = prefillOf((await collect.getAttribute("href"))!);
     expect(prefill).toBe(QUESTION_PREFILL);
@@ -87,35 +88,44 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     );
   });
 
-  test("§02: the record line with data-numeric and exactly the three proof links", async ({ page }) => {
-    const section = page.locator("main section.ledger-rail").nth(2);
-    await expect(section.locator("p.rail-label").first()).toHaveText(
-      "§ 02 · The proof that exists today"
-    );
-    const record = section.locator("p.rail-label[data-numeric]");
-    await expect(record).toHaveText(`Since ${site.establishedYear} · ${site.stats[0].label}`);
-    await expect(record).toHaveAttribute("data-numeric", "true");
+  test("the page ships LEAN (§8): no §02 record/proof band, no §03 founder band", async ({ page }) => {
+    // wording-spec §8 amendment (B2): §02 (record line + three proof links)
+    // and §03 (founder band with the signed-page facts) were removed from
+    // the client-facing page. The section budget is now exactly: head +
+    // §01 + act band. Served evidence: spec-evidence.json → testimonials.main.
+    await expect(page.locator("main section.ledger-rail")).toHaveCount(2);
 
-    const links = section.locator("a");
-    await expect(links, "exactly the three quiet proof links").toHaveCount(3);
-    for (let i = 0; i < PROOF_LINKS.length; i++) {
-      await expect(links.nth(i)).toHaveText(PROOF_LINKS[i][0]);
-      await expect(links.nth(i)).toHaveAttribute("href", PROOF_LINKS[i][1]);
+    const html = await page.content(); // includes the RSC flight payload
+    for (const retired of ["The proof that exists today", "The signed page"]) {
+      expect(html, `retired §02/§03 copy must not render: "${retired}"`).not.toContain(
+        retired
+      );
     }
+    // §03's founder facts are gone from this page (the founder renders on
+    // /about); the §02 record line went with it.
+    await expect(page.locator("main h3")).toHaveCount(0);
+    await expect(page.locator("main")).not.toContainText(`Since ${site.establishedYear}`);
+    // The three quiet proof links are gone with §02 — no wayfinding anchors
+    // left in main besides the wa.me/tel CTAs.
+    await expect(page.locator('main a[href="/why-choose-us"]')).toHaveCount(0);
+    await expect(page.locator('main a[href="/about"]')).toHaveCount(0);
+    await expect(page.locator('main a[href="/faq"]')).toHaveCount(0);
+
+    // §0.6 guards travel with the deleted section: no italic ever ships, and
+    // no signature is drawn — scoped to the page's sections (the band's
+    // anchors and the float icon live outside this set).
+    const sections = page.locator("main section");
+    await expect(sections.locator("em")).toHaveCount(0);
+    await expect(sections.locator('[class*="italic"]')).toHaveCount(0);
+    await expect(sections.locator("svg, canvas")).toHaveCount(0);
   });
 
-  test("§03: the founder's name and facts in the regular faces — no italic, no drawn signature", async ({ page }) => {
-    const section = page.locator("main section.ledger-rail").nth(3);
-    await expect(section.locator("p.rail-label").first()).toHaveText("§ 03 · The signed page");
-    const entry = section.locator(".ruled-entry");
-    await expect(entry.locator("h3")).toHaveText(visibleTeam[0].name);
-    const line = entry.locator("p.rail-label[data-numeric]");
-    await expect(line).toHaveText(`Principal Consultant · Jaisalmer · Since ${site.establishedYear}`);
-    // §0.6: no italic ships in Phase 3 — no <em>, no italic utility class on
-    // the entry; and no signature is drawn, traced or faked (no svg/canvas).
-    await expect(entry.locator("em")).toHaveCount(0);
-    await expect(entry.locator('[class*="italic"]')).toHaveCount(0);
-    await expect(entry.locator("svg, canvas")).toHaveCount(0);
+  test("noindex while the confirmed tier is empty — the page half of Item 0", async ({ page }) => {
+    // The page sets its OWN page-level robots (overriding the layout's
+    // site-wide "noindex, nofollow"): "noindex" alone today, auto-flipping
+    // to indexable the moment confirmedTestimonials gains a real quote —
+    // the sitemap agrees (seo-head.spec.ts asserts that other half).
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");
   });
 
   test("no sample/preview framing anywhere in the page body", async ({ page }) => {
@@ -183,8 +193,8 @@ test.describe("Testimonials — honesty regression guards (the invented-data wal
     // pinned names stay guarded site-wide (helpers sweep) and re-asserted
     // here at html level for this page. The sample tier's generic byline is
     // the other leak risk — production must not carry either. (The founder
-    // h3 comes from visibleTeam[0], which equals confirmedTeam[0] in the
-    // default build — asserted above via the §03 test.)
+    // renders on /about only — the lean §8 page carries no h3 at all, which
+    // the lean-page test above asserts.)
     const html = await page.content(); // includes the RSC flight payload
     for (const name of INVENTED_TESTIMONIAL_NAMES) {
       expect(html, `invented name must not render: "${name}"`).not.toContain(name);

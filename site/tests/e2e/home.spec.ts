@@ -1,12 +1,14 @@
 import { expect, test } from "@playwright/test";
 import {
+  expectRailNum,
   gotoHome,
   prefillOf,
   TEL_HREF,
   WA_HREF_PREFIX,
   site,
 } from "./helpers";
-import { faqs } from "../../lib/site-config";
+import { confirmedTeam, faqs, services } from "../../lib/site-config";
+import { showSampleContent } from "../../lib/content-mode";
 
 /**
  * Phase 2 QA — Home (`/`) on the Kept Ledger design system.
@@ -37,24 +39,56 @@ test.describe("Home — structure & content", () => {
     await expect(h1).toContainText("Jaisalmer");
   });
 
-  test("hero rail label carries the four owner-confirmed identity facts", async ({ page }) => {
+  test("hero rail label carries the three owner-confirmed identity facts — no 'Since 2001'", async ({ page }) => {
     const label = page.locator("main p.rail-label").first();
     await expect(label).toContainText(site.shortName); // P.L. Sharma & Co.
     await expect(label).toContainText(site.tagline); // Tax Consultants & Financial Advisors
     await expect(label).toContainText("Jaisalmer");
-    await expect(label).toContainText(`Since ${site.establishedYear}`); // since 2001
+    // T3/§3.4 census (B2): "· Since 2001" is retired from the hero rail —
+    // the record band (§03) carries Home's one 2001 line instead. Served
+    // evidence: spec-evidence.json → home.railLabels[0].
+    await expect(label).not.toContainText(`Since ${site.establishedYear}`);
+    await expect(page.locator("main")).not.toContainText("· Since 2001");
   });
 
-  test("the five ledger sections render in order §01–§05", async ({ page }) => {
-    const markers = page.locator("main p.rail-label").filter({ hasText: /^§ 0\d/ });
-    await expect(markers).toHaveCount(5);
-    await expect(markers).toHaveText([
-      "§ 01 · Services",
-      "§ 02 · How we work",
-      "§ 03 · The record",
-      "§ 04 · Client words",
-      "§ 05 · Common questions",
-    ]);
+  test("ledger sections render in order with the rail-num device (§8.5 mode-aware)", async ({ page }) => {
+    // B3: the "§ 0N · Title" string labels became the rail-num device
+    // (figure + rule + text, `data-numeric` on the figure). B2/§8:
+    // production ships §01–§03 + §05 — Home §04 (client words) exists only
+    // in an owner-preview build.
+    const labels = page.locator("main p.rail-label.rail-num");
+    if (showSampleContent) {
+      // Owner-preview branch: count + §04 signals pinned to what the T0
+      // probe verified on the served preview build
+      // (polish-evidence/sample-mode-probe.json); §04's own figure/text pair
+      // is deliberately NOT pinned — the preview build no longer exists to
+      // verify it against.
+      await expect(labels).toHaveCount(5);
+      await expectRailNum(labels.nth(0), "01", "Services");
+      await expectRailNum(labels.nth(1), "02", "How we work");
+      await expectRailNum(labels.nth(2), "03", "The record");
+      const html = await page.content();
+      expect(html, "preview §04 heading (probe-verified)").toContain("What clients say");
+      expect(html, "preview §04 reserve mark (probe-verified)").toContain(
+        "[PLACEHOLDER — awaiting real testimonial from owner]"
+      );
+      expect(html, "preview §04 reserve link (probe-verified)").toContain(
+        "How we handle client words"
+      );
+      await expectRailNum(labels.nth(4), "05", "Common questions");
+    } else {
+      await expect(labels).toHaveCount(4);
+      await expectRailNum(labels.nth(0), "01", "Services");
+      await expectRailNum(labels.nth(1), "02", "How we work");
+      await expectRailNum(labels.nth(2), "03", "The record");
+      await expectRailNum(labels.nth(3), "05", "Common questions");
+      // §04 is ABSENT in production: no client-words heading, no reserve link.
+      const html = await page.content();
+      expect(html, "§04 heading must not render in production").not.toContain("What clients say");
+      expect(html, "§04 reserve link must not render in production").not.toContain(
+        "How we handle client words"
+      );
+    }
   });
 
   test("founder plate: dimensions + decorative alt, link still names the founder", async ({ page }) => {
@@ -64,8 +98,8 @@ test.describe("Home — structure & content", () => {
 
     const img = plate.locator("img");
     await expect(img).toHaveCount(1);
-    // The interim graded crop, not the raw father.jpg.
-    await expect(img).toHaveAttribute("src", /founder-plate\.webp$/);
+    // The polished plate (T1/B2 asset rename) — never the raw father.jpg.
+    await expect(img).toHaveAttribute("src", /founder-plate-polished\.webp$/);
     // Dimensions shipped with the asset (charter page-completion rule).
     await expect(img).toHaveAttribute("width", "300");
     await expect(img).toHaveAttribute("height", "375");
@@ -82,19 +116,57 @@ test.describe("Home — structure & content", () => {
     await expect(
       page.getByRole("link", { name: /Parbhati Lal Sharma/ })
     ).toHaveCount(1);
+
+    // T1/§1.3 caption move (B2): exactly two caption lines BELOW the image —
+    // name + title; the "· Since 2001" row is retired from the plate (the
+    // record band carries it). Served evidence: spec-evidence.json.
+    const captions = plate.locator("p.rail-label");
+    await expect(captions).toHaveCount(2);
+    await expect(captions.nth(0)).toHaveText("Parbhati Lal Sharma");
+    await expect(captions.nth(1)).toHaveText("Principal Consultant · Jaisalmer");
+    await expect(plate).not.toContainText(`Since ${site.establishedYear}`);
+    const captionsBelowImage = await plate.evaluate((link) => {
+      const imgEl = link.querySelector("img");
+      const cap = link.querySelector("p.rail-label");
+      return (
+        !!imgEl &&
+        !!cap &&
+        !!(imgEl.compareDocumentPosition(cap) & Node.DOCUMENT_POSITION_FOLLOWING)
+      );
+    });
+    expect(captionsBelowImage, "captions sit below the image").toBe(true);
   });
 
-  test("the one owner-confirmed stat tile renders — and no other numeric stat tiles", async ({ page }) => {
-    // §03 record line: the single tile the owner confirmed (Phase 1 critic fix).
-    const recordEntry = page
-      .locator("main h2")
-      .filter({ hasText: "25+ Years in Practice in Jaisalmer" });
-    await expect(recordEntry).toHaveCount(1);
-    await expect(recordEntry).toContainText(`Since ${site.establishedYear}`);
+  test("the record band renders the five owner-confirmed facts, in order, numeric only where confirmed", async ({ page }) => {
+    // T2 (wording-spec §2, B2): the single stat tile became a five-item
+    // band under h2 "The record"; `data-numeric` rides on the first three
+    // (dates/times), never on the two plain statements. Served evidence:
+    // spec-evidence.json → home.recordBandHtml.
+    const band = page.locator("main section").filter({
+      has: page.locator("h2", { hasText: "The record" }),
+    });
+    await expect(band).toHaveCount(1);
+    const items = band.locator("li.ruled-entry");
+    await expect(items).toHaveCount(5);
+    await expect(items).toHaveText([
+      "Since 2001",
+      "25 years in practice",
+      "Mon–Sat 10:00–7:00",
+      "First consultation free",
+      "Office in Jaisalmer",
+    ]);
+    const numeric = band.locator("li.ruled-entry p[data-numeric]");
+    await expect(numeric).toHaveCount(3);
+    await expect(numeric.nth(0)).toHaveText(`Since ${site.establishedYear}`);
+    await expect(numeric.nth(1)).toHaveText("25 years in practice");
+    await expect(numeric.nth(2)).toHaveText("Mon–Sat 10:00–7:00");
+    await expect(band.locator("li.ruled-entry p:not([data-numeric])")).toHaveCount(2);
 
-    // Exactly one numeric marker on the page: the record line itself.
-    await expect(page.locator("main [data-numeric]")).toHaveCount(1);
-    await expect(page.locator("main [data-numeric]")).toContainText(`Since ${site.establishedYear}`);
+    // The old stat-tile h2 phrasing is retired from Home — it survives on
+    // /about §01 only (§3.4 census).
+    await expect(
+      page.locator("main h2", { hasText: "25+ Years in Practice in Jaisalmer" })
+    ).toHaveCount(0);
 
     // The tiles the critic rejected must never come back (§2.4: no fake counts).
     const mainText = await page.locator("main").innerText();
@@ -142,12 +214,18 @@ test.describe("Home — honesty regression guards (critic REJECT items)", () => 
     expect(starNodes).toBe(0);
   });
 
-  test("testimonial area renders only placeholder-marked entries — no invented names or quotes", async ({ page }) => {
+  test("testimonial area renders nothing in production — reserve mark only in preview — and never invented names", async ({ page }) => {
     const marks = page.locator("main .placeholder-mark");
-    await expect(marks).toHaveCount(1);
-    // tokens.md §5.1 convention: dashed marker + explicit awaiting-real text.
-    await expect(marks).toContainText("PLACEHOLDER");
-    await expect(marks).toContainText(/awaiting real testimonial/i);
+    if (showSampleContent) {
+      // Owner-preview (§8.5): Home §04 ships with its one reserve mark.
+      await expect(marks, "preview §04 ships its reserve mark").toHaveCount(1);
+      await expect(marks).toContainText("PLACEHOLDER");
+      await expect(marks).toContainText(/awaiting real testimonial/i);
+    } else {
+      // Production (B2/§8): Home §04 does not exist — zero reserve marks on
+      // this page; the reserve lives on /testimonials only.
+      await expect(marks, "production Home carries no reserve marks").toHaveCount(0);
+    }
 
     // Nothing from the placeholder testimonials in site-config may leak onto /.
     const inventedNames = ["Rajesh Verma", "Sunita Malhotra", "Amit Khanna", "Priya Nair"];
@@ -225,7 +303,11 @@ test.describe("Home — CTA wording per surface (user-problem.md §2.3)", () => 
   });
 
   test("WhatsApp float: icon-only, accessible name 'Book a consultation on WhatsApp', wa.me deep link", async ({ page }) => {
-    const float = page.locator('a[aria-label="Book a consultation on WhatsApp"]');
+    // B4: the sticky action bar's WhatsApp anchor shares this accessible
+    // name — scope to the FLOAT element (its own whatsapp-float class).
+    const float = page.locator(
+      'a.whatsapp-float[aria-label="Book a consultation on WhatsApp"]'
+    );
     await expect(float).toHaveCount(1);
     await expect(float).toHaveAttribute("href", new RegExp(`^${WA_HREF_PREFIX.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
     // Icon-only: the wording lives in the accessible name, not in visible text.
@@ -251,8 +333,9 @@ test.describe("Home — CTA wording per surface (user-problem.md §2.3)", () => 
 
   test("the end-of-page act band is present exactly once", async ({ page }) => {
     await expect(page.locator("section.act-band")).toHaveCount(1);
-    // And it is the page's closing section.
-    await expect(page.locator("main > section:last-child")).toHaveClass(/act-band/);
+    // And it is the page's closing section (the ActionBar <nav> follows it
+    // inside <main>, so :last-of-type — not :last-child).
+    await expect(page.locator("main > section:last-of-type")).toHaveClass(/act-band/);
   });
 
   test("phone links read 'Call the office' with the configured tel: number", async ({ page }) => {
@@ -284,7 +367,11 @@ test.describe("Home — accessibility smoke", () => {
 
   test("landmarks present: header, nav, main, footer", async ({ page }) => {
     await expect(page.locator("header")).toHaveCount(1);
-    await expect(page.locator("nav")).toHaveCount(1);
+    // A2/B4: the sticky action bar ships a second nav landmark — scope the
+    // header nav, pin the bar, and keep the total explicit (was 1 pre-polish).
+    await expect(page.locator("header nav")).toHaveCount(1);
+    await expect(page.locator("nav.sticky-action-bar")).toHaveCount(1);
+    await expect(page.locator("nav")).toHaveCount(2);
     await expect(page.locator("main")).toHaveCount(1);
     await expect(page.locator("footer")).toHaveCount(1);
     // O-8 (Stage E): main is the skip-link's target — focusable without
@@ -339,5 +426,103 @@ test.describe("Home — accessibility smoke", () => {
       heroCtaReached,
       "the hero WhatsApp CTA must be keyboard-reachable within the first few tabs"
     ).toBe(true);
+  });
+});
+
+test.describe("Home — polish pass pins (wording-spec §1/§2/§3, B2/B3)", () => {
+  test.setTimeout(90_000);
+
+  test.beforeEach(async ({ page }) => {
+    await gotoHome(page);
+  });
+
+  test("the hero bio is the single owner paragraph (§1.2), fact-locked", async ({ page }) => {
+    // T1: the two pre-polish lines ("You speak to the principal himself…"
+    // + a second free-first line) were REPLACED by one paragraph whose name
+    // segment renders from config. Served evidence: default-build-evidence
+    // → pages[0].heroBio + spec-evidence.json.
+    const bio = page.locator("main p", {
+      hasText: "has run his tax practice in Jaisalmer since 2001",
+    });
+    await expect(bio).toHaveCount(1);
+    await expect(bio).toContainText(confirmedTeam[0].name);
+    await expect(bio).toContainText(
+      "He handles each case himself, agrees the fee before work begins, and keeps your papers confidential."
+    );
+    // §0.6: the free-first sentence lives INSIDE the bio on Home — exactly
+    // once in main (the band says "First consultation free", different words).
+    await expect(bio).toContainText("The first consultation is free.");
+    const occurrences = (await page.locator("main").innerText()).match(
+      /The first consultation is free\./g
+    )?.length;
+    expect(occurrences, "the canonical free-first sentence appears once on Home").toBe(1);
+
+    const html = await page.content();
+    expect(html, "retired bio line 1 must not survive").not.toContain(
+      "You speak to the principal himself, not a call centre."
+    );
+  });
+
+  test("the header nav lists exactly the six visible destinations — no Testimonials", async ({ page }) => {
+    // visibleNavLinks (site-config): Testimonials stays out of the nav while
+    // the confirmed tier is empty and the preview flag is off. When real
+    // quotes land, this pin flips with the tier — Item 0's nav half.
+    const links = page.locator("header nav a");
+    await expect(links).toHaveText([
+      "Home",
+      "About",
+      "Services",
+      "Why Choose Us",
+      "FAQ",
+      "Contact",
+    ]);
+    await expect(links.filter({ hasText: "Testimonials" })).toHaveCount(0);
+  });
+
+  test("the footer quick links mirror the nav — Testimonials absent, Privacy included (B3)", async ({ page }) => {
+    const footer = page.locator("footer");
+    await expect(
+      footer.getByRole("link", { name: "Testimonials" }),
+      "no Testimonials link in the footer either"
+    ).toHaveCount(0);
+    // The eight quick links: the six nav destinations + Book + Privacy.
+    // Counts verified in served HTML (home-verify pass): each href = 1.
+    for (const [href, label] of [
+      ["/", "Home"],
+      ["/about", "About"],
+      ["/why-choose-us", "Why Choose Us"],
+      ["/faq", "FAQ"],
+      ["/contact", "Contact"],
+      ["/book", "Book a consultation"],
+      ["/privacy", "Privacy"],
+    ] as const) {
+      await expect(footer.locator(`a[href="${href}"]`), `footer ${label}`).toHaveText(label);
+    }
+    // "Services" exactly once as a quick link (the six service titles are a
+    // separate column — asserted next).
+    await expect(footer.getByRole("link", { name: "Services", exact: true })).toHaveCount(1);
+  });
+
+  test("the footer carries the six service titles, hours rows, clean blurb and descriptor (B3)", async ({ page }) => {
+    const footer = page.locator("footer");
+    // Blurb: the "Trusted" adjective is retired (§3.6 wording sweep).
+    await expect(footer).toContainText(
+      "Tax consultancy serving individuals and businesses in Jaisalmer."
+    );
+    await expect(footer).not.toContainText("Trusted");
+    // Six service titles + the Quick links "Services" item = 7 /services anchors.
+    await expect(footer.locator('a[href="/services"]')).toHaveCount(7);
+    for (const s of services) {
+      await expect(footer, `service title: ${s.title}`).toContainText(s.title);
+    }
+    // Hours rows, stated from config rendering (§3.4).
+    await expect(footer).toContainText("Monday – Saturday · 10:00 AM – 7:00 PM");
+    await expect(footer).toContainText("Sunday · Closed");
+    // Bottom descriptor — the non-CA variant ships (practitionerIsCa=false).
+    await expect(footer).toContainText(
+      "Income Tax, GST, Tax Planning and Business Registration"
+    );
+    // §3.4 census: no "since 2001" survives in the footer blurb area.
+    await expect(footer).not.toContainText("serving individuals and businesses since 2001");
   });
 });

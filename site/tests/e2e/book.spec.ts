@@ -81,6 +81,26 @@ test.describe("Book page — structure & content (§5.2)", () => {
     await expect(talkSection).toContainText(`${site.hours[1].days} · ${site.hours[1].time}`);
     await expect(talkSection).toContainText(site.address);
   });
+
+  test("the consent note sits directly under the slip", async ({ page }) => {
+    // B3/T10 privacy half: the one line saying where details GO, pinned
+    // right after the form. Served evidence: spec-evidence.json → book.
+    const note = page.locator("main p.text-meta", {
+      hasText:
+        "Your details go straight to the office on WhatsApp — this site stores nothing.",
+    });
+    await expect(note).toHaveCount(1);
+    await expect(note).toBeVisible();
+    // DOM order: the note is the sibling <p> after the slip's closing div —
+    // it follows the slip, not the other way round.
+    const follows = await note.evaluate((el) => {
+      const slip = document.querySelector("main .slip");
+      return (
+        !!slip && !!(slip.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)
+      );
+    });
+    expect(follows, "the consent note follows the slip").toBe(true);
+  });
 });
 
 test.describe("Book page — honesty regression guards (critic REJECT rules)", () => {

@@ -8,6 +8,7 @@ import {
   site,
 } from "./helpers";
 import { services } from "../../lib/site-config";
+import { practitionerIsCa } from "../../lib/content-mode";
 
 /**
  * Phase 3 Stage B QA — `/services` on the Kept Ledger system.
@@ -33,7 +34,13 @@ test.describe("Services — structure & content (page-specs §2)", () => {
   test("exactly one h1 — the recognition frame", async ({ page }) => {
     const h1 = page.locator("main h1");
     await expect(h1).toHaveCount(1);
-    await expect(h1).toHaveText("Income tax, GST, audits, registration — the work, in your words.");
+    // T6 CA gate (served, flag unset = false): the non-CA variant names the
+    // "audit support" service card instead of the retired "audits" line.
+    await expect(h1).toHaveText(
+      practitionerIsCa
+        ? "Income tax, GST, audits, registration — the work, in your words."
+        : "Income tax, GST, audit support, registration — the work, in your words."
+    );
   });
 
   test("ruled head: rail-label + h1 in the opening ledger rail", async ({ page }) => {
@@ -109,15 +116,16 @@ test.describe("Services — structure & content (page-specs §2)", () => {
   test("the earned /faq click sits after the list, before the band", async ({ page }) => {
     const faqLink = page.locator('main a[href="/faq"]');
     await expect(faqLink).toHaveCount(1);
-    await expect(faqLink).toHaveText(
-      "Questions about documents, fees or notices — the common questions"
-    );
+    // §7 lockstep 6 (B3): the quiet link was shortened.
+    await expect(faqLink).toHaveText("Documents, fees, notices — the common questions");
   });
 
   test("act band: once, the not-sure path, canonical CTA, page-aware prefill", async ({ page }) => {
     const band = page.locator("section.act-band");
     await expect(band).toHaveCount(1);
-    await expect(page.locator("main > section:last-child")).toHaveClass(/act-band/);
+    // The ActionBar <nav> follows the band inside <main> (B4) — the band is
+    // the last SECTION, not the last child.
+    await expect(page.locator("main > section:last-of-type")).toHaveClass(/act-band/);
     // The "not sure" affordance lives in the band sentence (§2 close); the
     // old "Not sure which service you need?" panel is deleted.
     await expect(band.locator("h2")).toHaveText(

@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import {
   expectNoAppointmentOnCtaSurfaces,
   expectNoInventedClaims,
+  expectRailNum,
   gotoContact,
   prefillOf,
   site,
@@ -149,9 +150,14 @@ test.describe("Contact — structure & content (page-specs §6)", () => {
     await expect(email).toHaveText(site.email);
   });
 
-  test("§02 carries the walk-in entry with the spec's sentence", async ({ page }) => {
-    const label = page.locator("main p.rail-label", { hasText: "§ 02 · Before you come" });
-    await expect(label).toHaveCount(1);
+  test("§02 carries the walk-in entry under its rail-num label", async ({ page }) => {
+    // B3: the "§ 02 · Before you come" string became the rail-num device —
+    // located by its text part (served evidence: spec-evidence.json →
+    // contact.railLabels).
+    const label = page.locator("main p.rail-label.rail-num").filter({
+      has: page.locator(".rail-num-text", { hasText: "Before you come" }),
+    });
+    await expectRailNum(label, "02", "Before you come");
     const entry = page.locator("main li.ruled-entry");
     await expect(entry).toHaveCount(1);
     await expect(entry).toContainText(

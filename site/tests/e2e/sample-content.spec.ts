@@ -36,6 +36,7 @@ const ROUTES = [
   "/contact",
   "/why-choose-us",
   "/testimonials",
+  "/privacy",
 ];
 
 test.describe("Sample content — production leak guard (TASK 0)", () => {

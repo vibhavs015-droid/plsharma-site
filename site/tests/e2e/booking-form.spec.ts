@@ -74,10 +74,15 @@ test.describe("Booking form (offline e2e)", () => {
       page.getByText("WhatsApp should now be open with your request — press Send there.")
     ).toBeVisible();
 
-    // The offline fallback: the real office number as a tel: link.
-    await expect(
-      page.locator('a[href^="tel:"]', { hasText: `Call us directly at ${site.phone}` })
-    ).toBeVisible();
+    // The offline fallback: the real office number as a tel: link inside the
+    // SENT slip (§7 lockstep 8 — "Call us directly at …" was replaced by the
+    // site-wide "Call the office · …" wording). Scoped to .slip: the page's
+    // header/footer/talk-first tel links share the same visible text.
+    const fallback = page.locator('.slip a[href^="tel:"]');
+    await expect(fallback).toHaveCount(1);
+    await expect(fallback).toHaveText(`Call the office · ${site.phone}`);
+    await expect(fallback).toBeVisible();
+    await expect(page.locator(".slip p", { hasText: "Didn't open?" })).toHaveCount(1);
     await expect(
       page.getByRole("button", { name: "Send another request", exact: true })
     ).toBeVisible();

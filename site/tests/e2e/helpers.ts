@@ -1,4 +1,4 @@
-import { expect, type Page } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 import { site } from "../../lib/site-config";
 
 /**
@@ -155,6 +155,31 @@ export async function expectNoAppointmentOnCtaSurfaces(page: Page): Promise<void
  * Fails loudly if the link is not wa.me or has no text= parameter
  * (user-problem.md §2.3: naming the channel is the whole point).
  */
+/**
+ * Assert ONE `.rail-label.rail-num` device (B3 polish): the numbered figure
+ * with its `data-numeric` flag, the hairline rule, and the section text.
+ * Figure and text are pinned separately because the label's combined
+ * textContent is the bare concatenation ("01The practice") with no
+ * separator — asserting the old "§ 01 · The practice" string form can no
+ * longer match, and the device's parts are the real contract.
+ * Verified against served HTML: spec-evidence.json.
+ */
+export async function expectRailNum(
+  label: Locator,
+  figure: string,
+  text: string
+): Promise<void> {
+  await expect(label).toHaveCount(1);
+  await expect(label).toHaveClass(/rail-num/);
+  await expect(label.locator(".rail-num-figure")).toHaveText(figure);
+  await expect(label.locator(".rail-num-figure")).toHaveAttribute(
+    "data-numeric",
+    "true"
+  );
+  await expect(label.locator(".rail-num-rule")).toHaveCount(1);
+  await expect(label.locator(".rail-num-text")).toHaveText(text);
+}
+
 export function prefillOf(href: string): string {
   const url = new URL(href);
   if (url.hostname !== "wa.me" || url.pathname !== `/${site.whatsappNumber}`) {

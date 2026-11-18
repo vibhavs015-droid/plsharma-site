@@ -2,12 +2,14 @@ import { expect, test } from "@playwright/test";
 import {
   expectNoAppointmentOnCtaSurfaces,
   expectNoInventedClaims,
+  expectRailNum,
   gotoAbout,
   prefillOf,
   TEL_HREF,
   site,
 } from "./helpers";
 import { confirmedTeam } from "../../lib/site-config";
+import { practitionerIsCa } from "../../lib/content-mode";
 import { sampleTeam } from "../../lib/sample-content";
 
 /**
@@ -41,14 +43,15 @@ test.describe("About — structure & content (page-specs §1)", () => {
     await expect(head.locator("h1")).toHaveCount(1);
   });
 
-  test("§ numbering restarts: 01 practice, 02 principal, 03 team", async ({ page }) => {
-    const markers = page.locator("main p.rail-label").filter({ hasText: /^§ 0\d/ });
-    await expect(markers).toHaveCount(3);
-    await expect(markers).toHaveText([
-      "§ 01 · The practice",
-      "§ 02 · The principal",
-      "§ 03 · The team",
-    ]);
+  test("§ numbering restarts: 01 practice, 02 principal, 03 team (rail-num device)", async ({ page }) => {
+    // B3: the "§ 0N · Title" string labels became the rail-num device —
+    // figure, hairline rule and text, `data-numeric` on the figure.
+    // Served evidence: spec-evidence.json → about.railLabels.
+    const labels = page.locator("main p.rail-label.rail-num");
+    await expect(labels).toHaveCount(3);
+    await expectRailNum(labels.nth(0), "01", "The practice");
+    await expectRailNum(labels.nth(1), "02", "The principal");
+    await expectRailNum(labels.nth(2), "03", "The team");
   });
 
   test("fold plate: decorative alt + dimensions, not a link, captions carry the facts", async ({ page }) => {
@@ -57,7 +60,8 @@ test.describe("About — structure & content (page-specs §1)", () => {
     // Same decorative-in-link pattern as Home — but here it is not a link at all:
     // /about IS the plate's target page.
     await expect(img).toHaveAttribute("alt", "");
-    await expect(img).toHaveAttribute("src", /founder-plate\.webp$/);
+    // The polished plate (T1/B2 asset rename) — never the raw father.jpg.
+    await expect(img).toHaveAttribute("src", /founder-plate-polished\.webp$/);
     await expect(img).toHaveAttribute("width", "300");
     await expect(img).toHaveAttribute("height", "375");
     // Stage E P3: same LCP priority as the Home plate.
@@ -69,13 +73,57 @@ test.describe("About — structure & content (page-specs §1)", () => {
     });
     await expect(plate).toContainText(confirmedTeam[0].name);
     await expect(plate).toContainText("Principal Consultant · Jaisalmer");
-    await expect(plate).toContainText(`Since ${site.establishedYear}`);
+    // T1/§1.3 caption move (B2): exactly two caption rows BELOW the image —
+    // the "Since 2001" row is deleted (the h1 and the §01 record line carry
+    // the fact). Served evidence: spec-evidence.json → about.plateFigure.
+    const captions = plate.locator("p.rail-label");
+    await expect(captions).toHaveCount(2);
+    await expect(captions.nth(0)).toHaveText("Parbhati Lal Sharma");
+    await expect(captions.nth(1)).toHaveText("Principal Consultant · Jaisalmer");
+    await expect(plate).not.toContainText(`Since ${site.establishedYear}`);
+    const captionsBelowImage = await plate.evaluate((fig) => {
+      const imgEl = fig.querySelector("img");
+      const cap = fig.querySelector("p.rail-label");
+      return (
+        !!imgEl &&
+        !!cap &&
+        !!(imgEl.compareDocumentPosition(cap) & Node.DOCUMENT_POSITION_FOLLOWING)
+      );
+    });
+    expect(captionsBelowImage, "captions sit below the image").toBe(true);
   });
 
   test("the one honest stat renders as the §01 record line — nowhere else", async ({ page }) => {
-    const numeric = page.locator("main [data-numeric]");
-    await expect(numeric).toHaveCount(1);
-    await expect(numeric).toContainText(`Since ${site.establishedYear} · ${site.stats[0].label}`);
+    // B3: the rail-num figures ALSO carry `data-numeric`, so the old
+    // page-wide count of 1 is now 4 = 3 figures + this line. Scope to the
+    // PLAIN data-numeric rail-label: exactly one — the record line.
+    // Served evidence: about.dataNumericCount = 4.
+    const recordLine = page.locator("main p.rail-label[data-numeric]");
+    await expect(recordLine).toHaveCount(1);
+    await expect(recordLine).toHaveText(
+      `Since ${site.establishedYear} · ${site.stats[0].label}`
+    );
+    await expect(page.locator("main [data-numeric]")).toHaveCount(4);
+  });
+
+  test("the §01 story renders the variant matching the practitioner's CA flag (T6)", async ({ page }) => {
+    // The story sentence is CA-gated: "audits" drops out until the owner
+    // sets PRACTITIONER_IS_CA. Served (flag unset = false):
+    // spec-evidence.json → about.section01.
+    const section = page.locator("main section.ledger-rail").filter({
+      has: page.locator("h2", { hasText: "The practice" }),
+    });
+    await expect(section).toHaveCount(1);
+    const NON_CA =
+      "The work is the everyday work of a tax office: income tax returns and notices, GST registration and returns, business registrations, tax planning, TDS and bookkeeping.";
+    const CA =
+      "The work is the everyday work of a tax office: income tax returns and notices, GST registration and returns, audits, business registrations, tax planning, TDS and bookkeeping.";
+    if (practitionerIsCa) {
+      await expect(section).toContainText(CA);
+    } else {
+      await expect(section).toContainText(NON_CA);
+      await expect(section, "non-CA build must not name audits").not.toContainText("audits,");
+    }
   });
 
   test("the canonical free-first sentence ships in §02", async ({ page }) => {
@@ -119,7 +167,7 @@ test.describe("About — structure & content (page-specs §1)", () => {
   test("act band: once, canonical CTA, page-aware prefill, quiet phone", async ({ page }) => {
     const band = page.locator("section.act-band");
     await expect(band).toHaveCount(1);
-    await expect(page.locator("main > section:last-child")).toHaveClass(/act-band/);
+    await expect(page.locator("main > section:last-of-type")).toHaveClass(/act-band/);
     await expect(band.locator("h2")).toHaveText(
       "Ask him directly — send your name and what you need on WhatsApp."
     );
