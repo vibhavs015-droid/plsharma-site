@@ -397,3 +397,48 @@ behind the T0 preview flag with visible SAMPLE tags.
   guard. KNOWN_ISSUES **#18 CLOSED**. Remaining owner actions only:
   launch env vars, CA confirmation, reshoot, real testimonials, real-phone
   tests (OWNER_CHECKLIST). Link: **https://plsharma-site-preview.netlify.app**
+
+- **T14 BRIEF — OWNER FEEDBACK ROUND (post-v3.0.0, 4 message batches):**
+  - **Goal:** apply all owner-requested changes, redeploy, verify every
+    item live, then run the critic as a **brutally honest tax-client
+    persona** on the live site and report findings to the owner.
+  - **Items (owner words → Orchestrator decisions):**
+    A. **Eyebrow** `P.L. SHARMA & CO. · ABOUT · JAISALMER` → **page name
+    only** (`ABOUT`) — no company, no Jaisalmer; same pattern on every
+    page-head rail-label incl. Home (`HOME`) and the 404 marker (`404`);
+    photo captions / footer / titles / JSON-LD untouched. Flag the Home
+    and 404 readings to the owner in the report.
+    B. **Remove BOTH placeholder marks** (`[PLACEHOLDER — A LINE FROM THE
+    PRINCIPAL HIMSELF…]` explicit; the identical-style team mark goes too
+    — owner's taste is established).
+    C. **About hero blank → founder bio text** (the owner-supplied father
+    paragraph, wording-spec-constrained: no new claims, no second
+    free-sentence on /about — §02 already carries it).
+    D. **Uncrop the founder plate** — wider than face-only (head +
+    shoulders) regenerated from `father-src.jpg` via
+    `tools/process-founder-photo.mjs`; keep grading, 4:5, byte budget;
+    originals byte-untouched; Home updates automatically (same file).
+    E. **Team back as previous build** (v2.0.0): founder name+role +
+    3 member name boxes, no SAMPLE tags — move the 3 names from
+    sample tier to `confirmedTeam` (owner just confirmed them), empty
+    `sampleTeam` to avoid preview duplicates.
+    F. **Contact §02 spacing/alignment** — rail-label vs h2 baseline +
+    section rhythm per screenshot.
+    G. **Contact actions** — every displayed number is `tel:`; address
+    opens Google Maps (footer + contact lead get `site.mapsLink`);
+    email = `mailto:` with subject+body prefill everywhere.
+  - **Then:** qa test sync (eyebrow pins ×~10 specs, team tier flip,
+    placeholder removals, mailto prefill) + full suite + T8-style link
+    check (local AND deployed: internal, maps short link, wa.me, tel,
+    mailto) → fix loop if product bugs → **deploy `--prod`** → live
+    verification checklist of EVERY item A–G → **critic persona audit**
+    (brutal unbiased tax-client walkthrough of the LIVE site →
+    `docs/design/critic/`) → final report to owner.
+  - **Lanes:** engineer = `site/**` product + `tools/*.mjs`; qa =
+    `site/tests/**`, `LINK_CHECK.md`, evidence; critic = read-only +
+    `docs/design/critic/`; Orchestrator = brief, commits, deploy,
+    live verification. No two agents on one file.
+  - **Exit criteria:** every item live-verified (evidence in report),
+    suite green, link check 0 broken, critic persona report saved and
+    relayed, ledgers updated (CHANGELOG T14, DECISION_LOG decisions),
+    pushed.
