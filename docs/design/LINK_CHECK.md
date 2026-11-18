@@ -318,3 +318,16 @@ T14 re-synced the suite to the owner-feedback changes (A–G) and re-ran the lin
 - **robots.txt:** 200 `User-Agent: * / Disallow: /`; `X-Robots-Tag: noindex, nofollow` on all 9 pages (matches the POST-REDEPLOY verification above).
 - **Remaining issue: 1** — sitemap/canonical host = `plsharma-site-preview.netlify.app`, pending owner `SITE_URL` at launch (TASK 9 owner half; unchanged).
 - **Deployed surface:** not re-probed in T14 — the Orchestrator re-checks `https://plsharma-site-preview.netlify.app` after the next Netlify deploy of this branch.
+
+## T14 (deployed) — post-deploy re-probe (18 Nov 2026)
+
+Deploy `6afde0b5fa96c3f3eadb21c3` (prod, built from `5603bcb`) went live at `https://plsharma-site-preview.netlify.app`. Orchestrator HTTP re-probe: **78/78 checks pass**, evidence `docs/design/polish-evidence/t14-live-verification.md` (method: PS5.1 direct fetch, scripts stripped before DOM-text counts, entity decoding for the 404 h1).
+
+- **All 9 pages + 404:** 200/404 as expected; bare page-name eyebrows verified on every head (`HOME`…`WHY CHOOSE US`, 404 marker `404`); old `P.L. SHARMA & CO. · … · Jaisalmer` eyebrow string absent everywhere.
+- **Internal links:** 8 unique extension-less internal targets across all surfaces — **0 broken**.
+- **External links:** `maps.app.goo.gl/Ap3EUniM15RsW7oCA` → 200; first `wa.me/919829771396?…` → 200. `tel:`/`mailto:` shapes re-counted on deployed HTML: every displayed email prefilled (2–4 per page per header/footer/lead/disclosure), 0 bare; `tel:` present on all pages; maps links ≥1 everywhere, exactly 3 on `/contact` (lead + desk + footer).
+- **Guard surfaces:** `X-Robots-Tag: noindex, nofollow` on `/`, `/privacy`, `robots.txt`, 404; `robots.txt` = `Disallow: /`; sitemap 8 locs on the preview host (host issue unchanged — owner `SITE_URL` at launch).
+- **404:** status 404, h1 `That page isn't here.` (entity-encoded apostrophe in source), default Next copy absent, auto-noindex present.
+- **T14 items over HTTP:** placeholders 0 on `/about`; founder bio present on `/` (4 sentences incl. free line) and `/about` hero (3 sentences, free line exactly 1 in §02); team 3 confirmed names, 0 SAMPLE tags in team section; plate bytes match local (`webp` 103626, `avif` 119901).
+- **T14 item F (contact §02 rhythm) — live DOM measurement:** band→rail-label **82px = exactly `/book`'s** post-band reference; label→h2 **27px = exactly `/about`'s** section mechanism (verified equal across all `/about` sections). Visual: 5 screenshots in `docs/design/polish-evidence/` (`t14-home-hero`, `t14-plate-element`, `t14-contact-02`, `t14-about-hero`, `t14-about-team`).
+- **Remaining issue: 1** — sitemap/canonical host = preview host (unchanged, owner launch half).
