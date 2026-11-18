@@ -1,0 +1,728 @@
+[
+  {
+    "route": "/",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Income tax and GST, handled personally —",
+        "H2:What we handle",
+        "H3:Income Tax & ITR Filing",
+        "H3:GST Registration & Compliance",
+        "H3:Audit Support & Record Review",
+        "H3:Business Registration & Licensing",
+        "H3:Tax Planning & Advisory",
+        "H3:TDS, Payroll & Bookkeeping",
+        "H2:A way of working",
+        "H3:Transparent Pricing",
+        "H3:On-Time, Every Time",
+        "H3:Complete Confidentiality",
+        "H3:End-to-End Support",
+        "H2:The record",
+        "H2:Common questions",
+        "H3:Which documents do I need?",
+        "H3:What are your fees?",
+        "H3:I got a tax notice. What now?",
+        "H2:Tell us what you need — we reply on What",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/about",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Parbhati Lal Sharma has practised in Jai",
+        "H2:The practice",
+        "H2:The principal",
+        "H2:The team",
+        "H3:Parbhati Lal Sharma",
+        "H2:Ask him directly — send your name and wh",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/services",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Income tax, GST, audit support, registra",
+        "H2:The work we handle",
+        "H3:Income Tax & ITR Filing",
+        "H3:GST Registration & Compliance",
+        "H3:Audit Support & Record Review",
+        "H3:Business Registration & Licensing",
+        "H3:Tax Planning & Advisory",
+        "H3:TDS, Payroll & Bookkeeping",
+        "H2:Not sure which service is yours? Send on",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/why-choose-us",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Fees agreed before work begins. Deadline",
+        "H2:The way of working",
+        "H3:Transparent Pricing",
+        "H3:On-Time, Every Time",
+        "H3:Complete Confidentiality",
+        "H3:End-to-End Support",
+        "H2:What this means for your case",
+        "H3:If you're salaried",
+        "H3:If you run a business",
+        "H2:Hold us to all four — start with the fir",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/testimonials",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Real client words — published with permi",
+        "H2:Client words",
+        "H2:While this page waits, your questions ge",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/faq",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Documents, fees, notices — the questions",
+        "H2:The first questions",
+        "H3:Which documents do I need?",
+        "H3:What are your fees?",
+        "H3:I got a tax notice. What now?",
+        "H2:Working with us",
+        "H3:Can consultations happen online?",
+        "H3:How do I book a consultation?",
+        "H3:Is my information confidential?",
+        "H2:For business clients",
+        "H3:Do you handle GST registration?",
+        "H2:A question we haven't answered? Send it ",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/contact",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:One office in Jaisalmer — open six days ",
+        "H2:The office",
+        "H2:Before you come",
+        "H2:We reply on WhatsApp and fix a time — or",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/book",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": null,
+      "headings": [
+        "H1:Book a consultation",
+        "H2:Consultation request",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 1,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/privacy",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "grid",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:One form collects your details — this si",
+        "H2:What the form collects",
+        "H2:Where your details go",
+        "H2:Cookies and analytics",
+        "H2:Correcting or deleting your details",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/does-not-exist",
+    "viewport": "phone",
+    "violations": [],
+    "meta": {
+      "bar": null,
+      "headings": [
+        "H1:That page isn't here.",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 1,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Income tax and GST, handled personally —",
+        "H2:What we handle",
+        "H3:Income Tax & ITR Filing",
+        "H3:GST Registration & Compliance",
+        "H3:Audit Support & Record Review",
+        "H3:Business Registration & Licensing",
+        "H3:Tax Planning & Advisory",
+        "H3:TDS, Payroll & Bookkeeping",
+        "H2:A way of working",
+        "H3:Transparent Pricing",
+        "H3:On-Time, Every Time",
+        "H3:Complete Confidentiality",
+        "H3:End-to-End Support",
+        "H2:The record",
+        "H2:Common questions",
+        "H3:Which documents do I need?",
+        "H3:What are your fees?",
+        "H3:I got a tax notice. What now?",
+        "H2:Tell us what you need — we reply on What",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/about",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Parbhati Lal Sharma has practised in Jai",
+        "H2:The practice",
+        "H2:The principal",
+        "H2:The team",
+        "H3:Parbhati Lal Sharma",
+        "H2:Ask him directly — send your name and wh",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/services",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Income tax, GST, audit support, registra",
+        "H2:The work we handle",
+        "H3:Income Tax & ITR Filing",
+        "H3:GST Registration & Compliance",
+        "H3:Audit Support & Record Review",
+        "H3:Business Registration & Licensing",
+        "H3:Tax Planning & Advisory",
+        "H3:TDS, Payroll & Bookkeeping",
+        "H2:Not sure which service is yours? Send on",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/why-choose-us",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Fees agreed before work begins. Deadline",
+        "H2:The way of working",
+        "H3:Transparent Pricing",
+        "H3:On-Time, Every Time",
+        "H3:Complete Confidentiality",
+        "H3:End-to-End Support",
+        "H2:What this means for your case",
+        "H3:If you're salaried",
+        "H3:If you run a business",
+        "H2:Hold us to all four — start with the fir",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/testimonials",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Real client words — published with permi",
+        "H2:Client words",
+        "H2:While this page waits, your questions ge",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/faq",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:Documents, fees, notices — the questions",
+        "H2:The first questions",
+        "H3:Which documents do I need?",
+        "H3:What are your fees?",
+        "H3:I got a tax notice. What now?",
+        "H2:Working with us",
+        "H3:Can consultations happen online?",
+        "H3:How do I book a consultation?",
+        "H3:Is my information confidential?",
+        "H2:For business clients",
+        "H3:Do you handle GST registration?",
+        "H2:A question we haven't answered? Send it ",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/contact",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:One office in Jaisalmer — open six days ",
+        "H2:The office",
+        "H2:Before you come",
+        "H2:We reply on WhatsApp and fix a time — or",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/book",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": null,
+      "headings": [
+        "H1:Book a consultation",
+        "H2:Consultation request",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 1,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/privacy",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": {
+        "display": "none",
+        "visibility": "visible",
+        "focusables": 2
+      },
+      "headings": [
+        "H1:One form collects your details — this si",
+        "H2:What the form collects",
+        "H2:Where your details go",
+        "H2:Cookies and analytics",
+        "H2:Correcting or deleting your details",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 2,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  },
+  {
+    "route": "/does-not-exist",
+    "viewport": "desktop",
+    "violations": [],
+    "meta": {
+      "bar": null,
+      "headings": [
+        "H1:That page isn't here.",
+        "H2:Site footer",
+        "H3:Quick links",
+        "H3:Services",
+        "H3:Contact"
+      ],
+      "landmarks": {
+        "main": 1,
+        "header": 1,
+        "nav": 1,
+        "footer": 1
+      },
+      "skipLink": {
+        "text": "Skip to main content",
+        "targetExists": true
+      },
+      "sampleMarker": false,
+      "lang": "en"
+    }
+  }
+]
