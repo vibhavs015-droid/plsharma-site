@@ -394,11 +394,11 @@
      a grid item, so the default `stretch` grew its box to the section's
      full row height — the Home §01 label measured 1540.7px tall — and
      `.rail-num`'s `align-items: center` then centred the visible
-     number/rule/words line inside that stretched box (the line landed
-     ~763px below its h2, i.e. 48px above the section's vertical centre;
-     -48px matched the owner's screenshot). Plain labels paint their text
-     at the top of the same stretched box (block flow), which is why the
-     two kinds of marker sat in different places site-wide.
+     number/rule/words line inside that stretched box (Home §01: the line
+     landed ~763px below its h2 — its centre 48px above the section's
+     vertical centre, the -48px the owner measured). Plain labels paint
+     their text at the top of the same stretched box (block flow), which
+     is why the two kinds of marker sat in different places site-wide.
 
      `align-self: start` shrinks the box to its own line; inside a
      one-line box `.rail-num`'s flex centring becomes a no-op, so every
