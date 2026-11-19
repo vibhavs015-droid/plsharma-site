@@ -494,3 +494,30 @@ behind the T0 preview flag with visible SAMPLE tags.
       TOOLING_LOG (new section), this file. Pushed; tag decision below.
     - **Still open (unchanged):** critic F2/F4/F5 + OWNER_CHECKLIST
       launch items (env flips, reshoot, real testimonials).
+
+### T15 brief (owner request, 19 Nov 2026) — rail labels float mid-section
+
+  - **Owner report:** the left-rail side texts (HOME, 01 SERVICES, …)
+    are confusing — a label like SERVICES sits in the MIDDLE of the
+    screen with content above and below, so a reader can't tell where
+    one section ends and the next begins. Fix everywhere the pattern
+    follows.
+  - **Diagnosis (Orchestrator, measured live at 1440):** each label is
+    a grid item stretched to its section's full row height (the
+    Services label `<p>` measures 1541px tall); `.rail-num` sets
+    `display:flex; align-items:center`, so the visible line centers
+    inside that stretched box → label lands at section center
+    (−48px from center; mid-list on tall sections). Plain block labels
+    (HOME eyebrow) already render at the top — hence the inconsistent
+    positioning the owner sees. Fix = top-align every rail label with
+    its section's heading (grid `align-self: start` on direct children
+    of `.ledger-rail`), then optical-tune the label's cap-height
+    against the h2. No DOM/order change (a11y unaffected); no
+    screenshot pins exist in the suite (grep: 0).
+  - **Lanes:** art-director = the `globals.css` rule + optical
+    verification (its file); qa = gates after (tsc/lint/build,
+    179 e2e + 5 unit); Orchestrator = brief, review, deploy, live
+    verify, ledgers.
+  - **Exit criteria:** every rail label (all 9 pages + 404 + act
+    bands) visually starts its section at desktop 1440 AND mobile 360;
+    suite green; live-verified; ledgers updated; pushed + deployed.

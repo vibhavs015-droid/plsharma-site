@@ -387,6 +387,54 @@
     text-wrap: balance;
   }
 
+  /* ── T15: a rail label marks the START of its section ──────────────────
+     Owner report: "01 — SERVICES" sat in the MIDDLE of the screen with
+     content above and below, so a reader couldn't see where one section
+     ends and the next begins. Cause (measured live at 1440): the label is
+     a grid item, so the default `stretch` grew its box to the section's
+     full row height — the Home §01 label measured 1540.7px tall — and
+     `.rail-num`'s `align-items: center` then centred the visible
+     number/rule/words line inside that stretched box (the line landed
+     ~763px below its h2, i.e. 48px above the section's vertical centre;
+     -48px matched the owner's screenshot). Plain labels paint their text
+     at the top of the same stretched box (block flow), which is why the
+     two kinds of marker sat in different places site-wide.
+
+     `align-self: start` shrinks the box to its own line; inside a
+     one-line box `.rail-num`'s flex centring becomes a no-op, so every
+     marker — plain and numbered, page-head eyebrow and act-band label
+     alike — starts on the same grid-row line as its section's heading.
+     Direct children only: markers nested inside `.ruled-entry`s and
+     figures (about's founder caption, entry indices) are not grid items
+     of the rail, never stretch, and keep their in-flow position.
+     Specificity 0,2,0: it sets no property `:where(.rail-label)` or any
+     `text-*`/`mt-*` utility sets, and no direct-child label carries
+     `pt-*` today.
+
+     Optical tune (measured at 1440 with canvas font metrics + probe
+     crops at 0/4/7px, not guessed): once both boxes start on the same
+     grid line, the label's cap still reads 3.9px ABOVE the h2's cap and
+     6.9px above the h1's — Fraunces' tight leading (1.12 / 1.05) drops
+     the big cap lower in its line box than Inter's 15px label box does.
+     So the label is padded down 4px to meet the h2, and 7px to meet the
+     h1 (page-head rails are the only ones containing an h1, so `:has`
+     separates them — same trick as `.ruled-entry:has(> p:only-child)`).
+     Below 64rem the rail is one column (each child its own row, row
+     height = content height): the labels were never stretched there, so
+     the whole rule lives in the desktop media query and mobile keeps its
+     exact pre-fix cascade — verified byte-identical label tops (-27px
+     to the heading) at 360 before/after. */
+  @media (min-width: 64rem) {
+    .ledger-rail > .rail-label {
+      align-self: start;
+      padding-top: 4px; /* measured: closes capΔ −3.9 → +0.1 vs the h2 */
+    }
+    /* The page-head eyebrow lines up with the h1, whose cap sits deeper. */
+    .ledger-rail:has(h1) > .rail-label {
+      padding-top: 7px; /* measured: closes capΔ −6.9 → +0.1 vs the h1 */
+    }
+  }
+
   /* The ruled entry: a rule, a title, a body, optional margin note. No box.
      The signature interaction — the hairline warms from line to brass. */
   .ruled-entry {
