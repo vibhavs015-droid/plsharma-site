@@ -465,3 +465,32 @@ behind the T0 preview flag with visible SAMPLE tags.
       suite green, link check 0 broken (local + deployed), critic report
       saved and relayed, ledgers updated, pushed (tag `v3.0.0` moved to
       the deployed commit).
+
+### T14 follow-up (owner request, 19 Nov 2026) — sample content ON the Netlify preview
+
+  - **Goal:** render the sample tier on the deployed preview so the
+    owner reviews with the `Design preview` banner + SAMPLE tags
+    visible (supersedes TASK 0's "never on a public deploy" rule for
+    this host — DECISION_LOG).
+  - **Change:** `site/netlify.toml` `[build.environment]`
+    `SHOW_SAMPLE_CONTENT = "true"` (`916b217`) — build-time flag, one
+    line, reversible at launch; production path (Vercel) ignores the
+    toml, guard layers (noindex/robots/X-Robots-Tag) untouched.
+  - **Lanes:** Orchestrator direct (config + deploy + probe — no
+    product code touched).
+  - **PROGRESS — DONE (19 Nov 2026):**
+    - Deploy `6afed6a2` from `site/` live on `plsharma-site-preview`;
+      sample tier confirmed live: banner, home §04 + figures
+      `01–05` gapless, /testimonials honesty note + intro line + 4
+      SAMPLE-tagged cards, /about tagged sample quote (team clean).
+    - Gates: tsc 0 · lint 0 · build 0 (default + preview) · 179/179
+      e2e default · 2/2 preview-mode pins · 5/5 unit · **live 83/83**
+      (evidence `t14-live-verification.md` header updated + 4×
+      `t15-*.png`).
+    - Incidents logged: wrong-directory deploy auto-created + deleted
+      a throwaway site (`aesthetic-elf-06a90c`); one probe expectation
+      corrected to the T7 decision (note stays in sample mode).
+    - Ledgers: DECISION_LOG (1 decision), CHANGELOG (new section),
+      TOOLING_LOG (new section), this file. Pushed; tag decision below.
+    - **Still open (unchanged):** critic F2/F4/F5 + OWNER_CHECKLIST
+      launch items (env flips, reshoot, real testimonials).

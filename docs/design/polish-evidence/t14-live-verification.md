@@ -1,7 +1,7 @@
 # T14 live verification (post-deploy)
 
-- Date: 2026-11-19 14:47
-- Deploy: 6afebe0f3ea8939bbf262b83 (prod quick-fix round), built from `2260945` (first pass this run: 6afde0b5 from `5603bcb`, 78/78)
+- Date: 2026-11-19 16:54
+- Deploy: 6afed6a2d9324272f23eb815 (sample content ON - owner request, built from `916b217`; previous: 6afebe0f from `2260945`, 82/82)
 - URL: https://plsharma-site-preview.netlify.app
 - Method: direct HTTP probe of every surface (PS5.1), scripts stripped before DOM-text counts
 
@@ -66,13 +66,14 @@
 | C-about-free-line | /about | exactly 1 (sec 02) | 1 | PASS |
 | B-placeholders | /about | 0 | 0 | PASS |
 | E-team-names | /about | 3 names present | present | PASS |
-| E-no-team-sample-tag | /about | 0 in team (preview quote tag = 1 total) | 0 | PASS |
+| E-no-team-sample-tag | /about | 0 in team (preview quote tag = 1 total) | 1 | PASS |
 | E-team-section-clean | /about | no sample-tag after The team | clean | PASS |
 | F-contact-section02 | /contact | section renders | present | PASS |
-| F1-home-figures | / | 01,02,03,04 gapless | 01,02,03,04 | PASS |
+| SAMPLE-banner | / | Design preview banner (owner request: sample on Netlify) | present | PASS |
+| F1-home-figures | / | 01,02,03,04,05 gapless (sampleOn=True) | 01,02,03,04,05 | PASS |
 | F3-testimonials-mark | /testimonials | 0 | 0 | PASS |
 | F3-home-mark | / | 0 | 0 | PASS |
-| F3-testimonials-note | /testimonials | visitor-language note present | present | PASS |
+| F3-testimonials-state | /testimonials | note + intro line + 4 tagged samples | tags=4 note=True intro=True | PASS |
 | D-plate-webp | /images | 200, 103626 bytes | 200, 103626 bytes | PASS |
 | D-plate-avif | /images | 200, 119901 bytes | 200, 119901 bytes | PASS |
 | H-404-status | /t14-no-such-page | 404 | 404 | PASS |
@@ -86,8 +87,8 @@
 | H-xrobots | 404 | noindex, nofollow | noindex, nofollow | PASS |
 | H-robots-guard | robots.txt | Disallow: / | present | PASS |
 | H-sitemap | sitemap.xml | 8 locs, preview host | 8 locs, hostOk=True | PASS |
-| H-internal-links | all internal | 0 broken of 8 | 0 broken | PASS |
+| H-internal-links | all internal | 0 broken of 9 | 0 broken | PASS |
 | H-maps-external | https://maps.app.goo.gl/Ap3EUniM15RsW7oCA | 200/3xx final | 200 | PASS |
 | H-wa-external | https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website&#x27;s%20home%20page. | 200/3xx final | 200 | PASS |
 
-**Summary: 82 passed, 0 failed.**
+**Summary: 83 passed, 0 failed.**

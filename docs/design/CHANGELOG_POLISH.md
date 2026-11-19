@@ -177,3 +177,11 @@ Owner reviewed the live preview and sent 4 feedback batches (items A–J). All p
 | F3 | **Last two `[PLACEHOLDER …]` bracket marks removed** (testimonials §01 empty state — visible live — and home §04 sample block); plain visitor-language notes kept verbatim, lead-in gaps tightened; `PLACEHOLDER` grep = 0 in `site/app` + `site/components` (`.placeholder-mark` CSS rule in globals.css now unused — optional cleanup, art-director lane) | `796a7ac` |
 
 **Round gates:** tsc 0 · lint 0 · build 0 at every commit · **179/179 e2e + 5/5 unit + preview-mode 2/2** (pins synced `2260945`, mode-aware numbering + 5 placeholder pins flipped to absence) · final deploy `6afebe0f` · **live re-probe 82/82** (incl. figures `01,02,03,04` gapless, 0 marks site-wide) — evidence `t14-live-verification.md`.
+
+### Owner request: sample content ON for the Netlify preview (19 Nov 2026)
+
+| Item | What changed | Commit(s) |
+|---|---|---|
+| Sample on preview | **`SHOW_SAMPLE_CONTENT=true` in `netlify.toml` `[build.environment]`** (owner: "show sample content also on netlify") — the sample tier now renders on the permanent preview host: `Design preview` banner, home §04 Client words (figures `01–05` gapless), 4 SAMPLE-tagged cards on /testimonials, tagged sample quote on /about. Supersedes TASK 0's "never on a public deploy" rule — DECISION_LOG records it as an explicit owner decision, reversible by deleting the block (Vercel/production ignores netlify.toml; guard layers unchanged) | `916b217` |
+
+**Gates:** tsc 0 · lint 0 · build 0 (default **and** preview) · **179/179 e2e default + 2/2 preview-mode pins + 5/5 unit** · live probe **83/83** · deploy `6afed6a2` — evidence `t14-live-verification.md` (deploy header updated) + `t15-home-banner.png` / `t15-home-section04.png` / `t15-testimonials-samples.png` / `t15-about-sample-quote.png`.
