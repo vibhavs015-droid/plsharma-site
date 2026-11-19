@@ -59,18 +59,24 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     );
   });
 
-  test("§01 carries exactly one placeholder mark, as real text, visible", async ({ page }) => {
-    // §0.4/§4: the designed gap IS the content — one mark, real text, in the
-    // fold. Not an image, not a comment, not a styled empty box.
-    const mark = page.locator("p.placeholder-mark");
-    await expect(mark).toHaveCount(1);
-    await expect(mark).toHaveText("[PLACEHOLDER — AWAITING REAL TESTIMONIAL FROM OWNER]");
-    await expect(mark).toBeVisible();
-    // The honesty sentence explains the empty entry (Home §04's, adapted).
+  test("§01 empty state ships NO bracket mark — the plain honesty note is the content, visible (T14-F3)", async ({ page }) => {
+    // T14-F3 (owner taste, same rule as T14-B on /about): the
+    // [PLACEHOLDER — …] bracket mark is gone; the designed gap is now the
+    // plain visitor-language note itself — real text, in the fold. Not an
+    // image, not a comment, not a styled empty box, and no bracket marks.
+    const marks = page.locator("main .placeholder-mark");
+    await expect(marks, "zero placeholder marks on /testimonials").toHaveCount(0);
+    const html = await page.content(); // includes the RSC flight payload
+    expect(html, "no [PLACEHOLDER string anywhere on /testimonials").not.toContain(
+      "[PLACEHOLDER"
+    );
+    // The honesty sentence explains the empty entry (Home §04's, adapted) —
+    // still real, visible text.
     const entry = page.locator("main .ruled-entry").first();
     await expect(entry).toContainText(
       "A quote appears here only after a real client has read it and agreed to be named. Until then the entry stays empty on purpose — this page publishes only what the firm can stand behind."
     );
+    await expect(entry).toBeVisible();
   });
 
   test("the collection invite is a quiet wa.me link with the QUESTION prefill — not a booking request", async ({ page }) => {
@@ -173,11 +179,12 @@ test.describe("Testimonials — honesty regression guards (the invented-data wal
     await gotoTestimonials(page);
   });
 
-  test("the confirmed tier ships empty — the reserve is §01's entire list", async ({ page }) => {
+  test("the confirmed tier ships empty — the plain-note reserve is §01's entire list (T14-F3)", async ({ page }) => {
     // TASK 0 tier system: production resolves visibleTestimonials to the
     // EMPTY confirmed tier (real quotes arrive only from the owner), so the
-    // placeholder block is the section's only entry — no quote entry may
-    // render from either tier in the default build.
+    // plain-note reserve entry is the section's only entry — no quote entry
+    // may render from either tier in the default build, and since T14-F3
+    // zero bracket marks ship either.
     expect(
       confirmedTestimonials,
       "the confirmed tier must ship empty until the owner sends real quotes"
@@ -188,7 +195,18 @@ test.describe("Testimonials — honesty regression guards (the invented-data wal
     ).toHaveLength(0);
     const section = page.locator("main section.ledger-rail").nth(1);
     await expect(section.locator(".ruled-entry")).toHaveCount(1);
-    await expect(section.locator(".placeholder-mark")).toHaveCount(1);
+    await expect(
+      section.locator(".placeholder-mark"),
+      "zero bracket marks on the reserve entry (T14-F3)"
+    ).toHaveCount(0);
+    // The visitor-language honesty note IS the reserve: present in the one entry.
+    await expect(section.locator(".ruled-entry")).toContainText(
+      "A quote appears here only after a real client has read it and agreed to be named"
+    );
+    const html = await page.content(); // includes the RSC flight payload
+    expect(html, "no [PLACEHOLDER string anywhere on /testimonials").not.toContain(
+      "[PLACEHOLDER"
+    );
   });
 
   test("NONE of the invented or sample-tier data renders — html/RSC-level", async ({ page }) => {

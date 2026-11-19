@@ -56,35 +56,55 @@ test.describe("Home — structure & content", () => {
 
   test("ledger sections render in order with the rail-num device (§8.5 mode-aware)", async ({ page }) => {
     // B3: the "§ 0N · Title" string labels became the rail-num device
-    // (figure + rule + text, `data-numeric` on the figure). B2/§8:
-    // production ships §01–§03 + §05 — Home §04 (client words) exists only
-    // in an owner-preview build.
+    // (figure + rule + text, `data-numeric` on the figure). B2/§8 + T14-F1:
+    // while the confirmed testimonial tier is empty the Client words
+    // section hides, so production ships §01–§03 + Common questions as 04
+    // (gapless); the owner-preview build shows §04 Client words, so Common
+    // questions keeps 05.
     const labels = page.locator("main p.rail-label.rail-num");
+    // T14-F1: the Common questions figure derives from the mode this test
+    // already branches on — §04 renders iff the visible testimonial tier
+    // is non-empty, which in the test process is exactly `showSampleContent`
+    // (the confirmed tier ships empty). Visible → 05, hidden → 04. Never
+    // hard-code either figure independently of the mode, or the rail skips
+    // a number again — the critic's F1 finding.
+    const clientWordsVisible = showSampleContent;
+    const commonQuestionsFigure = clientWordsVisible ? "05" : "04";
     if (showSampleContent) {
       // Owner-preview branch: count + §04 signals pinned to what the T0
       // probe verified on the served preview build
-      // (polish-evidence/sample-mode-probe.json); §04's own figure/text pair
-      // is deliberately NOT pinned — the preview build no longer exists to
-      // verify it against.
+      // (polish-evidence/sample-mode-probe.json); §04's figure/text pair
+      // re-verified by the T14 one-off SHOW_SAMPLE_CONTENT=true run and
+      // pinned here.
       await expect(labels).toHaveCount(5);
       await expectRailNum(labels.nth(0), "01", "Services");
       await expectRailNum(labels.nth(1), "02", "How we work");
       await expectRailNum(labels.nth(2), "03", "The record");
+      await expectRailNum(labels.nth(3), "04", "Client words");
       const html = await page.content();
       expect(html, "preview §04 heading (probe-verified)").toContain("What clients say");
-      expect(html, "preview §04 reserve mark (probe-verified)").toContain(
-        "[PLACEHOLDER — awaiting real testimonial from owner]"
+      // T14-F3: the bracket mark is gone from the preview block too —
+      // absence pin (about.spec flip pattern); the plain note carries it.
+      expect(html, "preview §04 carries no [PLACEHOLDER mark (T14-F3)").not.toContain(
+        "[PLACEHOLDER"
+      );
+      await expect(
+        page.locator("main .placeholder-mark"),
+        "preview §04 ships zero bracket marks (T14-F3)"
+      ).toHaveCount(0);
+      expect(html, "preview §04 plain note carries the entry (T14-F3)").toContain(
+        "Real client words will be published with the client"
       );
       expect(html, "preview §04 reserve link (probe-verified)").toContain(
         "How we handle client words"
       );
-      await expectRailNum(labels.nth(4), "05", "Common questions");
+      await expectRailNum(labels.nth(4), commonQuestionsFigure, "Common questions");
     } else {
       await expect(labels).toHaveCount(4);
       await expectRailNum(labels.nth(0), "01", "Services");
       await expectRailNum(labels.nth(1), "02", "How we work");
       await expectRailNum(labels.nth(2), "03", "The record");
-      await expectRailNum(labels.nth(3), "05", "Common questions");
+      await expectRailNum(labels.nth(3), commonQuestionsFigure, "Common questions");
       // §04 is ABSENT in production: no client-words heading, no reserve link.
       const html = await page.content();
       expect(html, "§04 heading must not render in production").not.toContain("What clients say");
@@ -217,13 +237,22 @@ test.describe("Home — honesty regression guards (critic REJECT items)", () => 
     expect(starNodes).toBe(0);
   });
 
-  test("testimonial area renders nothing in production — reserve mark only in preview — and never invented names", async ({ page }) => {
+  test("testimonial area renders nothing in production — plain note only in preview, zero bracket marks — and never invented names", async ({ page }) => {
     const marks = page.locator("main .placeholder-mark");
     if (showSampleContent) {
-      // Owner-preview (§8.5): Home §04 ships with its one reserve mark.
-      await expect(marks, "preview §04 ships its reserve mark").toHaveCount(1);
-      await expect(marks).toContainText("PLACEHOLDER");
-      await expect(marks).toContainText(/awaiting real testimonial/i);
+      // Owner-preview (§8.5): Home §04 renders — but since T14-F3 it ships
+      // the plain note + reserve link with ZERO bracket marks.
+      await expect(marks, "preview §04 ships zero bracket marks (T14-F3)").toHaveCount(0);
+      const html = await page.content();
+      expect(html, "no [PLACEHOLDER string anywhere on / in preview (T14-F3)").not.toContain(
+        "[PLACEHOLDER"
+      );
+      expect(html, "preview §04 plain note survives F3").toContain(
+        "Real client words will be published with the client"
+      );
+      expect(html, "preview §04 reserve link survives F3").toContain(
+        "How we handle client words"
+      );
     } else {
       // Production (B2/§8): Home §04 does not exist — zero reserve marks on
       // this page; the reserve lives on /testimonials only.
