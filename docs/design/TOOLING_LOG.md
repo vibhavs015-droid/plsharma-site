@@ -106,6 +106,11 @@ No new npm packages were added in Phase 2; the rows above are an in-repo script,
 - **Mode-aware live probe:** `Temp\opencode\t14-live-verify.ps1` gained a `$sampleOn` branch (banner detection drives the expected home figure sequence `01–05` vs `01–04` and the /testimonials state check). One of its expectations was corrected against DECISION_LOG T7 (the /testimonials honesty note stays visible in sample mode — preview *adds* the list below it); 83/83 after the fix.
 - **Mode-split test protocol confirmed:** default build (flag unset) = 179/179 e2e incl. the sample-content leak guard; preview build (`SHOW_SAMPLE_CONTENT=true` build + env) = the 2 mode-aware home pins. Running the full suite against the preview build fails 14 *by design* (leak guard + production-only pins) — never a regression signal.
 
+## Added 19 Nov 2026 - T15 rail-label alignment round (no new tooling)
+
+- **No new tooling, no installs.** Reused the existing one-off Playwright capture/measure pattern (`Temp\opencode\align-measure.mjs`, `rail-probe.mjs`, `t15-verify.mjs`, `t15-shots.mjs`, `t15-live-shots.mjs` - all in session temp, not committed; screenshots of record live in `docs/design/polish-evidence/t15-*.png`).
+- **Model outage, not tooling:** the art-director subagent hit the OpenCode free-usage limit mid-task (its CSS edit had already landed); Orchestrator completed verification/gates/deploy directly - same precedent as the 19 Nov F1/F3 outage, recorded in DECISION_LOG.
+
 ## Changed 17 Nov 2026 (polish pass) — sharp for the founder-plate tone-down
 
 - **sharp 0.35.5** — already present in `site/node_modules` (Next.js image-optimization dependency); NOT newly installed. Free/local, logged per the free-tooling clause.

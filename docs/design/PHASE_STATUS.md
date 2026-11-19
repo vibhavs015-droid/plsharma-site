@@ -521,3 +521,23 @@ behind the T0 preview flag with visible SAMPLE tags.
   - **Exit criteria:** every rail label (all 9 pages + 404 + act
     bands) visually starts its section at desktop 1440 AND mobile 360;
     suite green; live-verified; ledgers updated; pushed + deployed.
+
+#### T15 CLOSED (19 Nov 2026) — commit `f4c33ba`, deploy `6aff106b`
+
+  - Art-director wrote the CSS (align-self:start ≥64rem + optical 4px/7px
+    cap tune, documented in globals.css) but died to the free-usage limit
+    before verification — Orchestrator completed the round per the T13
+    outage precedent (DECISION_LOG has the full entry + deviation).
+  - Verified: label-top = heading-top (delta 0) on every rail across 9
+    routes + 404 at 1440; mobile 360 byte-identical (rule desktop-scoped);
+    the two −42px card cases (/book form, /contact office) are by-design —
+    the label marks the card's top edge, the h2 sits in card padding
+    (visually confirmed). Gates tsc/lint/build 0, **179/179 e2e + 5/5
+    unit**, live label probe FAIL=0 (card cases excluded), live regression
+    probe **83/83**, deploy `6aff106b`.
+  - Evidence: `polish-evidence/t15-home-labels.png`,
+    `t15-home-howwework.png`, `t15-about-labels.png`.
+  - Ledgers: DECISION_LOG (1 entry + lane deviation), CHANGELOG (T15
+    section), TOOLING_LOG (no-tooling + outage note), this file.
+  - **Still open (unchanged):** critic F2/F4/F5 + OWNER_CHECKLIST
+    launch items (env flips, reshoot, real testimonials).

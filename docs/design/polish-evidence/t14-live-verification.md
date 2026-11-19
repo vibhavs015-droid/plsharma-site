@@ -1,6 +1,6 @@
 # T14 live verification (post-deploy)
 
-- Date: 2026-11-19 16:54
+- Date: 2026-11-19 20:39
 - Deploy: 6afed6a2d9324272f23eb815 (sample content ON - owner request, built from `916b217`; previous: 6afebe0f from `2260945`, 82/82)
 - URL: https://plsharma-site-preview.netlify.app
 - Method: direct HTTP probe of every surface (PS5.1), scripts stripped before DOM-text counts

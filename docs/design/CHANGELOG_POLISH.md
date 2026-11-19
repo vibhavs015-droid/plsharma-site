@@ -185,3 +185,11 @@ Owner reviewed the live preview and sent 4 feedback batches (items A–J). All p
 | Sample on preview | **`SHOW_SAMPLE_CONTENT=true` in `netlify.toml` `[build.environment]`** (owner: "show sample content also on netlify") — the sample tier now renders on the permanent preview host: `Design preview` banner, home §04 Client words (figures `01–05` gapless), 4 SAMPLE-tagged cards on /testimonials, tagged sample quote on /about. Supersedes TASK 0's "never on a public deploy" rule — DECISION_LOG records it as an explicit owner decision, reversible by deleting the block (Vercel/production ignores netlify.toml; guard layers unchanged) | `916b217` |
 
 **Gates:** tsc 0 · lint 0 · build 0 (default **and** preview) · **179/179 e2e default + 2/2 preview-mode pins + 5/5 unit** · live probe **83/83** · deploy `6afed6a2` — evidence `t14-live-verification.md` (deploy header updated) + `t15-home-banner.png` / `t15-home-section04.png` / `t15-testimonials-samples.png` / `t15-about-sample-quote.png`.
+
+### T15 — rail labels start their section (owner alignment report, 19 Nov 2026)
+
+| Item | What changed | Commit(s) |
+|---|---|---|
+| Rail label alignment | **Left-rail side texts now mark their section START** on every page: labels were grid items stretched to the section's full height (Services label `<p>` measured 1540.7px) with `.rail-num` flex-centring the visible line inside it, so labels floated at section centre (-48px) between unrelated content. Fix = `align-self:start` on direct `.rail-label` children of `.ledger-rail` (≥64rem only) + measured optical cap tune (4px h2 / 7px h1 page-head). globals.css only; mobile cascade byte-identical; no DOM change | `f4c33ba` |
+
+**Gates:** tsc 0 · lint 0 · build 0 · **179/179 e2e + 5/5 unit** · live label probe (delta=0 on every rail at 1440, 360 unchanged, only by-design card-edge cases at -42px) · live regression probe **83/83** · deploy `6aff106b` — evidence `polish-evidence/t15-home-labels.png` / `t15-home-howwework.png` / `t15-about-labels.png`. Art-director wrote the CSS but died to the free-usage limit pre-verification; Orchestrator completed verification/deploy per the T13 outage precedent (DECISION_LOG).
