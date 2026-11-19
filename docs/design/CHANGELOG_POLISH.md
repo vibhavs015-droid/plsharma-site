@@ -168,3 +168,12 @@ Owner reviewed the live preview and sent 4 feedback batches (items A–J). All p
 | J | Live verification of every item: **78/78 HTTP checks** + 5 visual captures | `79dcf85` (`t14-live-verification.md`) |
 
 **Gates:** tsc 0 · lint 0 · build 0 (18/18) at every commit · **179/179 e2e + 5/5 unit** after pin sync · deployed re-probe 78/78. Deploy `6afde0b5` (prod, 1m05s). Critic persona audit (item I) → `docs/design/critic/t14-persona-tax-client.md`.
+
+### T14 quick-fix round (critic findings F1 + F3, 19 Nov 2026)
+
+| Item | What changed | Commit(s) |
+|---|---|---|
+| F1 | **Gapless home rail numbering:** §04 Client words is gated on testimonials existing (empty until real quotes land, incl. at launch) — the counter skipped 03→05. Single `clientWordsSectionVisible` const now drives both §04's gate and §05's figure (`04` when hidden, `05` when shown); per-page sweep found no other conditional numbered section | `5058f57` |
+| F3 | **Last two `[PLACEHOLDER …]` bracket marks removed** (testimonials §01 empty state — visible live — and home §04 sample block); plain visitor-language notes kept verbatim, lead-in gaps tightened; `PLACEHOLDER` grep = 0 in `site/app` + `site/components` (`.placeholder-mark` CSS rule in globals.css now unused — optional cleanup, art-director lane) | `796a7ac` |
+
+**Round gates:** tsc 0 · lint 0 · build 0 at every commit · **179/179 e2e + 5/5 unit + preview-mode 2/2** (pins synced `2260945`, mode-aware numbering + 5 placeholder pins flipped to absence) · final deploy `6afebe0f` · **live re-probe 82/82** (incl. figures `01,02,03,04` gapless, 0 marks site-wide) — evidence `t14-live-verification.md`.

@@ -442,35 +442,26 @@ behind the T0 preview flag with visible SAMPLE tags.
     suite green, link check 0 broken, critic persona report saved and
     relayed, ledgers updated (CHANGELOG T14, DECISION_LOG decisions),
     pushed.
-  - **PROGRESS (checkpoint):**
-    - DONE: brief committed (`ffada28`); engineer items **A+B** (`6b87005`
-      eyebrow = page name only ×10 heads + 404, both placeholders
-      removed), **C** (`1903c91` shared founder bio in `lib/founder-bio.ts`,
-      free line trimmed on /about), **D** (`0461832` plate uncropped
-      head+shoulders, tool geometry + patches adapted, q85/q80 600×750,
-      45→101 KB webp), **E** (`0c2e0cd` 3 names → `confirmedTeam`,
-      name-only boxes, `sampleTeam` emptied), **F** (`abac9e7` contact §02
-      rhythm: 96px paper gap + label/h2 box-top match, 320px clean),
-      **G** (`00380f8` tel/maps/mailto-prefill: new `site-config
-      .emailHref`, header/footer/contact/privacy). Gates green at every
-      commit; originals SHA256-unchanged.
-    - IN FLIGHT: **qa** test sync — 13 stale pins handed off (9 eyebrow,
-      placeholder, exact-mailto, maps-count 1→3, leak-guard names now
-      confirmed tier) + full suite + local link check.
-    - **DONE since:** qa green (`5603bcb`: 179/179 e2e, 5/5 unit, tsc/lint
-      0, local link check 0 broken, `## T14 (local)` in LINK_CHECK);
-      deploy `6afde0b5` live; **live verification 78/78** + 5 screenshots
-      (`79dcf85`: `t14-live-verification.md`, LINK_CHECK `## T14
-      (deployed)`); ledgers (`6ab789a`: CHANGELOG A–J table, DECISION_LOG
-      7 decisions); **critic persona audit delivered** — verdict **YES
-      (would contact the office today)**, **0 P1**, 5 P2, 5 P3, saved
+  - **PROGRESS — T14 CLOSED (19 Nov 2026):**
+    - **All items DONE:** A+B+C+D+E+F+G (`6b87005`…`00380f8`), H (qa
+      `5603bcb` local 0 broken + Orchestrator deployed re-probe), I
+      (critic persona report `89bc5c8` — verdict **YES**, 0 P1, 5 P2, 5
+      P3), J (live verification 78/78 on `6afde0b5`, **82/82 on final
+      deploy `6afebe0f`** incl. F1/F3 checks; evidence
+      `t14-live-verification.md` + 5 screenshots).
+    - **Critic quick-fix round:** F1 gapless home numbering
+      (`5058f57`) + F3 last bracket marks (`796a7ac`); qa pins synced
+      (`2260945`, 179/179 + preview 2/2 + unit 5/5, tsc/lint 0);
+      deploy `6afebe0f` live; re-verified 82/82.
+    - **Ledgers updated:** CHANGELOG (T14 A–J table + quick-fix
+      section), DECISION_LOG (7 T14 + 4 quick-fix decisions), LINK_CHECK
+      (`## T14 (local)` + `## T14 (deployed)`), TOOLING_LOG (deploy +
+      PS5.1 gotchas + ENOSPC + model-outage workaround), this file.
+    - **Owner-input findings reported, not actioned:** F2 (team roles),
+      F4 (one honest fee figure), F5 (CA credential line — existing
+      OWNER_CHECKLIST), F6–F10 P3 polish list — all in
       `docs/design/critic/t14-persona-tax-client.md`.
-    - IN FLIGHT: **critic quick-fix round** — F1 (home counter skips 04
-      when Client words hidden; persists to launch) + F3 (last 2 bracket
-      placeholder marks: testimonials empty-state visible live, home
-      sample block) — engineer → qa pin sync → redeploy → verify.
-    - LEFT: quick-fix deploy + verify → push (tag decision) → final
-      report to owner (incl. F2/F4/F5 = owner-input findings: team roles,
-      one honest fee figure, CA credential line; flags: HOME/404 eyebrow
-      readings, hand-at-collar in plate, about lead line replaced,
-      preview sample-content OFF on Netlify deploys).
+    - **Exit criteria met:** every item live-verified with evidence,
+      suite green, link check 0 broken (local + deployed), critic report
+      saved and relayed, ledgers updated, pushed (tag `v3.0.0` moved to
+      the deployed commit).
