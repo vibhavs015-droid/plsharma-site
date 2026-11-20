@@ -42,12 +42,17 @@ export default function AboutPage() {
           <div>
             <h1>Parbhati Lal Sharma has practised in Jaisalmer since 2001.</h1>
 
-            <div className="mt-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-8">
+            {/* T15 owner request: the paragraph centres against the plate's
+                IMAGE (was items-end → blank floated above the copy), not
+                against the captioned figure: reserving the caption height
+                (~59px, same as Home) as bottom margin keeps both vertical
+                gaps ~1.6cm against the image edge. */}
+            <div className="mt-10 flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-8">
               {/* T14-C: the hero's blank now carries the founder paragraph —
                   the SAME shared source as Home's hero (lib/founder-bio.ts),
                   with the free-consultation sentence trimmed because /about
                   §02 owns that line (wording-spec §0.6 three placements). */}
-              <p className="text-lead text-ink-muted measure">
+              <p className="text-lead text-ink-muted measure md:mb-[59px]">
                 {founderBioAbout}
               </p>
 
@@ -143,11 +148,18 @@ export default function AboutPage() {
         {/* The principal's own line, in that gap — owner preview only:
             production resolves visiblePrincipalQuote to null (confirmed:
             null in config), so this block renders nothing and 02 above is
-            untouched. Preview shows the facts-safe sample line, tagged. */}
+            untouched. Preview shows the facts-safe sample line, tagged.
+            T15 owner request: the sample block reads centred on the FULL
+            page width (spans both grid columns, text centred) instead of
+            hugging the left margin column with a blank above it; flex-col
+            also drops the inline line-box gap the inline-block tag used
+            to inherit, so tag → quote sits tight. */}
         {visiblePrincipalQuote ? (
-          <div className="mt-6">
+          <div className="mt-6 col-span-full flex flex-col items-center text-center">
             <SampleTag />
-            <p className="text-body mt-2">“{visiblePrincipalQuote}”</p>
+            <p className="text-body measure mt-2">
+              “{visiblePrincipalQuote}”
+            </p>
           </div>
         ) : null}
       </section>

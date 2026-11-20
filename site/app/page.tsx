@@ -103,8 +103,24 @@ export default function HomePage() {
               businesses in Jaisalmer.
             </h1>
 
-            <div className="mt-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-8">
-              <div>
+            {/* T15 owner request: the CTA row + founder paragraph align to
+                the LEFT OF THE PLATE and centre against the IMAGE itself —
+                measured 1-2cm clear at the image's top and bottom edge.
+                Two measured decisions:
+                1. items-center would centre against the whole Link
+                   (image 375px + caption 59px), pushing the text ~32px too
+                   low — so the text block reserves the caption height as
+                   its bottom margin (outer box = image height → both gaps
+                   equal, ~49-63px = 1.3-1.7cm at 1056-1920).
+                2. The row starts at min-[1056px], NOT md: at 1024 and
+                   below the 300px plate squeezes the text column until the
+                   bio grows past the image (measured textH 327 > 299 max)
+                   and the gaps collapse to 24/10px — geometrically unable
+                   to hold 1-2cm side-by-side. Below 1056 the hero stacks
+                   (the mobile pattern, gap-10 = 40px between text and
+                   plate), which keeps every width inside the owner's spec. */}
+            <div className="mt-10 flex flex-col gap-10 min-[1056px]:flex-row min-[1056px]:items-center min-[1056px]:justify-between min-[1056px]:gap-8">
+              <div className="min-[1056px]:mb-[59px]">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                   <a
                     href={whatsappHref}
