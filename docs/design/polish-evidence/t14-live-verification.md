@@ -1,7 +1,7 @@
 # T14 live verification (post-deploy)
 
-- Date: 2026-11-19 20:39
-- Deploy: 6afed6a2d9324272f23eb815 (sample content ON - owner request, built from `916b217`; previous: 6afebe0f from `2260945`, 82/82)
+- Date: 2026-11-20 12:59
+- Deploy: 6aff125e16e1855b14b174a0 (T15 final: rail-label alignment + ledgers, built from `4419932`; previous: 6aff106b from `f4c33ba`, label probe delta=0 all rails; 6afed6a2 from `916b217`, 83/83)
 - URL: https://plsharma-site-preview.netlify.app
 - Method: direct HTTP probe of every surface (PS5.1), scripts stripped before DOM-text counts
 
@@ -88,7 +88,13 @@
 | H-robots-guard | robots.txt | Disallow: / | present | PASS |
 | H-sitemap | sitemap.xml | 8 locs, preview host | 8 locs, hostOk=True | PASS |
 | H-internal-links | all internal | 0 broken of 9 | 0 broken | PASS |
-| H-maps-external | https://maps.app.goo.gl/Ap3EUniM15RsW7oCA | 200/3xx final | 200 | PASS |
+| H-maps-external | https://maps.app.goo.gl/Ap3EUniM15RsW7oCA | 200/3xx final | 0 | **FAIL** |
 | H-wa-external | https://wa.me/919829771396?text=Hello%20P.L.%20Sharma%20And%20Company%2C%20I%20would%20like%20to%20book%20a%20consultation%20%E2%80%94%20via%20the%20website&#x27;s%20home%20page. | 200/3xx final | 200 | PASS |
 
-**Summary: 83 passed, 0 failed.**
+**Summary: 82 passed, 1 failed.** — the single failure (H-maps-external) is an
+external-network transient, NOT a site defect: from the same machine `https://www.google.com/maps`
+returns 200, but the `maps.app.goo.gl` short-link host times out / refuses connections
+at this moment (retried twice). The deployed HTML carries the exact same maps link that
+verified 200 in all previous rounds (78/78, 82/82, 83/83); no code changed around it in T15.
+Every on-site check (all pages, eyebrows, rail labels, sample tier, mailto/tel, guards,
+internal links) passed.
