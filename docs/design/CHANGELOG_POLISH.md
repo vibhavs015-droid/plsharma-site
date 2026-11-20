@@ -193,3 +193,13 @@ Owner reviewed the live preview and sent 4 feedback batches (items A–J). All p
 | Rail label alignment | **Left-rail side texts now mark their section START** on every page: labels were grid items stretched to the section's full height (Services label `<p>` measured 1540.7px) with `.rail-num` flex-centring the visible line inside it, so labels floated at section centre (-48px) between unrelated content. Fix = `align-self:start` on direct `.rail-label` children of `.ledger-rail` (≥64rem only) + measured optical cap tune (4px h2 / 7px h1 page-head). globals.css only; mobile cascade byte-identical; no DOM change | `f4c33ba` |
 
 **Gates:** tsc 0 · lint 0 · build 0 · **179/179 e2e + 5/5 unit** · live label probe (delta=0 on every rail at 1440, 360 unchanged, only by-design card-edge cases at -42px) · live regression probe **83/83** · deploy `6aff106b` — evidence `polish-evidence/t15-home-labels.png` / `t15-home-howwework.png` / `t15-about-labels.png`. Art-director wrote the CSS but died to the free-usage limit pre-verification; Orchestrator completed verification/deploy per the T13 outage precedent (DECISION_LOG).
+
+### T15b — owner layout round: hero text centred against the plate + sample quote centred (20 Nov 2026)
+
+| Item | What changed | Commit(s) |
+|---|---|---|
+| /about hero | Founder paragraph **centred against the image** (items-end → items-center + measured `mb-[59px]` caption reserve so the centre resolves on the image, not the captioned figure) | `6945f77` |
+| Home hero | CTA row + bio sit **left of the plate with 1-2cm clear top & bottom**: same items-center + caption reserve; row breakpoint md → **`min-[1056px]`** (measured: below that the squeezed text column can't hold 1-2cm side-by-side — stacks at the mobile pattern's 40px instead) | `6945f77` |
+| /about sample quote | Block now **centred on the full page** (`col-span-full` + text-center + flex items-center): grid centre offset 0px, tag centred, inline line-box gap gone (owner's "between gap"); SAMPLE tag kept per TASK 0/T7 honesty rule — owner's answer chose centring over removal | `6945f77` |
+
+**Gates:** tsc 0 · lint 0 · build 0 · **179/179 e2e + 5/5 unit** · hero probe **14/14** (360–1920, local + live: gaps 49-76px beside the image, 40px stacked) · quote structure live `grid-column 1/-1`, centre offsets 0/0 · live probe **82/83** (only the known external maps short-link transient) · deploy `6afffbd0` — evidence `t15b-home-hero.png` / `t15b-about-quote-centered.png`.

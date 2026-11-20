@@ -541,3 +541,33 @@ behind the T0 preview flag with visible SAMPLE tags.
     section), TOOLING_LOG (no-tooling + outage note), this file.
   - **Still open (unchanged):** critic F2/F4/F5 + OWNER_CHECKLIST
     launch items (env flips, reshoot, real testimonials).
+
+### T15b (20 Nov 2026) — owner layout round: hero text + sample quote centring — CLOSED
+
+  - **Asks (3 screenshots):** /about hero paragraph centred "as per
+    middle of picture"; Home hero CTA row + bio LEFT of the plate with
+    1-2cm clear top & bottom; /about sample block "in the middle and
+    center aligned to full page" — the owner's answer to the
+    clarifying question **supersedes** his first "remove this line and
+    clear the between gap" phrasing: nothing removed, SAMPLE tag kept
+    (TASK 0/T7 honesty rule intact).
+  - **Fix (commit `6945f77`, TSX only):** both heroes `items-end` →
+    `items-center` + measured `mb-[59px]` caption reserve so the flex
+    centre resolves against the 375px IMAGE, not the captioned figure;
+    Home row breakpoint `md` → `min-[1056px]` (measured: ≤1040 cannot
+    hold 1-2cm side-by-side — the squeezed column outgrows the image —
+    so below 1056 it stacks at the mobile pattern's 40px gap); sample
+    quote block `col-span-full` + flex `items-center` + `text-center`
+    (grid centre offset 0px; flex-col also killed the inline tag's
+    line-box gap = the owner's "between gap").
+  - **Gates:** tsc 0 · lint 0 · build 0 · **179/179 e2e + 5/5 unit** ·
+    hero probe **14/14** (7 widths × 2 heroes, local AND live: gaps
+    49-76px = 1.3-2.0cm beside the image, 40px stacked below 1056) ·
+    quote structure live `grid-column 1/-1`, centre offsets 0/0 · live
+    probe **82/83** (only the known external `maps.app.goo.gl`
+    transient, annotated) · deploy **`6afffbd0`**.
+  - Evidence: `polish-evidence/t15b-home-hero.png`,
+    `t15b-about-quote-centered.png`. Ledgers: DECISION_LOG + CHANGELOG
+    + this file; pushed with the round's ledger commit.
+  - **Still open (unchanged):** critic F2/F4/F5 + OWNER_CHECKLIST
+    launch items (env flips, reshoot, real testimonials).
