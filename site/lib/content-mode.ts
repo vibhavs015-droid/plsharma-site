@@ -33,11 +33,12 @@ export const showSampleContent = process.env.SHOW_SAMPLE_CONTENT === "true";
  * The canonical site URL behind EVERY absolute URL the site emits:
  * canonical links (via layout metadataBase), og:url, sitemap.xml,
  * robots.txt and the JSON-LD url. Set SITE_URL to plsharmaco.in only
- * when the live domain is ready — the default is the Netlify preview
- * host, so no production URL leaks before launch (T9.1).
+ * when the live domain is ready — the default is the site's OFFICIAL
+ * Netlify host (renamed for launch, T16: plsharmaandcompany replaces
+ * the old plsharma-site-preview preview site).
  */
 export const siteUrl =
-  process.env.SITE_URL ?? "https://plsharma-site-preview.netlify.app";
+  process.env.SITE_URL ?? "https://plsharmaandcompany.netlify.app";
 
 /**
  * Indexing master switch — DEFAULT FALSE (T9.4). While false, the root

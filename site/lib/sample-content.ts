@@ -59,12 +59,14 @@ export const sampleTestimonials: Testimonial[] = [
 export const sampleTeam: TeamMember[] = [];
 
 // ── THE PRINCIPAL'S OWN LINE ───────────────────────────────────────
-// `confirmed`: null until the owner supplies the real first-person
-// line (the /about §02 margin mark awaits it). `sample`: a facts-safe
-// preview line — personal attention and since 2001, nothing else —
-// shown only in owner preview with a SAMPLE tag.
+// `confirmed`: the owner-approved facts-safe line (T16 — he liked it
+// on /about and ordered it kept in production). `sample`: the same
+// preview line, shown only in owner preview (a SAMPLE tag accompanies
+// sample-tier items; the principal's block itself is no longer tagged
+// on the page).
 export const principalQuote: { confirmed: string | null; sample: string } = {
-  confirmed: null,
+  confirmed:
+    "Every file that comes into this office gets my personal attention — as it has since 2001.",
   sample:
     "Every file that comes into this office gets my personal attention — as it has since 2001.",
 };

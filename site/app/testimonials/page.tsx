@@ -4,7 +4,6 @@ import { visibleTestimonials } from "@/lib/sample-content";
 import { showSampleContent } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
 import { ActionBar } from "@/components/site/action-bar";
-import { SampleTag } from "@/components/site/sample-tag";
 
 // The helper's full share set, plus the conditional robots flag (Item 0):
 // noindex while the confirmed tier is empty — production AND preview — and
@@ -37,14 +36,17 @@ const entryLink =
   "underline decoration-line decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--motion-base)] ease-standard hover:decoration-brass-ink";
 
 /* NOTE: client words live in two tiers (site-config + sample-content):
-   `confirmed` — real quotes, deliberately EMPTY until the owner sends them —
-   and `sample` — generic preview copy shown only when SHOW_SAMPLE_CONTENT=
-   true. The page renders the derived `visibleTestimonials` only. The
-   structure is future-proof (spec §4 + the T7 amendment, which removed the
-   old §02/§03): the reserve below yields to the quotes list the moment
-   confirmedTestimonials has entries — no restructure needed. Preview-only
-   furniture (intro line, sample tags) must never appear in production HTML
-   (qa guard §9.3), so every such render is gated on showSampleContent. */
+   `confirmed` — the owner's real quotes (T16: the six launch quotes are in,
+   so production renders the real list) — and `sample` — generic preview
+   copy shown only when SHOW_SAMPLE_CONTENT=true. The page renders the
+   derived `visibleTestimonials` only. The structure stays future-proof
+   (spec §4 + the T7 amendment, which removed the old §02/§03): the reserve
+   below yields to the quotes list the moment confirmedTestimonials has
+   entries — no restructure needed, and the reserve note can only ever
+   show for a TRULY empty list. Preview-only furniture (intro line,
+   preview notes) stays gated on showSampleContent, and NO sample tag
+   renders anywhere on the page (T16: the badges are retired — qa guard
+   §9.3). */
 const hasConfirmed = confirmedTestimonials.length > 0;
 
 export default function TestimonialsPage() {
@@ -71,9 +73,10 @@ export default function TestimonialsPage() {
 
       {/* ============ 01 · CLIENT WORDS — the designed gap is the content:
             the reserve while no real quote exists; the quotes list + the
-            permission note once they do. The ONE collection CTA stands in
-            every state, its prefill unchanged. The preview intro + tagged
-            samples render only under SHOW_SAMPLE_CONTENT=true. ============ */}
+            permission note once they do (production today, T16). The ONE
+            collection CTA stands in every state, its prefill unchanged. The
+            preview intro + preview note render only under
+            SHOW_SAMPLE_CONTENT=true; no sample tag renders in any state. ============ */}
       <section className="ledger-rail pb-[var(--space-section)]">
         <p className="rail-label rail-num">
           <span className="rail-num-figure" data-numeric>01</span>
@@ -91,11 +94,10 @@ export default function TestimonialsPage() {
               ) : null}
               <ul className="measure mt-8">
                 {visibleTestimonials.map((t) => (
-                  <li key={t.area} className="ruled-entry">
+                  <li key={t.name} className="ruled-entry">
                     <p className="text-body">“{t.quote}”</p>
                     <p className="rail-label mt-2">
-                      {t.name} · {t.area}{" "}
-                      {showSampleContent ? <SampleTag /> : null}
+                      {t.name} · {t.area}
                     </p>
                   </li>
                 ))}
@@ -132,10 +134,10 @@ export default function TestimonialsPage() {
                 Sample entries for preview only — not real client words.
               </p>
               {visibleTestimonials.map((t) => (
-                <div key={t.area} className="ruled-entry measure mt-8">
+                <div key={t.name} className="ruled-entry measure mt-8">
                   <p className="text-body">“{t.quote}”</p>
                   <p className="rail-label mt-2">
-                    {t.name} · {t.area} <SampleTag />
+                    {t.name} · {t.area}
                   </p>
                 </div>
               ))}
@@ -144,15 +146,19 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* ============ THE ACT BAND — the page waits, the questions don't
-           (§4 close): one sentence, canonical primary, quiet phone ============ */}
+      {/* ============ THE ACT BAND — one sentence, canonical primary,
+           quiet phone (§4 close). The sentence is state-aware (T16): with
+           real quotes on the page it invites the reader's own case; the
+           "page waits" line exists ONLY while the confirmed tier is empty,
+           so no empty-state framing ever sits under real client words. ============ */}
       <section className="act-band">
         <div className="ledger-rail py-[var(--space-section)]">
           <p className="rail-label text-brass">The next step</p>
           <div>
             <h2 className="max-w-[24ch]">
-              While this page waits, your questions get answered — ask us
-              directly.
+              {hasConfirmed
+                ? "Facing something similar? Tell us what you need — we reply on WhatsApp and fix a time."
+                : "While this page waits, your questions get answered — ask us directly."}
             </h2>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a

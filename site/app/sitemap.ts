@@ -8,9 +8,10 @@ import { confirmedTestimonials } from "@/lib/site-config";
  * the page's own conditional noindex. No `lastModified` on purpose:
  * Cache Components forbids `new Date()` during prerender, and the
  * content changes rarely enough that a fixed sitemap is fine.
- * Host from siteUrl (lib/content-mode.ts) — the preview host until
- * SITE_URL is set on the live one. While indexing is off, robots.txt
- * does not advertise this file (robots.ts), so nothing consumes it.
+ * Host from siteUrl (lib/content-mode.ts) — the site's official Netlify
+ * host (T16) until SITE_URL is set to the real domain. While indexing is
+ * off, robots.txt does not advertise this file (robots.ts), so nothing
+ * consumes it.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

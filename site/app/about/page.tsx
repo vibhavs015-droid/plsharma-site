@@ -7,7 +7,6 @@ import { practitionerIsCa } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
 import { founderBioAbout } from "@/lib/founder-bio";
 import { ActionBar } from "@/components/site/action-bar";
-import { SampleTag } from "@/components/site/sample-tag";
 
 export const metadata: Metadata = pageMetadata({
   title: "About the practice",
@@ -145,18 +144,16 @@ export default function AboutPage() {
             is gone (T14-B — owner dislikes the marks). It auto-places into
             the margin column at ≥64rem and reads as a footnote below the
             copy on small screens. */}
-        {/* The principal's own line, in that gap — owner preview only:
-            production resolves visiblePrincipalQuote to null (confirmed:
-            null in config), so this block renders nothing and 02 above is
-            untouched. Preview shows the facts-safe sample line, tagged.
-            T15 owner request: the sample block reads centred on the FULL
-            page width (spans both grid columns, text centred) instead of
-            hugging the left margin column with a blank above it; flex-col
-            also drops the inline line-box gap the inline-block tag used
-            to inherit, so tag → quote sits tight. */}
+        {/* The principal's own line, in that gap — production renders the
+            owner-approved confirmed line (principalQuote.confirmed, T16)
+            and owner preview renders the identical sample-tier line, so
+            the block now shows in BOTH modes and carries no tag: the
+            SAMPLE badges are retired from every page (T16).
+            T15 owner request: the block reads centred on the FULL page
+            width (spans both grid columns, text centred) instead of
+            hugging the left margin column with a blank above it. */}
         {visiblePrincipalQuote ? (
           <div className="mt-6 col-span-full flex flex-col items-center text-center">
-            <SampleTag />
             <p className="text-body measure mt-2">
               “{visiblePrincipalQuote}”
             </p>

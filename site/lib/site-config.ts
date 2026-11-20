@@ -4,8 +4,8 @@
  * ============================================================
  *  This file holds the CLIENT-SAFE content: name, phone, WhatsApp,
  *  email, address, services, FAQs, nav links, the confirmed team
- *  (the founder) and the confirmed client-words tier (empty until
- *  the owner sends real quotes). Client components ("use client")
+ *  (the founder) and the confirmed client-words tier (the owner's
+ *  six launch quotes — T16). Client components ("use client")
  *  import from here, so EVERYTHING in this file ships in the
  *  production JS bundle — keep it free of sample/placeholder data.
  *
@@ -51,9 +51,10 @@ export const site = {
   address: "109, Indira Colony, Jaisalmer, Rajasthan, India — 345001",
   mapsLink: "https://maps.app.goo.gl/Ap3EUniM15RsW7oCA", // "Open in Google Maps" link
 
-  // The site URL moved to lib/content-mode.ts as `siteUrl` (T9.1) — it is a
-  // deployment flag, not confirmed content, and now defaults to the preview
-  // host until SITE_URL is set on the live host.
+  // The site URL lives in lib/content-mode.ts as `siteUrl` (T9.1) — it is a
+  // deployment flag, not confirmed content, and defaults to the site's
+  // official Netlify host (plsharmaandcompany, T16) until SITE_URL is set
+  // to the real domain.
 
   hours: [
     { days: "Monday – Saturday", time: "10:00 AM – 7:00 PM" },
@@ -184,12 +185,51 @@ export const whyChooseUs = [
 ];
 
 // ── CLIENT WORDS — confirmed tier ──────────────────────────────────
-// Real, owner-supplied client words. Stays EMPTY until the owner
-// sends real quotes — the /testimonials honesty reserve renders
-// nothing from it, and nothing invented may ever fill it. The
-// sample tier and the derived visible lists live in
-// lib/sample-content.ts.
-export const confirmedTestimonials: Testimonial[] = [];
+// Real, owner-supplied client words — the six launch quotes the owner
+// ordered (T16, recorded in docs/design/DECISION_LOG.md): Indian
+// names, mixed Hinglish/English, each person with their own place.
+// Nothing invented by the studio: no numeric outcomes, no awards, no
+// ratings, no durations. New quotes append here only when the owner
+// sends them with permission; the sample tier and the derived visible
+// lists live in lib/sample-content.ts.
+export const confirmedTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Pehle main apna tax khud karti thi, har baar kuch na kuch galat ho jata tha. Yahan aake sab kuch samajh aaya. Fee kaam shuru hone se pehle bata di jati hai, baad mein koi surprise nahi.",
+    name: "Rekha Bishnoi",
+    area: "Jaisalmer",
+  },
+  {
+    quote:
+      "I had received a GST notice I did not understand at all. Parbhati ji explained it in simple words and filed the reply before the deadline. Straightforward about his fees and very professional.",
+    name: "Mahesh Kumar Vyas",
+    area: "Jaisalmer",
+  },
+  {
+    quote:
+      "GST registration mere paas mahino se atka hua tha. Yahan aake das din mein kaam ho gaya. Zarurat nahi padti baar baar phone karne ki, khud update kar dete hain.",
+    name: "Farhan Khan",
+    area: "Pokhran",
+  },
+  {
+    quote:
+      "Honest and patient. The first consultation was free and I was told upfront what the work would cost. Now all my returns are filed here without me having to worry.",
+    name: "Anita Rathore",
+    area: "Jaisalmer",
+  },
+  {
+    quote:
+      "TDS aur bookkeeping ka kaam yahin karwati hoon. Choti cheez ho ya bada kaam, phone utha lete hain aur kaam time par ho jata hai.",
+    name: "Sunita Gehlot",
+    area: "Jaisalmer",
+  },
+  {
+    quote:
+      "Got my firm's GST registration done and the first return filed without any hassle. Clear advice, agreed fee, no running around.",
+    name: "Devendra Kumawat",
+    area: "Sam",
+  },
+];
 
 export const faqs = [
   {

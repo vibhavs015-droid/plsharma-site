@@ -126,6 +126,12 @@ export function SiteFooter() {
               ? "Income Tax, GST, Audit and Business Registration"
               : "Income Tax, GST, Tax Planning and Business Registration"}
           </p>
+          {/* T16 owner order: the developer credit — the footer's last
+              element, same smallest text and subdued colour as the row it
+              sits in (text-xs at primary-foreground/60 ≈ 5.6:1 on the ink
+              ground, AA). Plain text, not a link, no icon — a quiet
+              colophon, not a watermark. */}
+          <p>Developed by Vibhav Sharma</p>
         </div>
       </div>
     </footer>

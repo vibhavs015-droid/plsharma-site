@@ -1,40 +1,53 @@
-# Netlify CLI deployment config — preview deploys only.
+# Netlify deployment config — PRODUCTION host (owner decision, 20 Nov 2026).
 #
-# Why this exists: the owner asked for a shareable preview link (17 Nov 2026).
-# The Netlify CLI was already installed and authenticated on this machine, so a
-# CLI preview deploy needs zero new accounts. The PRODUCTION deployment path is
-# still Vercel per DEPLOYMENT.md (GitHub import + optional domain). Vercel
-# ignores this file; Netlify ignores Vercel config. Both coexist harmlessly.
-#
-# Deployed as a PREVIEW (netlify deploy --prod=false), never the prod alias,
-# until the owner passes the publish gate.
+# History: this file started as a preview-only deploy path (17 Nov). The
+# owner then made the sample tier visible on this host (19 Nov) and, on
+# 20 Nov, ordered the official launch HERE — site renamed to
+# plsharmaandcompany.netlify.app, indexing ON, no preview chrome.
+# Netlify is therefore the production host now; Vercel config (if ever
+# used) ignores this file and vice versa.
 
 [build]
   command = "npm run build"
   publish = ".next"
 
 [build.environment]
-  # Owner request 19 Nov 2026: render the sample tier on the Netlify
-  # preview so the owner reviews with banners + SAMPLE tags visible.
-  # SAFE FOR THIS FILE ONLY: Netlify is the PERMANENT preview host
-  # (production path = Vercel per DEPLOYMENT.md, which ignores this file),
-  # so the flag can never reach the live site. Content mode is read at
-  # build time — removing this line + redeploying restores confirmed-only.
-  SHOW_SAMPLE_CONTENT = "true"
+  # Launch state (T16, owner decisions 20 Nov 2026):
+  # - SHOW_SAMPLE_CONTENT removed → sample tier OFF for good: no design
+  #   preview banner, no SAMPLE badges, no sample bylines, anywhere.
+  #   (Content mode is read at build time; the line above shipped "true"
+  #   during the preview rounds — deleting it restores confirmed-only.)
+  # - ALLOW_INDEXING = true → removes the noindex meta, robots.txt
+  #   disallow-all and the X-Robots-Tag header below. Owner chose
+  #   "turn indexing ON now" for the official launch.
+  ALLOW_INDEXING = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# ── Indexing guard (T9.4) ──────────────────────────────────────────────
-# This file deploys PREVIEW deploys only (netlify deploy --prod=false), so
-# it guards the preview host permanently: every response carries
-# X-Robots-Tag: noindex, nofollow on top of robots.txt's disallow-all and
-# the layout's noindex meta — defence in depth while the site is
-# unpublished. Going live means deploying on the real host (Vercel, per
-# DEPLOYMENT.md) with ALLOW_INDEXING=true there; the preview stays guarded
-# by this file and never inherits the production switch.
-
+# ── Security / referrer headers (T16 launch hardening) ──────────────────
+# The previous X-Robots-Tag noindex header is gone with ALLOW_INDEXING
+# above. What remains is quiet production hygiene: no MIME sniffing, no
+# clickjacking, no cross-origin leakage, no device sensors.
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000"
+
+# ── Caching (T16 optimization) ──────────────────────────────────────────
+# Next's hashed build assets are immutable — a year of edge caching is
+# safe and is the single biggest repeat-visit win. Public images change
+# rarely: one week + SWR so an image swap shows up within a day.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"

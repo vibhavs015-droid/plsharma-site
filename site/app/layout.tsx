@@ -31,9 +31,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  // The canonical host — from siteUrl (lib/content-mode.ts), the preview
-  // host until SITE_URL is set on the live one (T9.1). Canonicals, og:url
-  // and JSON-LD resolve against this.
+  // The canonical host — from siteUrl (lib/content-mode.ts), the site's
+  // official Netlify host (T16) until SITE_URL is set to the real domain.
+  // Canonicals, og:url and JSON-LD resolve against this.
   metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} — ${site.tagline}`,

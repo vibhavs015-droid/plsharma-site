@@ -7,7 +7,6 @@ import { showSampleContent, siteUrl } from "@/lib/content-mode";
 import { pageMetadata } from "@/lib/page-meta";
 import { founderBio } from "@/lib/founder-bio";
 import { ActionBar } from "@/components/site/action-bar";
-import { SampleTag } from "@/components/site/sample-tag";
 
 export const metadata: Metadata = pageMetadata({
   // No title: the layout's default title must survive the template here.
@@ -42,12 +41,13 @@ const founder = visibleTeam[0];
 
 /* T14-F1 (critic persona audit) — ONE source of truth for the rail count.
    §04 Client words below renders only while the visible testimonial tier
-   has entries (`visibleTestimonials.length > 0`), which is FALSE on every
-   production deploy until real quotes land. When the section hides, the
-   rail must stay gapless — 01, 02, 03, 04 — so §05 Common questions takes
-   its figure from the SAME condition that gates §04: "05" when Client
-   words renders, "04" when it doesn't. Never hard-code either figure
-   independently of this const, or the counter skips a number again. */
+   has entries (`visibleTestimonials.length > 0`) — TRUE in production now
+   that the owner's confirmed quotes landed (T16), FALSE on any build whose
+   tier is empty. When the section hides, the rail must stay gapless — 01,
+   02, 03, 04 — so §05 Common questions takes its figure from the SAME
+   condition that gates §04: "05" when Client words renders, "04" when it
+   doesn't. Never hard-code either figure independently of this const, or
+   the counter skips a number again. */
 const clientWordsSectionVisible = visibleTestimonials.length > 0;
 
 /* Entry headings are the links (deep links to /book?service= arrive with the
@@ -269,10 +269,12 @@ export default function HomePage() {
       </section>
 
       {/* ============ 04 · CLIENT WORDS — gated on the visible tier
-            (spec §5.2 as amended by T7): production shows NOTHING here while
-            the confirmed tier is empty; preview shows the tagged samples
-            with the reserve furniture. When real quotes exist the quotes
-            render with the permission note — no tags, no reserve.
+            (spec §5.2 as amended by T7): the section renders only while the
+            visible tier has entries, so it stays hidden on any build where
+            the tier is empty. Production now carries the owner's confirmed
+            quotes (T16) with the permission note; the reserve note below is
+            SHOW_SAMPLE_CONTENT-only, and NO sample tag renders anywhere
+            (T16: the tags are retired from every page).
             T14-F1: the gate is `clientWordsSectionVisible` (module top) —
             §05's figure derives from the same const, so hiding this section
             renumbers the rail instead of leaving a 03 → 05 gap. ============ */}
@@ -308,11 +310,10 @@ export default function HomePage() {
             )}
             <ul className="measure mt-8">
               {visibleTestimonials.map((t) => (
-                <li key={t.area} className="ruled-entry">
+                <li key={t.name} className="ruled-entry">
                   <p className="text-body">“{t.quote}”</p>
                   <p className="rail-label mt-2">
-                    {t.name} · {t.area}{" "}
-                    {showSampleContent ? <SampleTag /> : null}
+                    {t.name} · {t.area}
                   </p>
                 </li>
               ))}
