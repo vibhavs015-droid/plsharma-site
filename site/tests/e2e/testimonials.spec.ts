@@ -13,14 +13,15 @@ import { confirmedTestimonials } from "../../lib/site-config";
 import { visibleTestimonials } from "../../lib/sample-content";
 
 /**
- * Phase 3 Stage D QA — `/testimonials`, the designed honest reserve.
+ * Phase 3 Stage D QA — `/testimonials`, updated for T16 (production launch).
  *
  * Sources of truth: docs/design/phase-3/page-specs.md §0 (global rules) and
- * §4 (the honest reserve: the one placeholder mark is the content, zero
- * journey weight, the proof that exists today, the signed page in regular
- * faces); honesty rules per §2.4/§9 — no invented data and no sample-tier
- * content may render in the default production build (TASK 0 tier system:
- * the sample tier is owner-preview only).
+ * §4 (honesty rules per §2.4/§9), plus the T16 brief: the owner ordered six
+ * launch quotes into the confirmed tier, so production renders the REAL list
+ * — the honest reserve below is now a guarded fallback for a truly empty
+ * tier, not the shipped state. No invented data and no sample-tier content
+ * may render in the default production build (TASK 0 tier system: the sample
+ * tier is owner-preview only, and the SAMPLE tags are retired entirely).
  */
 
 const EXPECTED_TESTIMONIALS_PREFILL = `Hello ${site.name}, I would like to book a consultation — via the website's testimonials page.`;
@@ -33,7 +34,7 @@ const QUESTION_PREFILL = `Hello ${site.name}, I have a question.`;
 // answers") shipped on the pre-§8 page and left with it — see the lean-page
 // test below (wording-spec §8 amendment).
 
-test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
+test.describe("Testimonials — the owner's launch content (page-specs §4 + T16)", () => {
   test.setTimeout(90_000);
 
   test.beforeEach(async ({ page }) => {
@@ -46,7 +47,11 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     await expect(h1).toHaveText("Real client words — published with permission, and not before.");
   });
 
-  test("ruled head: bare TESTIMONIALS eyebrow and the nothing-invented lead (T14-A)", async ({ page }) => {
+  test("ruled head: bare TESTIMONIALS eyebrow and the permission lead (T14-A, T16)", async ({ page }) => {
+    // T16: the confirmed tier is populated, so the lead is the permission
+    // line. The empty-tier lead ("This page stays empty until real clients
+    // agree to be quoted…") still exists in page.tsx but now only renders
+    // for a TRULY empty list — it is no longer what production serves.
     const head = page.locator("main section.ledger-rail").first();
     const label = head.locator("p.rail-label");
     await expect(label).toHaveText("TESTIMONIALS");
@@ -55,28 +60,37 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     );
     await expect(label, "no place in the eyebrow").not.toContainText("Jaisalmer");
     await expect(head.locator("p.text-lead")).toHaveText(
-      "This page stays empty until real clients agree to be quoted. Nothing here is invented."
+      "Real client words, each shared with the client's permission."
     );
   });
 
-  test("§01 empty state ships NO bracket mark — the plain honesty note is the content, visible (T14-F3)", async ({ page }) => {
-    // T14-F3 (owner taste, same rule as T14-B on /about): the
-    // [PLACEHOLDER — …] bracket mark is gone; the designed gap is now the
-    // plain visitor-language note itself — real text, in the fold. Not an
-    // image, not a comment, not a styled empty box, and no bracket marks.
+  test("§01 renders the confirmed quotes — zero bracket marks, empty-state note absent (T14-F3, T16)", async ({ page }) => {
+    // T16: §01's content is now the owner's six launch quotes — one ruled
+    // entry per visible quote plus the permission note. The empty-state
+    // honesty note ("A quote appears here…") still exists in page.tsx but
+    // branches only for a truly empty list, so it must NOT render under
+    // real quotes. The T14-F3 bracket-mark ban holds either way.
     const marks = page.locator("main .placeholder-mark");
     await expect(marks, "zero placeholder marks on /testimonials").toHaveCount(0);
     const html = await page.content(); // includes the RSC flight payload
     expect(html, "no [PLACEHOLDER string anywhere on /testimonials").not.toContain(
       "[PLACEHOLDER"
     );
-    // The honesty sentence explains the empty entry (Home §04's, adapted) —
-    // still real, visible text.
-    const entry = page.locator("main .ruled-entry").first();
-    await expect(entry).toContainText(
-      "A quote appears here only after a real client has read it and agreed to be named. Until then the entry stays empty on purpose — this page publishes only what the firm can stand behind."
-    );
+    const section = page.locator("main section.ledger-rail").nth(1);
+    await expect(
+      section.locator(".ruled-entry"),
+      "one entry per visible quote"
+    ).toHaveCount(visibleTestimonials.length);
+    const first = visibleTestimonials[0];
+    const entry = section.locator(".ruled-entry").first();
+    await expect(entry).toContainText(first.quote);
+    await expect(entry).toContainText(`${first.name} · ${first.area}`);
     await expect(entry).toBeVisible();
+    await expect(
+      section,
+      "the empty-state note must not sit under real quotes"
+    ).not.toContainText("A quote appears here only after a real client");
+    await expect(section).toContainText("Shared with the client's permission.");
   });
 
   test("the collection invite is a quiet wa.me link with the QUESTION prefill — not a booking request", async ({ page }) => {
@@ -129,12 +143,14 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     await expect(sections.locator("svg, canvas")).toHaveCount(0);
   });
 
-  test("noindex while the confirmed tier is empty — the page half of Item 0", async ({ page }) => {
-    // The page sets its OWN page-level robots (overriding the layout's
-    // site-wide "noindex, nofollow"): "noindex" alone today, auto-flipping
-    // to indexable the moment confirmedTestimonials gains a real quote —
-    // the sitemap agrees (seo-head.spec.ts asserts that other half).
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");
+  test("page-level robots is 'index' while the confirmed tier is filled — the page half of Item 0", async ({ page }) => {
+    // T16: the tier is populated, so the conditional flag (robots: {
+    // index: confirmedTestimonials.length > 0 }) flips to INDEXABLE — the
+    // page ships its own `index`, overriding the layout's site-wide guard
+    // for this route only. The layout's "noindex, nofollow" still applies
+    // to every OTHER route in this default build (seo-head.spec asserts
+    // that half), and the sitemap agrees (seo-head.spec sitemap test).
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "index");
   });
 
   test("no sample/preview framing anywhere in the page body", async ({ page }) => {
@@ -153,7 +169,7 @@ test.describe("Testimonials — the honest reserve (page-specs §4)", () => {
     await expect(page.locator("main > section:last-of-type")).toHaveClass(/act-band/);
     await expect(band.locator("p.rail-label")).toHaveText("The next step");
     await expect(band.locator("h2")).toHaveText(
-      "While this page waits, your questions get answered — ask us directly."
+      "Facing something similar? Tell us what you need — we reply on WhatsApp and fix a time."
     );
 
     const cta = band.locator("a.btn-primary");
@@ -179,30 +195,34 @@ test.describe("Testimonials — honesty regression guards (the invented-data wal
     await gotoTestimonials(page);
   });
 
-  test("the confirmed tier ships empty — the plain-note reserve is §01's entire list (T14-F3)", async ({ page }) => {
-    // TASK 0 tier system: production resolves visibleTestimonials to the
-    // EMPTY confirmed tier (real quotes arrive only from the owner), so the
-    // plain-note reserve entry is the section's only entry — no quote entry
-    // may render from either tier in the default build, and since T14-F3
-    // zero bracket marks ship either.
+  test("the confirmed tier ships the owner's six launch quotes — §01's entire list is real (T16)", async ({ page }) => {
+    // T16 (owner order): six confirmed launch quotes now exist, so the
+    // default build resolves visibleTestimonials to THEM (not the empty
+    // reserve) and §01 renders one entry per quote. The empty-state note
+    // and the [PLACEHOLDER ban are still guarded — the note just must not
+    // render under real quotes any more.
     expect(
       confirmedTestimonials,
-      "the confirmed tier must ship empty until the owner sends real quotes"
-    ).toHaveLength(0);
+      "the six owner-ordered launch quotes (T16)"
+    ).toHaveLength(6);
     expect(
       visibleTestimonials,
       "the page's visible list must equal the confirmed tier in the default build"
-    ).toHaveLength(0);
+    ).toEqual(confirmedTestimonials);
     const section = page.locator("main section.ledger-rail").nth(1);
-    await expect(section.locator(".ruled-entry")).toHaveCount(1);
+    await expect(section.locator(".ruled-entry")).toHaveCount(
+      confirmedTestimonials.length
+    );
+    for (const t of confirmedTestimonials) {
+      await expect(section, `quote by ${t.name}`).toContainText(t.quote);
+      await expect(section, `byline ${t.name}`).toContainText(
+        `${t.name} · ${t.area}`
+      );
+    }
     await expect(
       section.locator(".placeholder-mark"),
-      "zero bracket marks on the reserve entry (T14-F3)"
+      "zero bracket marks on the quotes list (T14-F3)"
     ).toHaveCount(0);
-    // The visitor-language honesty note IS the reserve: present in the one entry.
-    await expect(section.locator(".ruled-entry")).toContainText(
-      "A quote appears here only after a real client has read it and agreed to be named"
-    );
     const html = await page.content(); // includes the RSC flight payload
     expect(html, "no [PLACEHOLDER string anywhere on /testimonials").not.toContain(
       "[PLACEHOLDER"

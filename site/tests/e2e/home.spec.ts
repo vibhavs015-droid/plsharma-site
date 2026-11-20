@@ -7,7 +7,7 @@ import {
   WA_HREF_PREFIX,
   site,
 } from "./helpers";
-import { confirmedTeam, faqs, services } from "../../lib/site-config";
+import { confirmedTeam, confirmedTestimonials, faqs, services } from "../../lib/site-config";
 import { showSampleContent } from "../../lib/content-mode";
 
 /**
@@ -57,18 +57,18 @@ test.describe("Home — structure & content", () => {
   test("ledger sections render in order with the rail-num device (§8.5 mode-aware)", async ({ page }) => {
     // B3: the "§ 0N · Title" string labels became the rail-num device
     // (figure + rule + text, `data-numeric` on the figure). B2/§8 + T14-F1:
-    // while the confirmed testimonial tier is empty the Client words
-    // section hides, so production ships §01–§03 + Common questions as 04
-    // (gapless); the owner-preview build shows §04 Client words, so Common
-    // questions keeps 05.
+    // the Client words section renders iff the visible testimonial tier is
+    // non-empty. T16: the owner's six confirmed quotes landed, so the
+    // DEFAULT build now ships §04 too — five figures with Common questions
+    // at 05. A build with an empty confirmed tier (and no preview flag)
+    // still falls to the gapless four (§05 as 04); the preview branch keeps
+    // its reserve-note furniture.
     const labels = page.locator("main p.rail-label.rail-num");
-    // T14-F1: the Common questions figure derives from the mode this test
-    // already branches on — §04 renders iff the visible testimonial tier
-    // is non-empty, which in the test process is exactly `showSampleContent`
-    // (the confirmed tier ships empty). Visible → 05, hidden → 04. Never
-    // hard-code either figure independently of the mode, or the rail skips
-    // a number again — the critic's F1 finding.
-    const clientWordsVisible = showSampleContent;
+    // T14-F1/T16: the Common questions figure derives from the SAME
+    // condition that gates §04 — never hard-code either figure, or the
+    // rail skips a number again (the critic's F1 finding).
+    const clientWordsVisible =
+      showSampleContent || confirmedTestimonials.length > 0;
     const commonQuestionsFigure = clientWordsVisible ? "05" : "04";
     if (showSampleContent) {
       // Owner-preview branch: count + §04 signals pinned to what the T0
@@ -99,6 +99,30 @@ test.describe("Home — structure & content", () => {
         "How we handle client words"
       );
       await expectRailNum(labels.nth(4), commonQuestionsFigure, "Common questions");
+    } else if (confirmedTestimonials.length > 0) {
+      // T16 launch state: the confirmed tier is filled, so production
+      // ships §04 with the permission note — not the preview reserve note.
+      await expect(labels).toHaveCount(5);
+      await expectRailNum(labels.nth(0), "01", "Services");
+      await expectRailNum(labels.nth(1), "02", "How we work");
+      await expectRailNum(labels.nth(2), "03", "The record");
+      await expectRailNum(labels.nth(3), "04", "Client words");
+      await expectRailNum(labels.nth(4), "05", "Common questions");
+      const html = await page.content();
+      expect(html, "§04 heading renders with the confirmed tier").toContain(
+        "What clients say"
+      );
+      expect(html, "permission note ships instead of the reserve").toContain(
+        "Shared with the client"
+      );
+      expect(html, "first confirmed quote renders").toContain("Rekha Bishnoi");
+      expect(html, "no preview reserve copy in production").not.toContain(
+        "stays empty on purpose"
+      );
+      await expect(
+        page.locator("main .placeholder-mark"),
+        "zero bracket marks (T14-F3)"
+      ).toHaveCount(0);
     } else {
       await expect(labels).toHaveCount(4);
       await expectRailNum(labels.nth(0), "01", "Services");
@@ -510,44 +534,51 @@ test.describe("Home — polish pass pins (wording-spec §1/§2/§3, B2/B3)", () 
     );
   });
 
-  test("the header nav lists exactly the six visible destinations — no Testimonials", async ({ page }) => {
-    // visibleNavLinks (site-config): Testimonials stays out of the nav while
-    // the confirmed tier is empty and the preview flag is off. When real
-    // quotes land, this pin flips with the tier — Item 0's nav half.
+  test("the header nav lists the seven visible destinations — Testimonials included (T16)", async ({ page }) => {
+    // visibleNavLinks (site-config): Testimonials joins the nav the moment
+    // the confirmed tier is non-empty (the honesty wall). T16: the owner's
+    // launch quotes filled it, so the nav now carries seven links —
+    // Testimonials between "Why Choose Us" and "FAQ" (navLinks order).
     const links = page.locator("header nav a");
     await expect(links).toHaveText([
       "Home",
       "About",
       "Services",
       "Why Choose Us",
+      "Testimonials",
       "FAQ",
       "Contact",
     ]);
-    await expect(links.filter({ hasText: "Testimonials" })).toHaveCount(0);
+    await expect(links.filter({ hasText: "Testimonials" })).toHaveCount(1);
   });
 
-  test("the footer quick links mirror the nav — Testimonials absent, Privacy included (B3)", async ({ page }) => {
+  test("the footer quick links mirror the nav — Testimonials + Privacy included (B3/T16)", async ({ page }) => {
     const footer = page.locator("footer");
     await expect(
       footer.getByRole("link", { name: "Testimonials" }),
-      "no Testimonials link in the footer either"
-    ).toHaveCount(0);
-    // The eight quick links: the six nav destinations + Book + Privacy.
-    // Counts verified in served HTML (home-verify pass): each href = 1.
+      "Testimonials link ships in the footer once quotes exist (T16)"
+    ).toHaveCount(1);
+    // The nine quick links: the seven nav destinations + Book + Privacy.
+    // Matched by exact accessible name (a bare a[href="/services"] locator
+    // hits the six service-title links too — see the count pin below).
     for (const [href, label] of [
       ["/", "Home"],
       ["/about", "About"],
+      ["/services", "Services"],
       ["/why-choose-us", "Why Choose Us"],
+      ["/testimonials", "Testimonials"],
       ["/faq", "FAQ"],
       ["/contact", "Contact"],
       ["/book", "Book a consultation"],
       ["/privacy", "Privacy"],
     ] as const) {
-      await expect(footer.locator(`a[href="${href}"]`), `footer ${label}`).toHaveText(label);
+      const link = footer.getByRole("link", { name: label, exact: true });
+      await expect(link, `footer quick link: ${label}`).toHaveCount(1);
+      await expect(link, `footer quick link href: ${label}`).toHaveAttribute(
+        "href",
+        href
+      );
     }
-    // "Services" exactly once as a quick link (the six service titles are a
-    // separate column — asserted next).
-    await expect(footer.getByRole("link", { name: "Services", exact: true })).toHaveCount(1);
   });
 
   test("the footer carries the six service titles, hours rows, clean blurb and descriptor (B3)", async ({ page }) => {

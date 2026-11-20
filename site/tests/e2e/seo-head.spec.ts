@@ -105,18 +105,26 @@ test.describe("SEO heads — per-page title/OG/canonical trio (T9.2)", () => {
 test.describe("SEO heads — guards, files and schema (B3/B4)", () => {
   test.setTimeout(180_000);
 
-  test("meta robots: 'noindex, nofollow' site-wide; testimonials carries its own 'noindex'", async ({
+  test("meta robots: layout 'noindex, nofollow' guard; testimonials carries its own flag", async ({
     page,
   }) => {
     // T9.4: the layout guard ships while ALLOW_INDEXING is unset; the
-    // /testimonials page OVERRIDES it with its own conditional flag (Item 0).
+    // /testimonials page OVERRIDES it with its own conditional flag
+    // (Item 0). T16: the confirmed tier is filled, so the page override
+    // now resolves to `index` (verified in served HTML: content="index")
+    // while every other route keeps the layout's "noindex, nofollow".
+    // With an empty tier the override would read "noindex" again.
     for (const { path } of PAGES) {
       await page.goto(path, { waitUntil: "load" });
       const content = await page
         .locator('meta[name="robots"]')
         .getAttribute("content");
       expect(content, `${path} robots meta`).toBe(
-        path === "/testimonials" ? "noindex" : "noindex, nofollow"
+        path === "/testimonials"
+          ? confirmedTestimonials.length > 0
+            ? "index"
+            : "noindex"
+          : "noindex, nofollow"
       );
     }
   });
@@ -198,23 +206,28 @@ test.describe("SEO heads — guards, files and schema (B3/B4)", () => {
     expect(body, "no sitemap advertised while indexing is off").not.toMatch(/sitemap/i);
   });
 
-  test("sitemap lists the 8 fixed routes on siteUrl — /testimonials omitted (Item 0)", async ({
+  test("sitemap lists all 9 routes on siteUrl — /testimonials included (Item 0 / T16)", async ({
     page,
   }) => {
-    expect(confirmedTestimonials, "tier must be empty for this pin").toHaveLength(0);
+    // T16: the confirmed tier is filled with the owner's launch quotes, so
+    // /testimonials joins the sitemap (it was omitted while empty — Item 0).
+    expect(confirmedTestimonials, "tier is filled at launch").toHaveLength(6);
     const res = await page.request.get("/sitemap.xml");
     expect(res.status()).toBe(200);
     expect(res.headers()["content-type"] ?? "").toContain("application/xml");
     const body = await res.text();
     const locs = [...body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-    // Exact set + order verified live: head-check pass (8 locs, preview host).
-    expect(locs).toEqual(
-      PAGES.filter((p) => p.path !== "/testimonials").map((p) => abs(p.path))
+    // Exact set + order (sitemap.ts): /testimonials slots in after
+    // /why-choose-us — wherever its conditional spread sits in routes.
+    const expected = PAGES.map((p) => p.path).filter(
+      (p) => p !== "/testimonials"
     );
+    expected.splice(4, 0, "/testimonials"); // after why-choose-us
+    expect(locs).toEqual(expected.map((p) => abs(p)));
     expect(
       locs.some((l) => l.endsWith("/testimonials")),
-      "Item 0: sitemap omits /testimonials while the tier is empty"
-    ).toBe(false);
+      "T16: sitemap carries /testimonials once quotes exist"
+    ).toBe(true);
   });
 
   test("the site-wide og image serves as a real PNG", async ({ page }) => {
