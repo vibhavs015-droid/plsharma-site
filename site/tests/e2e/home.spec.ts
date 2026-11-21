@@ -261,7 +261,11 @@ test.describe("Home — honesty regression guards (critic REJECT items)", () => 
     expect(starNodes).toBe(0);
   });
 
-  test("testimonial area renders nothing in production — plain note only in preview, zero bracket marks — and never invented names", async ({ page }) => {
+  test("testimonial area: §04 renders the confirmed quotes with zero bracket marks — and never invented names", async ({ page }) => {
+    // T16: production §04 EXISTS (the owner's six launch quotes), so this
+    // test no longer pins absence — it pins the honest shape: real quotes,
+    // permission note, zero bracket marks, zero reserve framing, and none
+    // of the pre-T16 invented data anywhere.
     const marks = page.locator("main .placeholder-mark");
     if (showSampleContent) {
       // Owner-preview (§8.5): Home §04 renders — but since T14-F3 it ships
@@ -278,9 +282,31 @@ test.describe("Home — honesty regression guards (critic REJECT items)", () => 
         "How we handle client words"
       );
     } else {
-      // Production (B2/§8): Home §04 does not exist — zero reserve marks on
-      // this page; the reserve lives on /testimonials only.
+      // T16 production: §04 renders the confirmed quotes + permission note;
+      // the empty-tier reserve copy must not sit under real quotes, and
+      // zero reserve marks ship either way.
       await expect(marks, "production Home carries no reserve marks").toHaveCount(0);
+      const html = await page.content();
+      expect(html, "no [PLACEHOLDER string anywhere on / (T14-F3)").not.toContain(
+        "[PLACEHOLDER"
+      );
+      expect(html, "§04 heading renders in production (T16)").toContain("What clients say");
+      expect(html, "permission note ships in production (T16)").toContain(
+        "Shared with the client"
+      );
+      expect(html, "no empty-tier reserve copy under real quotes").not.toContain(
+        "stays empty on purpose"
+      );
+      const mainText = await page.locator("main").innerText();
+      // innerText applies text-transform: the rail-label bylines render
+      // CAPS, so compare case-insensitively (T17: this pin arrived
+      // mid-round from the T16 qa lane and had never run green).
+      const haystack = mainText.toLowerCase();
+      for (const t of confirmedTestimonials) {
+        expect(haystack, `§04 renders ${t.name}'s quote`).toContain(
+          t.name.toLowerCase()
+        );
+      }
     }
 
     // Nothing from the placeholder testimonials in site-config may leak onto /.
@@ -297,7 +323,8 @@ test.describe("Home — honesty regression guards (critic REJECT items)", () => 
         fragment
       );
     }
-    // And no quotation-markup shell for a quote that does not exist.
+    // The quotes render as plain ruled entries (li > p) — no blockquote
+    // markup ships on Home in any mode.
     await expect(page.locator("main blockquote")).toHaveCount(0);
   });
 
