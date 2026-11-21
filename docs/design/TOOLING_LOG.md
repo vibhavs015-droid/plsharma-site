@@ -123,3 +123,10 @@ No new npm packages were added in Phase 2; the rows above are an in-repo script,
 - **New probe:** `Temp\opencode\t16-live-verify.mjs` (Node + Playwright via the site's installed chromium, same one-off pattern as t14) — 44 checks: per-route dev-trace sweep + credit, 6 quotes, home figures, robots/sitemap state, headers on HTML, cache header on a hashed asset, canonical host. First run 41/43 (two probe bugs: `data-numeric` renders as `data-numeric="true"` with digits as span text; and the real header defect above) → after fix + deploy `6b007ef0`: **44/44**.
 - **Evidence capture:** `Temp\opencode\t16-evidence.mjs` → 4 PNGs in `docs/design/polish-evidence/` (t16-home-client-words, t16-footer-credit, t16-testimonials-page, t16-about-quote-untagged).
 - **Lane outages:** qa-engineer hit the free-usage limit after writing a complete `testimonials.spec.ts` re-pin (verified green); frontend-engineer ran full-size. Orchestrator completed the remaining pins + all gates — same precedent as 19 Nov.
+
+## Added 21 Nov 2026 - T17 sign-off round
+
+- **Axe pass (F8):** `Temp\opencode\t17-axe.mjs` — axe-core (from `site/node_modules`, no install) injected via the site's Playwright over the 9 LIVE routes, `runOnly wcag2a/wcag2aa/wcag22aa`: **0 violations, 0 errors**. First axe on record to post-date T16's DOM changes (last had been T13).
+- **`innerText` vs `text-transform` gotcha (cost one red run):** `page.locator("main").innerText()` applies CSS `text-transform` — the rail-label bylines render CAPS, so `expect(inner).toContain("Rekha Bishnoi")` can never pass. Compare case-insensitively. (Raw `page.content()`/HTML is unaffected — DOM text stays mixed-case.)
+- **Suite count moved 179 → 200:** the T16 qa session had died AFTER writing an uncommitted `launch.spec.ts` (21 tests) and a home §04 rewrite — neither ever ran green; recovered + fixed in `7e54bd0`. Watch for orphaned uncommitted test files after any subagent outage — `git status` before assuming a green baseline.
+- **F6 badge check:** regex sweep of served `/` HTML for `netlify`/`badge`/`powered`/`position:fixed` → only canonical/og/JSON-LD host mentions; no injected badge markup.

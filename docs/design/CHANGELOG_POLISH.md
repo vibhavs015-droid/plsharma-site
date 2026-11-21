@@ -217,3 +217,16 @@ Owner reviewed the live preview and sent 4 feedback batches (items A–J). All p
 | Test pins | nav/footer expect Testimonials (7/9 links); home numbering 5 figures; robots `index` on /testimonials; 9-loc sitemap (`/testimonials` after `/why-choose-us`); testimonials.spec re-pinned to the real quotes (qa's edits, landed before its free-usage outage) | `08f7953` |
 
 **Gates:** tsc 0 — lint 0 — build 0 — **179/179 e2e + 5/5 unit** (run twice: after content lane and after the header fix) — **live launch probe 44/44** on `plsharmaandcompany.netlify.app` (deploy `6b007ef0`: badges absent all 9 routes, 6 quotes, robots allow, security + cache headers on HTML, credit present, sitemap 9/9 on new host) — evidence `t16-home-client-words.png` / `t16-footer-credit.png` / `t16-testimonials-page.png` / `t16-about-quote-untagged.png`. Engineer lane ran full-size; qa lane died to the free-usage limit mid-round but its `testimonials.spec.ts` edits were complete and green — Orchestrator ran the full suite + finished the remaining pins (T13 outage precedent).
+
+### T17 — critic sign-off round: F1 team fold, axe 0/0, launch coverage (21 Nov 2026)
+
+| Item | What changed | Commit(s) |
+|---|---|---|
+| Critic sign-off (charter) | Retroactive review of the shipped T15/T15b/T16 launch state → `critic/t15-t16-launch-2026-11-21.md`: REJECT on one P2 (F1), everything else green; scores 4–4.5 across all seven dimensions | brief + review in this round |
+| F1 (required fix) | /about §03: three bare name rows → ONE honest entry "Vikram Singh Soda, Bhawani and Hemraj — the office support team." — founder entry untouched, `confirmedTeam` data unchanged (render layer only); about.spec re-pinned (founder = only h3; support entry holds all 3 names) | `dd71644` |
+| Launch coverage rescued | Orphaned T16 qa files (never run green) recovered: new `launch.spec.ts` (21 tests — footer credit + old-host sweep on every route) + home §04 quote pins; fixed the real gotcha found on first run — `innerText` applies `text-transform` (bylines CAPS) so name asserts are case-insensitive now | `7e54bd0` |
+| F8 (process) | axe-core WCAG 2.2 AA over all 9 LIVE routes post-deploy = **0 violations, 0 errors** — T16 DOM additions regress nothing (last axe had been T13) | report in DECISION_LOG |
+| F6 / F7 dispositioned | F6: zero badge markup in served HTML — not reproducible, no action. F7: evidence spot-check matches filenames; archive rule set (only `t16-*` = current-state proof) | DECISION_LOG |
+| F2/F3/F4/F5 | Logged as wording-level backlog (optional per the review) — next owner round; F4-fee/F5-CA stay owner-gated | DECISION_LOG |
+
+**Gates:** tsc 0 — lint 0 — build 0 — **200/200 e2e (179 → 200 with the rescued coverage) + 5/5 unit** — live probe **44/44** on deploy `6b014913` + F1 live checks (0 bare rows, 1 h3) + axe 0/0. Three more subagent free-usage deaths (T17 a11y-checker, F1 engineer) — Orchestrator executed both lanes directly (T13 precedent); critic ran full-size.
