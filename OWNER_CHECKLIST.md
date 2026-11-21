@@ -9,13 +9,19 @@ item. Created 17 Nov 2026 (polish pass).
 - [ ] **Founder photo reshoot** — no sunglasses, plain background (added by
       polish TASK 1). The current photo is the interim graded crop; a polished
       variant tone down the colour halo but a real reshoot is still wanted.
-- [ ] **Real testimonials** with each client's written permission (polish
-      TASK 7: /testimonials stays noindex + honest note until real ones exist).
+- [x] **Real testimonials** — RESOLVED 20 Nov (T16): the owner ordered six
+      named quotes (mixed Hinglish/English) into production on launch day and
+      accepts them as his own launch content (DECISION_LOG); the page states
+      "published with the client's permission" per his order. If any named
+      client has NOT actually agreed, say so and that quote is swapped or
+      removed — the copy is owner-owned.
 - [ ] **Team photos** — team-1.jpg (Vikram), team-2.jpg (Bhawani), team-3.jpg
       (Hemraj) → `site/public/images/` (carried from PROJECT-NOTES).
-- [ ] **Team roles confirmation** — Vikram Singh Soda / Bhawani / Hemraj: the
-      polish pass shows SAMPLE roles behind the preview flag; confirm (or
-      correct) the real role titles before they render in production.
+- [ ] **Team roles confirmation** — Vikram Singh Soda / Bhawani / Hemraj: no
+      roles render anywhere yet (the SAMPLE roles left with the preview tier,
+      T16). Either send the real role titles, or say the word and the studio
+      folds the three names into one honest line ("the office support team") —
+      the critic's t14 F2 fallback; re-checked in the T17 review.
 - [ ] **Qualification confirmation (polish TASK 6)** — is the practitioner a
       Chartered Accountant?
       - If NOT a CA: the site ships with "Audit Support & Record Review"
@@ -26,9 +32,15 @@ item. Created 17 Nov 2026 (polish pass).
 - [ ] **"Financial Advisors" wording** — confirm the firm may use
       "Financial Advisors" in the tagline (part of the same qualification
       question).
-- [ ] **Domain** — buy plsharmaco.in (Porkbun recommended, ~₹700/yr; see
-      DEPLOYMENT.md), then set `SITE_URL`/`NEXT_PUBLIC_SITE_URL` and allow
-      indexing (`ALLOW_INDEXING=true`).
+- [ ] **One honest fee figure** (critic t14 F4, P2) — the site quotes no
+      rupee figures anywhere. Send ONE real starting figure for the commonest
+      case (salary ITR "from ₹X") and it ships in FAQ Q02 + /services entry
+      01. No number will be invented.
+- [ ] **Domain** — OPTIONAL now: the site launched 20 Nov on
+      `https://plsharmaandcompany.netlify.app` with indexing already ON
+      (owner decision, T16). When you want a real .com/.in, buy it (Porkbun
+      recommended, ~₹700/yr) and tell the studio — attaching it and
+      repointing the URLs takes minutes.
 - [ ] **Domain email** — switch the Yahoo address (`plperiwal@yahoo.com`) to a
       domain email once the domain is live (polish TASK 11 keeps Yahoo for
       now; update `site-config.ts` → `email`, and the privacy page contact
@@ -44,7 +56,10 @@ item. Created 17 Nov 2026 (polish pass).
       sticky bottom bar (Call + WhatsApp) never covers content and is absent
       on /book; keyboard does not hide the submit button; tel: and wa.me links
       open the right apps.
-- [x] **Preview hosting** — RESOLVED 17 Nov: `https://plsharma-site-preview.netlify.app` is now publicly reachable (the qa crawl confirms 200s; the earlier CLI-created-site login wall is gone). Say the word if you'd rather drop the preview site instead of keeping it.
+- [x] **Preview hosting** — RESOLVED 17 Nov; superseded 20 Nov (T16): that
+      same Netlify site was renamed and became the PRODUCTION host
+      (`https://plsharmaandcompany.netlify.app`). The old preview URL is dead
+      (404) — swap any links you shared with it.
 
 ## Wording sign-offs flagged by the ux spec (17 Nov — owner copy touched)
 
@@ -64,12 +79,15 @@ item. Created 17 Nov 2026 (polish pass).
 
 ## Launch gates (charter)
 
-- [ ] **Launch env vars** (polish TASKS 6/9; set at deploy time on the real
-      host): `SITE_URL=https://plsharmaco.in` · `ALLOW_INDEXING=true` ·
-      `PRACTITIONER_IS_CA=true` ONLY if the CA confirmation above is yes.
-      Until then every build ships noindex + disallow-all robots + the
-      X-Robots-Tag header (the Netlify preview keeps its header permanently).
+- [x] **Launch env vars** — `ALLOW_INDEXING=true` SET 20 Nov (T16, owner
+      decision): the noindex meta, robots disallow-all and X-Robots-Tag are
+      all removed on the live host. `SITE_URL` is no longer an env var — the
+      host lives in `site/lib/content-mode.ts` (`siteUrl`), update it when a
+      real domain is attached. REMAINING: `PRACTITIONER_IS_CA=true` ONLY if
+      the CA confirmation above is yes.
 - [ ] **Quiet-machine Lighthouse re-measure** (KNOWN_ISSUES #17) — perf ≥ 90
       and LCP < 2.5 s confirmed off this machine.
-- [ ] **Deploy/publish [GATE]** — production hosting (Vercel per
-      DEPLOYMENT.md) only on the owner's say-so.
+- [x] **Deploy/publish [GATE]** — CLEARED 20 Nov: the owner officially
+      launched on Netlify himself ("officially launching it… in netlify do
+      necessary setting to optimize") — supersedes the Vercel-per-
+      DEPLOYMENT.md path (DECISION_LOG, 20 Nov).

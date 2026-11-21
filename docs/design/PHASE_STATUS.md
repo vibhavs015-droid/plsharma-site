@@ -615,3 +615,29 @@ behind the T0 preview flag with visible SAMPLE tags.
     (4 files). Owner follow-ups: real .com/.in domain attach when
     purchased (rename was the chosen stopgap); ALLOW_INDEXING flips
     back off only if he wants the site hidden again.
+
+### T17 brief (Orchestrator, 21 Nov 2026) — CRITIC SIGN-OFF ON THE LAUNCH STATE — OPEN
+
+  - **Why:** the charter says no phase stands done without a critic
+    APPROVE saved under `docs/design/critic/`. T15, T15b and T16 are
+    all closed and deployed with no review on file (newest is
+    `t14-persona-tax-client.md`). This round retroactively reviews the
+    SHIPPED launch state as one item — the site as it stands on
+    `plsharmaandcompany.netlify.app`.
+  - **Inputs for the critic:** live site (9 routes), evidence
+    `polish-evidence/t15*`, `t15b*`, `t16*` (10 files), the T14 persona
+    review (F1–F5 status: F1 fixed, F3/F6–F10 dispositioned, F2/F4/F5
+    owner-relay), `CHANGELOG_POLISH.md` T15/T15b/T16 entries, charter
+    targets + definition of done.
+  - **Lanes:** critic = review only, writes exactly one file
+    `docs/design/critic/t15-t16-launch-2026-11-21.md` with scores +
+    APPROVE/REJECT; Orchestrator = brief, relay, any resulting fixes,
+    ledgers, push. F4 (one honest fee figure) and F5 (CA credential
+    line) stay owner-gated regardless — no invented numbers, no
+    unconfirmed credentials. F2 (bare team names) has a studio-safe
+    fallback the critic may re-raise: fold the three names into one
+    honest line until owner roles land.
+  - **Exit criteria:** review file saved with an explicit verdict;
+    REJECT findings fixed (or logged as owner-gated with reason) and
+    re-verified; OWNER_CHECKLIST updated for T16 supersessions
+    (testimonials item, domain/indexing item); ledgers + push.
