@@ -641,3 +641,16 @@ behind the T0 preview flag with visible SAMPLE tags.
     REJECT findings fixed (or logged as owner-gated with reason) and
     re-verified; OWNER_CHECKLIST updated for T16 supersessions
     (testimonials item, domain/indexing item); ledgers + push.
+  - **Closed (21 Nov 2026):** round 1 REJECT on one P2 (F1, /about
+    bare team rows) → fixed (`dd71644`, deploy `6b014913`), re-pinned,
+    live-verified (0 bare rows, 1 founder h3, 44/44 probe). F8 axe
+    pass = **0 violations / 0 errors on 9/9 live routes** (ran
+    post-T16). F6 not reproducible (no badge markup in served HTML);
+    F7 dispositioned (evidence spot-check + "t16-* only" archive
+    rule); F2–F5 logged as optional wording backlog; F4-fee/F5-CA
+    stay owner-gated. Orphaned T16 qa coverage rescued (`7e54bd0`:
+    launch.spec 21 tests + home §04 pins, innerText/CAPS gotcha) —
+    suite now **200/200 e2e + 5/5 unit**. Round-2 review
+    `critic/t17-final-2026-11-21.md`: **APPROVE** — scores Hierarchy/
+    Accessibility/Brand fit raised to 5. T15/T15b/T16 now carry the
+    charter-mandated critic sign-off; launch state stands.
