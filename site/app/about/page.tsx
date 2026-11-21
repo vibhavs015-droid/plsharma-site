@@ -30,6 +30,15 @@ const entryLink =
 
 const founder = visibleTeam[0];
 
+// T17 F1 (critic): the associates ship as ONE honest entry — the
+// owner-confirmed names plus the missing descriptor, no invented roles.
+// Per-name rows return the moment owner-supplied roles land.
+const associateNames = visibleTeam.slice(1).map((member) => member.name);
+const associateLine =
+  associateNames.length > 1
+    ? `${associateNames.slice(0, -1).join(", ")} and ${associateNames[associateNames.length - 1]}`
+    : associateNames.join("");
+
 export default function AboutPage() {
   return (
     <>
@@ -180,11 +189,16 @@ export default function AboutPage() {
               <h3>{founder.name}</h3>
               <p className="text-meta text-ink-muted mt-1">{founder.role}</p>
             </li>
-            {visibleTeam.slice(1).map((member) => (
-              <li key={member.name} className="ruled-entry">
-                <h3>{member.name}</h3>
+            {/* T17 F1: the three bare name rows (unfilled-data look) are
+                folded into this one honest entry — names kept, descriptor
+                added, nothing invented. */}
+            {associateNames.length > 0 && (
+              <li className="ruled-entry">
+                <p className="text-body">
+                  {associateLine} — the office support team.
+                </p>
               </li>
-            ))}
+            )}
           </ul>
         </div>
       </section>

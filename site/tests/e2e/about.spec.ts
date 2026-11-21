@@ -11,7 +11,7 @@ import {
 import { confirmedTeam } from "../../lib/site-config";
 import { practitionerIsCa } from "../../lib/content-mode";
 import { founderBioAbout } from "../../lib/founder-bio";
-import { sampleTeam } from "../../lib/sample-content";
+import { sampleTeam, principalQuote } from "../../lib/sample-content";
 
 /**
  * Phase 3 Stage B QA — `/about` on the Kept Ledger system.
@@ -158,17 +158,50 @@ test.describe("About — structure & content (page-specs §1)", () => {
     expect(occurrences, "'The first consultation is free.' appears exactly once on /about").toBe(1);
   });
 
-  test("the team renders the confirmed tier — 4 name boxes, founder + role, no SAMPLE tags", async ({ page }) => {
+  test("§02 principal quote renders in the default build — centred full-width, untagged (T16/T15b)", async ({ page }) => {
+    // T16: principalQuote.confirmed is set, so the owner-approved line
+    // ships in the default (flag-unset) build — the block is no longer a
+    // preview-only/empty gap. T15b: it spans the full page width and is
+    // centred; the SAMPLE badges are retired from every page (T16), so no
+    // tag may sit inside or beside it.
+    expect(principalQuote.confirmed, "the owner-approved confirmed line (T16)").toBeTruthy();
+    const block = page.locator("main div.col-span-full");
+    await expect(block, "the one full-width quote block").toHaveCount(1);
+    await expect(block, "centred full-width (T15b)").toHaveClass(/text-center/);
+    await expect(block, "cross-axis centred (T15b)").toHaveClass(/items-center/);
+    await expect(block.locator("p.text-body")).toHaveText(
+      `“${principalQuote.confirmed}”`
+    );
+    await expect(
+      block.locator(".sample-tag"),
+      "no sample tag inside the confirmed quote (T16)"
+    ).toHaveCount(0);
+  });
+
+  test("the team renders the confirmed tier — founder entry + ONE support line, no bare name rows", async ({ page }) => {
     // TASK 0 tier system + T14-E (owner order): the confirmed tier is the
-    // founder (name + role) plus the three owner-confirmed associate names
-    // (name only — roles pending, empty on purpose). sampleTeam is empty,
-    // so preview and production cannot duplicate them; nothing sample-tagged
-    // may render on /about in ANY tier.
+    // founder (name + role) plus the three owner-confirmed associate names.
+    // T17 F1 (critic): the three bare-name rows (unfilled-data look) fold
+    // into ONE honest entry — names kept, "office support team" descriptor
+    // added, no invented roles. sampleTeam is empty, so preview and
+    // production cannot duplicate them; nothing sample-tagged may render
+    // on /about in ANY tier.
     expect(confirmedTeam, "owner-confirmed team is the founder + 3 associates").toHaveLength(4);
+    // The founder keeps their own entry + name heading.
     const names = page.locator("main h3");
-    await expect(names).toHaveCount(confirmedTeam.length);
-    await expect(names).toHaveText(confirmedTeam.map((member) => member.name));
+    await expect(names, "only the founder keeps a name heading").toHaveCount(1);
+    await expect(names).toHaveText(confirmedTeam[0].name);
     await expect(page.locator("main")).toContainText(confirmedTeam[0].role);
+    // The associates ship as exactly one ruled entry carrying every name.
+    const support = page.locator("main .ruled-entry", {
+      hasText: "the office support team",
+    });
+    await expect(support, "one support entry (T17 F1)").toHaveCount(1);
+    for (const member of confirmedTeam.slice(1)) {
+      await expect(support, `associate kept: ${member.name}`).toContainText(
+        member.name
+      );
+    }
     // T14-E: zero SAMPLE tags on /about — the names are confirmed content.
     await expect(page.locator(".sample-tag")).toHaveCount(0);
     const body = await page.content();
